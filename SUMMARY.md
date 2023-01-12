@@ -2,12 +2,12 @@
 
 * [BaaS Documentation](README.md)
 
-## Get Started
+## Use Cases
 
-* [Credit](get-started/credit.md)
-* [Insurance](get-started/insurance.md)
+* [Credit](use-cases/credit.md)
+* [Insurance](use-cases/insurance.md)
 
-## Integration
+## Integration Guides
 
 * [Direct](integration-guides/direct.md)
 * [Platform Solutions](integration-guides/platform-solutions.md)
