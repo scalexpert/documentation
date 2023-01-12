@@ -1,10 +1,10 @@
 name: Notify documentation update
 
 on:
-  push:
-    branches:
+  # reduce notification update while the definitive process is not set
+  pull_request:
+    branches:    
       - main
-      #- 'releases/**'
 
 jobs:
   notify:
