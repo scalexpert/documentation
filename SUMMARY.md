@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](README.md)
+* [Your BaaS Documentation](README.md)
 
 ## Get Started
 
