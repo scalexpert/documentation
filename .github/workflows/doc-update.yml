@@ -1,6 +1,7 @@
 name: Notify documentation update
 
 on:
+  workflow_dispatch:
   # reduce notification update while the definitive process is not set
   pull_request:
     branches:    
