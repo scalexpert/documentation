@@ -16,4 +16,5 @@ _introduction goes here_
 
 * [Users Account](api-reference/users-account.md)
 * [KPI](api-reference/kpi.md)
+* [Dummy](api-reference/dummy.md)
 * ...
