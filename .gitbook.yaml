@@ -1,7 +1,7 @@
 root: ./
 
-​structure:  
-    readme: README.md  
+​structure:
+    readme: "Getting Started.md"
     summary: SUMMARY.md​
 
 # redirects:  
