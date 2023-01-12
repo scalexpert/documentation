@@ -20,7 +20,7 @@ jobs:
         with:
           # Slack channel id, channel name, or user id to post message.
           # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: 'documentation'
+          channel-id: 'C04JRE4MF7E'
           # For posting a simple plain text message
           slack-message: "La documentation a été mise à jour (${{ job.status }})\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
         env:
