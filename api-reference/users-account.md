@@ -1,6 +1,10 @@
+---
+description: version 0.0.6
+---
+
 # Users Account
 
-_In Progress_
+__
 
 {% swagger src="../.gitbook/assets/SG.BaaS-iam-0.0.6-swagger (1).yaml" path="/v1/users" method="get" %}
 [SG.BaaS-iam-0.0.6-swagger (1).yaml](<../.gitbook/assets/SG.BaaS-iam-0.0.6-swagger (1).yaml>)
