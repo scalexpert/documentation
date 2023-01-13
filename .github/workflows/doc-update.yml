@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   # reduce notification update while the definitive process is not set
   pull_request:
-    branches:    
+    branches:
       - main
 
 jobs:
