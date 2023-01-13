@@ -1,0 +1,801 @@
+# BAA2-79
+
+# To be discussed :
+#  - use github to track changes ?
+#  - use github to comment and request changes ?
+
+#  - finir l'objet EnrollmentRequest => Julien
+#  - passer à la gestion d'erreur standard SG => Ludivine
+
+
+openapi: 3.0.3
+
+# ============================================================================= infos
+info:
+  title: User Account API
+  version: 0.0.6
+  description: Directory/Repository to maintain the details of all products and services that a customer has acquired from the bank.
+
+# ============================================================================= servers
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/SG.BaaS/iam/0.0.6
+
+# ============================================================================= paths
+paths:
+
+  /v1/users:
+    get:
+      operationId: retrieveUsers
+      summary: Retrieve all users
+      description: list all user entries
+      tags:
+        - users
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorGetExample"
+                BadRequest:
+                  summary: "Bad Request"
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    status: '400'
+                    error: 'BAD REQUEST'
+                    message: 'The parameter `merchantId` is not valid'
+                    requestMethod: 'GET'
+                    requestURI: '/v1/users'
+                NotFound:
+                  summary: "Not Found"
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    status: '404'
+                    error: 'NOT FOUND'
+                    message: 'The parameter `merchantId` is unkown'
+                    requestMethod: 'GET'
+                    requestURI: '/v1/users'
+
+        '200':
+          description: list users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/usersResponse'
+    post:
+      operationId: registerUser
+      summary: Register new users
+      description: Create a user
+      tags:
+        - users
+      requestBody:
+        description: Datas required for new user 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userRequest'
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorPostExample"
+                BadRequestPostPassWordErrorExample:
+                  $ref: "#/components/examples/BadRequestPostPassWordErrorExample"
+                BadRequestPostPhoneNumberErrorExample:
+                  $ref: "#/components/examples/BadRequestPostPhoneNumberErrorExample"
+                BadRequestPostEmailErrorExample:
+                  $ref: "#/components/examples/BadRequestPostEmailErrorExample"
+                BadRequestPostTermsOptInErrorExample:
+                  $ref: "#/components/examples/BadRequestPostEmailErrorExample"
+        '201':
+          description: create user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+     
+
+  /v1/users/{userId}:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+    get:
+      operationId: retrieveUserAccount
+      summary: Retrieve specific users
+      description: list user entry account
+      tags:
+        - user
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorGetExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+                BadRequestGetUserIdErrorExample:
+                  $ref: "#/components/examples/BadRequestGetUserIdErrorExample"
+        '200':
+          description: specific user's account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+    put:
+      operationId: updateUserAccount
+      summary: Update user account
+      description:  Edit user entry fields //TODO
+      tags:
+        - user
+      requestBody:
+        description: Datas required for new user 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateUserRequest'
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorPutExample"
+                BadRequestPostPhoneNumberErrorExample:
+                  $ref: "#/components/examples/BadRequestPostPhoneNumberErrorExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '200':
+          description: update user's account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+                
+                
+  /v1/users/roles: # vs /v1/roles but 2 controllers
+    get:
+      operationId: retrieveUsersRoles
+      summary: Retrieve users roles 
+      description: List all pre-defined roles for users
+      tags:
+       - roles
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorGetExample"
+        '200':
+          description: list all roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolesResponse'
+    
+
+  /v1/users/{userId}/roles:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+    get:
+      operationId: retrieveUserRoles
+      summary: Retrieve user roles
+      description: list all pre-defined roles associated with the user
+      tags:
+        - user roles
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorGetExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '200':
+          description: list user's roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolesResponse'
+    post:
+      operationId: grantUserRole
+      summary: Grant user role
+      description: add a pre-defined role to a user
+      tags:
+        - user roles
+      parameters: 
+        - in: query
+          name: roleId
+          schema:
+            type: number
+            example: '2'
+          required: true
+
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorPostExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '201':
+          description: grant role to a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolesResponse'
+        '204':
+          description: role already granted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rolesResponse'
+                
+  /v1/users/{userId}/roles/{roleId}:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+      - $ref: '#/components/parameters/roleIdParam'
+    delete:
+      operationId: revokeUserRole
+      summary: Revoke use role
+      description: remove a pre-defined role from a user
+      tags:
+        - user roles
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorDeleteExample"
+                BadRequestDeleteRoleErrorExample:
+                  $ref: "#/components/examples/BadRequestDeleteRoleErrorExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '204':
+          description: deny role to a user
+          
+
+  /v1/users/{userId}/activate:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+    post:
+      operationId: controlUserActivationStatus
+      summary: Control user's internal activation status
+      description: change the activation status of the user
+      tags:
+        - user activation
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorPostExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '204':
+          description: activate user's account # comment to be removed : capacité d'activer/désactiver plusieurs statuts true/false (+ label )
+         
+                
+  /v1/users/{userId}/desactivate:
+    parameters:
+      - $ref: '#/components/parameters/userIdParam'
+    post:
+      operationId: controlUserDesactivationStatus
+      summary: Control user's internal activation status
+      description: change the activation status of the user
+      tags:
+        - user activation
+      responses:
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/genericErrorResponse"
+              examples:
+                InternalServerError:
+                  $ref: "#/components/examples/InternalServerErrorPostExample"
+                NotFoundUserIdErrorExample :
+                  $ref: "#/components/examples/NotFoundUserIdErrorExample"
+        '204':
+          description: deactivate user's account # comment to be removed : capacité d'activer/désactiver plusieurs statuts true/false (+ label )
+         
+components:
+
+# ============================================================================= components:parameters
+  parameters:
+  
+    userIdParam:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: number
+        description: techId
+
+    roleIdParam:
+      name: roleId
+      in: path
+      required: true
+      schema:
+        type: number
+        description: techId
+
+    policyIdParam:
+      name: policyId
+      in: path
+      required: true
+      schema:
+        type: number
+        description: techId
+
+    eventTypeIdParam:
+      name: eventTypeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+# ============================================================================= components:schemas
+  schemas:
+
+    # -------------- userRequest
+    userRequest:
+      type: object
+      required:
+        - birthName
+        - ownerName
+        - ownerFirstname
+        - ownerEmailAddress
+        - ownerFullyQualifiedPhoneNumber
+        - login
+        - password
+        - pseudo
+        - isTechnicalAccount
+        - isLocked
+        - isActivated
+        - isDeleted
+        - isTrialAccount
+        - activationTokenID
+        - activationTokenOriginationTimestamp
+        - activationTokenLifetimeDuration
+        - activationTokenExpirationTimestamp
+        - usageTermsRefID
+        - usageTermsOptin
+        - usageTermsDocURL
+      properties:
+        birthName:
+          type: string
+        ownerName:
+          type: string
+        ownerFirstname:
+          type: string
+        ownerEmailAddress:
+          type: string
+          format: email
+          pattern: /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/gm
+        ownerFullyQualifiedPhoneNumber:
+          type: string
+        login: 
+          type: string
+        password: 
+          type: string
+          format: password
+        pseudo: 
+          type: string
+        isTechnicalAccount:
+          type: boolean
+        isLocked:
+          type: boolean
+        isActivated:
+          type: boolean
+        isDeleted:
+          type: boolean
+        isTrialAccount:
+          type: boolean
+        activationTokenID:
+          type: string
+          format: token
+        activationTokenOriginationTimestamp:
+          type: string
+          format: date-time 
+        activationTokenLifetimeDuration:
+          type: string
+          format: date-time
+        activationTokenExpirationTimestamp:
+          type: string
+          format: date-time 
+        usageTermsRefID:
+          type: string
+          format: identifier
+        usageTermsOptin:
+          type: boolean
+        usageTermsDocURL:
+          type: string
+          format: uri
+      example:
+          birthName: Terrieur
+          ownerName: Terrieur
+          ownerFirstname: Alain
+          ownerEmailAddress: alain.terrieur@mail.com
+          ownerFullyQualifiedPhoneNumber: +331 22 33 44 55
+          login: a.Terrieur
+          password: p@ssw0rd
+          pseudo: BetaTesteur
+          isTechnicalAccount: false
+          isLocked: false
+          isActivated: true
+          isDeleted: false
+          isTrialAccount: true
+          activationTokenID: token
+          activationTokenOriginationTimestamp: 2016-08-29T09:12:33.001Z
+          activationTokenLifetimeDuration: 2016-08-29T09:12:33.001Z
+          activationTokenExpirationTimestamp: 2016-08-29T09:12:33.001Z
+          usageTermsRefID: uuid?
+          usageTermsOptin: true
+          usageTermsDocURL: http://to-file.pdf
+
+    # -------------- usersResponse
+    usersResponse:
+      type: object
+      required:
+        - data
+      properties:
+        users:
+          type: array
+          description: list of users
+          items:
+            $ref: '#/components/schemas/userResponse'
+          minItems: 0
+      example:
+        users:
+          - id: 1
+            birthName: Terrieur
+            ownerName: Terrieur
+            ownerFirstname: Alain
+            ownerEmailAddress: alain.terrieur@mail.com
+            phoneNumber: +331 22 33 44 55
+            pseudo: BetaTesteur
+            isTechnicalAccount: false
+            isLocked: false
+            isActivated: true
+            isDeleted: false
+            isTrialAccount: true
+          - id: 2
+            birthName: Terrieur
+            ownerName: Terrieur
+            ownerFirstname: Alex
+            ownerEmailAddress: alex.terrieur@mail.com
+            phoneNumber: +331 22 33 44 55
+            pseudo: TechnicalAccount
+            isTechnicalAccount: true
+            isLocked: false
+            isActivated: true
+            isDeleted: false
+            isTrialAccount: false
+            
+    # -------------- userResponse
+    userResponse:
+      description: User object
+      type: object
+      required:
+        - id
+        - birthName
+        - ownerName
+        - ownerFirstname
+        - ownerEmailAddress
+        - phoneNumber
+        - pseudo
+        - isTechnicalAccount
+        - isLocked
+        - isActivated
+        - isDeleted
+        - isTrialAccount
+      properties:
+        id:
+          type: integer
+          description: techId        
+        birthName:
+          type: string
+        ownerName:
+          type: string
+        ownerFirstname:
+          type: string
+        ownerEmailAddress:
+          type: string
+        phoneNumber:
+          type: string
+        pseudo:
+          type: string
+          description: user friendly name
+        isTechnicalAccount:
+          type: boolean
+        isLocked:
+          type: boolean
+        isActivated:
+          type: boolean
+        isDeleted:
+          type: boolean
+        isTrialAccount:
+          type: boolean
+      example:
+        id: 1337
+        birthName: Terrieur
+        ownerName: Terrieur
+        ownerFirstname: Alain
+        ownerEmailAddress: alain.terrieur@mail.com
+        phoneNumber: +331 22 33 44 55
+        pseudo: BetaTesteur
+        isTechnicalAccount: false
+        isLocked: false
+        isActivated: true
+        isDeleted: false
+        isTrialAccount: true
+
+    # -------------- updateUserRequest
+    updateUserRequest:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          example: +331 22 33 44 55
+      
+      
+    # -------------- Roles / Policies
+  
+    rolesResponse:
+      type: object
+      required:
+        - data
+      properties:
+        roles:
+          type: array
+          description: list of roles
+          items:
+            $ref: '#/components/schemas/roleResponse'
+          minItems: 0
+
+    roleResponse:
+      description: Role object
+      type: object
+      required:
+        - id
+        - name
+        - policies
+      properties:
+        id:
+          type: integer
+          description: techId
+        name:
+          type: string
+          description: role friendly name
+        policies:
+          type: array
+          description: policies associated with the role
+          items:
+            $ref: '#/components/schemas/policy'
+      example:
+      - id: 1
+        name: TrialAccount
+        policies:
+          - permission: deny
+            action: iam:grantUserRole
+          - permission: deny
+            action: iam:revokeUserRole
+          - permission: deny
+            action: iam:controlUserActivationStatus
+      - id: 2
+        name: Administrateur
+        policies:
+          - permission: allow
+            action: iam:grantUserRole
+          - permission: allow
+            action: iam:revokeUserRole
+          - permission: allow
+            action: iam:controlUserActivationStatus
+
+    policy:
+      type: object
+      required:
+        - permission
+        - action
+      properties:
+        permission:
+          type: string
+          description: deny has precedence over allow
+          enum:
+            - allow
+            - deny
+        action:
+          type: string
+          description: Use format 'serviceDomaineName:actionOnResource' (should be equivalent to 'apiName:operationId')
+          enum:
+            - iam:retrieveUsersEnrollments
+            - iam:grantUserRole
+            - offer:retrieve
+          # - ...etc...
+      example:
+        action: allow
+        resource: iam:retrieveUsersEnrollments
+
+
+    # -------------- Error
+    genericErrorResponse:
+      title: genericErrorResponse
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Date-Time of the error (ISO 8601 format)
+          example: '2022-07-28T22:25:51Z'
+        status:
+          type: integer
+          description: HTTP Status code (404, 400, 500...)
+          example: '400'
+        error:
+          type: string
+          description: HTTP Status error message (Bad Request, Internal Server Error...)
+          example: BAD REQUEST
+        message:
+          type: string
+          description: Friendly and explicit message
+          example: The parameter `merchantId` is not valid
+        requestMethod:
+          type: string
+          description: HTTP verb used to make the request. GET, POST, PUT, DELETE...
+          example: GET
+        requestURI:
+          type: string
+          description: URI of the request
+          example: "/v1/users"
+
+# ======================= components:responses
+  examples:
+  # TODO déclarer tous les exemples par endpoint => <operationId><RelevantName>Example
+    InternalServerErrorGetExample:
+      summary: "Get Internal Server Error"
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '500'
+        error: 'INTERNAL SERVEUR ERROR'
+        message: 'Une erreur est survenue'
+        requestMethod: 'GET'
+        requestURI: '/v1/users'
+
+    InternalServerErrorPostExample:
+      summary: "Post Internal Server Error"
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '500'
+        error: 'INTERNAL SERVEUR ERROR'
+        message: 'Une erreur est survenue'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
+
+    InternalServerErrorPutExample:
+      summary: "Put Internal Server Error"
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '500'
+        error: 'INTERNAL SERVEUR ERROR'
+        message: 'Une erreur est survenue'
+        requestMethod: 'PUT'
+        requestURI: '/v1/users'
+
+    InternalServerErrorDeleteExample:
+      summary: "Delete Internal Server Error"
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '500'
+        error: 'INTERNAL SERVEUR ERROR'
+        message: 'Une erreur est survenue'
+        requestMethod: 'DELETE'
+        requestURI: '/v1/users'
+        
+    NotFoundUserIdErrorExample:
+      summary: 'User Id Not Found'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '404'
+        error: 'NOT FOUND'
+        message: 'The parameter `userId` is unknow'
+        requestMethod: 'GET'
+        requestURI: '/v1/users'
+        
+    BadRequestGetUserIdErrorExample:
+      summary: 'User Id Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `user id` is not valid'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'  
+        
+    BadRequestPostEmailErrorExample:
+      summary: 'Email Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `email` is not valid'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
+        
+    BadRequestPostPhoneNumberErrorExample:
+      summary: 'PhoneNumber Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `localPhoneNumber` is not valid'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
+        
+    BadRequestPostPassWordErrorExample:
+      summary: 'PassWord Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `PassWord` is not valid'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
+        
+    BadRequestPostTermsOptInErrorExample:
+      summary: 'termsOptIn Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `termsOptIn` is not valid. the value True is mandatory for register'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
+        
+    BadRequestDeleteRoleErrorExample:
+      summary: 'role Bad Request'
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: 'BAD REQUEST'
+        message: 'The parameter `role` is not valid. Value unkown'
+        requestMethod: 'POST'
+        requestURI: '/v1/users'
