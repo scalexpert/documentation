@@ -1,6 +1,6 @@
 # Table of contents
 
-* [BaaS Documentation](README.md)
+* [ScaleXpert Docs](README.md)
 
 ## Use Cases
 
