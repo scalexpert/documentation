@@ -1,6 +1,8 @@
 # Table of contents
 
 * [ScaleXpert Docs](README.md)
+* [Before you start](before-you-start.md)
+* [Get Started](get-started.md)
 
 ## Use Cases
 
