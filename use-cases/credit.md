@@ -1,3 +1,7 @@
+---
+description: un texte court marketing décrivant l'offre smart crédit
+---
+
 # SmartCredit
 
 ## Description
