@@ -9,7 +9,7 @@
 
 ## Use Cases
 
-* [Credit](use-cases/credit.md)
+* [SmartCredit](use-cases/credit.md)
 * [Insurance](use-cases/insurance.md)
 
 ## Integration Guides
@@ -21,3 +21,8 @@
 
 * [Users Account](api-reference/users-account.md)
 * [KPI](api-reference/kpi.md)
+
+## Errors
+
+* [Object](errors/object.md)
+* [Codes](errors/codes.md)
