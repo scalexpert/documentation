@@ -21,7 +21,7 @@
 ## API Reference
 
 * [Users Account](api-reference/users-account.md)
-* [KPI](api-reference/kpi.md)
+* [Credit Subscriptions](api-reference/credit-subscriptions.md)
 
 ## Errors
 
