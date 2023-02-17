@@ -1,11 +1,12 @@
 # Table of contents
 
-* [ScaleXpert Docs](README.md)
-* [Before you start](before-you-start.md)
-* [Get Started](get-started/README.md)
-  * [Access our APIs](get-started/access-our-apis.md)
-  * [Authentication](get-started/authentication.md)
-  * [API URLs](get-started/api-urls.md)
+## Developer Docs
+
+* [Before you start](README.md)
+* [Get Started](developer-docs/get-started/README.md)
+  * [Access our APIs](developer-docs/get-started/access-our-apis.md)
+  * [Authentication](developer-docs/get-started/authentication.md)
+  * [API URLs](developer-docs/get-started/api-urls.md)
 
 ## Use Cases
 

@@ -1,5 +1,5 @@
-# BaaS Documentation
+# Before you start
 
-_introduction goes here_
+Expliquer les objectifs de ce guide et les prérequis avant de plonger dans ce guide. bien préciser notamment que le processus d'onbaording et activation est un prérequis à l'otemption des clés d'APIs.&#x20;
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Expliquer les différents mode d'intégration disponibles intégration des APIs et intégration via des Plugins des CMS
