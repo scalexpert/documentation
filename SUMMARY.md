@@ -15,8 +15,8 @@
 
 ## Integration Guides
 
-* [Direct](integration-guides/direct.md)
-* [Platform Solutions](integration-guides/platform-solutions.md)
+* [APIs](integration-guides/direct.md)
+* [Plugins CMS solutions](integration-guides/platform-solutions.md)
 
 ## API Reference
 
