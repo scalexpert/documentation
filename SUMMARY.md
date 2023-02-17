@@ -2,7 +2,10 @@
 
 * [ScaleXpert Docs](README.md)
 * [Before you start](before-you-start.md)
-* [Get Started](get-started.md)
+* [Get Started](get-started/README.md)
+  * [Access our APIs](get-started/access-our-apis.md)
+  * [Authentication](get-started/authentication.md)
+  * [API URLs](get-started/api-urls.md)
 
 ## Use Cases
 
@@ -18,4 +21,3 @@
 
 * [Users Account](api-reference/users-account.md)
 * [KPI](api-reference/kpi.md)
-* [...](api-reference/....md)
