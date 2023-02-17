@@ -6,11 +6,11 @@ description: version 0.0.4
 
 
 
-{% swagger src="../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json" path="/v1/subscriptions" method="get" %}
+{% swagger src="../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json" path="/v1/subscriptions" method="post" %}
 [SG.BaaS-CreditSubscription-0.0.4-resolved.json](../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json)
 {% endswagger %}
 
-{% swagger src="../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json" path="/v1/subscriptions" method="post" %}
+{% swagger src="../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json" path="/v1/subscriptions" method="get" %}
 [SG.BaaS-CreditSubscription-0.0.4-resolved.json](../.gitbook/assets/SG.BaaS-CreditSubscription-0.0.4-resolved.json)
 {% endswagger %}
 
