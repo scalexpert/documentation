@@ -18,6 +18,15 @@ prévoir une description step by step du parcours avec des illustrations si-poss
 
 ajouter un diagramme de séquence simplifié des flux d'APIs pour expliquer comment fonctionne le produit et quelles APIs le marchand doit utiliser (cf. exemple [https://doc.fintecture.com/reference/immediate-payment](https://doc.fintecture.com/reference/immediate-payment)&#x20;
 
-## BNPL flows
+## Initiate a financing journey with the `Credit API`&#x20;
 
-<figure><img src="../.gitbook/assets/smartcredit flow BNPL (1).png" alt=""><figcaption><p>SmartCredit BNPL flows</p></figcaption></figure>
+Initiate a financing journey is 2 steps journey:
+
+1.  Display eligible financing methods
+
+
+2. Subscribe to a dedicated financing method
+
+
+
+<figure><img src="../.gitbook/assets/smartcredit flows - initiate financing journey (1).png" alt=""><figcaption><p>Flows: initiate a financing credit journey</p></figcaption></figure>
