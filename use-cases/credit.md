@@ -1,6 +1,5 @@
 ---
 description: un texte court marketing décrivant l'offre smart crédit
-layout: landing
 ---
 
 # SmartCredit
@@ -19,4 +18,6 @@ prévoir une description step by step du parcours avec des illustrations si-poss
 
 ajouter un diagramme de séquence simplifié des flux d'APIs pour expliquer comment fonctionne le produit et quelles APIs le marchand doit utiliser (cf. exemple [https://doc.fintecture.com/reference/immediate-payment](https://doc.fintecture.com/reference/immediate-payment)&#x20;
 
-<figure><img src="../.gitbook/assets/smartcredit flow BNPL (1).png" alt=""><figcaption><p>SmartCredit BNPL flow</p></figcaption></figure>
+## BNPL flows
+
+<figure><img src="../.gitbook/assets/smartcredit flow BNPL (1).png" alt=""><figcaption><p>SmartCredit BNPL flows</p></figcaption></figure>
