@@ -18,4 +18,4 @@ prévoir une description step by step du parcours avec des illustrations si-poss
 
 ajouter un diagramme de séquence simplifié des flux d'APIs pour expliquer comment fonctionne le produit et quelles APIs le marchand doit utiliser (cf. exemple [https://doc.fintecture.com/reference/immediate-payment](https://doc.fintecture.com/reference/immediate-payment)&#x20;
 
-<figure><img src="../.gitbook/assets/Process credit end-to-end.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/smartcredit flow BNPL.png" alt=""><figcaption><p>SmartCredit Flow BNPL</p></figcaption></figure>
