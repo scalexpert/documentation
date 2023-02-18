@@ -26,9 +26,9 @@ Initiate a financing journey is 2 steps process:
 
     You can display all eligible [**financing methods**](#user-content-fn-1)[^1] by calling API `POST` `credit/v1/financingMethods/_eligible` .&#x20;
 
-    It can be use for displaying a insert text or graphical widget on the product page.
+    It can be used for displaying a insert text or graphical widget on the product page.
 
-    Also, It can be use to display the  payment methods during the checkout process.
+    Also, It can be used to display the  payment methods during the checkout process.
 
     There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible `financingMethodCode` to be used to initiate a suscription.
 2.  Subscribe to a dedicated financing method
