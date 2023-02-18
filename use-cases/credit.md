@@ -26,18 +26,22 @@ Initiate a financing journey is 2 steps process:
 
     You can display all eligible [**financing methods**](#user-content-fn-1)[^1] by calling API `POST` `credit/v1/financingMethods/_eligible` .&#x20;
 
-    It can be use for displaying a insert text or graphical widget on the product page, and to display the  payment methods during the checkout process.
+    It can be use for displaying a insert text or graphical widget on the product page.
 
-    There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible `financingMethodCode` eligible with a details such as descriptions text, conditions text, visual logo ...&#x20;
+    Also, It can be use to display the  payment methods during the checkout process.
 
-    _**Select a financing methods is mandatory before initiating a subscription.**_&#x20;
+    There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible `financingMethodCode` to be used to initiate a suscription.
 2.  Subscribe to a dedicated financing method
 
     After selecting a financing method you can initiate a subscription by calling API [`POST credit/v1/subscriptions` ](../api-reference/credit-subscriptions.md#v1-subscriptions)&#x20;
 
+    The request must be completed with all Buyer identities, billing & delivery addresses and basket content.&#x20;
 
+    As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his financing journey that would vary accordingly to the financing method chosen.
 
-
+{% hint style="info" %}
+_Select a financing methods is mandatory before initiating a subscription._&#x20;
+{% endhint %}
 
 <figure><img src="../.gitbook/assets/smartcredit flows - initiate financing journey (1).png" alt=""><figcaption><p>Flows: initiate a financing credit journey</p></figcaption></figure>
 
