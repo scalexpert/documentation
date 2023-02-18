@@ -10,7 +10,8 @@
 
 ## Use Cases
 
-* [SmartCredit](use-cases/credit.md)
+* [SmartCredit](use-cases/credit/README.md)
+  * [Initiate a financing journey](use-cases/credit/initiate-a-financing-journey.md)
 * [Insurance](use-cases/insurance.md)
 
 ## Integration Guides
