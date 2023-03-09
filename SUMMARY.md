@@ -1,13 +1,13 @@
 # Table of contents
 
-## Developer Docs
+## Developers Docs
 
 * [Before you start](README.md)
-* [Get Started](developer-docs/get-started/README.md)
-  * [Access our APIs](developer-docs/get-started/access-our-apis.md)
-  * [Authentication](developer-docs/get-started/authentication.md)
-  * [API URLs](developer-docs/get-started/api-urls.md)
-  * [Rate limiting](developer-docs/get-started/rate-limiting.md)
+* [Get Started](developers-docs/get-started/README.md)
+  * [Access our APIs](developers-docs/get-started/access-our-apis.md)
+  * [Authentication](developers-docs/get-started/authentication.md)
+  * [API URLs](developers-docs/get-started/api-urls.md)
+  * [Rate limiting](developers-docs/get-started/rate-limiting.md)
 
 ## Use Cases
 
