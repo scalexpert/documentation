@@ -32,3 +32,7 @@
 ## Webhooks
 
 * [How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
+
+## Security
+
+* [Security Guile lines](security/security-guile-lines.md)
