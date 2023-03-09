@@ -7,6 +7,7 @@
   * [Access our APIs](developer-docs/get-started/access-our-apis.md)
   * [Authentication](developer-docs/get-started/authentication.md)
   * [API URLs](developer-docs/get-started/api-urls.md)
+  * [Rate limiting](developer-docs/get-started/rate-limiting.md)
 
 ## Use Cases
 
