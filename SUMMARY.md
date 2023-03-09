@@ -35,4 +35,4 @@
 
 ## Security
 
-* [Security Guile lines](security/security-guile-lines.md)
+* [Security best practices](security/security-best-practices.md)
