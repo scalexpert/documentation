@@ -25,6 +25,6 @@ Initiate a financing journey is 2 steps process:
 _Select a financing methods is mandatory before initiating a subscription._&#x20;
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/smartcredit flows - initiate financing journey (1).png" alt=""><figcaption><p>Flows: initiate a financing credit journey</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/github - smartcredit flow (1).png" alt=""><figcaption><p>Flows: initiate a financing credit journey</p></figcaption></figure>
 
 [^1]: A "financing method" define the financing mean a buyer can choose among 3X times 4X times differed payments or LT Long credit

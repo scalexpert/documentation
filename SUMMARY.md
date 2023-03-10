@@ -22,8 +22,8 @@
 
 ## API Reference
 
-* [Users Account](api-reference/users-account.md)
 * [Credit Subscriptions](api-reference/credit-subscriptions.md)
+* [Credit API](api-reference/credit-api.md)
 
 ## Errors
 
