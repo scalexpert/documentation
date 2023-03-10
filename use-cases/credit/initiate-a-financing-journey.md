@@ -15,7 +15,7 @@ Initiate a financing journey is 2 steps process:
     There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible `financingMethodCode` to be used to initiate a suscription.
 2.  Subscribe to a dedicated e-financing solutions
 
-    After selecting a financing method you can initiate a subscription by calling [`API POST credit/v1/subscriptions`](../../api-reference/credit-api.md#credit-v1-subscriptions) &#x20;
+    After selecting a financing method you can initiate a subscription by calling [`API POST credit/v1/subscriptions`](../../api-reference/credit-api.md#credit-v1-subscriptions-1) &#x20;
 
     The request must be completed with all Buyer identities, billing & delivery addresses and basket content.&#x20;
 
