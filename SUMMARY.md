@@ -22,7 +22,6 @@
 
 ## API Reference
 
-* [Credit Subscriptions](api-reference/credit-subscriptions.md)
 * [Credit API](api-reference/credit-api.md)
 
 ## Errors
