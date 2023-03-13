@@ -31,4 +31,4 @@ _Select a e-financing solution is mandatory before initiating a subscription._&#
 
 <figure><img src="../../.gitbook/assets/github - initiate e-financing solution.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
 
-[^1]: e-financing are 2 kinds "Smart Credit" or "Split Payment". &#x20;
+[^1]: e-financing are 2 kinds "Long Term Credit" or "Split Payment". &#x20;
