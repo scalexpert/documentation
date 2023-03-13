@@ -11,9 +11,9 @@
 
 ## Use Cases
 
-* [SmartCredit](use-cases/credit/README.md)
-  * [Initiate a e-financing journey](use-cases/credit/initiate-a-e-financing-journey.md)
-  * [Split Payment Journey](use-cases/credit/split-payment-journey.md)
+* [e-Financing journeys](use-cases/credit/README.md)
+  * [Initiate a e-financing journey](use-cases/credit/initiate-a-financing-journey.md)
+  * [Split Payment Journey (BNPL)](use-cases/credit/split-payment-journey-bnpl.md)
 * [Insurance](use-cases/insurance.md)
 
 ## Integration Guides
