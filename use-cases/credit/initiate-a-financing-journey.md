@@ -12,19 +12,19 @@ Initiate a financing journey is 2 steps process:
 
     Also, It can be used to display the  payment methods during the checkout process.
 
-    There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible `financingMethodCode` to be used to initiate a suscription.
+    There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible e-financing solutions to be used to initiate a subscription.
 2.  Subscribe to a dedicated e-financing solutions
 
     After selecting a financing method you can initiate a subscription by calling [`API POST credit/v1/subscriptions`](../../api-reference/credit-api.md#credit-v1-subscriptions-1) &#x20;
 
     The request must be completed with all Buyer identities, billing & delivery addresses and basket content.&#x20;
 
-    As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his financing journey that would vary accordingly to the financing method chosen.
+    As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his e-financing journey that would vary accordingly to the financing method chosen.
 
 {% hint style="info" %}
 _Select a e-financing solution is mandatory before initiating a subscription._&#x20;
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/github - smartcredit flow (1).png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/github - smartcredit flow.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
 
 [^1]: e-financing are 2 kinds "Smart Credit" or "Split Payment". &#x20;
