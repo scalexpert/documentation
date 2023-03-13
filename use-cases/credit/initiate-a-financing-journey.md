@@ -4,7 +4,7 @@ description: 'How to initiate a e-financing journey: smart credit or split payme
 
 # Initiate a e-financing journey
 
-## Initiate a financing journey with the [`Credit API`](../../api-reference/credit-api.md)&#x20;
+## Initiate a e-financing journey with the [`Credit API`](../../api-reference/credit-api.md)&#x20;
 
 Initiate a financing journey is 2 steps process:
 
