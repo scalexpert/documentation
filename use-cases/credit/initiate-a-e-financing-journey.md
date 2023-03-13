@@ -1,4 +1,8 @@
-# Initiate a financing journey
+---
+description: 'How to initiate a e-financing journey: smart credit or split payment'
+---
+
+# Initiate a e-financing journey
 
 ## Initiate a financing journey with the [`Credit API`](../../api-reference/credit-api.md)&#x20;
 
@@ -25,6 +29,6 @@ Initiate a financing journey is 2 steps process:
 _Select a e-financing solution is mandatory before initiating a subscription._&#x20;
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/github - smartcredit flow.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/github - initiate e-financing solution.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
 
 [^1]: e-financing are 2 kinds "Smart Credit" or "Split Payment". &#x20;

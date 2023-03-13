@@ -12,7 +12,8 @@
 ## Use Cases
 
 * [SmartCredit](use-cases/credit/README.md)
-  * [Initiate a financing journey](use-cases/credit/initiate-a-financing-journey.md)
+  * [Initiate a e-financing journey](use-cases/credit/initiate-a-e-financing-journey.md)
+  * [Split Payment Journey](use-cases/credit/split-payment-journey.md)
 * [Insurance](use-cases/insurance.md)
 
 ## Integration Guides
