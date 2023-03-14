@@ -1,5 +1,5 @@
 ---
-description: un texte court marketing décrivant l'offre smart crédit
+description: un texte court marketing décrivant l'offre Baas
 ---
 
 # e-Financing journeys
