@@ -26,10 +26,10 @@
 
 * [Credit API](api-reference/credit-api.md)
 
-## Errors
+## Generic objects and codes
 
-* [Object](errors/object.md)
-* [Codes](errors/codes.md)
+* [Status codes](generic-objects-and-codes/status-codes.md)
+* [Error object & codes](generic-objects-and-codes/error-object-and-codes.md)
 
 ## Webhooks
 

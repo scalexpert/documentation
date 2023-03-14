@@ -26,7 +26,7 @@ Initiate a financing journey is 2 steps process:
     As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his e-financing journey that would vary accordingly to the financing method chosen.
 
 {% hint style="info" %}
-_Select a e-financing solution is mandatory before initiating a subscription._&#x20;
+_Initiating a subscription with a specific e-financing solution is a prerequisite before executing any e-financing buyer journey._ &#x20;
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/github - initiate e-financing solution.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
