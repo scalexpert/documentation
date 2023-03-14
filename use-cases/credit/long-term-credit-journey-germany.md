@@ -4,7 +4,7 @@ description: Run a Long Term Credit Journey for German Buyer
 
 # Long Term Credit Journey Germany
 
-## Run a Long Term Credit journey for German Buyers
+## Run a Long Term Credit Journey for German Buyers
 
 Run a Long Term Credit Journey is four steps process:
 
