@@ -13,8 +13,8 @@
 
 * [e-Financing journeys](use-cases/credit/README.md)
   * [Initiate a e-financing journey](use-cases/credit/initiate-a-financing-journey.md)
-  * [Split Payment Journey (BNPL)](use-cases/credit/split-payment-journey-bnpl.md)
-  * [Long Term Credit journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
+  * [Split Payment Journey France](use-cases/credit/split-payment-journey-france.md)
+  * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
 * [Insurance journeys](use-cases/insurance.md)
 
 ## Integration Guides
