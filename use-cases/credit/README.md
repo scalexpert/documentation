@@ -2,7 +2,7 @@
 description: un texte court marketing décrivant l'offre smart crédit
 ---
 
-# SmartCredit
+# e-Financing journeys
 
 ## Description
 
@@ -14,8 +14,6 @@ _Tableau crédit court/long + FR/DE + coming soon_
 
 prévoir une description step by step du parcours avec des illustrations si-possible cf. exemple [https://docs.almapay.com/docs/products-pay-in-installments](https://docs.almapay.com/docs/products-pay-in-installments)
 
-## Flows
 
-ajouter un diagramme de séquence simplifié des flux d'APIs pour expliquer comment fonctionne le produit et quelles APIs le marchand doit utiliser (cf. exemple [https://doc.fintecture.com/reference/immediate-payment](https://doc.fintecture.com/reference/immediate-payment)&#x20;
 
 ## __
