@@ -9,7 +9,7 @@ description: Run a Long Term Credit Journey for German Buyer
 Run a Long Term Credit Journey is four steps process:
 
 {% hint style="info" %}
-Long Term e-financing credit solution is proposed by HANSEATIC BANK For Germany.
+Long Term e-financing credit solution is proposed by HANSEATIC BANK SG subsidiary For Germany.
 {% endhint %}
 
 1. e-Financing Long Term Credit journey for German buyers \
