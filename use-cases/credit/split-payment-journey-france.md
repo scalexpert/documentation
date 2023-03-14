@@ -9,7 +9,7 @@ description: Run a split payment journey
 Run a Split Payment Journey for French Buyer is two steps process:
 
 {% hint style="info" %}
-As of today, Split payment e-financing solution is proposed by FRANFINANCE for France country only.
+Split payment e-financing solution is proposed by FRANFINANCE for French Buyers.
 {% endhint %}
 
 1. e-Financing Split Payment for French buyer journey\
