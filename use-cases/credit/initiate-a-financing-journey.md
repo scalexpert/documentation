@@ -10,13 +10,14 @@ Initiate a financing journey is 2 steps process:
 
 1.  Display eligible e-financing solutions
 
-    You can display all eligible [**e-financing solutions**](#user-content-fn-1)[^1] by calling API [`POST credit/0.0.1/credit/v1/eligible-solutions`](../../api-reference/credit-api.md#credit-v1-eligible-solutions) .&#x20;
+    You can display all eligible [**`e-financing solutions codes`**](./#e-financing-solution-codes) by calling API [`POST credit/0.0.1/credit/v1/eligible-solutions`](../../api-reference/credit-api.md#credit-v1-eligible-solutions) .&#x20;
 
-    It can be used for displaying a insert text or graphical widget on the product page.
+    There are mandatory input parameters such as "Amount to be financed" and "Country of the Buyer" . \
+    As a result, you will get all eligible e-financing solutions codes to be selected to initiate a subscription.\
+    It will also return the "merchant kit" you can used to display a insert text or graphical widget on the product page explaining the solution to the buyer with the general conditions.\
+    <mark style="background-color:yellow;">mettre ici un exemple d'insert graphique pour le crédit</mark>
 
     Also, It can be used to display the  payment methods during the checkout process.
-
-    There are mandatory input parameters such as "Amount to be financed" and "Country of Buyer" . As a result, you will get all eligible e-financing solutions to be used to initiate a subscription.
 2.  Subscribe to a dedicated e-financing solutions
 
     After selecting a financing method you can initiate a subscription by calling [`API POST credit/v1/subscriptions`](../../api-reference/credit-api.md#credit-v1-subscriptions-1) &#x20;
@@ -30,5 +31,3 @@ _Initiating a subscription with a specific e-financing solution is a prerequisit
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/github - initiate e-financing solution.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
-
-[^1]: e-financing are 2 kinds "Long Term Credit" or "Split Payment". &#x20;
