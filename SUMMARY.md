@@ -3,6 +3,8 @@
 ## Developers Docs
 
 * [Before you start](README.md)
+  * [Account creation](developers-docs/before-you-start/account-creation.md)
+  * [Developer portal onbaording](developers-docs/before-you-start/developer-portal-onbaording.md)
 * [Get Started](developers-docs/get-started/README.md)
   * [Access our APIs](developers-docs/get-started/access-our-apis.md)
   * [Authentication](developers-docs/get-started/authentication.md)
