@@ -1,2 +1,0 @@
-# Developer portal onbaording
-
