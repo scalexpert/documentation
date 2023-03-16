@@ -7,3 +7,34 @@ description: What you need to know on account
 {% hint style="info" %}
 First, no account creation is required to consult [API catalog](../get-started/access-apis-catalog.md) and documentation.&#x20;
 {% endhint %}
+
+An account is required to subscribe to APIs. The account creation is 4 steps process.&#x20;
+
+{% tabs %}
+{% tab title="1-Login" %}
+On login page click on **"Sign Up instead" link** to be redirected on the account creation page
+
+<figure><img src="../../.gitbook/assets/login page EN.jpg" alt=""><figcaption></figcaption></figure>
+{% endtab %}
+
+{% tab title="2-Account form" %}
+Fill in the form and submit your request. You will received an email to confirm.
+
+<mark style="background-color:orange;">Insérer une image du formulaire de confirmation</mark>
+{% endtab %}
+
+{% tab title="3- Email confirmation " %}
+Consult your inbox email. Open it and click on the the confirmation link.&#x20;
+
+<mark style="background-color:orange;">insérer une image d'un email de confirmation</mark>
+
+{% hint style="warning" %}
+If you didn't receive an email, **please consult your spams** box where your email may be trapped. In any case, **you can restart** the account creation process **on the next day** as we will reinitialize your demand every day. &#x20;
+{% endhint %}
+{% endtab %}
+
+{% tab title="4-Confirmation" %}
+
+{% endtab %}
+{% endtabs %}
+
