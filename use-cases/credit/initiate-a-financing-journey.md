@@ -22,9 +22,9 @@ Initiate a financing journey is 2 steps process:
 
     After selecting a financing method you can initiate a subscription by calling [`API POST credit/v1/subscriptions`](../../api-reference/credit-api.md#credit-v1-subscriptions-1) &#x20;
 
-    The request must be completed with all Buyer identities, billing & delivery addresses and basket content.&#x20;
+    The request must be completed with buyer identities, billing, delivery addresses and basket content.&#x20;
 
-    As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his e-financing journey that would vary accordingly to the financing method chosen.
+    As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his e-financing journey that would vary accordingly to the financing solution code selected.
 
 {% hint style="info" %}
 _Initiating a subscription with a specific e-financing solution is a prerequisite before executing any e-financing buyer journey._ &#x20;
