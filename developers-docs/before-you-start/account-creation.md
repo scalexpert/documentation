@@ -34,7 +34,7 @@ If you didn't receive an email, **please consult your spams** box where your ema
 {% endtab %}
 
 {% tab title="4-Confirmation" %}
-
+Congratulation ! you've been redirect to the confirmation page that means your account is created. You can start your on boarding process. See more details [here](developer-portal-onbaording.md).
 {% endtab %}
 {% endtabs %}
 
