@@ -18,7 +18,7 @@ On board will consist of:
 * Confirm your invitation to join your merchant developer organisation
 * Create an "client App" for each merchant website you want use.
 * Get your APIs keys credentials (Client App + secret)
-* Subscribe to 1 or many APIs
+* Subscribe to 1 or many APIs scopes
 * Get confirmation of the validation of your subscription&#x20;
 
 {% embed url="https://baas.consumer.sparky.hml.goapi.aws.socgen/fr/uat" %}
