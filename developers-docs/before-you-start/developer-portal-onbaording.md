@@ -21,6 +21,8 @@ On board will consist of:
 * Subscribe to 1 or many APIs scopes
 * Get confirmation of the validation of your subscription&#x20;
 
+For more details consult the related tutorial here
+
 {% embed url="https://baas.consumer.sparky.hml.goapi.aws.socgen/fr/uat" %}
 Link to open the Developer Portal
 {% endembed %}
