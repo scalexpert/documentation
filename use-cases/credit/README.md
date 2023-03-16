@@ -27,7 +27,7 @@ The 2 kinds are integrated with the same [`API Credit`](../../api-reference/cred
 
 There is 2 steps to initiate & trigger a e-financing journey:&#x20;
 
-1. Initiate a e-financing journey
+1. Initiate a e-financing journey and select a solution code
 2. Run the e-financing journey according the solution code selected
 
 ## __
