@@ -6,7 +6,7 @@
   * [Account creation](developers-docs/before-you-start/account-creation.md)
   * [Developer portal onbaording](developers-docs/before-you-start/developer-portal-onbaording.md)
 * [Get Started](developers-docs/get-started/README.md)
-  * [Access APIs catalog](developers-docs/get-started/access-apis-catalog.md)
+  * [APIs catalog](developers-docs/get-started/apis-catalog.md)
   * [Authentication](developers-docs/get-started/authentication.md)
   * [API URLs](developers-docs/get-started/api-urls.md)
   * [Rate limiting](developers-docs/get-started/rate-limiting.md)
