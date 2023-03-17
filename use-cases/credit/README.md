@@ -21,7 +21,7 @@ The 2 kinds are integrated with the  [`API Credit`](../../api-reference/credit-a
 | Split payments       | FR      | 3 times      | Shared fees   | SCSPFR-3XPS   |
 | Split payments       | FR      | 4 times      | No fees users | SCSPFR-4XTS   |
 | Split payments       | FR      | 4 times      | Shared fees   | SCSPFR-4XPS   |
-| Long term credit     | GE      | 6-48 times   | Shared fees   | SCLTGE-DXPS   |
+| Long term credit     | DE      | 6-48 times   | Shared fees   | SCLTGE-DXPS   |
 
 ## Step-by-Step
 

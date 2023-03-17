@@ -20,7 +20,7 @@ On login page click on **"Sign Up instead" link** to be redirected on the accoun
 {% tab title="2-Account form" %}
 Fill in the form and submit your request. You will received an email to confirm.
 
-<mark style="background-color:orange;">Insérer une image du formulaire de confirmation</mark>
+<figure><img src="../../.gitbook/assets/formulaire creation compte EN.jpg" alt=""><figcaption><p>Creation account form</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="3- Email confirmation " %}

@@ -10,6 +10,7 @@
   * [APIs catalog](developers-docs/get-started/access-apis-catalog.md)
   * [Authentication](developers-docs/get-started/authentication.md)
   * [API URLs](developers-docs/get-started/api-urls.md)
+  * [Scopes](developers-docs/get-started/scopes.md)
   * [Rate limiting](developers-docs/get-started/rate-limiting.md)
 
 ## Use Cases
