@@ -1,0 +1,935 @@
+openapi: 3.0.3
+info:
+  title: E-financing
+  description: >
+    The E-financement API is used **to initiate and manage a E-financement
+    subscription** from the checkout page on behalf of the buyer.
+
+
+    According **the solution code** your demand will be issued at the producer
+    side.
+
+
+    You will obtain **a redirect Url or a Html page to the producer
+    E-financement customer journey**.
+
+
+    At any time you can **retrieve the status and details** of your
+    E-financement susbcriptions.
+  version: 0.1.3
+  contact:
+    name: SG ECommerce Support Team
+    email: sg-ecommerce-support.world@socgen.com
+    url: ''
+  x-sg-name: e-financing
+  x-irt-code: A8821
+  x-trigram-code: BAX
+  x-api-audience: PUBLIC
+  termsOfService: |
+    24x7
+servers:
+  - url: >-
+      https://baas.gateway.sparky.hml.goapi.aws.socgen/baas/uat/e-financing/api/v0
+paths:
+  /subscriptions:
+    get:
+      tags:
+        - E-Financing subscription
+      summary: Retrieve a list of E-Financing subscriptions
+      description: >
+        You can list all **your subscriptions** by specifying **a reference**
+        such as an order id or a basket id.
+
+        the response will contain subscription Id, dates, times, status, your
+        references, amount financed ...
+
+
+        **Main use case:** Use this API to retrieve status a E-Financing
+        subscription by refering an order Id or a basket Id. 
+
+
+        **Important:** The list is paginated 
+      operationId: retrieveCreditSubscriptionForSpecificMerchant
+      parameters:
+        - name: merchantGlobalOrderId
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: >-
+              ID of the order as a whole - as long as the items are not
+              dispatched separately, with different orders ID.
+            example: '340005489'
+        - name: merchantBasketId
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+            description: >-
+              ID of the basket of the current transaction, as given by the
+              merchant (thirdparty)
+            example: '185462145'
+        - name: page
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            description: The page number
+            example: 1
+            default: 1
+        - name: pageSize
+          in: query
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: integer
+            description: The number of elements per page
+            example: 20
+            default: 20
+      responses:
+        '200':
+          description: List of E-Financing subscriptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginationCreditSubscriptionsResponse'
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+              examples:
+                InternalServerError:
+                  $ref: '#/components/examples/InternalServerErrorGetExample'
+    post:
+      tags:
+        - E-Financing subscription
+      summary: Initiate a E-Financing subscription at the E-Financing producer side
+      description: >
+        **To initiate a E-Financing subscription** you will have to complete the
+        requested parameters from the context of your checkout page of which
+        identity, address of the buyer, amount to be financed, E-Financing
+        payment choosen (product code), basket items details ...
+
+        You can refer your E-Financing susbsription **with your order or basket
+        id**. 
+
+        As a result you will get a E-Financing subscription Id and **a redirect
+        URL or HMTL page** to E-Financing customer journey managed at the
+        producer side
+
+
+        **Important**: the **"solutionCode"** is the parameter that determine
+        the **Producer's solution** such as split payment or smart credit
+        choosen by the buyer in the checkout page 
+      operationId: initiateCreditSubscription
+      requestBody:
+        description: E-Financing susbscription request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCreditSubscriptionRequest'
+      responses:
+        '201':
+          description: Initiate an E-Financing subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCreditSubscriptionResponse'
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+              examples:
+                InternalServerError:
+                  $ref: '#/components/examples/InternalServerErrorPostExample'
+  '/subscriptions/{creditSubscriptionId}':
+    get:
+      tags:
+        - E-Financing subscription
+      summary: Retrieve a specific E-Financing subscription
+      description: >
+        You can use this API to get **all details** of a E-Financing
+        subscription. You will have to provide **a E-Financing subscription Id**
+        previously obtained as listed or initiated. 
+      operationId: retrieveCreditSubscription
+      parameters:
+        - name: creditSubscriptionId
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            description: The unique E-Financing Subscription Id
+            format: uuid
+      responses:
+        '200':
+          description: Specific E-Financing subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditSubscriptionResponse'
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+              examples:
+                InternalServerError:
+                  $ref: '#/components/examples/InternalServerErrorGetExample'
+                NotFoundCreditSubscriptionIdGetErrorExample:
+                  $ref: >-
+                    #/components/examples/NotFoundCreditSubscriptionIdGetErrorExample
+  /eligible-solutions:
+    get:
+      tags:
+        - Eligibility
+      summary: retrieve eligible E-Financing solutions
+      description: >-
+        retrieve eligible E-Financing solutions given financed amount and buyer
+        country.
+
+
+        As a result, you will a list of E-Financing solutions codes with their
+        related merchant kits.
+
+
+        A merchant kit will allow you to display E-Financing visual name, label,
+        description , logo and product terms to the customer.
+
+        An empty json object is returned if not eligible.
+      operationId: retrieveEligibleOffers
+      parameters:
+        - name: financedAmount
+          in: query
+          description: amount to be financed
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: number
+            format: float
+        - name: buyerBillingCountry
+          in: query
+          description: FR for France or DE for Germany
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+          example: 'FR, DE'
+      responses:
+        '200':
+          description: The financed amount and country is eligible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolutionsResponseList'
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+              examples:
+                InternalServerError:
+                  $ref: '#/components/examples/InternalServerErrorGetExample'
+                ProductLineCodeErrorExample:
+                  $ref: '#/components/examples/ProductLineCodeErrorExample'
+components:
+  schemas:
+    CreateCreditSubscriptionRequest:
+      required:
+        - basketDetails
+        - buyers
+        - merchantBasketId
+        - merchantBuyerId
+        - merchantGlobalOrderId
+        - merchantUrls
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: SCFRSP-3XPS
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (thirdparty)
+          example: 647aeb24-a89c-11ed-afa1-0242ac120002
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            ID of the order as a whole - as long as the items are not dispatched
+            separately, with different orders ID (cf. basket table)
+          example: 3e46d670-aca7-11ed-afa1-0242ac120002
+        merchantBuyerId:
+          type: string
+          description: >-
+            ID of the buyer (final customer), as given by the merchant
+            (thirdparty)
+          example: 44226c6c-aca7-11ed-afa1-0242ac120002
+        merchantUrls:
+          $ref: '#/components/schemas/MerchantUrls'
+        buyers:
+          type: array
+          description: List of buyer
+          items:
+            $ref: '#/components/schemas/Buyer'
+        basketDetails:
+          $ref: '#/components/schemas/BasketDetails'
+    MerchantUrls:
+      type: object
+      properties:
+        confirmation:
+          type: string
+          description: >-
+            URL, sended by the merchand at the start of the journey, to send
+            back the buyer to his website upon finishing his E-Financing journey
+          format: uri
+          example: 'https://mymerchand.domain/uri'
+    Buyer:
+      required:
+        - billingAddress
+        - billingContact
+        - deliveryAddress
+        - deliveryContact
+        - financedAmount
+      type: object
+      properties:
+        financedAmount:
+          type: number
+          description: >-
+            total amount within the basket which is financed by E-Financing -
+            can represent the whole basket if every item is financed
+          format: float
+          example: 119.9
+        billingContact:
+          $ref: '#/components/schemas/Contact'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        deliveryContact:
+          $ref: '#/components/schemas/Contact'
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        contactAddress:
+          $ref: '#/components/schemas/Address'
+        deliveryMethod:
+          type: string
+          description: The Delivery method
+          example: Click & Collect
+        birthName:
+          type: string
+          description: Birth name
+          example: Dupont
+        birthDate:
+          type: string
+          description: Birth date
+          format: date
+        birthCityName:
+          type: string
+          description: City of birth
+          example: Montpellier
+        birthCountryName:
+          type: string
+          description: Country of birth
+          example: France
+        lastDatePurchase:
+          type: string
+          description: last Date purchase
+          format: date
+        vip:
+          type: boolean
+          description: VIP
+          example: false
+    Address:
+      required:
+        - cityName
+        - countryCode
+        - locationType
+        - regionName
+        - streetName
+        - streetNumber
+        - zipCode
+      type: object
+      properties:
+        locationType:
+          $ref: '#/components/schemas/LocationTypeEnum'
+        streetNumber:
+          type: integer
+          description: Numeric value in the street
+          example: 147
+        streetNumberSuffix:
+          type: string
+          description: 'when necessary, suffix of the street number (10 B)'
+          example: B
+        streetName:
+          type: string
+          description: Name of the street
+          example: main street
+        streetNameComplement:
+          type: string
+          description: Complement when necessary to the name of the street
+          example: block 47
+        zipCode:
+          type: string
+          description: Zip code of address
+          example: '92060'
+        cityName:
+          type: string
+          description: Name of the city
+          example: Paris
+        regionName:
+          type: string
+          description: Region/area where the city is located.
+          example: Île-de-France
+        countryCode:
+          type: string
+          description: Name of the country
+          example: FR
+    LocationTypeEnum:
+      type: string
+      description: >-
+        Type of usage of the location billingAddress, mainAddress,
+        deliveryAddress, previousMainAddress.
+      enum:
+        - billingAddress
+        - mainAddress
+        - deliveryAddress
+        - previousMainAddress
+    Contact:
+      required:
+        - commonTitle
+        - email
+        - firstName
+        - lastName
+        - mobilePhoneNumber
+      type: object
+      properties:
+        lastName:
+          type: string
+          description: Last name of the buyer (final customer)
+          example: Dupont
+        firstName:
+          type: string
+          description: First name of the buyer (final customer)
+          example: Paul
+        commonTitle:
+          type: string
+          description: Civility of the buyer (final customer)
+          enum:
+            - Mr.
+            - Mrs.
+            - Mx.
+        email:
+          pattern: '(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+          type: string
+          description: >-
+            email adress of the buyer (final customer) with no international
+            extension
+          example: paul.dupont@mail.com
+        mobilePhoneNumber:
+          type: string
+          description: >-
+            Mobile number of the buyer (final customer) with no international
+            extension
+          format: '/^\+(?:[0-9] ?){6,14}[0-9]$/'
+          example: 07 55 55 66 66
+        professionalTitle:
+          type: string
+          description: >-
+            Professional Title of the buyer in list Professor, Dr., KC, Eur Ing,
+            Chancellor etc…
+          example: Professor
+        phoneNumber:
+          type: string
+          description: >-
+            Phone number of the buyer (final customer) with no international
+            extension
+          format: '/^\+(?:[0-9] ?){6,14}[0-9]$/'
+          example: 07 55 55 66 66
+      description: >-
+        Displaying the customer's personal contact details including first name,
+        last name and mobile phone.
+    BasketDetails:
+      required:
+        - basketItems
+      type: object
+      properties:
+        basketItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+      description: >-
+        Providing details about the products selected by client in the basket
+        from merchant portal such as main product,the total amount and quantity
+        of the cart.
+    BasketItem:
+      required:
+        - brandName
+        - category
+        - currencyCode
+        - description
+        - id
+        - isFinanced
+        - label
+        - model
+        - orderId
+        - price
+        - quantity
+        - specifications
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of a specific item within the basket
+          example: M12345785513211
+        quantity:
+          type: integer
+          description: Quantity of the item in the basket
+          example: 1
+        model:
+          type: string
+          description: Model of the item
+          example: 5KPM5
+        label:
+          type: string
+          description: Label of a specific item within the basket
+          example: 'ROBOT PÂTISSIER À BOL RELEVABLE 4,8L - HEAVY DUTY 5KPM5'
+        price:
+          type: number
+          description: Price of a specific item within the basket
+          format: float
+          example: 1199.99
+        currencyCode:
+          type: string
+          description: Currency code applying to prices based on ISO4217
+          example: EUR
+        orderId:
+          type: string
+          description: >-
+            Id of the order of a specific item this applies if items are shipped
+            separately and different order Ids are issued
+          example: OD456742
+        brandName:
+          type: string
+          description: Brand name of the item
+          example: KitchenAid
+        description:
+          type: string
+          description: Item commercial description
+          example: >-
+            Le robot pâtissier à bol relevable très résistant idéal pour mixer
+            de grandes quantités d'ingrédients, équipé d'un bol en acier
+            inoxydable amovible.
+        specifications:
+          type: string
+          description: Item specifications
+          example: 'Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60'
+        category:
+          type: string
+          description: The categorie of the item
+          example: Small appliance
+        isFinanced:
+          type: boolean
+          description: Flag the item if it is financed by the E-Financing
+          example: true
+        sku:
+          type: string
+          description: Item Stock Keeping Unit
+          example: ZG011AQA
+      description: >-
+        Displaying the details of each product from shopping cart such as
+        amount,quantity and product name.
+    CreateCreditSubscriptionResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique E-Financing Subscription Id
+          format: uuid
+          example: 1b8cb15b-fbd3-4a65-9a39-ab81f6307b81
+        redirection:
+          $ref: '#/components/schemas/CreateCreditSubscriptionResponse_redirection'
+    CreditSubscriptionResponse:
+      required:
+        - clientId
+        - consolidatedStatus
+        - creditSubscriptionId
+        - familyCode
+        - installments
+        - lastUpdateTimestamp
+        - marketCode
+        - merchandId
+        - merchantBasketId
+        - merchantBuyerId
+        - merchantGlobalOrderId
+        - registrationTimestamp
+        - solutionCode
+      type: object
+      properties:
+        creditSubscriptionId:
+          type: string
+          description: The unique E-Financing Subscription Id
+          format: uuid
+        registrationTimestamp:
+          type: string
+          format: date-time
+        lastUpdateTimestamp:
+          type: string
+          format: date-time
+        clientId:
+          type: string
+          description: >-
+            Client ID is the technical account ID set into API platform and used
+            by the merchant's marketplace to access to BAAS system.
+          format: uuid
+          example: 44f5060e-a89c-11ed-afa1-0242ac120002
+        merchandId:
+          type: string
+          description: >-
+            Merchant ID refers to the BAAS unique ID as thirdPartyRefID manage
+            by the thirdPartyRef domain.
+          format: uuid
+          example: 647aeb24-a89c-11ed-afa1-0242ac120002
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: SCFRSP-3XPS
+        familyCode:
+          type: string
+          description: Smart Credit
+          example: SC
+        marketCode:
+          type: string
+          description: ID of the market in which the product is valid
+          example: FR
+        installments:
+          type: integer
+          description: Number of installments in months
+          example: 3
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (thirdparty)
+          example: 647aeb24-a89c-11ed-afa1-0242ac120002
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            ID of the order as a whole - as long as the items are not dispatched
+            separately, with different orders ID (cf. basket table)
+          example: 3e46d670-aca7-11ed-afa1-0242ac120002
+        merchantBuyerId:
+          type: string
+          description: >-
+            ID of the buyer (final customer), as given by the merchant
+            (thirdparty)
+          example: 44226c6c-aca7-11ed-afa1-0242ac120002
+        consolidatedStatus:
+          $ref: '#/components/schemas/ConsolidatedStatusEnum'
+    PaginationCreditSubscriptionsResponse:
+      required:
+        - subscriptions
+        - totalItemCount
+      type: object
+      properties:
+        totalItemCount:
+          type: integer
+          example: 1
+        subscriptions:
+          type: array
+          description: List of Subscription
+          items:
+            $ref: '#/components/schemas/CreditSubscription'
+    CreditSubscription:
+      required:
+        - buyerFinancedAmount
+        - consolidatedStatus
+        - creditSubscriptionId
+        - installments
+        - lastUpdateTimestamp
+        - marketCode
+        - merchantBasketId
+        - merchantGlobalOrderId
+        - registrationTimestamp
+        - solutionCode
+      type: object
+      properties:
+        creditSubscriptionId:
+          type: string
+          description: The unique E-Financing Subscription Id
+          format: uuid
+        registrationTimestamp:
+          type: string
+          format: date-time
+        lastUpdateTimestamp:
+          type: string
+          format: date-time
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: SCFRSP-3XTS
+        marketCode:
+          type: string
+          description: ID of the market in which the product is valid
+          example: FR
+        installments:
+          type: integer
+          description: Number of installments in months
+          example: 3
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (thirdparty)
+          example: 061be358-acb1-11ed-afa1-0242ac120002
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            ID of the order as a whole - as long as the items are not dispatched
+            separately, with different orders ID (cf. basket table)
+          example: 0c34ab62-acb1-11ed-afa1-0242ac120002
+        buyerFinancedAmount:
+          type: number
+          description: >-
+            Total amount within the basket which is financed by E-Financing -
+            can represent the whole basket if every item is financed
+          format: float
+          example: 1199.99
+        consolidatedStatus:
+          $ref: '#/components/schemas/ConsolidatedStatusEnum'
+    ConsolidatedStatusEnum:
+      type: string
+      description: Current status of the buyer (final customer) E-Financing subscription
+      enum:
+        - initialized
+        - requested
+        - pre-accepted
+        - accepted
+        - rejected
+        - aborded
+    SolutionsResponseList:
+      required:
+        - productsAndServices
+      type: object
+      properties:
+        solutions:
+          minItems: 0
+          type: array
+          description: list of products and services
+          items:
+            $ref: '#/components/schemas/SolutionsResponse'
+    SolutionsResponse:
+      required:
+        - conditions
+        - familyCode
+        - marketCode
+        - merchantKit
+        - producerProductCode
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Code used for identify the product
+          example: SCFRSP-3XTS
+        familyCode:
+          type: string
+          description: E-Financing or Insurance (in our case is most used for E-Financing)
+          example: SC
+        marketCode:
+          type: string
+          description: Code used for identify the country market
+          example: FR for France or DE for Germany
+        conditions:
+          type: string
+          description: xxx
+          example: 'with or without fees, or rate for long term E-Financing'
+        producerProductCode:
+          type: string
+          description: xx
+          example: FRF3X or revolvingPOS
+        merchantKit:
+          $ref: '#/components/schemas/MerchantKit'
+      description: Eligibles Product Services process object
+    MerchantKit:
+      required:
+        - visualDescription
+        - visualLabel
+        - visualLogo
+        - visualName
+        - visualProductTermsURL
+      type: object
+      properties:
+        visualName:
+          type: string
+          description: >-
+            relates to Merchant's kit. Item label to display on the merchant
+            webSite
+        visualLabel:
+          type: string
+          description: >-
+            relates to Merchant's kit. Item name to display on the merchant
+            webSite
+        visualDescription:
+          type: string
+          description: >-
+            relates to Merchant's kit. Item description to display on the
+            merchant webSite
+        visualLogoUrl:
+          type: string
+          description: relates to Merchant's kit. Logo to display on the merchant webSite
+          format: uri
+          example: 'https://merchant.kit/uri/logo.png'
+        visualProductTermsURL:
+          type: string
+          description: >-
+            relates to Merchant's kit. product terms URL to display on the
+            merchant webSite
+          format: uri
+          example: 'https://merchant.kit/uri/productTerms.pdf'
+      description: Merchant Kit
+    GenericErrorResponse:
+      title: GenericErrorResponse
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the error (ISO 8601 format)
+          format: date-time
+          example: '2022-07-28T22:25:51Z'
+        httpStatusCode:
+          type: integer
+          description: 'HTTP Status code (404, 400, 500...)'
+          example: 400
+        httpStatusMessage:
+          type: string
+          description: HTTP status message
+          example: Bad Request
+        errorCode:
+          type: string
+          description: >-
+            The applicative error code. It is a machine readable code. Used when
+            BAD_REQUEST error to provide details about the error
+          example: INVALID_EMAIL
+        errorMessage:
+          type: string
+          description: >-
+            The applicative error message. It is a human readable English
+            message
+          example: The email address is not valid !
+        requestMethod:
+          type: string
+          description: 'HTTP verb used to make the request. GET, POST, PUT, DELETE...'
+          example: GET
+        requestURI:
+          type: string
+          description: URI of the request
+          example: /v1/crédit
+    CreateCreditSubscriptionResponse_redirection:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - url
+            - page
+        value:
+          type: string
+          example: 'https://redirectionUrl/'
+  parameters:
+    CreditSubscriptionIdParam:
+      name: creditSubscriptionId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: The unique E-financement Subscription Id
+        format: uuid
+    MerchantIdParam:
+      name: merchantId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: MerchantId
+        format: uuid
+  examples:
+    InternalServerErrorGetExample:
+      summary: Internal Server Error
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        httpStatusCode: '500'
+        httpStatusMessage: INTERNAL SERVEUR ERROR
+        errorMessage: Une erreur est survenue
+        requestMethod: GET
+        requestURI: /v1/credit
+    InternalServerErrorPostExample:
+      summary: Internal Server Error
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        httpStatusCode: '500'
+        httpStatusMessage: INTERNAL SERVEUR ERROR
+        errorMessage: Une erreur est survenue
+        requestMethod: POST
+        requestURI: /v1/credit
+    NotFoundCreditSubscriptionIdGetErrorExample:
+      summary: CreditSubscriptionId Not Found
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        httpStatusCode: '404'
+        httpStatusMessage: NOT FOUND
+        errorCode: CREDIT_SUBSCRIPTION_NOT_FOUND
+        errorMessage: The parameter `creditSubscriptionId` is unknowd
+        requestMethod: GET
+        requestURI: /v1/credit
+    ProductLineCodeErrorExample:
+      summary: Product Line code unknown
+      value:
+        timestamp: '2022-07-28T22:25:51Z'
+        status: '400'
+        error: INVALID_PRODUCT_LINE_CODE
+        message: The parameter `Product Line code` is not valid. Value unkown
+        requestMethod: POST
+        requestURI: /v1/credit
+  securitySchemes:
+    oauth-flows:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: >-
+            https://sso.e-commerce.hml.societegenerale.com/oauth/token/oauth2/token
+          scopes:
+            'e-financing:rw': ''
+externalDocs: {}
+security:
+  - oauth-flows:
+      - 'e-financing:rw'
+x-sg-configuration:
+  gateways:
+    - name: baas-open-gateway
+      description: To expose Open APIs to BAAS partners
+      url: 'https://baas.gateway.sparky.hml.goapi.aws.socgen/baas/uat'

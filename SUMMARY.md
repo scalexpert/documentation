@@ -28,7 +28,7 @@
 
 ## API Reference
 
-* [Credit API](api-reference/credit-api.md)
+* [E-financing API](api-reference/e-financing-api.md)
 
 ## Generic objects and codes
 
