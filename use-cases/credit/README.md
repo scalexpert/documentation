@@ -30,6 +30,6 @@ There is 2 steps to initiate & trigger a e-financing journey:&#x20;
 1. Initiate a e-financing journey and select a solution code
 2. Run the e-financing journey according the solution code selected
 
-## __
+##
 
 [^1]: A solution code will define what kind of journey you will trigger

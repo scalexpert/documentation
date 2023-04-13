@@ -29,6 +29,7 @@
 ## API Reference
 
 * [E-financing API](api-reference/credit-api.md)
+* [Authorization Server API](api-reference/authorization-server-api.md)
 
 ## Generic objects and codes
 
