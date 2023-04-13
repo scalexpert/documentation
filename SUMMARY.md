@@ -19,6 +19,7 @@
   * [Initiate a e-financing journey](use-cases/credit/initiate-a-financing-journey.md)
   * [Split Payment Journey France](use-cases/credit/split-payment-journey-france.md)
   * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
+  * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france.md)
 * [Insurance journeys](use-cases/insurance.md)
 
 ## Integration Guides
