@@ -1,0 +1,1393 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Insurance",
+    "description": "The Insurance API is used **to manage insurance items, quotations and subscriptions** from the your website pageson on behalf of the buyers. \n\nAccording **the solution code** your demand will be issued at the producer side.\n\nAt any time you can **retrieve the status and details** of your insurance susbcriptions.\n",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/SG.BaaS/insurance/0.0.1",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/insurance/v1/items": {
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "summary": "Create item",
+        "description": "Request and create an item by probing the Insurance producer for a specific client. \n\nAs the result, you will get an item Id required for any insurance quotation.\n",
+        "operationId": "createItemEligibility",
+        "requestBody": {
+          "description": "Item creation request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateItemRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateItemResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. You must first authenticate to get a valid token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missing scope or insufficient permissions.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance/v1/items/_search-insurances": {
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "summary": "Search for Insurance eligibility of the given item",
+        "description": "Search for Insurance eligibility of the given item.\n\nAs a result you will get a list of insurances options with their prices estimation and descriptions.\nso the buyer could pick one of the list for getting a quotation.  \n",
+        "operationId": "searchInsuranceEligibility",
+        "requestBody": {
+          "description": "Search insurance request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchItemInsuranceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product is eligible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchItemInsurancesResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Product is not eligible"
+          },
+          "401": {
+            "description": "Unauthorized. You must first authenticate to get a valid token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missing scope or insufficient permissions.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance/v1/quotations": {
+      "post": {
+        "tags": [
+          "Quotations"
+        ],
+        "summary": "Evaluate a quotation for the item and related price",
+        "description": "Evaluate a quotation for the item and related price and a choosen insurance option by the buyer.\n\nAs a result, you will get the insurance price confirmed.\n\n**Important:** a quotation will expire after a delay. Make sure the quotation is not expired before using it.\n",
+        "operationId": "evaluateInsuranceQuotations",
+        "requestBody": {
+          "description": "json format of collected data in the contact form and converted by the BFF",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsuranceQuotationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "initiate an insurance quotation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsuranceQuotationResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                },
+                "examples": {
+                  "InternalServerError": {
+                    "$ref": "#/components/examples/InternalServerErrorPostExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance/v1/subscriptions": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieve a list of Insurance subscriptions",
+        "description": "You can list all **your subscriptions** by specifying **a reference** such as an basket id.\nthe response will contain subscription Id, dates, times, status, your references...\n\n**Main use case:** Use this API to retrieve status a insurance subscription by refering an order Id or a basket Id. \n\n**Important:** The list is paginated \n",
+        "operationId": "retrieveInsuranceSubscriptionForSpecificMerchant",
+        "parameters": [
+          {
+            "name": "merchantBasketId",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "description": "ID of the basket of the current transaction, as given by the merchant (thirdparty)",
+              "example": "185462145"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "description": "The page number",
+              "example": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "description": "The number of elements per page",
+              "example": 20,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of credit subscriptions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationInsuranceSubscriptionsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. You must first authenticate to get a token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missed scope or insufficient permission",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "summary": "Internal Server Error",
+                    "description": "Internal Server Error",
+                    "value": {
+                      "timestamp": "2022-07-28T22:25:51Z",
+                      "httpStatusCode": "500",
+                      "httpStatusMessage": "Internal Server Error",
+                      "errorMessage": "Une erreur est survenue",
+                      "requestMethod": "POST",
+                      "requestURI": "/v1/subscriptions"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Initiate a insurance subscription at the insurance producer side",
+        "description": "**To initiate a insurance subscription** you will have to complete the requested parameters from the context of your checkout page of which identity, address of the buyer, Insurance ID choosen, insurance items details ...\nYou can refer your insurance susbsription **with your order or basket id**. \nAs a result you will get a insurance subscription Id with status \"subscribed\"\n\n**Important**: the **\"solutionCode\"** is the parameter that determine the **Producer's solution** such as warrenty extension choosen by the buyer in the checkout page \n",
+        "operationId": "initiateInsuranceSubscription",
+        "requestBody": {
+          "description": "json format of collected data in the contact form and converted by the BFF",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInsuranceSubscriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "initiate an insurance subscription",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateInsuranceSubscriptionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. You must first authenticate to get a token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missed scope or insufficient permission",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "summary": "Internal Server Error",
+                    "description": "Internal Server Error",
+                    "value": {
+                      "timestamp": "2022-07-28T22:25:51Z",
+                      "httpStatusCode": "500",
+                      "httpStatusMessage": "Internal Server Error",
+                      "errorMessage": "Une erreur est survenue",
+                      "requestMethod": "POST",
+                      "requestURI": "/v1/subscriptions"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance/v1/subscriptions/{insuranceSubscriptionId}": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Retrieve specific Insurance subscription",
+        "description": "You can use this API to get all details of a insurance subscription. You will have to provide a insurance subscription Id previously obtained as listed or initiated.\n",
+        "operationId": "retrieveInsuranceSubscription",
+        "parameters": [
+          {
+            "name": "insuranceSubscriptionId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "description": "The unique Insurance Subscription Id",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "specific Insurance subscription",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsuranceSubscriptionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. You must first authenticate to get a token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missed scope or insufficient permission",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "summary": "Internal Server Error",
+                    "description": "Internal Server Error",
+                    "value": {
+                      "timestamp": "2022-07-28T22:25:51Z",
+                      "httpStatusCode": "500",
+                      "httpStatusMessage": "Internal Server Error",
+                      "errorMessage": "Une erreur est survenue",
+                      "requestMethod": "POST",
+                      "requestURI": "/v1/subscriptions/618a6d2b-5a96-440e-8b98-02d2eed9d563"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance/v1/eligible-solutions": {
+      "get": {
+        "tags": [
+          "Eligibility"
+        ],
+        "summary": "Retrieve eligible insurance solutions",
+        "description": "Retrieve eligible insurances solutions given a buyer country.\n\nAs a result, you will a list of insurances solutions codes witheir related merchant kits.\n\nA merchant kit will allow you to display insurance visual name, label, description , logo and product terms to the customer.\nAn empty json object is returned if not eligible.",
+        "operationId": "retrieveEligibleOffers",
+        "parameters": [
+          {
+            "name": "buyerBillingCountry",
+            "in": "query",
+            "description": "FR for France or DE for Germany",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "FR, DE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The financed amount and country is eligible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolutionsResponseList"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaasExceptionHttpResponse"
+                },
+                "examples": {
+                  "InternalServerError": {
+                    "$ref": "#/components/examples/InternalServerErrorGetExample"
+                  },
+                  "ProductLineCodeErrorExample": {
+                    "$ref": "#/components/examples/ProductLineCodeErrorExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateItemRequest": {
+        "required": [
+          "brand",
+          "category",
+          "characteristics",
+          "description",
+          "merchantItemId",
+          "model",
+          "sku",
+          "solutionCode",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "solutionCode": {
+            "pattern": "^CI\\w{4}$",
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "CIFRWE"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Item Stock Keeping Unit"
+          },
+          "merchantItemId": {
+            "type": "string",
+            "description": "The identifier of the item from merchant"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Item brand"
+          },
+          "model": {
+            "type": "string",
+            "description": "Item model"
+          },
+          "title": {
+            "type": "string",
+            "description": "Item title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Item description"
+          },
+          "characteristics": {
+            "type": "string",
+            "description": "Item characteristics"
+          },
+          "category": {
+            "type": "string",
+            "description": "Item category"
+          }
+        },
+        "example": {
+          "solutionCode": "CIFRWE",
+          "sku": "ZG011AQA",
+          "merchantItemId": "8c6450c2-b142-11ed-afa1-0242ac120002",
+          "brand": "Beats",
+          "model": "Beats Solo3",
+          "title": "Beats Solo3 Wireless On-Ear Headphones",
+          "description": "Headphone Chip, Class 1 Bluetooth, 40 Hours of Listening Time, Built-in Microphone - Black (Latest Model)",
+          "characteristics": "With up to 40 hours of battery life, Beats Solo3 wireless is your perfect everyday headphone...",
+          "category": "Headphones & Earbuds"
+        }
+      },
+      "CreateItemResponse": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The identifier of the Item from producer moonshot"
+          }
+        },
+        "example": {
+          "id": "abe12340-b1f5-11ed-afa1-0242ac120002"
+        }
+      },
+      "SearchItemInsuranceRequest": {
+        "required": [
+          "itemId",
+          "price",
+          "solutionCode"
+        ],
+        "type": "object",
+        "properties": {
+          "solutionCode": {
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "CIFRWE"
+          },
+          "itemId": {
+            "type": "string",
+            "description": "The identifier of the Item from producer moonshot"
+          },
+          "price": {
+            "type": "number",
+            "description": "The item price",
+            "format": "float"
+          }
+        },
+        "example": {
+          "solutionCode": "CIFRWE",
+          "itemId": "abe12340-b1f5-11ed-afa1-0242ac120002",
+          "price": 29.9
+        }
+      },
+      "SearchItemInsurancesResponse": {
+        "required": [
+          "insurances",
+          "itemId",
+          "visualDescription",
+          "visualLogo",
+          "visualName",
+          "visualProductTermsURL"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "description": "The identifier of the Item from moonshot",
+            "format": "uuid"
+          },
+          "visualName": {
+            "type": "string",
+            "description": "Item name to be displayed on the merchant website, related to Merchant's kit"
+          },
+          "visualDescription": {
+            "type": "string",
+            "description": "Item description to be displayed on the merchant website, related to Merchant's kit"
+          },
+          "visualLogoUrl": {
+            "type": "string",
+            "description": "Logo to be displayed on the merchant website, related to Merchant's kit",
+            "format": "uri"
+          },
+          "visualProductTermsURL": {
+            "type": "string",
+            "description": "Product terms to be displayed on the merchant website, related to Merchant's kit",
+            "format": "uri"
+          },
+          "insurances": {
+            "title": "Insurances",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemInsurance"
+            }
+          }
+        },
+        "example": {
+          "itemId": "abe12340-b1f5-11ed-afa1-0242ac120002",
+          "visualName": "Sample data",
+          "visualDescription": "Sample data",
+          "visualLogoUrl": "https://merchant.kit/uri/logo.png",
+          "visualProductTermsURL": "https://merchant.kit/uri/productTerms.pdf",
+          "insurances": [
+            {
+              "id": "ABC001",
+              "price": 49.9,
+              "description": "Extension de garantie 2 ans"
+            },
+            {
+              "id": "DEF002",
+              "price": 69.9,
+              "description": "Extension de garantie 3 ans"
+            }
+          ]
+        }
+      },
+      "ItemInsurance": {
+        "required": [
+          "description",
+          "id",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Insurance identifier"
+          },
+          "price": {
+            "type": "integer",
+            "description": "Insurance price"
+          },
+          "description": {
+            "type": "string",
+            "description": "Insurance description"
+          }
+        },
+        "example": {
+          "id": "ABC001",
+          "price": 49.9,
+          "description": "Extension de garantie 2 ans"
+        }
+      },
+      "InsuranceQuotationRequest": {
+        "required": [
+          "insuranceId",
+          "itemId",
+          "itemPrice",
+          "solutionCode"
+        ],
+        "type": "object",
+        "properties": {
+          "solutionCode": {
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "SCFR3XY"
+          },
+          "itemId": {
+            "type": "string",
+            "description": "item identifier",
+            "example": "2343234567"
+          },
+          "itemPrice": {
+            "type": "number",
+            "description": "price of the item",
+            "format": "float",
+            "example": 100.25
+          },
+          "insuranceId": {
+            "type": "string",
+            "description": "insurance identifier",
+            "example": "ABCD002"
+          }
+        }
+      },
+      "InsuranceQuotationResponse": {
+        "required": [
+          "expirationDate",
+          "insurancePrice",
+          "quoteId"
+        ],
+        "type": "object",
+        "properties": {
+          "quoteId": {
+            "type": "string",
+            "description": "quote identifier",
+            "format": "uuid4",
+            "example": "b01b69ed-c1b0-496f-8fb6-150554e34d23"
+          },
+          "insurancePrice": {
+            "type": "number",
+            "description": "price of the item",
+            "format": "float",
+            "example": 100.25
+          },
+          "expirationDate": {
+            "type": "string",
+            "description": "Expiration date of the specific quote issued above",
+            "format": "date-time",
+            "example": "2022-07-28T22:25:51Z"
+          }
+        },
+        "description": "Insurance Quotation object"
+      },
+      "BaasExceptionHttpResponse": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp of the error",
+            "format": "date-time"
+          },
+          "httpStatusCode": {
+            "type": "integer",
+            "description": "HTTP status code (404, 400, 500...)",
+            "format": "int32"
+          },
+          "httpStatusMessage": {
+            "type": "string",
+            "description": "HTTP status message (\"Not Found\", \"Bad Request\", \"Internal Server Error\"...)"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "The applicative error code. It is a machine readable code. Used when BAD_REQUEST error to provide details about the error."
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "The applicative error message. It is a human readable English message."
+          },
+          "requestMethod": {
+            "type": "string",
+            "description": "HTTP method used to make the request (\"GET\", \"POST\", \"PUT\", \"DELETE\"...)"
+          },
+          "requestURI": {
+            "type": "string",
+            "description": "HTTP URI used to make the request"
+          }
+        },
+        "description": "Generic HTTP Error Response",
+        "example": {
+          "timestamp": "2023-01-29T10:05:38.429Z",
+          "httpStatusCode": 400,
+          "httpStatusMessage": "Bad Request",
+          "errorCode": "INVALID_EMAIL",
+          "errorMessage": "The email address is not valid !",
+          "requestMethod": "POST",
+          "requestURI": "/v1/user-account/users"
+        }
+      },
+      "CreateInsuranceSubscriptionRequest": {
+        "required": [
+          "buyer",
+          "insuranceId",
+          "insuredItem",
+          "merchantBasketId",
+          "merchantBuyerId",
+          "producerQuoteExpirationDate",
+          "producerQuoteInsurancePrice",
+          "quoteId",
+          "solutionCode"
+        ],
+        "type": "object",
+        "properties": {
+          "solutionCode": {
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "CIFRWE"
+          },
+          "quoteId": {
+            "type": "string",
+            "description": "TODO"
+          },
+          "insuranceId": {
+            "type": "string",
+            "description": "TODO"
+          },
+          "merchantBasketId": {
+            "type": "string",
+            "description": "ID of the basket of the current transaction, as given by the merchant (thirdparty)",
+            "example": "647aeb24-a89c-11ed-afa1-0242ac120002"
+          },
+          "merchantBuyerId": {
+            "type": "string",
+            "description": "ID of the buyer (final customer), as given by the merchant (thirdparty)",
+            "example": "44226c6c-aca7-11ed-afa1-0242ac120002"
+          },
+          "producerQuoteExpirationDate": {
+            "type": "string",
+            "description": "Expiration date of the quote given before entering the subscription process",
+            "format": "date"
+          },
+          "producerQuoteInsurancePrice": {
+            "type": "number",
+            "description": "Price of the policy subscribed, given by the quotation",
+            "format": "float",
+            "example": 56.34
+          },
+          "buyer": {
+            "$ref": "#/components/schemas/Buyer"
+          },
+          "insuredItem": {
+            "$ref": "#/components/schemas/InsuredItem"
+          }
+        }
+      },
+      "Buyer": {
+        "required": [
+          "address",
+          "contact"
+        ],
+        "type": "object",
+        "properties": {
+          "contact": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          }
+        }
+      },
+      "Contact": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "mobilePhoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the buyer (final customer)",
+            "example": "Dupont"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the buyer (final customer)",
+            "example": "Paul"
+          },
+          "email": {
+            "pattern": "^[a-zA-Z0-9_.+-]{1,100}@[a-zA-Z0-9-]{1,50}\\.[a-zA-Z0-9.-]{1,50}$",
+            "type": "string",
+            "description": "email adress of the buyer (final customer) with no international extension",
+            "example": "paul.dupont@mail.com"
+          },
+          "mobilePhoneNumber": {
+            "type": "string",
+            "description": "Mobile number of the buyer (final customer) with no international extension",
+            "example": "07 55 55 66 66"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the buyer (final customer) with no international extension",
+            "example": "09 55 55 66 66"
+          }
+        },
+        "description": "Displaying the customer's personal contact details including first name, last name and mobile phone."
+      },
+      "Address": {
+        "required": [
+          "cityName",
+          "countryCode",
+          "regionName",
+          "streetName",
+          "streetNumber",
+          "zipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "streetNumber": {
+            "type": "integer",
+            "description": "Numeric value in the street",
+            "example": 147
+          },
+          "streetNumberSuffix": {
+            "type": "string",
+            "description": "when necessary, suffix of the street number (10 B)",
+            "example": "B"
+          },
+          "streetName": {
+            "type": "string",
+            "description": "Name of the street",
+            "example": "main street"
+          },
+          "streetNameComplement": {
+            "type": "string",
+            "description": "Complement when necessary to the name of the street",
+            "example": "block 47"
+          },
+          "zipCode": {
+            "type": "string",
+            "description": "Zip code of address",
+            "example": "92060"
+          },
+          "cityName": {
+            "type": "string",
+            "description": "Name of the city",
+            "example": "Paris"
+          },
+          "regionName": {
+            "type": "string",
+            "description": "Region/area where the city is located.",
+            "example": "Île-de-France"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Code of the country ISO 3166-1 alpha-2",
+            "example": "FR"
+          }
+        }
+      },
+      "InsuredItem": {
+        "required": [
+          "brandName",
+          "category",
+          "currencyCode",
+          "id",
+          "insurancePrice",
+          "label",
+          "orderId",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of a specific item",
+            "example": "M12345785513211"
+          },
+          "label": {
+            "type": "string",
+            "description": "Label of a specific item within the basket",
+            "example": "ROBOT PÂTISSIER À BOL RELEVABLE 4,8L - HEAVY DUTY 5KPM5"
+          },
+          "brandName": {
+            "type": "string",
+            "description": "Brand name of the item",
+            "example": "LG"
+          },
+          "price": {
+            "type": "number",
+            "description": "Price of a specific item within the basket",
+            "format": "float",
+            "example": 1199.99
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code applying to prices based on ISO4217",
+            "example": "EUR"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "Id of the order of a specific item this applies if items are shipped separately and different order Ids are issued",
+            "example": "OD456742"
+          },
+          "category": {
+            "type": "string",
+            "description": "The categorie of the item",
+            "example": "Small appliance"
+          },
+          "insurancePrice": {
+            "type": "number",
+            "description": "price of the item",
+            "format": "float",
+            "example": 100.25
+          },
+          "sku": {
+            "type": "string",
+            "description": "Item Stock Keeping Unit",
+            "example": "ZG011AQA"
+          }
+        },
+        "description": "TODO"
+      },
+      "ConsolidatedStatusEnum": {
+        "type": "string",
+        "description": "Current status of the buyer (final customer) insurance subscription",
+        "enum": [
+          "Initialized",
+          "Subscribed",
+          "Activated",
+          "Cancelled",
+          "Terminated",
+          "Aborted",
+          "Rejected"
+        ]
+      },
+      "CreateInsuranceSubscriptionResponse": {
+        "required": [
+          "consolidatedStatus",
+          "insuranceSubsciptionId"
+        ],
+        "type": "object",
+        "properties": {
+          "insuranceSubsciptionId": {
+            "type": "string",
+            "description": "The unique Insurance Subscription Id",
+            "format": "uuid"
+          },
+          "consolidatedStatus": {
+            "$ref": "#/components/schemas/ConsolidatedStatusEnum"
+          }
+        },
+        "description": "Insurance Subscription response object"
+      },
+      "PaginationInsuranceSubscriptionsResponse": {
+        "required": [
+          "subscriptions",
+          "totalItemCount"
+        ],
+        "type": "object",
+        "properties": {
+          "totalItemCount": {
+            "type": "integer",
+            "example": 1
+          },
+          "subscriptions": {
+            "type": "array",
+            "description": "List of Subscription",
+            "items": {
+              "$ref": "#/components/schemas/InsuranceSubscription"
+            }
+          }
+        }
+      },
+      "InsuranceSubscription": {
+        "required": [
+          "consolidatedStatus",
+          "duration",
+          "insuranceSubsciptionId",
+          "insuredItemCategory",
+          "insuredItemPrice",
+          "lastUpdateTimestamp",
+          "marketTypeCode",
+          "merchantBasketId",
+          "registrationTimestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "insuranceSubsciptionId": {
+            "type": "string",
+            "description": "The unique Insurance Subscription Id",
+            "format": "uuid"
+          },
+          "registrationTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdateTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "solutionCode": {
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "CIFRWE"
+          },
+          "marketTypeCode": {
+            "type": "string",
+            "description": "ID of the market in which the product is valid",
+            "example": "FR"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration in years of insurance",
+            "example": "2 ans"
+          },
+          "merchantBasketId": {
+            "type": "string",
+            "description": "ID of the basket of the current transaction, as given by the merchant (thirdparty)",
+            "example": "061be358-acb1-11ed-afa1-0242ac120002"
+          },
+          "consolidatedStatus": {
+            "$ref": "#/components/schemas/ConsolidatedStatusEnum"
+          },
+          "insuredItemPrice": {
+            "type": "number",
+            "description": "Price of a specific item within the basket",
+            "format": "float",
+            "example": 1199.99
+          },
+          "insuredItemCategory": {
+            "type": "string",
+            "description": "The categorie of the item",
+            "example": "Small appliance"
+          }
+        }
+      },
+      "InsuranceSubscriptionResponse": {
+        "required": [
+          "clientId",
+          "consolidatedStatus",
+          "duration",
+          "familyCode",
+          "insuranceSubsciptionId",
+          "insuredItem",
+          "lastUpdateTimestamp",
+          "marketTypeCode",
+          "merchantBasketId",
+          "merchantBuyerId",
+          "registrationTimestamp",
+          "solutionCode",
+          "thirdpartyReferenceId"
+        ],
+        "type": "object",
+        "properties": {
+          "insuranceSubsciptionId": {
+            "type": "string",
+            "description": "The unique Insurance Subscription Id",
+            "format": "uuid"
+          },
+          "registrationTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastUpdateTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "marketTypeCode": {
+            "type": "string",
+            "description": "ID of the market in which the product is valid",
+            "example": "FR"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration in years of insurance",
+            "example": "2 ans"
+          },
+          "merchantBasketId": {
+            "type": "string",
+            "description": "ID of the basket of the current transaction, as given by the merchant (thirdparty)",
+            "example": "647aeb24-a89c-11ed-afa1-0242ac120002"
+          },
+          "consolidatedStatus": {
+            "$ref": "#/components/schemas/ConsolidatedStatusEnum"
+          },
+          "solutionCode": {
+            "type": "string",
+            "description": "ID of the BaaS product used",
+            "example": "CIFRWE"
+          },
+          "clientId": {
+            "type": "string",
+            "description": "Client ID is the technical account ID set into API platform and used by the merchant's marketplace to access to BAAS system.",
+            "format": "uuid",
+            "example": "44f5060e-a89c-11ed-afa1-0242ac120002"
+          },
+          "thirdpartyReferenceId": {
+            "type": "string",
+            "description": "Merchant ID refers to the BAAS unique ID as thirdPartyRefID manage by the thirdPartyRef domain.",
+            "format": "uuid",
+            "example": "647aeb24-a89c-11ed-afa1-0242ac120002"
+          },
+          "familyCode": {
+            "type": "string",
+            "description": "Smart Credit",
+            "example": "SC"
+          },
+          "merchantBuyerId": {
+            "type": "string",
+            "description": "ID of the buyer (final customer), as given by the merchant (thirdparty)",
+            "example": "44226c6c-aca7-11ed-afa1-0242ac120002"
+          },
+          "insuredItem": {
+            "$ref": "#/components/schemas/InsuredItem"
+          }
+        }
+      },
+      "SolutionsResponseList": {
+        "required": [
+          "productsAndServices"
+        ],
+        "type": "object",
+        "properties": {
+          "solutions": {
+            "minItems": 0,
+            "type": "array",
+            "description": "list of products and services",
+            "items": {
+              "$ref": "#/components/schemas/SolutionsResponse"
+            }
+          }
+        }
+      },
+      "SolutionsResponse": {
+        "required": [
+          "familyCode",
+          "marketCode",
+          "merchantKit",
+          "producerProductCode",
+          "solutionCode"
+        ],
+        "type": "object",
+        "properties": {
+          "solutionCode": {
+            "type": "string",
+            "description": "Code used for identify the product",
+            "example": "CIFRWE"
+          },
+          "familyCode": {
+            "type": "string",
+            "description": "Credit or Insurance (in our case is most used for Insurance)",
+            "example": "CI"
+          },
+          "marketCode": {
+            "type": "string",
+            "description": "Code used for identify the country market",
+            "example": "FR for France or DE for Germany"
+          },
+          "conditions": {
+            "type": "string",
+            "description": "xxx",
+            "example": "with or without fees, or rate for long term credit"
+          },
+          "producerProductCode": {
+            "type": "string",
+            "description": "xx",
+            "example": "FRF3X or revolvingPOS"
+          },
+          "merchantKit": {
+            "$ref": "#/components/schemas/MerchantKit"
+          }
+        },
+        "description": "Eligibles Product Services process object"
+      },
+      "MerchantKit": {
+        "required": [
+          "visualDescription",
+          "visualLabel",
+          "visualLogo",
+          "visualName",
+          "visualProductTermsURL"
+        ],
+        "type": "object",
+        "properties": {
+          "visualName": {
+            "type": "string",
+            "description": "relates to Merchant's kit. Item label to display on the merchant webSite"
+          },
+          "visualLabel": {
+            "type": "string",
+            "description": "relates to Merchant's kit. Item name to display on the merchant webSite"
+          },
+          "visualDescription": {
+            "type": "string",
+            "description": "relates to Merchant's kit. Item description to display on the merchant webSite"
+          },
+          "visualLogoUrl": {
+            "type": "string",
+            "description": "relates to Merchant's kit. Logo to display on the merchant webSite",
+            "format": "uri",
+            "example": "https://merchant.kit/uri/logo.png"
+          },
+          "visualProductTermsURL": {
+            "type": "string",
+            "description": "relates to Merchant's kit. product terms URL to display on the merchant webSite",
+            "format": "uri",
+            "example": "https://merchant.kit/uri/productTerms.pdf"
+          }
+        },
+        "description": "Merchant Kit"
+      }
+    },
+    "parameters": {
+      "PageParam": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "integer",
+          "description": "The page number",
+          "example": 1,
+          "default": 1
+        }
+      },
+      "PageSizeParam": {
+        "name": "pageSize",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "integer",
+          "description": "The number of elements per page",
+          "example": 20,
+          "default": 20
+        }
+      },
+      "MerchantBasketIdParam": {
+        "name": "merchantBasketId",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "description": "ID of the basket of the current transaction, as given by the merchant (thirdparty)",
+          "example": "185462145"
+        }
+      },
+      "InsuranceSubscriptionIdParam": {
+        "name": "insuranceSubscriptionId",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string",
+          "description": "The unique Insurance Subscription Id",
+          "format": "uuid"
+        }
+      }
+    },
+    "examples": {
+      "InternalServerErrorGetExample": {
+        "summary": "Internal Server Error",
+        "value": {
+          "timestamp": "2022-07-28T22:25:51Z",
+          "status": "500",
+          "error": "INTERNAL SERVEUR ERROR",
+          "message": "Une erreur est survenue",
+          "requestMethod": "GET",
+          "requestURI": "/v1/quotations"
+        }
+      },
+      "InternalServerErrorPostExample": {
+        "summary": "Internal Server Error",
+        "value": {
+          "timestamp": "2022-07-28T22:25:51Z",
+          "status": "500",
+          "error": "INTERNAL SERVEUR ERROR",
+          "message": "Une erreur est survenue",
+          "requestMethod": "POST",
+          "requestURI": "/v1/quotations"
+        }
+      },
+      "ProductLineCodeErrorExample": {
+        "summary": "Product Line code unknown",
+        "value": {
+          "timestamp": "2022-07-28T22:25:51Z",
+          "status": "400",
+          "error": "INVALID_PRODUCT_LINE_CODE",
+          "message": "The parameter `Product Line code` is not valid. Value unkown",
+          "requestMethod": "POST",
+          "requestURI": "/v1/credit"
+        }
+      }
+    }
+  }
+}
