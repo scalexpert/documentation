@@ -6,6 +6,8 @@ description: How to integrate ScaleXpert products with APIs
 
 Donner ici des exemples d'intégration d'APis avec des snippets de codes (postman permet par examples de récupérer les snippets). expliquer que les APis sont à intégrer de préférence côté serveur. faire réfrence au site github et à postman pour y chercher les collections
 
+
+
 fournir un guide pas à pas d'intégration cf. exemple [https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-1-initiate-a-payment/](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-1-initiate-a-payment/)
 
 ````java
