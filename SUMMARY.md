@@ -24,7 +24,8 @@
 
 ## Integration Guides
 
-* [APIs](integration-guides/direct.md)
+* [APIs](integration-guides/direct/README.md)
+  * [Solution Implementation](integration-guides/direct/solution-implementation.md)
 * [Plugins CMS solutions](integration-guides/platform-solutions.md)
 
 ## API Reference
