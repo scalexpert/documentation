@@ -20,7 +20,7 @@
   * [Split Payment Journey France](use-cases/credit/split-payment-journey-france.md)
   * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france.md)
   * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
-  * [Cancellation or Refund Journey](use-cases/credit/cancellation-or-refund-journey.md)
+  * [Cancellation or Reimbursed Journey](use-cases/credit/cancellation-or-reimbursed-journey.md)
 * [Insurance journeys](use-cases/insurance.md)
 
 ## Integration Guides
