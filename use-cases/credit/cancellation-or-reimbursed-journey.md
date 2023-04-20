@@ -11,7 +11,7 @@ They could different uses cases that could issued a cancellation or a refund:
 
 In both cases, this will trigger an action that would be available with a dedicated endpoint. \
 In addition the merchant will have the possibility to cancel or refund a subscription in its Merchant portal. \
-The status of the subscription will be updated to CANCELLED or REIMBURSED:
+The [status](../../generic-objects-and-codes/status-codes.md) of the subscription will be updated to CANCELLED or REIMBURSED:
 
 * CANCELLED = Subscription is completely cancelled
 * REIMBURSED = Subscription is partially cancelled and a partial reimbursement have been done.
