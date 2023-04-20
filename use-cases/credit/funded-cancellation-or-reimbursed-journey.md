@@ -1,5 +1,5 @@
 ---
-description: Follow cancellation, funded or refund events
+description: Manage cancellation, funded or refund events
 ---
 
 # Funded, Cancellation or Reimbursed journey
