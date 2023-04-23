@@ -18,7 +18,7 @@ Initiate a financing journey is 2 steps process:
     Also, It can be used to display the  payment methods during the checkout process.
 
 {% hint style="info" %}
-Want to know our showcasting our solutions on your website please refers to this [guide](../showcasing-solutions.md).
+Want to know our showcasting our solutions on your website? Please refers to this [guide](../showcasing-solutions.md).
 {% endhint %}
 
 1.  Subscribe to a dedicated e-financing solutions
