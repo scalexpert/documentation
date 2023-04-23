@@ -7,7 +7,7 @@ description: What you should know before you start
 Goal of this tutorial is to explain step-by-step and illustrate how you can use and integrate our solutions. But before you start there are some prerequisites and explanations you must understand:
 
 * Our solutions are integrated through APIs and plugins (coming soon). But in anay case you would need to **subscribe to APIs and get your credentials (API keys + secret).**
-* APIs are are available on 2 environments: production and sandbox (coming soon).
+* APIs are available on 2 environments: production and sandbox (coming soon).
 * For subscribing to APIs **you will need to have an account.** The procedure to create an account is described [here](developers-docs/before-you-start/account-creation-tutorial.md).
 * For subscribing to production APIs you will need to complete your "[customer on boarding](#user-content-fn-1)[^1]" and get access to the developer portal with your "[**developers merchant's organization**](#user-content-fn-2)[^2]". The procedure to onboard the developer portal is described [here](developers-docs/before-you-start/developer-portal-onbaording.md).
 * _Optional (this step would be prepared for you): Your subscription to production APIs will need to be confirmed by the sales support team that would verify the validity of your demand according the contract you have signed. Once your subscription is confirmed you are almost ready to start._
