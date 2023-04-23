@@ -2,7 +2,7 @@
 description: Step-by-step developer portal on boarding
 ---
 
-# On boarding tutorial
+# API portal / get API your Keys
 
 ## Consult API catalog
 
@@ -28,9 +28,9 @@ Direct link to API catalog
 {% endtab %}
 {% endtabs %}
 
-## Simplified process
+## Get your API Keys
 
-In order to simplify your on boarding, our technical support would have prepared for you your developers merchant's organization and your API keys credentials in conformity of your contracted solutions. This, you can retrieve your API keys credentials by reseting your secret by folllowing the 3 steps below:
+In order to simplify your on boarding, our technical support would have prepared for you your developers merchant's organization and your API keys credentials in conformity of your contracted solutions. This, you **can retrieve your API keys credentials by reseting your secret** by folllowing the 3 steps below:
 
 {% tabs %}
 {% tab title="1-Connect organization" %}
@@ -46,9 +46,9 @@ In order to simplify your on boarding, our technical support would have prepared
 {% endtab %}
 {% endtabs %}
 
-## Advanced process
+## Advanced features
 
-You may have to follow the advanced process in case of:
+You may have to follow the advanced features in case of:
 
 * You want to create a specific [client app](#user-content-fn-1)[^1]  and/or customized scope[^2] of the subscription.
 

@@ -2,10 +2,10 @@
 description: What you need to know on account
 ---
 
-# Account creation tutorial
+# Account creation
 
 {% hint style="info" %}
-Important: no account creation is required to consult [API catalog](on-boarding-tutorial.md#1-access-catalog) and documentation that are public.&#x20;
+Important: no account creation is required to consult [API catalog](api-portal-get-api-your-keys.md#1-access-catalog) and documentation that are public.&#x20;
 {% endhint %}
 
 **An account is required to subscribe to APIs.** The account creation is 4 steps process.&#x20;
@@ -36,7 +36,7 @@ If you didn't receive an email, **please consult your spams** box where your ema
 {% endtab %}
 
 {% tab title="4-Confirmation" %}
-Congratulation ! you've been redirect to the confirmation page that means your account is created. You can start your on boarding process on developer portal. See more details [here](developer-portal-onbaording.md).
+Congratulation ! you've been redirect to the confirmation page that means your account is created. You can start your on boarding process on developer portal. See more details [here](on-boarding-api.md).
 
 <figure><img src="../../.gitbook/assets/message compte activé.jpg" alt=""><figcaption></figcaption></figure>
 {% endtab %}

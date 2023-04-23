@@ -1,2 +1,17 @@
+---
+description: E-financing - Custom APi integration
+---
+
 # Integrate e-financing with APIs
 
+To integrate one of our e-financing solutions with APIs you may first choose one use cases and follow the below step-by-step guides:  &#x20;
+
+{% content-ref url="../../use-cases/credit/" %}
+[credit](../../use-cases/credit/)
+{% endcontent-ref %}
+
+At any time, you can refers to the API reference:&#x20;
+
+{% content-ref url="../../api-reference/credit-api.md" %}
+[credit-api.md](../../api-reference/credit-api.md)
+{% endcontent-ref %}

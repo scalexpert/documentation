@@ -2,7 +2,7 @@
 description: How to on board on the developer portal
 ---
 
-# Developer portal on boarding
+# On boarding API
 
 The developer portal is the application to:
 
@@ -15,7 +15,7 @@ The developer portal is the application to:
 On board will consist of:
 
 {% hint style="info" %}
-In order to simplify your on boarding, these steps below would be prepared for you and your API keys credentials ready to use. If so, you will just need to retrieve your API keys credentials by reseting your secret on your developer merchant's organization space created for you.  Go to [Simplifed process](on-boarding-tutorial.md#simplified-process)
+In order to simplify your on boarding, these steps below would be prepared for you and your API keys credentials ready to use. If so, you will just need to retrieve your API keys credentials by reseting your secret on your developer merchant's organization space created for you.  Go to [**get your API keys**](api-portal-get-api-your-keys.md#get-your-api-keys)
 {% endhint %}
 
 * As a prerequisite signed a contract and create an account
@@ -25,7 +25,7 @@ In order to simplify your on boarding, these steps below would be prepared for y
 * Subscribe to 1 or many APIs scopes
 * Get confirmation of the validation of your subscription&#x20;
 
-For more details consult the related tutorial [here](on-boarding-tutorial.md)
+For more details consult the related tutorial [here](api-portal-get-api-your-keys.md)
 
 
 

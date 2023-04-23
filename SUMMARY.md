@@ -3,9 +3,9 @@
 ## Developers Docs
 
 * [Before you start](README.md)
-  * [Account creation tutorial](developers-docs/before-you-start/account-creation-tutorial.md)
-  * [Developer portal on boarding](developers-docs/before-you-start/developer-portal-onbaording.md)
-  * [On boarding tutorial](developers-docs/before-you-start/on-boarding-tutorial.md)
+  * [Account creation](developers-docs/before-you-start/account-creation.md)
+  * [On boarding API](developers-docs/before-you-start/on-boarding-api.md)
+  * [API portal / get API your Keys](developers-docs/before-you-start/api-portal-get-api-your-keys.md)
 * [Get Started](developers-docs/get-started.md)
   * [Integrate e-financing with APIs](developers-docs/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](developers-docs/get-started/integrate-warrenty-extension-with-apis.md)
