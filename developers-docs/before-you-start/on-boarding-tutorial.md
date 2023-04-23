@@ -4,6 +4,30 @@ description: Step-by-step developer portal on boarding
 
 # On boarding tutorial
 
+## Consult API catalog
+
+API catalog is public and could be consulted without created an account (discovery).
+
+{% tabs %}
+{% tab title="1-Access catalog" %}
+The catalog is accessible by search. You would found 2 kinds of objects "Products" and "APIs". Products is link tou our solutions offers and would embed APIs.&#x20;
+
+<figure><img src="../../.gitbook/assets/Capture d’écran du 2023-04-23 17-05-46 (1).png" alt=""><figcaption><p>Search in the catalog</p></figcaption></figure>
+
+{% embed url="https://dev.e-commerce.societegenerale.com/en/prod/find" %}
+Direct link to API catalog
+{% endembed %}
+{% endtab %}
+
+{% tab title="2-Display product" %}
+
+{% endtab %}
+
+{% tab title="3-display API" %}
+
+{% endtab %}
+{% endtabs %}
+
 ## Simplified process
 
 In order to simplify your on boarding, our technical support would have prepared for you your developers merchant's organization and your API keys credentials in conformity of your contracted solutions. This, you can retrieve your API keys credentials by reseting your secret by folllowing the 3 steps below:
@@ -62,9 +86,14 @@ You may have to follow the advanced process in case of:
 {% endtab %}
 
 {% tab title="4-Invite member" %}
-
+You can invite any developers to join your organization. But in case they would have to create an account to log in.\
+You can grant your developer with 2 roles "Owner" and "Member".\
+**Owner** = would have rigths on sensitive action such as reseting API keys and secrets. you may invite multiple owners if needed.\
+**Member** = would have limited rights (no sensitive actions)&#x20;
 {% endtab %}
 {% endtabs %}
+
+
 
 {% hint style="warning" %}
 With owner role of merchant's organization you have full rights to delete your data. By deleting an organization you would clear all data such as application, members, keys and APIs subscriptions. In case of, you would have to recreate all data or contact our technical support.

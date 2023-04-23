@@ -7,7 +7,6 @@
   * [Developer portal on boarding](developers-docs/before-you-start/developer-portal-onbaording.md)
   * [On boarding tutorial](developers-docs/before-you-start/on-boarding-tutorial.md)
 * [Get Started](developers-docs/get-started/README.md)
-  * [APIs catalog](developers-docs/get-started/access-apis-catalog.md)
   * [API versionning](developers-docs/get-started/api-versionning.md)
   * [Authentication](developers-docs/get-started/authentication.md)
   * [API URLs](developers-docs/get-started/api-urls.md)
