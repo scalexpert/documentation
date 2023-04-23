@@ -28,6 +28,7 @@
 * [APIs](integration-guides/direct.md)
   * [Solution Implementation](integration-guides/direct/solution-implementation.md)
 * [Plugins CMS solutions](integration-guides/platform-solutions.md)
+* [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## API Reference
 
