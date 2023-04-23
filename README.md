@@ -1,5 +1,5 @@
 ---
-description: All you need to know before you start
+description: What you should know before you start
 ---
 
 # Before you start
