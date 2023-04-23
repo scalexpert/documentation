@@ -20,12 +20,12 @@
   * [Funded, Cancellation or Reimbursed journey](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
 * [Insurance journeys](use-cases/insurance.md)
 * [Status codes](generic-objects-and-codes/status-codes.md)
+* [Showcasing solutions](use-cases/showcasing-solutions.md)
 
 ## Integration Guides
 
 * [Integrations modes](integration-guides/integrations-modes.md)
 * [APIs](integration-guides/direct.md)
-  * [Solution Implementation](integration-guides/direct/solution-implementation.md)
 * [Plugins CMS solutions](integration-guides/platform-solutions.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 

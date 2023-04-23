@@ -12,20 +12,19 @@ The developer portal is the application to:
 * Subscribe to one or many APIs according solutions in your contract.
 * Consult your APIs Analytics
 
-On board will consist of:
+On boarding API:
 
 {% hint style="info" %}
 In order to simplify your on boarding, these steps below would be prepared for you and your API keys credentials ready to use. If so, you will just need to retrieve your API keys credentials by reseting your secret on your developer merchant's organization space created for you.  Go to [**get your API keys**](api-portal-get-api-your-keys.md#get-your-api-keys)
 {% endhint %}
 
-* As a prerequisite signed a contract and create an account
-* Confirm your invitation to join your merchant developer organisation
-* Create an "client App" for each merchant website you want use.
-* Get your APIs keys credentials (Client App + secret)
-* Subscribe to 1 or many APIs scopes
-* Get confirmation of the validation of your subscription&#x20;
+For more details consult the related tutorial:
 
-For more details consult the related tutorial [here](api-portal-get-api-your-keys.md)
+{% content-ref url="api-portal-get-api-your-keys.md" %}
+[api-portal-get-api-your-keys.md](api-portal-get-api-your-keys.md)
+{% endcontent-ref %}
+
+&#x20;
 
 
 
