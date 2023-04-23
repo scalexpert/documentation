@@ -6,12 +6,7 @@
   * [Account creation tutorial](developers-docs/before-you-start/account-creation-tutorial.md)
   * [Developer portal on boarding](developers-docs/before-you-start/developer-portal-onbaording.md)
   * [On boarding tutorial](developers-docs/before-you-start/on-boarding-tutorial.md)
-* [Get Started](developers-docs/get-started/README.md)
-  * [API versionning](developers-docs/get-started/api-versionning.md)
-  * [Authentication](developers-docs/get-started/authentication.md)
-  * [API URLs](developers-docs/get-started/api-urls.md)
-  * [Scopes](developers-docs/get-started/scopes.md)
-  * [Rate limiting](developers-docs/get-started/rate-limiting.md)
+* [Get Started](developers-docs/get-started.md)
 
 ## Use Cases
 
@@ -33,6 +28,12 @@
 
 ## API Reference
 
+* [Common](api-reference/common/README.md)
+  * [API URLs](api-reference/common/api-urls.md)
+  * [Authentication](api-reference/common/authentication.md)
+  * [Scopes](api-reference/common/scopes.md)
+  * [Rate limiting](api-reference/common/rate-limiting.md)
+  * [API versionning](api-reference/common/api-versionning.md)
 * [E-financing API](api-reference/credit-api.md)
 * [Insurance API](api-reference/insurance-api.md)
 * [Authorization Server API](api-reference/authorization-server-api.md)
