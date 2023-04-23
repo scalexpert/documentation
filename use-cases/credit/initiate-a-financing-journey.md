@@ -16,12 +16,7 @@ Initiate a financing journey is 2 steps process:
     As a result, you will get all eligible e-financing solutions codes to be selected to initiate a subscription.\
     It will also return the "merchant kit" you can used to display a insert text or graphical widget on the product page explaining the solution to the buyer with the general conditions.\
     Also, It can be used to display the  payment methods during the checkout process.
-
-{% hint style="info" %}
-Want to know our showcasting our solutions on your website? Please refers to this [guide](../showcasing-solutions.md).
-{% endhint %}
-
-1.  Subscribe to a dedicated e-financing solutions
+2.  Subscribe to a dedicated e-financing solutions
 
     After selecting a financing method you can initiate a subscription by calling [`API POST e-financing/api/v1/subscriptions`](../../api-reference/credit-api.md#subscriptions-1) &#x20;
 
@@ -30,6 +25,10 @@ Want to know our showcasting our solutions on your website? Please refers to thi
     As a result, you will get a "subscription Id" and a "redirect Url" to redirect the buyer to start his e-financing journey that would vary accordingly to the financing solution code selected.
 
 {% hint style="info" %}
+Want to know our showcasting our solutions on your website? Please refers to this [guide](../showcasing-solutions.md).
+{% endhint %}
+
+{% hint style="warning" %}
 _Initiating a subscription with a specific e-financing solution code is a prerequisite before executing any e-financing buyer journey._ &#x20;
 {% endhint %}
 
