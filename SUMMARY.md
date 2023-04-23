@@ -18,8 +18,8 @@
   * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france.md)
   * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
   * [Funded, Cancellation or Reimbursed journey](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
+  * [Status live cycle](use-cases/credit/status-live-cycle.md)
 * [Insurance journeys](use-cases/insurance.md)
-* [Status codes](generic-objects-and-codes/status-codes.md)
 * [Showcasing solutions](use-cases/showcasing-solutions.md)
 
 ## Integration Guides
