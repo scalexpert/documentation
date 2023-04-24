@@ -10,16 +10,24 @@ API catalog is public and could be consulted without created an account (discove
 
 {% tabs %}
 {% tab title="1-Access catalog" %}
-The catalog is accessible by search. You would found 2 kinds of objects "Products" and "APIs". Products is link tou our solutions offers and would embed APIs.&#x20;
+The catalog is accessible by search. You would found 2 kinds of objects "Products" and "APIs". Products is linked to our solutions offers and would embed APIs.&#x20;
 
-<figure><img src="../../.gitbook/assets/Capture d’écran du 2023-04-23 17-05-46 (1).png" alt=""><figcaption><p>Search in the catalog</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 150652.jpg" alt=""><figcaption><p>Explore the API catalog</p></figcaption></figure>
 
 {% embed url="https://dev.e-commerce.societegenerale.com/en/prod/find" %}
-Direct link to API catalog
+Access the API catalog
 {% endembed %}
 {% endtab %}
 
 {% tab title="2-Display product" %}
+On product page you will have a explanation of what is the functional coverage and what are the APIs attached to it.
+
+<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 151052.jpg" alt=""><figcaption><p>Product of API E-Financing</p></figcaption></figure>
+
+{% embed url="https://dev.e-commerce.hml.societegenerale.com/en/prod/find" %}
+Search to API products
+{% endembed %}
+
 
 {% endtab %}
 
