@@ -5,7 +5,7 @@ description: What you need to know on account
 # Account creation
 
 {% hint style="info" %}
-Important: no account creation is required to consult [API catalog](api-portal-get-api-your-keys.md#1-access-catalog) and documentation that are public.&#x20;
+Important: no account creation is required to consult [API catalog](api-catalog.md#1-access-catalog) and documentation that are public.&#x20;
 {% endhint %}
 
 **An account is required to subscribe to APIs.** The account creation is 4 steps process.&#x20;
