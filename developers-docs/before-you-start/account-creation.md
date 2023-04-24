@@ -12,9 +12,9 @@ Important: no account creation is required to consult [API catalog](api-portal-g
 
 {% tabs %}
 {% tab title="1-Login" %}
-On login page click on **"Sign Up instead" link** to be redirected on the account creation page
+On login page click on **"Start Now" link** to be redirected on the account creation page
 
-<figure><img src="../../.gitbook/assets/login page EN.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 150143.jpg" alt=""><figcaption><p>Login page</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="2-Account form" %}
