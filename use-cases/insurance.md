@@ -1,4 +1,4 @@
-# Insurance
+# Insurance journeys
 
 ## Description
 
@@ -6,4 +6,4 @@ The insurance features of the BaaS solution allows you to easily integrate insur
 
 ## Features
 
-_TODO_
+_(to be completed)_

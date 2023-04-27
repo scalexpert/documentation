@@ -33,13 +33,13 @@
 
 ## API Reference
 
-* [Common](api-reference/common/README.md)
-  * [API URLs](api-reference/common/api-urls.md)
-  * [Authentication](api-reference/common/authentication.md)
-  * [Error object & codes](generic-objects-and-codes/error-object-and-codes.md)
-  * [Scopes](api-reference/common/scopes.md)
-  * [Versionning](api-reference/common/api-versionning.md)
-  * [Rate limiting](api-reference/common/rate-limiting.md)
+* [APIs common](api-reference/apis-common/README.md)
+  * [API URLs](api-reference/apis-common/api-urls.md)
+  * [Authentication](api-reference/apis-common/authentication.md)
+  * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
+  * [Scopes](api-reference/apis-common/scopes.md)
+  * [Versionning](api-reference/apis-common/versionning.md)
+  * [Rate limiting](api-reference/apis-common/rate-limiting.md)
 * [E-financing API](api-reference/credit-api.md)
 * [Insurance API](api-reference/insurance-api.md)
 * [Oauth2 API](api-reference/authorization-server-api.md)
