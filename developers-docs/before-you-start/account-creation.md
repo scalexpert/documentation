@@ -28,8 +28,6 @@ Consult your inbox email. Open it and click on the the confirmation link.&#x20;
 
 <figure><img src="../../.gitbook/assets/mail activation.jpg" alt=""><figcaption></figcaption></figure>
 
-<mark style="background-color:orange;">insérer une image d'un email de confirmation</mark>
-
 {% hint style="warning" %}
 If you didn't receive an email, **please consult your spams** box where your email may be trapped. In any case, **you can restart** the account creation process **on the next day** as we will reinitialize your demand every day. &#x20;
 {% endhint %}
