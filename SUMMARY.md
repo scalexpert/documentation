@@ -22,7 +22,7 @@
   * [Funded, Cancellation or Reimbursed journey](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
   * [Status live cycle](use-cases/credit/status-live-cycle.md)
 * [Insurance journeys](use-cases/insurance/README.md)
-  * [Initiate an Insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
+  * [Initiate an insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
 * [Showcasing solutions](use-cases/showcasing-solutions.md)
 
 ## Integration Guides
