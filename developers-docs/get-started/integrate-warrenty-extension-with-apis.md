@@ -10,6 +10,12 @@ To integrate one of our warrenty extension solution with APIs follow the below s
 [insurance.md](../../use-cases/insurance.md)
 {% endcontent-ref %}
 
+Then consult this guide to know how to implement APIs
+
+{% content-ref url="../../integration-guides/direct.md" %}
+[direct.md](../../integration-guides/direct.md)
+{% endcontent-ref %}
+
 At any time, you can refers to the API reference:&#x20;
 
 {% content-ref url="../../api-reference/insurance-api.md" %}
