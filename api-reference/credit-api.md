@@ -6,7 +6,7 @@ description: Version 1.1
 
 Download swagger file:
 
-{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/subscriptions" method="get" %}
+{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/eligible-solutions" method="get" %}
 [swagger_e-financing_1.1.2.yaml](../.gitbook/assets/swagger_e-financing_1.1.2.yaml)
 {% endswagger %}
 
@@ -14,11 +14,11 @@ Download swagger file:
 [swagger_e-financing_1.1.2.yaml](../.gitbook/assets/swagger_e-financing_1.1.2.yaml)
 {% endswagger %}
 
-{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/subscriptions/{creditSubscriptionId}" method="get" %}
+{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/subscriptions" method="get" %}
 [swagger_e-financing_1.1.2.yaml](../.gitbook/assets/swagger_e-financing_1.1.2.yaml)
 {% endswagger %}
 
-{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/eligible-solutions" method="get" %}
+{% swagger src="../.gitbook/assets/swagger_e-financing_1.1.2.yaml" path="/subscriptions/{creditSubscriptionId}" method="get" %}
 [swagger_e-financing_1.1.2.yaml](../.gitbook/assets/swagger_e-financing_1.1.2.yaml)
 {% endswagger %}
 
