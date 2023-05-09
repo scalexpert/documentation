@@ -1,12 +1,12 @@
 ---
-description: 'How to initiate a e-financing journey: smart credit or split payment'
+description: 'How to initiate an e-financing journey: split payment or long term credit'
 ---
 
-# Initiate a e-financing journey
+# Initiate an e-financing journey
 
-## Initiate a e-financing journey with the [`e-Financing API`](../../api-reference/credit-api.md)&#x20;
+## Initiate an e-financing journey with the [`e-Financing API`](../../api-reference/credit-api.md)&#x20;
 
-Initiate a financing journey is 2 steps process:
+Initiate an e-financing journey is 2 steps process:
 
 1.  Display eligible e-financing solutions
 

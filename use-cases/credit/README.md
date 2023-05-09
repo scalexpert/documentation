@@ -26,9 +26,9 @@ The 2 kinds are integrated with the  [`API e-Financing`](../../api-reference/cre
 
 ## Step-by-Step
 
-There is 2 steps to initiate & trigger a e-financing journey:&#x20;
+There is 2 steps to initiate & trigger an e-financing journey:&#x20;
 
-1. Initiate a e-financing journey and select a solution code
+1. Initiate an e-financing journey and select a solution code
 2. Run the e-financing journey according the solution code selected
 
 ##

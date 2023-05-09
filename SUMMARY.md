@@ -15,9 +15,10 @@
 ## Use Cases
 
 * [e-Financing journeys](use-cases/credit/README.md)
-  * [Initiate a e-financing journey](use-cases/credit/initiate-a-financing-journey.md)
+  * [Initiate an e-financing journey](use-cases/credit/initiate-an-e-financing-journey.md)
   * [Split Payment Journey France](use-cases/credit/split-payment-journey-france.md)
   * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france.md)
+  * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france-1.md)
   * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
   * [Funded, Cancellation or Reimbursed journey](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
   * [Status live cycle](use-cases/credit/status-live-cycle.md)
