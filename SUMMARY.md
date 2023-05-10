@@ -42,7 +42,8 @@
   * [Scopes](api-reference/apis-common/scopes.md)
   * [Versionning](api-reference/apis-common/versionning.md)
   * [Rate limiting](api-reference/apis-common/rate-limiting.md)
-* [E-financing API](api-reference/credit-api.md)
+* [e-Financing API](api-reference/e-financing-api/README.md)
+  * [V.1.0](api-reference/e-financing-api/v.1.0.md)
 * [Insurance API](api-reference/insurance-api.md)
 * [Oauth2 API](api-reference/authorization-server-api.md)
 
