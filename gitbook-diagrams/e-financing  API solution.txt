@@ -1,0 +1,61 @@
+title e-financing API solution
+
+actor#lightgreen Buyer
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Finance #black
+end
+
+
+
+Buyer-#lightgreen>Merchant:visit product or checkout page
+activate Buyer #lightgreen
+activate Merchant #steelblue
+note over Buyer,Finance:**1. Display e-financing solutions**
+Merchant-#steelblue>API:Request eligible financing offers\nAPI GET /eligible-solutions
+activate API #red
+Merchant<#red--API:e-financing solutions
+deactivate API
+Buyer<#steelblue--Merchant:Display e-financing solutions
+deactivate Merchant
+deactivate Buyer
+
+
+
+Buyer-#lightgreen>Merchant:Choose and Subscribe for a financing offer 
+activate Buyer #lightgreen
+activate Merchant #steelblue
+
+note over Buyer,Finance:**2. Subscribe for e-financing solutions**
+Merchant-#steelblue>API:Request subscription for a e-financing solutions\nAPI POST /suscriptions
+activate API #red
+API->Finance:Request to initiate a e-financing solutions
+activate Finance #black
+API<--Finance:Susbscription initialed
+deactivate Finance
+Merchant<#red--API:redirect url
+deactivate API
+Buyer<#steelblue--Merchant:redirect to finance buyer journey
+deactivate Merchant
+deactivate Buyer
+
+note over Buyer,Finance:**3. Buyer e-financing journey split payment or credit **
+
+Buyer-#lightgreen>Finance:Start buyer e-financing journey
+Buyer<--Finance:End buyer e-financing  journey
+note over Buyer,Finance:**4. Confirmation page e-commerce website **
+
+
+Merchant-#steelblue>API:Request subscription status\nAPI GET /suscriptions
+activate Buyer #lightgreen
+activate Merchant #steelblue
+activate API #red
+Merchant<#red--API:Status ACCEPTED or REJECTED
+deactivate API
+Buyer<#steelblue--Merchant:Display confirmation page
+deactivate Buyer
+opt If ACCEPTED
+Buyer<<#steelblue--Merchant:Delivery of goods
+end
+deactivate Merchant

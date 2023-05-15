@@ -1,0 +1,59 @@
+title Initiate a e-financing solution
+
+actor#lightgreen Buyer
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Finance #black
+end
+
+
+
+== Display eligible e-financing solutions  == #lightgreen
+
+Buyer-#lightgreen>Merchant:visit product or checkout page
+activate Buyer #lightgreen
+activate Merchant #steelblue
+note over Buyer,Finance:**1. Request an access token**
+
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+note over Buyer,Finance:**2. Display e-financing solutions**
+Merchant-#steelblue>API:Request eligible financing offers\nAPI GET /credit/v1/eligible-solutions
+activate API #red
+Merchant<#red--API:e-financing solutions
+deactivate API
+Buyer<#steelblue--Merchant:Display e-financing solutions
+deactivate Merchant
+deactivate Buyer
+
+== Subscribe for a e-financing solution == #lightgreen
+
+Buyer-#lightgreen>Merchant:Choose and Subscribe for a financing offer 
+activate Buyer #lightgreen
+activate Merchant #steelblue
+note over Buyer,Finance:**3. Request an access token**
+
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+
+note over Buyer,Finance:**4. Subscribe for e-financing solutions**
+Merchant-#steelblue>API:Request subscription for a e-financing solutions\nAPI POST credit/v1/suscriptions
+activate API #red
+API->Finance:Request to initiate a e-financing solutions
+activate Finance #black
+API<--Finance:Credit susbscription initialed
+deactivate Finance
+Merchant<#red--API:redirect url
+deactivate API
+Buyer<#steelblue--Merchant:redirect to finance buyer journey
+deactivate Merchant
+deactivate Buyer
