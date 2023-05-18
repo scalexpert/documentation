@@ -23,6 +23,10 @@ On product page you will have a explanation of what is the functional coverage a
 <figure><img src="../../.gitbook/assets/Annotation 2023-04-24 151052.jpg" alt=""><figcaption><p>E-Financing product pag</p></figcaption></figure>
 
 
+
+Discover how it work
+
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption><p>API e-Fiancing expalined step-by-step</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="3-display API" %}
