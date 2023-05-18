@@ -23,4 +23,4 @@ Want to know our showcasing our solutions on your website? Please refers to this
 _Initiating a subscription with a specific insurance solution code and garanties are a prerequisite before subscribing._ &#x20;
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/Initiate insurance journey France (1).png" alt=""><figcaption><p>Display Eligible Insurance Item solutions</p></figcaption></figure>
+<figure><img src="broken-reference" alt=""><figcaption><p>Display Eligible Insurance Item solutions</p></figcaption></figure>
