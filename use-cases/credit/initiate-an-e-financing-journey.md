@@ -32,4 +32,4 @@ Want to know our showcasing our solutions on your website? Please refers to this
 _Initiating a subscription with a specific e-financing solution code is a prerequisite before executing any e-financing buyer journey._ &#x20;
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/github - initiate e-financing solution.png" alt=""><figcaption><p>Flows: initiate a e-financing solution</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Initiate a e-financing solution.png" alt=""><figcaption><p>initiate a e-financing solution</p></figcaption></figure>
