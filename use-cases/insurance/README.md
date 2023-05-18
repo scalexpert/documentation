@@ -23,5 +23,5 @@ But other insurances kind would be coming soon. They will be integrated with the
 There is 3 steps to initiate & trigger an insurance journey:&#x20;
 
 1. Initiate an insurance journey by selecting eligible insurance solutions when visiting an item catalog page or during checkout.&#x20;
-2. Get a quote of insurance selected and obtain the garanties proposed (2 or 3 years extension and the price for exemple)
+2. Create a quote of insurance selected and obtain the garanties proposed (2 or 3 years extension and the price for exemple)
 3. Confirm payment of insurance and subscribe for the policy. You will receive immediate confirmation + email sent to the buyer. &#x20;

@@ -24,6 +24,7 @@
   * [Status live cycle](use-cases/credit/status-live-cycle.md)
 * [Insurance journeys](use-cases/insurance/README.md)
   * [Initiate an insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
+  * [Create an insurance quotation](use-cases/insurance/create-an-insurance-quotation.md)
 * [Showcasing solutions](use-cases/showcasing-solutions.md)
 
 ## Integration Guides
