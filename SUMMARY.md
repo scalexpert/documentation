@@ -21,7 +21,7 @@
   * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france-1.md)
   * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
   * [Funded, Cancellation or Reimbursed journey](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
-  * [Status live cycle](use-cases/credit/status-live-cycle.md)
+  * [Status life cycle](use-cases/credit/status-life-cycle.md)
 * [Insurance journeys](use-cases/insurance/README.md)
   * [Initiate an insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
   * [Create an insurance quotation](use-cases/insurance/create-an-insurance-quotation.md)

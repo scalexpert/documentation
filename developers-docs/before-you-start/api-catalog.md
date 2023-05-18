@@ -32,7 +32,7 @@ Discover how it work
 {% tab title="3-display API" %}
 On APi page you will have access to all technical documentation (description, swagger, urls, operations, scopes)
 
-<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 152209 (1) (1).jpg" alt=""><figcaption><p>e-Financing API page </p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 152209 (2).jpg" alt=""><figcaption><p>e-Financing API page </p></figcaption></figure>
 
 
 {% endtab %}
