@@ -15,7 +15,7 @@ The developer portal is the application to:
 On boarding API:
 
 {% hint style="info" %}
-In order to simplify your on boarding, these steps below would be prepared for you and your API keys credentials ready to use. If so, you will just need to retrieve your API keys credentials by reseting your secret on your developer merchant's organization space created for you.  Go to [**get your API keys**](api-catalog.md#get-your-api-keys)
+In order to simplify your on boarding, these steps below would be prepared for you and your API keys credentials ready to use. If so, you will just need to retrieve your API keys credentials by reseting your secret on your developer merchant's organization space created for you.  Go to [**get your API keys**](api-key.md#3-api-key)
 {% endhint %}
 
 For more details consult the related tutorial:
