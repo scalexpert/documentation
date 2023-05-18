@@ -1,0 +1,40 @@
+title Get an insurance quote (France)
+
+actor#lightgreen Buyer
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Insurance #black
+end
+
+== Display eligible insurance solutions  == #lightgreen
+
+Buyer-#lightgreen>Merchant:visit product or checkout page
+activate Buyer #lightgreen
+activate Merchant #steelblue
+
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+
+Merchant-#steelblue>API:Register an catalog item  \nAPI POST insurance/api/v1/items
+
+activate API #red
+API->Insurance:Create Item
+
+activate Insurance #black
+API<-Insurance:Item created
+
+deactivate Insurance
+Merchant<#red--API:200 OK List of eligible insurance
+deactivate API
+
+end
+activate API #red
+deactivate API
+Buyer<#steelblue--Merchant:Display quote
+deactivate Buyer
+deactivate Merchant

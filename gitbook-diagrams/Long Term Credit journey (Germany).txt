@@ -1,0 +1,68 @@
+title Long Term Credit journey (Germany)
+
+actor#lightgreen Buyer
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Finance #black
+end
+
+== Run e-Finance LT credit journey == #lightgreen
+
+Buyer-#lightgreen>Finance:Complete a financing Long Term credit subscription
+activate Buyer #lightgreen
+activate Finance #black
+Buyer<--Finance:Redirect to Merchant confirmation page
+deactivate Finance
+deactivate Buyer
+
+== Display confirmation page on e-commerce website == #lightgreen
+
+Buyer-#lightgreen>Merchant:Request confirmation page
+activate Buyer #lightgreen
+activate Merchant #steelblue
+
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+
+Merchant-#steelblue>API:Request subscription status\nAPI GET e-financing/api/v1/suscriptions
+activate API #red
+Merchant<#red--API:Status PRE-ACCEPTED or REJECTED
+deactivate API
+Buyer<#steelblue--Merchant:Display confirmation page
+deactivate Buyer
+
+== Run long Term KYC + e-Signature journey == #lightgreen
+
+Buyer<--Finance:Redirect to KYC and e-signature journey
+activate Buyer #lightgreen
+activate Finance #black
+Buyer-#lightgreen>Finance:Complete KYC and sign contract
+Buyer<--Finance:Confirm Contract is signed
+deactivate Buyer
+== Get final Validation from the bank == #lightgreen
+
+API<--Finance:Update ACCEPTED or REJECTED STATUS
+deactivate Finance
+
+loop On daily basis
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+Merchant-#steelblue>API:Request subscription status\nAPI GET e-financing/api/v1/suscriptions
+activate API #red
+Merchant<#red--API:Status ACCEPTED or REJECTED
+deactivate API
+
+opt If ACCEPTED
+Buyer<<#steelblue--Merchant:Delivery of goods
+end
+deactivate Merchant
+end
