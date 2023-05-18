@@ -19,4 +19,4 @@ Split payment e-financing solution is proposed by FRANFINANCE SG subsidiary for 
 2. Confirmation page on e-commerce website\
    After the redirection, the merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/v-1.0.md#credit-v1-subscriptions-creditsubscriptionid) in order to get the resulting status. The status could be either ACCEPTED or REJECTED (cf. attribute field "consolidatedStatus"). Once received the confirmation page will be displayed to the buyer. If ACCEPTED the merchant can deliver the goods to the buyer.
 
-<figure><img src="../../.gitbook/assets/Split payment journey .png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Split payment journey (BNPL).png" alt=""><figcaption></figcaption></figure>
