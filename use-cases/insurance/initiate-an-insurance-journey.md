@@ -11,9 +11,9 @@ Initiate an insurance journey is 2 step process:
     There are mandatory input parameter as "Country of the Buyer" . \
     As a result, you will get all eligible insurance solutions codes to be selected to initiate a insurance journey.\
     It will also return the "merchant kit" you can used to display a insert text or graphical widget on the product page explaining the solution to the buyer with the general conditions.\
-    Also, It can be used to display the  payment methods during the checkout process.
+    Also, It can be used to display the insurance solutions during the checkout process.
 2. For each insurance solution search eligible insurances for an item of your catalog\
-   Register your catalog item and search for eligible insurance garanties.&#x20;
+   Register your catalog item and search for eligible insurance  and garanties.&#x20;
 
 {% hint style="info" %}
 Want to know our showcasing our solutions on your website? Please refers to this [guide](../showcasing-solutions.md).
