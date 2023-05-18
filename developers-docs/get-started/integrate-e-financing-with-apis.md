@@ -18,6 +18,6 @@ Then consult this guide to know how to implement APIs
 
 At any time, you can refers to the API reference:&#x20;
 
-{% content-ref url="../../api-reference/e-financing-api/v-1.0.md" %}
-[v-1.0.md](../../api-reference/e-financing-api/v-1.0.md)
+{% content-ref url="../../api-reference/e-financing-api/" %}
+[e-financing-api](../../api-reference/e-financing-api/)
 {% endcontent-ref %}
