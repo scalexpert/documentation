@@ -20,4 +20,4 @@ Long Term e-financing credit solution is proposed by FRANFINANCE subsidiary For 
 3. When Status is PRE-ACCEPTED, the buyer will be redirected to the KYC and e-signature journey managed by a bank partner (WEBID).&#x20;
 4. Since contract is signed, the bank will confirm final acceptation. On daily basis the merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/v-1.0.md#credit-v1-subscriptions-creditsubscriptionid) in order to get the resulting status. The status could be either ACCEPTED or REJECTED. If ACCEPTED the merchant can deliver the goods to the buyer.
 
-<figure><img src="../../.gitbook/assets/Long Term Credit journey France (1).png" alt=""><figcaption><p>LT credit France</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Long Term Credit journey (France).png" alt=""><figcaption><p>LT credit France</p></figcaption></figure>
