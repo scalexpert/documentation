@@ -29,7 +29,7 @@ Then click on Credentials menu to access your key. You can see the Client ID cre
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Credentials API key page</p></figcaption></figure>
 {% endtab %}
 
-{% tab title="4-Reser secret" %}
+{% tab title="4-Reset secret" %}
 To obtain your secret, you must reset it. A new secret will be created and displayed. Copy it and store it securely (see [security best practices](../../security/security-best-practices.md)) because it will be not possible to display after. But at anytime you can redo resetting.
 
 <figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>Confirm reset</p></figcaption></figure>
