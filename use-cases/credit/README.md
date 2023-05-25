@@ -15,14 +15,7 @@ The 2 kinds are integrated with the  [`API e-Financing`](../../api-reference/e-f
 
 #### E-financing solution codes
 
-| e-Financing solution | Country | Installments | Fees          | Solution code |
-| -------------------- | ------- | ------------ | ------------- | ------------- |
-| Split payments       | FR      | 3 times      | No fees users | SCSPFR-3XTS   |
-| Split payments       | FR      | 3 times      | Shared fees   | SCSPFR-3XPS   |
-| Split payments       | FR      | 4 times      | No fees users | SCSPFR-4XTS   |
-| Split payments       | FR      | 4 times      | Shared fees   | SCSPFR-4XPS   |
-| Long term credit     | FR      | 4-60 times   |               | SCLTFR        |
-| Long term credit     | DE      | 6-48 times   |               | SCLTDE        |
+<table><thead><tr><th width="204">e-Financing solution</th><th width="98">Country</th><th width="138">Installments</th><th width="143">Fees</th><th>Solution code</th></tr></thead><tbody><tr><td>Split payments</td><td>FR</td><td>3 times</td><td>No fees users</td><td>SCFRSP-3XTS</td></tr><tr><td>Split payments</td><td>FR</td><td>3 times</td><td>Shared fees</td><td>SCFRSP-3XPS</td></tr><tr><td>Split payments</td><td>FR</td><td>4 times</td><td>No fees users</td><td>SCFRSP-4XTS</td></tr><tr><td>Split payments</td><td>FR</td><td>4 times</td><td>Shared fees</td><td>SCFRSP-4XPS</td></tr><tr><td>Long term credit</td><td>FR</td><td>4-60 times</td><td></td><td>SCFRLT</td></tr><tr><td>Long term credit</td><td>DE</td><td>6-48 times</td><td></td><td>SCDELT</td></tr></tbody></table>
 
 ## Step-by-Step
 

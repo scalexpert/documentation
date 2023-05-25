@@ -14,9 +14,7 @@ Other insurance products are coming soon and will be integrated with the [insura
 
 ### Insurance solutions codes
 
-| Insurance solution | Country | Solution code |
-| ------------------ | ------- | ------------- |
-| Warranty extension | FR      | CIWEFR        |
+<table><thead><tr><th width="98">Country</th><th width="204">Insurance solution</th><th>Solution code</th></tr></thead><tbody><tr><td>FR</td><td>Warranty extension</td><td>CIFRWE</td></tr></tbody></table>
 
 ## Step-by-Step
 
