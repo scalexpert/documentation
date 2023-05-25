@@ -1,0 +1,46 @@
+title Subscribe an insurance policy (France)
+
+actor#lightgreen Buyer
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Insurance #black
+end
+
+== Register insurance policy  == #lightgreen
+
+Buyer-#lightgreen>Merchant:on checkout payment page
+activate Buyer #lightgreen
+activate Merchant #steelblue
+Buyer-#lightgreen>Merchant: Request insurance subscription
+
+Merchant->Merchant:Proceed payment of insurance
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+
+Merchant-#steelblue>API:Register an insurance subscription  \nAPI POST insurance/api/v1/subscriptions
+
+activate API #red
+API->Insurance:Verify quotation
+activate Insurance #black
+API<-Insurance:Quotation verified
+
+API->Insurance:Subscribe to insurance
+API<-Insurance:Subscription confirmed
+
+
+Merchant<#red--API:201 Insurance subscription created
+deactivate API
+
+activate API #red
+deactivate API
+Buyer<#steelblue--Merchant:Confirmation insurance subscription
+
+deactivate Merchant
+Buyer<-Insurance:Send confirmation email to the buyer with contract and instructions
+deactivate Buyer
+deactivate Insurance
