@@ -34,6 +34,18 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using OAuth 2.0 client credentials workflow. Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
+To retrieve your API keys Refer to the **API key** page:
+
+{% content-ref url="../developers-docs/before-you-start/api-key.md" %}
+[api-key.md](../developers-docs/before-you-start/api-key.md)
+{% endcontent-ref %}
+
+Refer to documentation of **oAuth2 API** for detailed information on GET /token endpoint:
+
+{% content-ref url="../api-reference/authorization-server-api.md" %}
+[authorization-server-api.md](../api-reference/authorization-server-api.md)
+{% endcontent-ref %}
+
 `(basic steps overview)`
 
 #### API Endpoints and Request/Response Formats
