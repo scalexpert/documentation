@@ -106,6 +106,96 @@ To determine the eligible e-financing solutions available for a specific purchas
 2. Make a POST Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
 3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated terms and conditions.
 
+{% tabs %}
+{% tab title="Node.js" %}
+
+
+{% code title="Node.js native" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```n4js
+// var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': 'api.e-commerce.hml.societegenerale.com',
+  'path': '/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR',
+  'headers': {
+    'X-BAAS-THIRD-PARTY-ID': '72f814b4-d4a0-4e6b-8ae2-777b24f279ef'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code title="PHP - HTTP_request2" overflow="wrap" lineNumbers="true" %}
+```php
+// <?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'X-BAAS-THIRD-PARTY-ID' => '72f814b4-d4a0-4e6b-8ae2-777b24f279ef'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Java" %}
+{% code title="Java - OKHttp" overflow="wrap" lineNumbers="true" %}
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR")
+  .method("GET", body)
+  .addHeader("X-BAAS-THIRD-PARTY-ID", "72f814b4-d4a0-4e6b-8ae2-777b24f279ef")
+  .build();
+Response response = client.newCall(request).executeaaTP
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
 ### 5. Best Practices and Considerations
 
 To ensure a successful API integration and optimal performance, consider the following best practices:
