@@ -330,24 +330,6 @@ req.end();
 {% endcode %}
 {% endtab %}
 
-{% tab title="Java" %}
-{% code title="Java - OkHttp" overflow="wrap" lineNumbers="true" %}
-```java
-OkHttpClient client = new OkHttpClient().newBuilder()
-  .build();
-MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\r\n    \"financedAmount\": 119.9,\r\n    \"solutionCode\": \"SCFRSP-4XTS\",\r\n    \"merchantBasketId\": \"647aeb24-a89c-11ed-afa1-0242ac120002\",\r\n    \"merchantGlobalOrderId\": \"XbB6_sMPbkvRk0y#206578\",\r\n    \"merchantBuyerId\": \"701943\",\r\n    \"merchantUrls\": {\r\n        \"confirmation\": \"https://mymerchand.domain/uri\"\r\n    },\r\n    \"buyers\": [\r\n        {\r\n            \"billingContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"billingAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"deliveryAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"contact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"P\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"contactAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryMethod\": \"Click & Collect\",\r\n            \"birthName\": \"Dupont\",\r\n            \"birthDate\": \"01021975\",\r\n            \"birthCityName\": \"Montpellier\",\r\n            \"birthCountryName\": \"FR\",\r\n            \"vip\": false\r\n        }\r\n    ],\r\n    \"basketDetails\": {\r\n        \"basketItems\": [\r\n            {\r\n                \"id\": \"M12345785513211\",\r\n                \"quantity\": 2,\r\n                \"model\": \"5KPM5\",\r\n                \"label\": \"PANTALON B MAGO\",\r\n                \"price\": 9500,\r\n                \"currencyCode\": \"EUR\",\r\n                \"orderId\": \"OD456742\",\r\n                \"brandName\": \"KitchenAid\",\r\n                \"description\": \"Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.\",\r\n                \"specifications\": \"Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60\",\r\n                \"category\": \"R78757857\",\r\n                \"isFinanced\": true,\r\n                \"sku\": \"50\"\r\n            }\r\n        ]\r\n    }\r\n}");
-Request request = new Request.Builder()
-  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions")
-  .method("POST", body)
-  .addHeader("Content-Type", "application/json")
-  .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLU...vTxWr8u9ooNMZ3zI")
-  .build();
-Response response = client.newCall(request).execute();
-```
-{% endcode %}
-{% endtab %}
-
 {% tab title="PHP" %}
 {% code title="PHP - Http_Request2" overflow="wrap" lineNumbers="true" %}
 ```php
@@ -478,6 +460,24 @@ catch(HTTP_Request2_Exception $e) {
 ```
 {% endcode %}
 {% endtab %}
+
+{% tab title="Java" %}
+{% code title="Java - OkHttp" overflow="wrap" lineNumbers="true" %}
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\r\n    \"financedAmount\": 119.9,\r\n    \"solutionCode\": \"SCFRSP-4XTS\",\r\n    \"merchantBasketId\": \"647aeb24-a89c-11ed-afa1-0242ac120002\",\r\n    \"merchantGlobalOrderId\": \"XbB6_sMPbkvRk0y#206578\",\r\n    \"merchantBuyerId\": \"701943\",\r\n    \"merchantUrls\": {\r\n        \"confirmation\": \"https://mymerchand.domain/uri\"\r\n    },\r\n    \"buyers\": [\r\n        {\r\n            \"billingContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"billingAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"deliveryAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"contact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"P\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"contactAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryMethod\": \"Click & Collect\",\r\n            \"birthName\": \"Dupont\",\r\n            \"birthDate\": \"01021975\",\r\n            \"birthCityName\": \"Montpellier\",\r\n            \"birthCountryName\": \"FR\",\r\n            \"vip\": false\r\n        }\r\n    ],\r\n    \"basketDetails\": {\r\n        \"basketItems\": [\r\n            {\r\n                \"id\": \"M12345785513211\",\r\n                \"quantity\": 2,\r\n                \"model\": \"5KPM5\",\r\n                \"label\": \"PANTALON B MAGO\",\r\n                \"price\": 9500,\r\n                \"currencyCode\": \"EUR\",\r\n                \"orderId\": \"OD456742\",\r\n                \"brandName\": \"KitchenAid\",\r\n                \"description\": \"Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.\",\r\n                \"specifications\": \"Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60\",\r\n                \"category\": \"R78757857\",\r\n                \"isFinanced\": true,\r\n                \"sku\": \"50\"\r\n            }\r\n        ]\r\n    }\r\n}");
+Request request = new Request.Builder()
+  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLU...vTxWr8u9ooNMZ3zI")
+  .build();
+Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
 {% endtabs %}
 
 #### Step 3: Retrieve E-Financing Subscription Details
@@ -487,6 +487,94 @@ To retrieve the details of a specific e-financing subscription, follow these ste
 1. Get Subscription ID: Obtain the unique subscription ID associated with the e-financing subscription you want to retrieve details for.
 2. Make a GET Request: Use the appropriate API endpoint, providing the unique subscription ID, to retrieve the subscription details.
 3. Handle Response: Capture and process the response, which will contain comprehensive information about the requested subscription, including payment schedule, repayment amounts, and status.
+
+{% tabs %}
+{% tab title="Node.Js" %}
+{% code title="Node.Js - Native" overflow="wrap" lineNumbers="true" %}
+```n4js
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': 'api.e-commerce.hml.societegenerale.com',
+  'path': '/baas/uat/e-financing/api/v1/subscriptions/eb6adb12-5c1d-4b30-9b24-7854d755cd55',
+  'headers': {
+    'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiYWxnIjoiQTI1NktXIn0.06ALV6adjiwK274VbFC8XP3GQjDZaO-DOaIHUgmLkCNxO-nKXJFiVJ-OKykAR6RiMzDts6WCGiRWZs1cIvaAjOXTumNt0Pfj.pF3dwx836U1DiBYDX4CCHg.Wz9Zp_pHqaypsyNVJsYIPgTPJ0-1VM46dp1pSPIxRUa5Fdr-ZiSps59Lp9SE8sF5CY_DmYW-T_L6PL9dQZI1FGiSYDRNKJw4NoQhst81xYxzXlEsKSiwn3MLP2-Uy3Ca5IX6NOeIA45GG5DTrPSKGddmAbEsK1IBryivRpjKJoE2d_Psv-wvw1sEKhvRxcStSScUpxwUx5Y7OronbC7yQNIz9DeEy0asDj8TWh4a9MHM8hCwuS2Z49X-G0vsPp-KFzDfQ86XYuXQkrCsDyfiKaIZdKSOAv9FrqSBzSHISkrUEqLUqU6ijLZKJDp1IWakn4wX549kCupad-70PZ0K49Qr5aNm29x9CR09zJKdfqZ8_NR-wH-H5NCZB367vQdocC3nOTIVLbnAULNzqZ164gpg-Lwt2MnrayVMR3r9EWIijS1k79jPsqGNTv3_PDZV5FIqbWmYqXz5vWlII7ppH07FJWrOx9VDFZc6Zu8-HsGwz00zbySIgylqe2sSva_l2pcEsMmXkXc9Etwf7jIl2Ml--zkwvmRk2MeLlP0cZFaTdrGNw7FM1zE8oUHVeHxBOQ8f6XwBC8jdBSQ9WFq_PvKUhZFnKBPGGURPR2TAMfMoTFVcBqP30WTmXGdfciSo4asRPeuvnId0AVOky1OEmX-emg44ggLN7yniGWMGNfhvFMdKG-E6Xm3wsIeiJPAAekdUwfq2jRRF2fxxmznA01rucPpzz7e_7uApdgDXbOuuk8kV0pl1gNzE51Au-Mswo6YlweM5xMVleZaDY5oS8MAMSTmKl24yafJSvKl3Dg4xjNHA3XayEYbRHPXVrY6JpPV9SVk9kN9BgmSMMBF50iz4xT-fhF_avCEkxkWLvdyxPLZQqbUTIGWYCtOEIRNjea9lFp10ISNQbEBH2DqwMFYUbs0wDdmNrJBhIb-NTbGiTp9VyV68FYPOhIY722fUDbOwSV1uo43m3Nx65pj_wA-1tXsVDW18DFwwyxj8y8JN37i7Pro89e4a4zELXMvqFwE4-Fjx7Y7eT8t9rbyNUVEeis9VAExqYM8y1QWFBXBqSf2uM9x8crTqx_EHeqXZ3JrGqIuUpEO9ynLvvajwygl4MTJslTUsrRKf6LcR35kW2oH0oTjc1JKffil54UFf0Da37oukCg0g2CHsXnXIQsWN3CUNrh5_KF5jr0Nn4mEJfZGjsEDB0sYChT9wi_R3Ac8ABqHzQU8YcYIFabq6jAWxPgQXi3-I4X6C8or3y9vQ0HY-Wc9fJfawhPC3mkQtMgNBCSW-RNXlqfpWDqpyjFwskrsj7dZHCaAJn97yOFxSjA7jP4vP1c7BRl0bIgAJoqXMqHEkAaWu9Luzvjdg5YzGIypf4YtzCpFa69WXQpSV_f7vjjD_EP1Makjr5yF7051gQny9U_U_bvzVtXYekLlrfRBDdOmDbQauQqmFZQxLLxCfxftlR-5rc1-MyXC4LTicMQlKRk4coxbyMJAzQJYFPOigAAVmd5mP2r1btgb1TA2dJ6ujkiKyjeglhF5ebu-OPzVFl1BLyu7FUTd2-fzUi3rNcXEmPG_6m8pVvsKPgDYl0Ui_gyn5548TRE7-u0zOsjYdKpH5iHUQ8x__hoOBfE0iC55lYcRXD6baInSDVyyIgQP3kJO2x_EFLoJfzoHAbMXah7AyuZqM0ZeM_P90W3ooIkCwzXr62yWnPBXVsK1rdHR0spPuXxpkJwrKjUx4b5J9g5QkUi-sz0xRleXniSHXU3JOy5U_gID8f_TOLGsLf84dTrHJVOsOx9ydqa7nSwE2RA7q6t_EcT9FWwgOuEJVwSjaCRixgVcXO_M4ttI_OmK6rSGhZC_CkQDBgN11unNjV1A59Dq5mGV3nWzZSemdv3AUbEPnQn4ttAZqBf3tv80pEWXk8VHUh0jcCQy4AupiU5_68Rf3qdWwV-GC0z5eEiy4Jaggc-j7fOX2plDMDko76CuDmjJ_0S3TVO7xAE7D3HWuhOy3VMlo1rBVcwAMndY_ePHHSZIbiJ6AUqzfZ_wnaCKCrFHByZd2QudaCkdukTSuRGjI6lEwYeOesR4rYjwn0uUFTBRtwGOjyWijjeNTXyqUP3NS3KDapo2BCUgKT-tjPSN-pU_YwThAXf7akFoejHqGBCHWx89ns4rvEdZPy1L0z24orSe_aUXSXNzunPNhVxGOxW-iiK4ZuxqPBaVdVE8JfFp_0coFNM4KLu3AB0YvVU_OxIpUkRXoX9ifs_2RnmiFrFPutH49C5CiP0wQJPWgNGPdfFyS0bkYj8t0nD_KPUdf48yP8VBTxqbWBOpj3b-NrlSAnCqycU0EiE-NyStCE0pnIiPrZJea2_6jEj7_1an4bvuepITpDwR0VF61mEAJuMj-ZCPLtDrbz0TtTuONcDZSZbcyepaaU0T-Id5HF5rkM9Sq.7H_GoJj5kqCRj1J9zR3VcUj6m2ZXbgRPYXZ_8wKIRfI'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code title="PHP - HttpRequest2" overflow="wrap" lineNumbers="true" %}
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions/eb6adb12-5c1d-4b30-9b24-7854d755cd55');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Authorization' => 'Bearer eyJlbmMiOiJBMjU2Q0...Uj6m2ZXbgRPYXZ_8wKIRfI'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Java" %}
+{% code title="Java - OkHttp" overflow="wrap" lineNumbers="true" %}
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions/eb6adb12-5c1d-4b30-9b24-7854d755cd55")
+  .method("GET", body)
+  .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLUhTNTE...zR3VcUj6m2ZXbgRPYXZ_8wKIRfI")
+  .build();
+Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 ### 5. Best Practices and Considerations
 
