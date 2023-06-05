@@ -82,23 +82,7 @@ Set up a testing environment to ensure smooth integration and testing of the E-F
 
 Now let's dive into the steps involved in integrating the **E-Financing** API into your application or platform:
 
-#### Step 1: Initiate an E-Financing Subscription
-
-To initiate an e-financing subscription for a customer, follow these steps:
-
-1. Collect Customer Information: Gather the required customer information, such as name, contact details, and billing address.
-2. Make a POST Request: Use the appropriate API endpoint, passing the necessary customer information and subscription details.
-3. Handle Response: Capture and process the response, which will contain the subscription ID and any additional information provided by the API.
-
-#### Step 2: Retrieve E-Financing Subscription Details
-
-To retrieve the details of a specific e-financing subscription, follow these steps:
-
-1. Get Subscription ID: Obtain the unique subscription ID associated with the e-financing subscription you want to retrieve details for.
-2. Make a GET Request: Use the appropriate API endpoint, providing the unique subscription ID, to retrieve the subscription details.
-3. Handle Response: Capture and process the response, which will contain comprehensive information about the requested subscription, including payment schedule, repayment amounts, and status.
-
-#### Step 3: Check Eligible E-Financing Solutions
+#### Step 1: Check Eligible E-Financing Solutions
 
 To determine the eligible e-financing solutions available for a specific purchase, follow these steps:
 
@@ -195,6 +179,314 @@ Response response = client.newCall(request).execute();
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+#### Step 2: Initiate an E-Financing Subscription
+
+To initiate an e-financing subscription for a customer, follow these steps:
+
+1. Collect Customer Information: Gather the required customer information, such as name, contact details, and billing address.
+2. Make a POST Request: Use the appropriate API endpoint, passing the necessary customer information and subscription details.
+3. Handle Response: Capture and process the response, which will contain the subscription ID and any additional information provided by the API.
+
+{% tabs %}
+{% tab title="Node.js" %}
+{% code title="Node.js - Native" overflow="wrap" lineNumbers="true" %}
+```n4js
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': 'api.e-commerce.hml.societegenerale.com',
+  'path': '/baas/uat/e-financing/api/v1/subscriptions',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0J...u9ooNMZ3zI'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+var postData = JSON.stringify({
+  "financedAmount": 119.9,
+  "solutionCode": "SCFRSP-4XTS",
+  "merchantBasketId": "647aeb24-a89c-11ed-afa1-0242ac120002",
+  "merchantGlobalOrderId": "XbB6_sMPbkvRk0y#206578",
+  "merchantBuyerId": "701943",
+  "merchantUrls": {
+    "confirmation": "https://mymerchand.domain/uri"
+  },
+  "buyers": [
+    {
+      "billingContact": {
+        "lastName": "Dupont",
+        "firstName": "Paul",
+        "commonTitle": "Mr.",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "billingAddress": {
+        "locationType": "billingAddress",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "deliveryContact": {
+        "lastName": "Dupont",
+        "firstName": "Paul",
+        "commonTitle": "Mr.",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "deliveryAddress": {
+        "locationType": "billingAddress",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "contact": {
+        "lastName": "Dupont",
+        "firstName": "P",
+        "commonTitle": "Mr.",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "contactAddress": {
+        "locationType": "billingAddress",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "deliveryMethod": "Click & Collect",
+      "birthName": "Dupont",
+      "birthDate": "01021975",
+      "birthCityName": "Montpellier",
+      "birthCountryName": "FR",
+      "vip": false
+    }
+  ],
+  "basketDetails": {
+    "basketItems": [
+      {
+        "id": "M12345785513211",
+        "quantity": 2,
+        "model": "5KPM5",
+        "label": "PANTALON B MAGO",
+        "price": 9500,
+        "currencyCode": "EUR",
+        "orderId": "OD456742",
+        "brandName": "KitchenAid",
+        "description": "Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.",
+        "specifications": "Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60",
+        "category": "R78757857",
+        "isFinanced": true,
+        "sku": "50"
+      }
+    ]
+  }
+});
+
+req.write(postData);
+
+req.end();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Java" %}
+{% code title="Java - OkHttp" overflow="wrap" lineNumbers="true" %}
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\r\n    \"financedAmount\": 119.9,\r\n    \"solutionCode\": \"SCFRSP-4XTS\",\r\n    \"merchantBasketId\": \"647aeb24-a89c-11ed-afa1-0242ac120002\",\r\n    \"merchantGlobalOrderId\": \"XbB6_sMPbkvRk0y#206578\",\r\n    \"merchantBuyerId\": \"701943\",\r\n    \"merchantUrls\": {\r\n        \"confirmation\": \"https://mymerchand.domain/uri\"\r\n    },\r\n    \"buyers\": [\r\n        {\r\n            \"billingContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"billingAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"deliveryAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"contact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"P\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"contactAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryMethod\": \"Click & Collect\",\r\n            \"birthName\": \"Dupont\",\r\n            \"birthDate\": \"01021975\",\r\n            \"birthCityName\": \"Montpellier\",\r\n            \"birthCountryName\": \"FR\",\r\n            \"vip\": false\r\n        }\r\n    ],\r\n    \"basketDetails\": {\r\n        \"basketItems\": [\r\n            {\r\n                \"id\": \"M12345785513211\",\r\n                \"quantity\": 2,\r\n                \"model\": \"5KPM5\",\r\n                \"label\": \"PANTALON B MAGO\",\r\n                \"price\": 9500,\r\n                \"currencyCode\": \"EUR\",\r\n                \"orderId\": \"OD456742\",\r\n                \"brandName\": \"KitchenAid\",\r\n                \"description\": \"Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.\",\r\n                \"specifications\": \"Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60\",\r\n                \"category\": \"R78757857\",\r\n                \"isFinanced\": true,\r\n                \"sku\": \"50\"\r\n            }\r\n        ]\r\n    }\r\n}");
+Request request = new Request.Builder()
+  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLU...vTxWr8u9ooNMZ3zI")
+  .build();
+Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code title="PHP - Http_Request2" overflow="wrap" lineNumbers="true" %}
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'Authorization' => 'Bearer eyJlbmMiOiJBMjU2Q0JDLUh...- -_Request28u9ooNMZ3zI'
+));
+$request->setBody('{
+\n    "financedAmount": 119.9,
+\n    "solutionCode": "SCFRSP-4XTS",
+\n    "merchantBasketId": "647aeb24-a89c-11ed-afa1-0242ac120002",
+\n    "merchantGlobalOrderId": "XbB6_sMPbkvRk0y#206578",
+\n    "merchantBuyerId": "701943",
+\n    "merchantUrls": {
+\n        "confirmation": "https://mymerchand.domain/uri"
+\n    },
+\n    "buyers": [
+\n        {
+\n            "billingContact": {
+\n                "lastName": "Dupont",
+\n                "firstName": "Paul",
+\n                "commonTitle": "Mr.",
+\n                "email": "paul.dupont@mail.com",
+\n                "mobilePhoneNumber": "+33684749393",
+\n                "professionalTitle": "Professor",
+\n                "phoneNumber": "+33184749393"
+\n            },
+\n            "billingAddress": {
+\n                "locationType": "billingAddress",
+\n                "streetNumber": 147,
+\n                "streetNumberSuffix": "B",
+\n                "streetName": "main street",
+\n                "streetNameComplement": "block 47",
+\n                "zipCode": "92060",
+\n                "cityName": "Paris",
+\n                "regionName": "Île-de-France",
+\n                "countryCode": "FR"
+\n            },
+\n            "deliveryContact": {
+\n                "lastName": "Dupont",
+\n                "firstName": "Paul",
+\n                "commonTitle": "Mr.",
+\n                "email": "paul.dupont@mail.com",
+\n                "mobilePhoneNumber": "+33684749393",
+\n                "professionalTitle": "Professor",
+\n                "phoneNumber": "+33184749393"
+\n            },
+\n            "deliveryAddress": {
+\n                "locationType": "billingAddress",
+\n                "streetNumber": 147,
+\n                "streetNumberSuffix": "B",
+\n                "streetName": "main street",
+\n                "streetNameComplement": "block 47",
+\n                "zipCode": "92060",
+\n                "cityName": "Paris",
+\n                "regionName": "Île-de-France",
+\n                "countryCode": "FR"
+\n            },
+\n            "contact": {
+\n                "lastName": "Dupont",
+\n                "firstName": "P",
+\n                "commonTitle": "Mr.",
+\n                "email": "paul.dupont@mail.com",
+\n                "mobilePhoneNumber": "+33684749393",
+\n                "professionalTitle": "Professor",
+\n                "phoneNumber": "+33184749393"
+\n            },
+\n            "contactAddress": {
+\n                "locationType": "billingAddress",
+\n                "streetNumber": 147,
+\n                "streetNumberSuffix": "B",
+\n                "streetName": "main street",
+\n                "streetNameComplement": "block 47",
+\n                "zipCode": "92060",
+\n                "cityName": "Paris",
+\n                "regionName": "Île-de-France",
+\n                "countryCode": "FR"
+\n            },
+\n            "deliveryMethod": "Click & Collect",
+\n            "birthName": "Dupont",
+\n            "birthDate": "01021975",
+\n            "birthCityName": "Montpellier",
+\n            "birthCountryName": "FR",
+\n            "vip": false
+\n        }
+\n    ],
+\n    "basketDetails": {
+\n        "basketItems": [
+\n            {
+\n                "id": "M12345785513211",
+\n                "quantity": 2,
+\n                "model": "5KPM5",
+\n                "label": "PANTALON B MAGO",
+\n                "price": 9500,
+\n                "currencyCode": "EUR",
+\n                "orderId": "OD456742",
+\n                "brandName": "KitchenAid",
+\n                "description": "Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d\'ingrédients, équipé d\'un bol en acier inoxydable amovible.",
+\n                "specifications": "Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60",
+\n                "category": "R78757857",
+\n                "isFinanced": true,
+\n                "sku": "50"
+\n            }
+\n        ]
+\n    }
+\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+#### Step 3: Retrieve E-Financing Subscription Details
+
+To retrieve the details of a specific e-financing subscription, follow these steps:
+
+1. Get Subscription ID: Obtain the unique subscription ID associated with the e-financing subscription you want to retrieve details for.
+2. Make a GET Request: Use the appropriate API endpoint, providing the unique subscription ID, to retrieve the subscription details.
+3. Handle Response: Capture and process the response, which will contain comprehensive information about the requested subscription, including payment schedule, repayment amounts, and status.
 
 ### 5. Best Practices and Considerations
 
