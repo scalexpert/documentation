@@ -112,7 +112,7 @@ To determine the eligible e-financing solutions available for a specific purchas
 
 {% code title="Node.js native" overflow="wrap" lineNumbers="true" fullWidth="true" %}
 ```n4js
-// var https = require('follow-redirects').https;
+var https = require('follow-redirects').https;
 var fs = require('fs');
 
 var options = {
@@ -120,7 +120,7 @@ var options = {
   'hostname': 'api.e-commerce.hml.societegenerale.com',
   'path': '/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR',
   'headers': {
-    'X-BAAS-THIRD-PARTY-ID': '72f814b4-d4a0-4e6b-8ae2-777b24f279ef'
+    'Authorization': 'Bearer eyJlbmMiOi...TxWr8u9ooNMZ3zI'
   },
   'maxRedirects': 20
 };
@@ -150,7 +150,7 @@ req.end();
 {% tab title="PHP" %}
 {% code title="PHP - HTTP_request2" overflow="wrap" lineNumbers="true" %}
 ```php
-// <?php
+<?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
 $request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR');
@@ -159,7 +159,7 @@ $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
-  'X-BAAS-THIRD-PARTY-ID' => '72f814b4-d4a0-4e6b-8ae2-777b24f279ef'
+  'Authorization' => 'Bearer eyJlbmMiOiJBMjU2Q0JDLUhTNT...TxWr8u9ooNMZ3zI'
 ));
 try {
   $response = $request->send();
@@ -188,9 +188,9 @@ RequestBody body = RequestBody.create(mediaType, "");
 Request request = new Request.Builder()
   .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR")
   .method("GET", body)
-  .addHeader("X-BAAS-THIRD-PARTY-ID", "72f814b4-d4a0-4e6b-8ae2-777b24f279ef")
+  .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLUhTN...Wr8u9ooNMZ3zI")
   .build();
-Response response = client.newCall(request).executeaaTP
+Response response = client.newCall(request).execute();
 ```
 {% endcode %}
 {% endtab %}
