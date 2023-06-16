@@ -26,6 +26,10 @@ Upon clicking, your client can access further information on the insurance produ
 
 <figure><img src="../.gitbook/assets/Picture2.png" alt=""><figcaption></figcaption></figure>
 
+It is recommended to insert an intermediary page to push to client who haven't selected an insurance offer yet as it makes it more visible and can get overall better sales, the information needed will also be provided through the Product & services API and the eligibility API :&#x20;
+
+<figure><img src="../.gitbook/assets/MicrosoftTeams-image (7).png" alt=""><figcaption></figcaption></figure>
+
 Furthermore, on your **checkout page**, if there are eligible products and your client still hasn't picked an insurance offer, you will be able to display the offer once again :&#x20;
 
 <figure><img src="../.gitbook/assets/Picture3.png" alt=""><figcaption></figcaption></figure>
