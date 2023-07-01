@@ -79,7 +79,11 @@ Before starting the integration process, make sure you have the following:
 
 #### API Access Credentials and Keys
 
-`(step by step screenshots & samples)`
+Refer to "Before you start/API key" section for instructions:
+
+{% content-ref url="../developers-docs/before-you-start/api-key.md" %}
+[api-key.md](../developers-docs/before-you-start/api-key.md)
+{% endcontent-ref %}
 
 #### Testing Environment Setup
 
