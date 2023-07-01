@@ -12,8 +12,8 @@ To integrate one of our e-financing solutions with APIs you may first choose one
 
 Then consult this guide to know how to implement APIs
 
-{% content-ref url="../../integration-guides/direct.md" %}
-[direct.md](../../integration-guides/direct.md)
+{% content-ref url="../../integration-guides/integrations-modes/direct.md" %}
+[direct.md](../../integration-guides/integrations-modes/direct.md)
 {% endcontent-ref %}
 
 At any time, you can refers to the API reference:&#x20;

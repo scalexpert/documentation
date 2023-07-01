@@ -29,9 +29,9 @@
 
 ## Integration Guides
 
-* [Integrations modes](integration-guides/integrations-modes.md)
-* [APIs](integration-guides/direct.md)
-* [Plugins CMS solutions](integration-guides/platform-solutions.md)
+* [Integrations modes](integration-guides/integrations-modes/README.md)
+  * [APIs](integration-guides/integrations-modes/direct.md)
+  * [Plugins CMS solutions](integration-guides/integrations-modes/platform-solutions.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## API Reference
