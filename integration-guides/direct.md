@@ -34,7 +34,7 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials workflow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
 
 1. Application sends application's credentials to the oAuth2 Authorization Server.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
@@ -601,7 +601,7 @@ To retrieve the details of a specific e-financing subscription, follow these ste
 3. Handle Response: Capture and process the response, which will contain comprehensive information about the requested subscription, including payment schedule, repayment amounts, and status.
 
 {% tabs %}
-{% tab title="Node.Js" %}
+{% tab title="Node.js" %}
 {% code title="Node.Js - Native" overflow="wrap" lineNumbers="true" %}
 ```n4js
 var https = require('follow-redirects').https;
