@@ -46,7 +46,13 @@ Refer to documentation of **oAuth2 API** for detailed information on GET /token 
 [authorization-server-api.md](../api-reference/authorization-server-api.md)
 {% endcontent-ref %}
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow steps</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow steps (extracts oauthO docs)</p></figcaption></figure>
+
+1. Application sends application's credentials to the Auth0 Authorization Server. To learn more about client authentication methods, read [Application Credentials](https://auth0.com/docs/secure/application-credentials).
+2. Auth0 Authorization Server validates application's credentials.
+3. Auth0 Authorization Server responds with an access token.
+4. Application can use the access token to call an API on behalf of itself. For more information on this process, see [Validate JSON Web Tokens](https://auth0.com/docs/secure/tokens/json-web-tokens/validate-json-web-tokens).
+5. API responds with requested data.
 
 #### API Endpoints and Request/Response Formats
 
