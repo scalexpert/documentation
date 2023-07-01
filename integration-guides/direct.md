@@ -34,7 +34,7 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials workflow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
 
 1. Application sends application's credentials to the oAuth2 Authorization Server.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
@@ -49,6 +49,110 @@ Refer to documentation of **oAuth2 API** for detailed information on GET /token 
 {% content-ref url="../api-reference/authorization-server-api.md" %}
 [authorization-server-api.md](../api-reference/authorization-server-api.md)
 {% endcontent-ref %}
+
+{% tabs %}
+{% tab title="Node.js" %}
+{% code title="Node.js native" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```n4js
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var qs = require('querystring');
+
+var options = {
+  'method': 'POST',
+  'hostname': 'api.e-commerce.societegenerale.com',
+  'path': '/baas/prod/auth-server/api/v1/oauth2/token',
+  'headers': {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Authorization': 'Basic ZmU3ZmVmYjktNmEyZ...zdqQW89'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+var postData = qs.stringify({
+  'grant_type': 'client_credentials',
+  'scope': 'e-financing:rw'
+});
+
+req.write(postData);
+
+req.end();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code title="PHP - HTTP2_request2" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/x-www-form-urlencoded',
+  'Authorization' => 'Basic ZmU3ZmVmYjktNmEyZS00YjcyLWI4MzAtMGJlMTMxZTFkZTdhOnVsRmpNc29yejJoekZWM1EvQng4RldaSk41aG1BNk95WGFIQVdLSzdqQW89'
+));
+$request->addPostParameter(array(
+  'grant_type' => 'client_credentials',
+  'scope' => 'e-financing:rw'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Java" %}
+{% code title="Java - OKHttp" overflow="wrap" lineNumbers="true" fullWidth="true" %}
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+RequestBody body = RequestBody.create(mediaType, "grant_type=client_credentials&scope=e-financing:rw");
+Request request = new Request.Builder()
+  .url("https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+  .addHeader("Authorization", "Basic ZmU3ZmVmYjktNmEyZS00YjcyLWI4MzAtMGJlMTMxZTFkZTdhOnVsRmpNc29yejJoekZWM1EvQng4RldaSk41aG1BNk95WGFIQVdLSzdqQW89")
+  .build();
+Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 #### API Endpoints and Request/Response Formats
 
