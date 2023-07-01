@@ -46,11 +46,15 @@ Refer to documentation of **oAuth2 API** for detailed information on GET /token 
 [authorization-server-api.md](../api-reference/authorization-server-api.md)
 {% endcontent-ref %}
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+
 1. Application sends application's credentials to the oAuth2 Authorization Server.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
 3. oAuth2 Authorization Server responds with an access token.
 4. Application can use the access token to call an API on behalf of itself.&#x20;
 5. API responds with requested data.
+
+For more details see [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
 
 #### API Endpoints and Request/Response Formats
 
