@@ -6,7 +6,7 @@ In order to bring your customer's attention to the credit offer, through the Pro
 
 On your **product page**, depending on the eligibility of the product's price, you will be able to display the relevant offers, right next to the price. You can of course customize the display by selecting the optional components that you wish to integrate, such as the logo: &#x20;
 
-&#x20;: ![](<../.gitbook/assets/image (4).png>)![](<../.gitbook/assets/image (3) (1).png>)
+&#x20;: ![](<../.gitbook/assets/image (4) (1).png>)![](<../.gitbook/assets/image (3) (1).png>)
 
 Furthermore, on your **checkout page**, if the basket amount is eligible to a credit offer, which will be determined by the Product & services API, you will be able to display the credit payment method (see below) as well as an explanation of the installments _(split payment only)_&#x20;
 
