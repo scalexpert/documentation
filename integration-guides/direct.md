@@ -32,21 +32,9 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using OAuth 2.0 client credentials workflow. Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials workflow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
-To retrieve your API keys Refer to the **API key** page:
-
-{% content-ref url="../developers-docs/before-you-start/api-key.md" %}
-[api-key.md](../developers-docs/before-you-start/api-key.md)
-{% endcontent-ref %}
-
-Refer to documentation of **oAuth2 API** for detailed information on GET /token endpoint:
-
-{% content-ref url="../api-reference/authorization-server-api.md" %}
-[authorization-server-api.md](../api-reference/authorization-server-api.md)
-{% endcontent-ref %}
-
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
 
 1. Application sends application's credentials to the oAuth2 Authorization Server.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
@@ -55,6 +43,12 @@ Refer to documentation of **oAuth2 API** for detailed information on GET /token 
 5. API responds with requested data.
 
 For more details see [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
+
+Refer to documentation of **oAuth2 API** for detailed information on GET /token endpoint:
+
+{% content-ref url="../api-reference/authorization-server-api.md" %}
+[authorization-server-api.md](../api-reference/authorization-server-api.md)
+{% endcontent-ref %}
 
 #### API Endpoints and Request/Response Formats
 
