@@ -32,7 +32,7 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using OAuth 2.0 client credentials workflow. Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using OAuth 2.0 client [credentials workflow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow). Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
 To retrieve your API keys Refer to the **API key** page:
 
@@ -46,7 +46,7 @@ Refer to documentation of **oAuth2 API** for detailed information on GET /token 
 [authorization-server-api.md](../api-reference/authorization-server-api.md)
 {% endcontent-ref %}
 
-`(basic steps overview)`
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Client credentials flow steps</p></figcaption></figure>
 
 #### API Endpoints and Request/Response Formats
 
