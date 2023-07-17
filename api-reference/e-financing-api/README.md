@@ -6,6 +6,6 @@ description: e- Financing API reference versions
 
 ### Latest version:
 
-{% content-ref url="v-1.1-e-financing-api-uat.md" %}
-[v-1.1-e-financing-api-uat.md](v-1.1-e-financing-api-uat.md)
+{% content-ref url="uat-api-for-partners/v-1.1-e-financing-api.md" %}
+[v-1.1-e-financing-api.md](uat-api-for-partners/v-1.1-e-financing-api.md)
 {% endcontent-ref %}

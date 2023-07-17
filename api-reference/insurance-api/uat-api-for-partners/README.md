@@ -1,0 +1,2 @@
+# UAT API for partners
+
