@@ -4,13 +4,13 @@ description: 'How to initiate an e-financing journey: split payment or long term
 
 # Initiate an e-financing journey
 
-## Initiate an e-financing journey with the [`e-Financing API`](../../api-reference/e-financing-api/v-1.1-e-financing-api.md)&#x20;
+## Initiate an e-financing journey with the [`e-Financing API`](../../api-reference/e-financing-api/v-1.1-e-financing-api-uat.md)&#x20;
 
 Initiate an e-financing journey is 2 steps process:
 
 1.  Display eligible e-financing solutions
 
-    You can display all eligible [**`e-financing solutions codes`**](./#e-financing-solution-codes) by calling API [`GET /e-financing/api/v1/eligible-solutions`](../../api-reference/e-financing-api/v-1.1-e-financing-api.md#eligible-solutions) .&#x20;
+    You can display all eligible [**`e-financing solutions codes`**](./#e-financing-solution-codes) by calling API [`GET /e-financing/api/v1/eligible-solutions`](../../api-reference/e-financing-api/v-1.1-e-financing-api-uat.md#eligible-solutions) .&#x20;
 
     There are mandatory input parameters such as "Amount to be financed" and "Country of the Buyer" . \
     As a result, you will get all eligible e-financing solutions codes to be selected to initiate a subscription.\
@@ -18,7 +18,7 @@ Initiate an e-financing journey is 2 steps process:
     Also, It can be used to display the  payment methods during the checkout process.
 2.  Subscribe to a dedicated e-financing solutions
 
-    After selecting a financing method you can initiate a subscription by calling [`API POST e-financing/api/v1/subscriptions`](../../api-reference/e-financing-api/v-1.1-e-financing-api.md#subscriptions) &#x20;
+    After selecting a financing method you can initiate a subscription by calling [`API POST e-financing/api/v1/subscriptions`](../../api-reference/e-financing-api/v-1.1-e-financing-api-uat.md#subscriptions) &#x20;
 
     The request must be completed with buyer identities, billing, delivery addresses and basket content.&#x20;
 

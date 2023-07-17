@@ -6,6 +6,6 @@ description: Insurance API reference versions
 
 ### Latest version:
 
-{% content-ref url="v-1.2-insurance-api.md" %}
-[v-1.2-insurance-api.md](v-1.2-insurance-api.md)
+{% content-ref url="v-1.2-insurance-api-uat.md" %}
+[v-1.2-insurance-api-uat.md](v-1.2-insurance-api-uat.md)
 {% endcontent-ref %}

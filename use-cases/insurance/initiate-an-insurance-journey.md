@@ -1,6 +1,6 @@
 # Initiate an insurance journey
 
-## Initiate an insurance journey with the [`insurance API`](../../api-reference/insurance-api/v-1.2-insurance-api.md)&#x20;
+## Initiate an insurance journey with the [`insurance API`](../../api-reference/insurance-api/v-1.2-insurance-api-uat.md)&#x20;
 
 The initiation of an insurance journey is a 2 step process:
 
@@ -8,7 +8,7 @@ The initiation of an insurance journey is a 2 step process:
    Register your catalog item and search for eligible insurance and warranties.&#x20;
 2.  **Display eligible insurances solutions**
 
-    You can display all eligible **`Insurance solutions codes`** by calling API [`POST /insurance/api/v1/eligible-solutions`](../../api-reference/insurance-api/v-1.2-insurance-api.md#eligible-solutions) .&#x20;
+    You can display all eligible **`Insurance solutions codes`** by calling API [`POST /insurance/api/v1/eligible-solutions`](../../api-reference/insurance-api/v-1.2-insurance-api-uat.md#eligible-solutions) .&#x20;
 
     The mandatory input parameter is the  "Country of the Buyer" . \
     As a result, you will get all eligible insurance solutions codes to be selected to initiate a insurance journey.\
