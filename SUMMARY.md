@@ -44,9 +44,11 @@
   * [Versionning](api-reference/apis-common/versionning.md)
   * [Rate limiting](api-reference/apis-common/rate-limiting.md)
 * [e-Financing API](api-reference/e-financing-api/README.md)
-  * [V 1.0](api-reference/e-financing-api/v-1.0.md)
+  * [V 1.0 - e-Financing API](api-reference/e-financing-api/v-1.0.md)
+  * [V 1.1 - e-Financing API](api-reference/e-financing-api/v-1.1-e-financing-api.md)
 * [Insurance API](api-reference/insurance-api/README.md)
-  * [V 1.0](api-reference/insurance-api/v-1.0.md)
+  * [V 1.0 - Insurance API](api-reference/insurance-api/v-1.0.md)
+  * [V 1.2 - insurance API](api-reference/insurance-api/v-1.2-insurance-api.md)
 * [Oauth2 API](api-reference/authorization-server-api.md)
 
 ## Webhooks
