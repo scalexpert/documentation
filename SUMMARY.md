@@ -25,6 +25,7 @@
   * [Initiate an insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
   * [Create an insurance quotation](use-cases/insurance/create-an-insurance-quotation.md)
   * [Subscribe to an insurance policy](use-cases/insurance/subscribe-to-an-insurance-policy.md)
+  * [Insurance Status life cycle](use-cases/insurance/insurance-status-life-cycle.md)
 * [Showcasing solutions](use-cases/showcasing-solutions.md)
 
 ## Integration Guides
