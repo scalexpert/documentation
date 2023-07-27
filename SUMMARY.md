@@ -3,12 +3,12 @@
 ## Developers Docs
 
 * [Before you start](README.md)
-  * [Account creation](developers-docs/before-you-start/account-creation.md)
-  * [On boarding API](developers-docs/before-you-start/on-boarding-api.md)
-  * [API catalog](developers-docs/before-you-start/api-catalog.md)
-  * [API key](developers-docs/before-you-start/api-key.md)
-  * [Advanced features](developers-docs/before-you-start/advanced-features.md)
-* [Get Started](developers-docs/get-started.md)
+  * [Account creation](developers-docs/readme/account-creation.md)
+  * [On boarding API](developers-docs/readme/on-boarding-api.md)
+  * [API catalog](developers-docs/readme/api-catalog.md)
+  * [API key](developers-docs/readme/api-key.md)
+  * [Advanced features](developers-docs/readme/advanced-features.md)
+* [Get Started](developers-docs/get-started/README.md)
   * [Integrate e-financing with APIs](developers-docs/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](developers-docs/get-started/integrate-warrenty-extension-with-apis.md)
 
@@ -51,7 +51,7 @@
 * [Insurance API](api-reference/insurance-api/README.md)
   * [V 1.0 - Insurance API](api-reference/insurance-api/v-1.0.md)
   * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
-    * [V 1.2 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.2-insurance-api-uat.md)
+    * [V 1.2 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.2-insurance-api.md)
 * [Oauth2 API](api-reference/authorization-server-api.md)
 
 ## Webhooks

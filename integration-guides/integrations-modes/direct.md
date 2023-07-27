@@ -179,8 +179,8 @@ Before starting the integration process, make sure you have the following:
 
 Refer to "Before you start/API key" section for instructions:
 
-{% content-ref url="../../developers-docs/before-you-start/api-key.md" %}
-[api-key.md](../../developers-docs/before-you-start/api-key.md)
+{% content-ref url="../../developers-docs/readme/api-key.md" %}
+[api-key.md](../../developers-docs/readme/api-key.md)
 {% endcontent-ref %}
 
 #### Testing Environment Setup
