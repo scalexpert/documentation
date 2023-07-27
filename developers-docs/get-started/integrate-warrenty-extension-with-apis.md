@@ -16,6 +16,12 @@ Then consult this guide to know how to implement APIs
 [direct.md](../../integration-guides/integrations-modes/direct.md)
 {% endcontent-ref %}
 
+Test our APIs with our public Postman collection
+
+{% content-ref url="../../integration-guides/integrations-modes/apis-postman-collection.md" %}
+[apis-postman-collection.md](../../integration-guides/integrations-modes/apis-postman-collection.md)
+{% endcontent-ref %}
+
 At any time, you can refers to the API reference:&#x20;
 
 {% content-ref url="../../api-reference/insurance-api/" %}
