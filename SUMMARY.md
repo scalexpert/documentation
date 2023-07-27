@@ -32,6 +32,7 @@
 
 * [Integrations modes](integration-guides/integrations-modes/README.md)
   * [APIs](integration-guides/integrations-modes/direct.md)
+  * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
   * [Plugins CMS solutions](integration-guides/integrations-modes/platform-solutions.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
