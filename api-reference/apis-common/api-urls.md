@@ -30,3 +30,9 @@ API Url Test customer
 {% hint style="info" %}
 Coming soon ! A Sandbox environment for none customer will be available in the coming months.&#x20;
 {% endhint %}
+
+### Test for partners only (UAT)
+
+This environment is available only for partners.&#x20;
+
+{% embed url="https://api.scalexpert.hml.societegenerale.com/baas/uat" %}
