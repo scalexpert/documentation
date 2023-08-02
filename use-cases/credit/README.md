@@ -11,7 +11,7 @@ The **e-financing BaaS solution** allows you to easily trigger 2 kinds of journe
 * Split Payment
 * Long term credit
 
-The 2 kinds are integrated with the  [`API e-Financing`](../../api-reference/e-financing-api/v-1.0.md) . You will have to select the [`solution code` ](#user-content-fn-1)[^1]accordingly the combination depicted below and according what you have contracted.
+The 2 kinds are integrated with the  [`API e-Financing`](../../api-reference/e-financing-api/old-versions-e-financing-api/v-1.0.md) . You will have to select the [`solution code` ](#user-content-fn-1)[^1]accordingly the combination depicted below and according what you have contracted.
 
 #### E-financing solution codes
 
