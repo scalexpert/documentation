@@ -1,3 +1,32 @@
+---
+description: API urls
+---
+
 # API URLs
 
-(to be completed)
+2 environments are available for customers only.&#x20;
+
+You will need to have [API keys](../../developers-docs/readme/api-key.md) for each environment:&#x20;
+
+* one API key for Production (PROD)
+* one API key for Test (UATC)
+
+{% hint style="warning" %}
+You need to get active account (customer on boarding) to access to these environments. Please contact our support [here](https://e-commerce.societegenerale.com/app/fr/page/nous-contacter) to activate your account.&#x20;
+{% endhint %}
+
+Urls are listed below:
+
+### Production (PROD)
+
+{% embed url="https://api.scalexpert.societegenerale.com/baas/prod" %}
+
+### Test for customer (UATC)
+
+{% embed url="https://api.scalexpert.societegenerale.com/baas/uatc" %}
+API Url Test customer
+{% endembed %}
+
+{% hint style="info" %}
+Coming soon ! A Sandbox environment for none customer will be available in the coming months.&#x20;
+{% endhint %}
