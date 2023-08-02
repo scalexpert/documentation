@@ -50,13 +50,13 @@
   * [Old versions e-Financing API ](api-reference/e-financing-api/old-versions-e-financing-api/README.md)
     * [V 1.0 - e-Financing API](api-reference/e-financing-api/v-1.0.md)
   * [UAT API for partners](api-reference/e-financing-api/uat-api-for-partners/README.md)
-    * [V 1.1 - e-Financing API](api-reference/e-financing-api/uat-api-for-partners/v-1.1-e-financing-api.md)
+    * [V 1.2 - e-Financing API](api-reference/e-financing-api/uat-api-for-partners/v-1.2-e-financing-api.md)
 * [Insurance API](api-reference/insurance-api/README.md)
   * [V 1.1 - Insurance API](api-reference/insurance-api/v-1.1-insurance-api.md)
   * [Old versions Insurance API](api-reference/insurance-api/old-versions-insurance-api/README.md)
     * [V 1.0 - Insurance API](api-reference/insurance-api/old-versions-insurance-api/v-1.0.md)
   * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
-    * [V 1.2 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.2-insurance-api.md)
+    * [V 1.3 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3-insurance-api.md)
 * [Oauth2 API](api-reference/authorization-server-api.md)
 
 ## Webhooks
