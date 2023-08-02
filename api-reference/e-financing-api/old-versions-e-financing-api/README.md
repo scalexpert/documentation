@@ -6,6 +6,6 @@ description: Old versions list
 
 Depreciated versions
 
-{% content-ref url="v-1.0.md" %}
-[v-1.0.md](v-1.0.md)
+{% content-ref url="../v-1.0.md" %}
+[v-1.0.md](../v-1.0.md)
 {% endcontent-ref %}

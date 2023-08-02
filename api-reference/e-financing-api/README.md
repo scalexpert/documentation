@@ -12,8 +12,12 @@ description: e- Financing API reference versions
 
 ### Old versions:
 
-
-
 {% content-ref url="old-versions-e-financing-api/" %}
 [old-versions-e-financing-api](old-versions-e-financing-api/)
+{% endcontent-ref %}
+
+### UAT versions (only for partners)
+
+{% content-ref url="uat-api-for-partners/" %}
+[uat-api-for-partners](uat-api-for-partners/)
 {% endcontent-ref %}
