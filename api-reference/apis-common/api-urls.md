@@ -1,5 +1,5 @@
 ---
-description: API urls
+description: The list of all environments and their urls
 ---
 
 # API URLs
