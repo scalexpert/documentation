@@ -46,7 +46,7 @@ On APi page you will have access to all technical documentation (description, sw
 
 You will have different kind of catalogs available.
 
-<table data-full-width="false"><thead><tr><th>Production</th><th>Test for customer (UATC)</th><th>Sandbox (Not available)</th></tr></thead><tbody><tr><td>Visible in public. </td><td>Only visible once connected and by customers accounts (See <a href="on-boarding-api.md">On boarding guide</a>). </td><td>Visible by anyone connected</td></tr><tr><td>Need an API key and only for customers</td><td>Need an API key and only for customers</td><td>Need an API key and anyone can subscribe</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th>Production</th><th>Test for customer (UATC)</th><th>Sandbox (Not available)</th></tr></thead><tbody><tr><td>Visible in public. </td><td>Only visible once connected and by customers accounts (See <a href="on-boarding-api.md">On boarding guide</a>). </td><td>Visible by anyone connected</td></tr><tr><td>Need an API key and only for customers</td><td>Need an API key and only for customers</td><td>Need an API key and anyone can subscribe</td></tr><tr><td>For production purpose</td><td>For testing purpose before go-live. </td><td>For exploration (Get fun !)</td></tr></tbody></table>
 
 {% hint style="warning" %}
 Sandbox catalog is not yet available.
