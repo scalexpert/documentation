@@ -12,6 +12,8 @@ The catalog is accessible by search. You would found 2 kinds of objects "Product
 
 <figure><img src="../../.gitbook/assets/Annotation 2023-04-24 150652.jpg" alt=""><figcaption><p>Explore the API catalog</p></figcaption></figure>
 
+Consult the catalog:
+
 {% embed url="https://dev.e-commerce.societegenerale.com/en/prod/" %}
 Access API portal
 {% endembed %}
@@ -37,3 +39,15 @@ On APi page you will have access to all technical documentation (description, sw
 
 {% endtab %}
 {% endtabs %}
+
+***
+
+### Catalogs kinds
+
+You will have different kind of catalogs available.
+
+<table data-full-width="false"><thead><tr><th>Production</th><th>Test for customer (UATC)</th><th>Sandbox (Not available)</th></tr></thead><tbody><tr><td>Visible in public. </td><td>Only visible once connected and by customers accounts (See <a href="on-boarding-api.md">On boarding guide</a>). </td><td>Visible by anyone connected</td></tr><tr><td>Need an API key and only for customers</td><td>Need an API key and only for customers</td><td>Need an API key and anyone can subscribe</td></tr></tbody></table>
+
+{% hint style="warning" %}
+Sandbox catalog is not yet available.
+{% endhint %}
