@@ -8,7 +8,7 @@ description: Manage funded, cancelled events
 
 <details>
 
-<summary>Draft featured not yet available</summary>
+<summary>Draft feature not yet available</summary>
 
 Currently this feature "FUNDED" event status is not yet available.
 
