@@ -20,11 +20,13 @@ Urls are listed below:
 ### Production (PROD)
 
 {% embed url="https://api.scalexpert.societegenerale.com/baas/prod" %}
+API url Production
+{% endembed %}
 
 ### Test for customer (UATC)
 
 {% embed url="https://api.scalexpert.societegenerale.com/baas/uatc" %}
-API Url Test customer
+API Url Test Customer
 {% endembed %}
 
 {% hint style="info" %}
