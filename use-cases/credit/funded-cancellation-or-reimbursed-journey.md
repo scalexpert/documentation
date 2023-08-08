@@ -24,8 +24,14 @@ Thus, the merchant will be informed by an event and a the [status](e-financing-s
 
 ### Cancellation of a subscription
 
+<details>
+
+<summary>Draft feature not yet available</summary>
+
+
+
 * A buyer/merchant want to cancel its order completely&#x20;
-* A buyer/merchant want to cancel its order partially (
+* A buyer/merchant want to cancel its order partially
 
 All these actions would be available with through an API. In addition the merchant will have the possibility to cancel  a subscription in its Merchant portal. \
 The [status](e-financing-status-life-cycle.md) of the subscription will be updated to:
@@ -33,13 +39,13 @@ The [status](e-financing-status-life-cycle.md) of the subscription will be updat
 * ACCEPTED = Subscription and payment are partially cancelled. Amount to be financed is updated.&#x20;
 * CANCELLED = Subscription and payment or amortization are completely  cancelled
 
-{% hint style="info" %}
-For long credit finance, cancellation in only possible after return of delivery of goods. Thus merchant must declare return of delivery by API (not yet available). &#x20;
-{% endhint %}
+For long credit finance, cancellation in only possible after return of delivery of goods. Thus merchant must declare return of delivery by API.
 
-All events (FUNDED, CANCELLED) could be pushed to the merchant by [webhook](broken-reference) mechanism.
+</details>
 
 {% hint style="warning" %}
 Cancellation and Refund APIs will available soon and the merchant will have a feature in its merchant portal to trigger these actions on behalf of the buyer.&#x20;
 {% endhint %}
+
+All events (FUNDED, CANCELLED) could be pushed to the merchant by [webhook](broken-reference) mechanism.
 
