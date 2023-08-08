@@ -2,7 +2,7 @@
 
 ## Initiate an insurance journey with the [`insurance API`](../../api-reference/insurance-api/)&#x20;
 
-The initiation of an insurance journey is a 2 step process:
+The initiation of an insurance journey is a 3 step process:
 
 1.  **Display eligible insurances solutions**
 
