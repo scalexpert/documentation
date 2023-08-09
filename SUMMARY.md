@@ -38,7 +38,7 @@
 
 ## API Reference
 
-* [APIs common](api-reference/apis-common/README.md)
+* [APIs overview](api-reference/apis-common/README.md)
   * [API URLs](api-reference/apis-common/api-urls.md)
   * [Authentication](api-reference/apis-common/authentication.md)
   * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
