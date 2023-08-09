@@ -42,7 +42,7 @@
   * [API URLs](api-reference/apis-common/api-urls.md)
   * [Authentication](api-reference/apis-common/authentication.md)
   * [Scopes](api-reference/apis-common/scopes.md)
-  * [Versionning](api-reference/apis-common/versionning.md)
+  * [Versioning](api-reference/apis-common/versionning.md)
   * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
 * [e-Financing API](api-reference/e-financing-api/README.md)
   * [V 1.1 - e-Financing API](api-reference/e-financing-api/v-1.1-e-financing-api.md)
