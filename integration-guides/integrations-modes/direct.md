@@ -34,20 +34,10 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials workflow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+Refer to authentication API reference for more details:
 
-1. Application sends application's credentials to the oAuth2 Authorization Server.&#x20;
-2. oAuth2 Authorization Server validates application's credentials.
-3. oAuth2 Authorization Server responds with an access token.
-4. Application can use the access token to call an API on behalf of itself.&#x20;
-5. API responds with requested data.
-
-For more details see [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
-
-Refer to documentation of **oAuth2 API** for detailed information on GET /token endpoint:
-
-{% content-ref url="../../api-reference/authorization-server-api.md" %}
-[authorization-server-api.md](../../api-reference/authorization-server-api.md)
+{% content-ref url="../../api-reference/apis-common/authentication.md" %}
+[authentication.md](../../api-reference/apis-common/authentication.md)
 {% endcontent-ref %}
 
 {% tabs %}
