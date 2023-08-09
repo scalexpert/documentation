@@ -4,6 +4,8 @@ description: e- Financing API reference versions
 
 # e-Financing API
 
+Scope "`e-financing:rw"`
+
 ### Latest version:
 
 {% content-ref url="v-1.1-e-financing-api.md" %}
