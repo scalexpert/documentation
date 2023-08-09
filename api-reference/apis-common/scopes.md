@@ -10,7 +10,7 @@ The list of scopes available are listed in the developer portal.
 
 <figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption><p>Search scopes  in the developer portal</p></figcaption></figure>
 
-Scope define consumption levels and the authorizations flows for all related APIs. As of today, it exists one custom level 600 hits per minutes defined as standard consumption for all APIs. Authorization flow is always "client credentials".&#x20;
+Scope define consumption levels (rate limit) and the authorizations flows for all related APIs. As of today, it exists one custom level 600 hits per minutes defined as standard consumption for all APIs. Authorization flow is always "client credentials".&#x20;
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption><p>Scope "e-financing:rw"</p></figcaption></figure>
 
