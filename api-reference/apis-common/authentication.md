@@ -10,7 +10,7 @@ All our endpoints are authenticated with oAuth2 client credentials flow. It mean
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
 
-1. Application sends application's credentials to the oAuth2 Authorization Server with the authorization scopes you want to access.&#x20;
+1. Application sends application's credentials to the oAuth2 Authorization Server with the [authorization scopes](scopes.md) you want to access.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
 3. oAuth2 Authorization Server responds with an access token.
 4. Application can use the access token to call an API on behalf of itself.&#x20;
