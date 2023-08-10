@@ -19,3 +19,9 @@ Store secrets in a designated secrets management solution. For example, you can 
 {% hint style="danger" %}
 Don't store secrets (and client id) in clear in the code. Best solution is to use a designed secret management solution. Alternatively, you can store it as encrypted field in your database.
 {% endhint %}
+
+### Reset your secret periodically and in case of security compromise
+
+It is a best practice to renew periodically your secrets and most of all when your security could have been compromise.
+
+You can reset you secret on the developer portal (see page [API key)](../developers-docs/readme/api-key.md#4-reset-secret)
