@@ -4,6 +4,8 @@ description: Version 1.0.0
 
 # oAuth2 API
 
+API name: `auth-server`
+
 Scope "openid`"`
 
 `Path:` [`https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1`](https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1)
