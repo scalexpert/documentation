@@ -21,9 +21,3 @@ swagger auth-server API
 {% endfile %}
 
 See samples [here](../integration-guides/integrations-modes/direct.md#authentication-and-authorization)
-
-
-
-{% content-ref url="http://127.0.0.1:5000/o/ZVRqwxsO5Dq37OYQV8xa/s/TpHJigxk2juo903YtJcL/" %}
-[Scalexpert API Docs](http://127.0.0.1:5000/o/ZVRqwxsO5Dq37OYQV8xa/s/TpHJigxk2juo903YtJcL/)
-{% endcontent-ref %}
