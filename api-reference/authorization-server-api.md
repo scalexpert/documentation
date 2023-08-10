@@ -24,4 +24,8 @@ Download swagger file:
 swagger auth-server API
 {% endfile %}
 
-See samples [here](../integration-guides/integrations-modes/direct.md#authentication-and-authorization)
+See samples codes [here](../integration-guides/integrations-modes/direct.md#authentication-and-authorization)
+
+Link to developer portal documentation:
+
+{% embed url="https://dev.e-commerce.societegenerale.com/en/prod/api/baas-as:1.0.0" %}
