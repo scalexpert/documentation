@@ -25,14 +25,15 @@ By integrating these APIs, you'll be able to initiate and manage e-financing sub
 
 ### 2. API Overview
 
-The APIs allows you to interact with the our platform programmatically, enabling you to initiate and manage financing or insurance proposals seamlessly. Here are some key aspects of the APIs:
+The APIs allows you to interact with the our platform pro-grammatically, enabling you to initiate and manage financing or insurance proposals seamlessly. Here are some key aspects of the APIs:
 
 * RESTful architecture: Utilize standard HTTP methods (GET, POST, PUT, DELETE) to interact with the API.
 * JSON-based data format: Send and receive data in JSON format, ensuring compatibility and ease of integration across different programming languages.
+* oAuth2 client credentials authentication flow (server to server).
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials flow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
 Refer to authentication API reference for more details:
 
@@ -200,7 +201,7 @@ To determine the eligible e-financing solutions available for a specific purchas
 1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and country of the buyer end user (or by default country of your site).
 2. Make a GET Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
 3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated merchant communication kit informations.
-4. According the response display the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../use-cases/showcasing-solutions.md)).&#x20;
+4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../use-cases/showcasing-solutions.md)).&#x20;
 
 Refer to [API GET /eligible-solutions](../../api-reference/e-financing-api/)
 
@@ -299,6 +300,8 @@ To initiate an e-financing subscription for a customer, follow these steps:
 1. Collect Customer Information: Gather the required customer information, such as name, contact details, and billing address.
 2. Make a POST Request: Use the appropriate API endpoint, passing the necessary customer information and subscription details.
 3. Handle Response: Capture and process the response, which will contain the subscription ID and any additional information provided by the API.
+
+Refer to [API POST /susbscriptions](../../api-reference/e-financing-api/)
 
 {% tabs %}
 {% tab title="Node.js" %}
