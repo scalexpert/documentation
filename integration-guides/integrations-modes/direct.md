@@ -182,11 +182,11 @@ Refer to "Before you start/API key" section for instructions:
 
 Set up a testing environment to ensure smooth integration and testing of the E-Financing API:
 
-* User Acceptance Test for customer (UATC) environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
+* [User Acceptance Test for customer (UATC) ](../../api-reference/apis-common/api-urls.md#test-for-customer-uatc)environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
 * API Documentation: Familiarize yourself with the API documentation, including endpoint details, request/response examples, and any available snippets  that can expedite the integration process.
 
 {% hint style="info" %}
-In this guide you will find snippets for Node.js, Java, PHP langages.
+In this guide you will find snippets for Node.js, Java, PHP server langages.
 {% endhint %}
 
 ### 4. API Integration Steps
@@ -197,14 +197,15 @@ Now let's dive into the steps involved in integrating the **E-Financing** API in
 
 To determine the eligible e-financing solutions available for a specific purchase, follow these steps:
 
-1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and any other required parameters.
-2. Make a POST Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
-3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated terms and conditions.
+1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and country of the buyer end user (or by default country of your site).
+2. Make a GET Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
+3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated merchant communication kit informations.
+4. According the response display the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../use-cases/showcasing-solutions.md)).&#x20;
+
+Refer to [API GET /eligible-solutions](../../api-reference/e-financing-api/)
 
 {% tabs %}
 {% tab title="Node.js" %}
-
-
 {% code title="Node.js native" overflow="wrap" lineNumbers="true" fullWidth="true" %}
 ```n4js
 var https = require('follow-redirects').https;
