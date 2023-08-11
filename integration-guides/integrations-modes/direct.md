@@ -6,7 +6,7 @@ description: How to integrate our solutions with APIs
 
 > DRAFT
 
-## API Integration Guide (for E-Financing Solution - temp)
+## API Integration Guide
 
 ### Table of Contents
 
@@ -19,7 +19,7 @@ description: How to integrate our solutions with APIs
 
 ### 1. Introduction
 
-This API integration guide will walk you through the process of setting up your environments so you can later consume SG's e-commerce APIs into your application or platform.
+This API integration guide will walk you through the process of setting up your environments so you can later consume scalexpert APIs into your application or platform.
 
 By integrating these APIs, you'll be able to initiate and manage e-financing subscriptions on behalf of your customers or dynamically propose warranty extensions for some items on their basket prior checkout.
 
@@ -32,7 +32,7 @@ The APIs allows you to interact with the our platform programmatically, enabling
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials workflow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using **oAuth 2.0 client credentials flow.** Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
 Refer to authentication API reference for more details:
 
@@ -158,12 +158,17 @@ Refer to the **API reference** section for detailed information on each endpoint
 
 #### Prerequisites for Integration
 
-Before starting the integration process, make sure you have the following:
+Before starting the integration process, make sure you have complete the prerequisites. Refer to "Before you start" pages for more details
 
-* Developer Account: Create an account on the developer portal to access the API documentation, obtain API keys, and manage your integration.
-* Platform Compatibility: Ensure that your application meets the technical requirements&#x20;
+{% content-ref url="../../" %}
+[..](../../)
+{% endcontent-ref %}
 
-`(TODO : add technical requirements/restrictions)`
+Also have a look at "Security best practices" pages. For instance, make attention that API must be implemented at server side and not at front side.
+
+{% content-ref url="../../security/security-best-practices.md" %}
+[security-best-practices.md](../../security/security-best-practices.md)
+{% endcontent-ref %}
 
 #### API Access Credentials and Keys
 
@@ -177,8 +182,12 @@ Refer to "Before you start/API key" section for instructions:
 
 Set up a testing environment to ensure smooth integration and testing of the E-Financing API:
 
-* Sandbox: test environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
-* API Documentation and SDKs: Familiarize yourself with the API documentation, including endpoint details, request/response examples, and any available SDKs or client libraries that can expedite the integration process.`(add sample code in PHP and JS => most e-commerce solutions are php-based and lots of js backend developer are copy/paste gurus)`
+* User Acceptance Test for customer (UATC) environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
+* API Documentation: Familiarize yourself with the API documentation, including endpoint details, request/response examples, and any available snippets  that can expedite the integration process.
+
+{% hint style="info" %}
+In this guide you will find snippets for Node.js, Java, PHP langages.
+{% endhint %}
 
 ### 4. API Integration Steps
 
