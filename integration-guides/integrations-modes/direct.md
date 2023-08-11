@@ -31,6 +31,12 @@ The APIs allows you to interact with the our platform pro-grammatically, enablin
 * JSON-based data format: Send and receive data in JSON format, ensuring compatibility and ease of integration across different programming languages.
 * oAuth2 client credentials authentication flow (server to server).
 
+For more details refer to:
+
+{% content-ref url="../../api-reference/apis-common/" %}
+[apis-common](../../api-reference/apis-common/)
+{% endcontent-ref %}
+
 #### Authentication and Authorization
 
 To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
