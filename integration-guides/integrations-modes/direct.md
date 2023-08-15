@@ -39,13 +39,15 @@ For more details refer to:
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests : API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests by obtaining an [oAuth2 access token](direct.md#get-a-oauth2-token). API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
 Refer to authentication API reference for more details:
 
 {% content-ref url="../../api-reference/apis-common/authentication.md" %}
 [authentication.md](../../api-reference/apis-common/authentication.md)
 {% endcontent-ref %}
+
+#### Get a oAuth2 access token
 
 {% tabs %}
 {% tab title="Node.js" %}
