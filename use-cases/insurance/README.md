@@ -14,7 +14,7 @@ Other insurance products are coming soon and will be integrated with the [insura
 
 ### Insurance solutions codes
 
-<table><thead><tr><th width="98">Country</th><th width="204">Insurance solution</th><th>Conditions</th><th>Solution code</th></tr></thead><tbody><tr><td>FR</td><td>Warranty extension</td><td>Price per duration with commission for merchant </td><td>CIFRWE-DXCO</td></tr></tbody></table>
+<table><thead><tr><th width="98">Country</th><th width="204">Insurance solution</th><th>Conditions</th><th>Solution code</th></tr></thead><tbody><tr><td>FR</td><td>Warranty extension</td><td>e-buyer pay a price per duration and merchant get a commission</td><td>CIFRWE-DXCO</td></tr></tbody></table>
 
 ## Step-by-Step
 
