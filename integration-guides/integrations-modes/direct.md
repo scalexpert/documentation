@@ -153,51 +153,6 @@ Response response = client.newCall(request).execute();
 {% endtab %}
 {% endtabs %}
 
-```runkit  nodeVersion="18.x.x" fullWidth="false"
-var https = require('follow-redirects').https;
-var fs = require('fs');
-
-var qs = require('querystring');
-
-var options = {
-  'method': 'POST',
-  'hostname': 'api.e-commerce.societegenerale.com',
-  'path': '/baas/prod/auth-server/api/v1/oauth2/token',
-  'headers': {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Authorization': 'Basic ZmU3ZmVmYjktNmEyZS00YjcyLWI4MzAtMGJlMTMxZTFkZTdhOlQ5aHdiTEJneE5OZEdEWEFlVS8wZkVYZ0ZVbmNrN1pmTlVHdXp1bitRcnc9'
-  },
-  'maxRedirects': 20
-};
-
-var req = https.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function (chunk) {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-
-  res.on("error", function (error) {
-    console.error(error);
-  });
-});
-
-var postData = qs.stringify({
-  'grant_type': 'client_credentials',
-  'scope': 'e-financing:rw'
-});
-
-req.write(postData);
-
-req.end();
-
-```
-
 #### API Endpoints and Request/Response Formats
 
 The API provides various endpoints for managing subscriptions or retrieving relevant data. Each endpoint supports specific actions and requires specific parameters. Requests should include appropriate headers, and responses are returned in JSON format.
