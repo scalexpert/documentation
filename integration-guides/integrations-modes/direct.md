@@ -4,8 +4,6 @@ description: How to integrate our solutions with APIs
 
 # APIs
 
-> DRAFT
-
 ## API Integration Guide
 
 ### Table of Contents
