@@ -9,6 +9,7 @@ description: How to cancel a subscription for split payment
 Split payment cancellation is a simple journey.
 
 1. Prerequisites\
+   Your subscription must one of [**split payment solutions codes**](../#e-financing-solution-codes)**.**\
    Your subscription must be at [**ACCEPTED** ](../e-financing-status-life-cycle.md)status and the date of cancellation must be not over 90 days.
 2. Cancel your subscription\
    2 cases are possible:\
