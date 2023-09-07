@@ -13,8 +13,8 @@ Split payment cancellation is a simple journey.
    Your subscription must be at [**ACCEPTED** ](../e-financing-status-life-cycle.md)status and the date of cancellation must be not over 90 days.
 2. Cancel your subscription\
    2 cases are possible:\
-   \- cancel fully the subscription: cancelled amount equal initial financed amount. in that case resulting status would [**CANCELLED** ](../e-financing-status-life-cycle.md). \
-   \- cancel partially the subscription: cancelled amount is lower financial amount. Status of subscription unchanged but financial amount is decreased by cancelled amount.&#x20;
+   \- cancel fully the subscription: cancelled amount equal initial financed amount. in that case resulting status will be [**CANCELLED** ](../e-financing-status-life-cycle.md). \
+   \- cancel partially the subscription: cancelled amount is lower financial amount. Status of subscription is unchanged but financial amount is decreased by cancelled amount.&#x20;
 
 {% hint style="warning" %}
 You can only cancel partially a subscription once !
