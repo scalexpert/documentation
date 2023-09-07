@@ -16,7 +16,7 @@ The credit subscription is FUNDED to the Merchant by the Financial institution a
 
 The merchant will have to inform of the delivery of goods by API (Not yet available).
 
-Thus, the merchant will be informed by an event and a the [status](../e-financing-status-life-cycle.md) will be visible in its portal.&#x20;
+Thus, the merchant will be informed by an event and a the [status](e-financing-status-life-cycle.md) will be visible in its portal.&#x20;
 
 * FUNDED = Merchant has been funded for financing. Buyer amortization plan or payments has started.
 
@@ -26,7 +26,7 @@ Thus, the merchant will be informed by an event and a the [status](../e-financin
 
 <details>
 
-<summary>Draft feature not yet available</summary>
+<summary>Draft feature not yet fully available</summary>
 
 
 
@@ -34,7 +34,7 @@ Thus, the merchant will be informed by an event and a the [status](../e-financin
 * A buyer/merchant want to cancel its order partially
 
 All these actions would be available with through an API. In addition the merchant will have the possibility to cancel  a subscription in its Merchant portal. \
-The [status](../e-financing-status-life-cycle.md) of the subscription will be updated to:
+The [status](e-financing-status-life-cycle.md) of the subscription will be updated to:
 
 * ACCEPTED = Subscription and payment are partially cancelled. Amount to be financed is updated.&#x20;
 * CANCELLED = Subscription and payment or amortization are completely  cancelled
