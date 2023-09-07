@@ -20,7 +20,7 @@ Split payment cancellation is a simple journey.
 You can only cancel partially a subscription once !
 {% endhint %}
 
-Cancel a subscription by calling [**API `POST /e-financing/api/v1/subscriptions{subscriptionId}/_cancel`**](../../../api-reference/e-financing-api/) **.**\
+Cancel a subscription by calling [API `POST /e-financing/api/v1/subscriptions{subscriptionId}/_cancel`](../../../api-reference/e-financing-api/uat-api-for-partners/v-1.3.1-e-financing.md#cancellations) **.**\
 
 
 <div data-full-width="false">
