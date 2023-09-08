@@ -1,0 +1,44 @@
+title Cancel an e-financing subscription (Split payment only)
+
+actor#lightgreen Merchant back-office
+fontawesome5solid f54e Merchant #steelblue
+participantgroup #pink **SG e-commerce**
+fontawesome5solid f085 API #red
+fontawesome5solid f19c Finance #black
+end
+
+
+
+==Cancel a e-financing subscription==#lightgreen
+
+Merchant back-office-#lightgreen>Merchant:Cancel a subscription \n(full or partial financed amount)
+activate Merchant back-office #lightgreen
+activate Merchant #steelblue
+
+opt If no Access Token or experired
+Merchant-#steelblue>API:Request access Token
+activate API #red
+Merchant<#red--API:Access Token
+deactivate API
+end
+
+Merchant-#steelblue>API:Request cancellation e-financing \nAPI POST e-financing/api/v1/{subscriptionId}/_cancel
+
+activate API #red
+API->Finance:Request to cancel a subscription
+activate Finance #black
+API<--Finance:Cancellation accepted or rejected
+deactivate Finance
+alt partial cancellation accepted
+Merchant<#red--API:200 OK subcription partially cancelled status accepted\nwith remaining financed amount
+else full cancellation accepted
+Merchant<#red--API:200 OK subcription fully cancelled status cancelled\nwith no remaining financed amount
+else rejected main errors
+Merchant<#red--API:400 KO subscription already fully or partially cancelled
+Merchant<#red--API:400 KO cancelled amount can't over financed amount
+Merchant<#red--API:400 KO cancellation date can't over 90 j of purchase date
+end
+deactivate API
+Merchant back-office<#steelblue--Merchant:Display cancellation results \nand remaining financed amount
+deactivate Merchant
+deactivate Merchant back-office
