@@ -8,14 +8,14 @@ Scope "`e-financing:rw"`
 
 ### Latest version:
 
-{% content-ref url="uat-api-for-partners/v-1.3.1-e-financing.md" %}
-[v-1.3.1-e-financing.md](uat-api-for-partners/v-1.3.1-e-financing.md)
+{% content-ref url="v-1.3-e-financing-api.md" %}
+[v-1.3-e-financing-api.md](v-1.3-e-financing-api.md)
 {% endcontent-ref %}
 
 ### Old versions:
 
-{% content-ref url="retired-versions-e-financing-api/" %}
-[retired-versions-e-financing-api](retired-versions-e-financing-api/)
+{% content-ref url="old-versions-e-financing-api/" %}
+[old-versions-e-financing-api](old-versions-e-financing-api/)
 {% endcontent-ref %}
 
 ### UAT versions (only for partners)

@@ -8,14 +8,14 @@ Scope "`insurance:rw"`
 
 ### Latest version:
 
-{% content-ref url="v-1.1-insurance-api.md" %}
-[v-1.1-insurance-api.md](v-1.1-insurance-api.md)
+{% content-ref url="v-1.3-insurance-api.md" %}
+[v-1.3-insurance-api.md](v-1.3-insurance-api.md)
 {% endcontent-ref %}
 
 ### Old versions:
 
-{% content-ref url="retired-versions-insurance-api/" %}
-[retired-versions-insurance-api](retired-versions-insurance-api/)
+{% content-ref url="old-versions-insurance-api/" %}
+[old-versions-insurance-api](old-versions-insurance-api/)
 {% endcontent-ref %}
 
 ### UAT versions (only for partners):
