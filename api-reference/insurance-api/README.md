@@ -14,8 +14,8 @@ Scope "`insurance:rw"`
 
 ### Old versions:
 
-{% content-ref url="old-versions-insurance-api/" %}
-[old-versions-insurance-api](old-versions-insurance-api/)
+{% content-ref url="retired-versions-insurance-api/" %}
+[retired-versions-insurance-api](retired-versions-insurance-api/)
 {% endcontent-ref %}
 
 ### UAT versions (only for partners):
