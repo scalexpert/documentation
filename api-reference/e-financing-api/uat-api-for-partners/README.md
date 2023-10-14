@@ -6,6 +6,6 @@ description: This page is for partners only to refer UAT version of APIs
 
 ### UAT Latest version:
 
-{% content-ref url="v-1.2.1-e-financing-api.md" %}
-[v-1.2.1-e-financing-api.md](v-1.2.1-e-financing-api.md)
+{% content-ref url="v-1.3.3-e-financing-api.md" %}
+[v-1.3.3-e-financing-api.md](v-1.3.3-e-financing-api.md)
 {% endcontent-ref %}
