@@ -20,11 +20,15 @@ description: Status life cycle of a e-Financing subscription
 ---
 title: E-financing subscription status life cycle
 ---
-stateDiagram-v2
+stateDiagram-v2 
     [*] --> REQUESTED
     REQUESTED --> INITIALIZED 
     INITIALIZED --> ABORTED: technical incident or user abort
-    INITIALIZED --> PRE_ACCEPTED: pending KYC, signature & contract validation
+    INITIALIZED --> PRE_ACCEPTED
+note right of PRE_ACCEPTED
+pending KYC, signature 
+& contract validation
+end note
     PRE_ACCEPTED --> ACCEPTED
     PRE_ACCEPTED --> REJECTED
     INITIALIZED --> ACCEPTED
