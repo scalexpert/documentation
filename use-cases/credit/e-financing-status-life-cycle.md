@@ -16,23 +16,23 @@ description: Status life cycle of a e-Financing subscription
 
 ### Status life cycle:
 
-<div data-full-width="true">
-
-<figure><img src="../../.gitbook/assets/E-financing subscription status life cycle.drawio.png" alt=""><figcaption><p>E-financing subscription status life cycle</p></figcaption></figure>
-
-</div>
-
 ```mermaid
 ---
-title: Simple sample
+title: E-financing subscription status life cycle
 ---
 stateDiagram-v2
-    [*] --> Still
-    Still --> [*]
-
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
+    [*] --> REQUESTED
+    REQUESTED --> INITIALIZED 
+    INITIALIZED --> ABORTED: technical incident or user abort
+    INITIALIZED --> PRE_ACCEPTED: pending KYC, signature & contract validation
+    PRE_ACCEPTED --> ACCEPTED
+    PRE_ACCEPTED --> REJECTED
+    INITIALIZED --> ACCEPTED
+    INITIALIZED --> REJECTED
+    ACCEPTED --> ACCEPTED: partial cancellation
+    ACCEPTED --> CANCELLED: full cancellation
+    REJECTED --> [*]
+    CANCELLED --> [*]
+    ABORTED --> [*]
 
 ```
