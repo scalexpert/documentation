@@ -23,14 +23,16 @@ description: Status life cycle of a e-Financing subscription
 </div>
 
 ```mermaid
-graph TD
+---
+title: Simple sample
+---
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
 
-  REQUESTED --> INITIALIZED
-  INITIALIZED --> ABORTED
-  INITIALIZED --> PRE-ACCEPTED
-  PRE-ACCEPTED --> ACCEPTED
-  PRE-ACCEPTED --> REJECTED
-  INITIALIZED --> ACCEPTED
-  INITIALIZED --> REJECTED
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
 
 ```
