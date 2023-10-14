@@ -61,7 +61,8 @@
     * [V 1.1 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.1-insurance-api.md)
     * [V 1.0 - Insurance API](api-reference/insurance-api/old-versions-insurance-api/v-1.0.md)
   * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
-    * [V 1.3 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3-insurance-api.md)
+    * [V 1.3.8 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.8-insurance-api.md)
+    * [V 1.3.1 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.1-insurance-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
 
 ## Webhooks
