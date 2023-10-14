@@ -21,3 +21,16 @@ description: Status life cycle of a e-Financing subscription
 <figure><img src="../../.gitbook/assets/E-financing subscription status life cycle.drawio.png" alt=""><figcaption><p>E-financing subscription status life cycle</p></figcaption></figure>
 
 </div>
+
+```mermaid
+graph TD
+
+  REQUESTED --> INITIALIZED
+  INITIALIZED --> ABORTED
+  INITIALIZED --> PRE-ACCEPTED
+  PRE-ACCEPTED --> ACCEPTED
+  PRE-ACCEPTED --> REJECTED
+  INITIALIZED --> ACCEPTED
+  INITIALIZED --> REJECTED
+
+```
