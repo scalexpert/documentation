@@ -13,6 +13,6 @@ They are 2 modes to integrate our solutions:
 [direct.md](direct.md)
 {% endcontent-ref %}
 
-{% content-ref url="platform-solutions.md" %}
-[platform-solutions.md](platform-solutions.md)
+{% content-ref url="plugins.md" %}
+[plugins.md](plugins.md)
 {% endcontent-ref %}
