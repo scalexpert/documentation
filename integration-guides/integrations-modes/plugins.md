@@ -5,7 +5,7 @@ description: How to integrate ScaleXpert products with Plugins CMS
 # Plugins CMS solutions
 
 {% hint style="info" %}
-Announced : Prestashop & Magento plugins delivered on 20th of October
+Announced : Prestashop & Magento plugins delivered on 30th of October
 {% endhint %}
 
 ### Available plugins:
