@@ -35,7 +35,7 @@
   * [APIs](integration-guides/integrations-modes/direct.md)
   * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
   * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
-    * [Prestashop](integration-guides/integrations-modes/plugins/prestashop.md)
+    * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-installation.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## API Reference
