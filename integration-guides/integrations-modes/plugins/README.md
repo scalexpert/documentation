@@ -18,3 +18,9 @@ You can download our plugins here:
 {% embed url="https://github.com/scalexpert" %}
 Access Github Scalexpert
 {% endembed %}
+
+### Solutions supported:
+
+* E-financing split payment and long credit solutions for France
+* E-financing long credit solutions for Germany
+* Warranty extension solution for France

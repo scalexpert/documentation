@@ -33,7 +33,7 @@ At that stage, you must have an account and get your customers API keys. More de
 
 <figure><img src="../../../../.gitbook/assets/2-prestashop-setting-api-keys.gif" alt=""><figcaption><p>Setup your API keys</p></figcaption></figure>
 
-## 3- Verify your solutions activated
+## 3- Verify your activated solutions
 
 1. Make sure you have all your solutions activated according to your contract. if not contact your support.
 2. Confirm your solutions list or deactivate the ones you don't want used in your CMS. \
