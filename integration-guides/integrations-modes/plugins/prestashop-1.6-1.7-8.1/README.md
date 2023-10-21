@@ -9,3 +9,7 @@ If you want to integrate our solutions with Scalexpert Prestashop CMS plugin, yo
 {% content-ref url="prestashop-installation.md" %}
 [prestashop-installation.md](prestashop-installation.md)
 {% endcontent-ref %}
+
+{% content-ref url="prestashop-customization.md" %}
+[prestashop-customization.md](prestashop-customization.md)
+{% endcontent-ref %}
