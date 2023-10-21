@@ -15,6 +15,8 @@ Versions available are 1.6, 1.7, 8.1
 
 
 
+<figure><img src="../../../.gitbook/assets/Capture d’écran du 2023-10-21 16-17-15.png" alt=""><figcaption></figcaption></figure>
+
 <figure><img src="../../../.gitbook/assets/1-prestashop-installation.gif" alt=""><figcaption><p>install your module on Prestshop backoffice module menu</p></figcaption></figure>
 
 
