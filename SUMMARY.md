@@ -38,6 +38,7 @@
     * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
       * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
       * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
+      * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## API Reference
