@@ -14,7 +14,7 @@ Customers can follow their financing requests directly from the store at the "or
 
 Merchants can follow customers financing requests directly from the back-office at the "client order management" native Prestashop pages.
 
-<figure><img src="../../../../.gitbook/assets/2-prestashop-financing-merchantfollowup.gif" alt=""><figcaption><p>How merchyants can follow customers financing requests</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/2-prestashop-financing-merchantfollowup.gif" alt=""><figcaption><p>How merchants can follow customers financing requests</p></figcaption></figure>
 
 ## 3- Financing request statuses
 
