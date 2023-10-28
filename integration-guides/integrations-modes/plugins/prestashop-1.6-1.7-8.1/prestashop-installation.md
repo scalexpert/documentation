@@ -8,7 +8,7 @@ description: How to install and setup Scalexpert Prestashop plugin
 Installation guide done on version 1.7
 {% endhint %}
 
-## 1-Installation from Github
+## 1-Installation from GitHub
 
 {% embed url="https://github.com/scalexpert/scalexpert-prestashop/releases" %}
 
