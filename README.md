@@ -1,25 +1,23 @@
 ---
-description: What you should know before you start
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: false
+  outline:
+    visible: false
+  pagination:
+    visible: true
 ---
 
-# Before you start
+# Welcome to developers docs
 
-Goal of this tutorial is to explain step-by-step and illustrate how you can use and integrate our solutions. But before you start there are some prerequisites and explanations you must understand:
+## Hey fellows developers ! :wave:
 
-* Our solutions are integrated through APIs and plugins (coming soon). But in any case you would need to **subscribe to APIs and get your credentials (API keys + secret).**
-* APIs are available on 2 environments: production and sandbox (coming soon). For subscribing to APIs **you will need to have an account.** The procedure to create an account is described [here](developers-docs/readme/account-creation.md).
-* **For subscribing to production APIs** you will need to complete your "[customer on boarding](#user-content-fn-1)[^1]" and get access to the developer portal with your "[**developers merchant's organization**](#user-content-fn-2)[^2]". The support team will prepare for you everything but in case of the procedure to onboard the developer portal is described [here](developers-docs/readme/on-boarding-api.md). Once your subscription is confirmed you are almost ready to start.
-* To use the APIs, you must select the use case you want. All the uses cases are described [here](broken-reference).
-* To integrate the APIs, you must select your integration mode. All integration mode are described [here](broken-reference).   &#x20;
-
-You are ready then go to "[Get started page](developers-docs/get-started/)"
-
-{% hint style="warning" %}
-The sandbox environment is not yet available. It will be delivered very soon.
-{% endhint %}
-
-
-
-[^1]: Once your contract signed, an onboarding process will be handle by our sales support to activate your solutions in sandbox and production environments. &#x20;
-
-[^2]: A developer merchant organization will be created during your on boarding. This organization will manage developers access to the API and keys.
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td>Before your start</td><td></td><td><a href="README (1).md">README (1).md</a></td><td><a href=".gitbook/assets/Capture d’écran du 2023-10-28 17-25-45.png">Capture d’écran du 2023-10-28 17-25-45.png</a></td></tr><tr><td>Get started</td><td></td><td></td><td><a href=".gitbook/assets/Capture d’écran du 2023-10-28 17-26-36.png">Capture d’écran du 2023-10-28 17-26-36.png</a></td></tr><tr><td>API reference</td><td></td><td></td><td><a href=".gitbook/assets/Capture d’écran du 2023-10-28 17-26-57.png">Capture d’écran du 2023-10-28 17-26-57.png</a></td></tr></tbody></table>

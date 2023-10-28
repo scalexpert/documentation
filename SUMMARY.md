@@ -2,7 +2,8 @@
 
 ## Developers Docs
 
-* [Before you start](README.md)
+* [Welcome to developers docs](README.md)
+* [Before you start](<README (1).md>)
   * [Account creation](developers-docs/readme/account-creation.md)
   * [On boarding API](developers-docs/readme/on-boarding-api.md)
   * [API catalog](developers-docs/readme/api-catalog.md)

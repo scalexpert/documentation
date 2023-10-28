@@ -167,8 +167,8 @@ Refer to the **API reference** section for detailed information on each endpoint
 
 Before starting the integration process, make sure you have complete the prerequisites. Refer to "Before you start" pages for more details
 
-{% content-ref url="../../" %}
-[..](../../)
+{% content-ref url="../../README (1).md" %}
+[README (1).md](<../../README (1).md>)
 {% endcontent-ref %}
 
 Also have a look at "Security best practices" pages. For instance, make attention that API must be implemented at server side and not at front side.
