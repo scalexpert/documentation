@@ -25,9 +25,7 @@ API url Production
 
 ### Test for customer (UATC)
 
-{% embed url="https://api.scalexpert.societegenerale.com/baas/uatc" %}
-API Url Test Customer
-{% endembed %}
+{% embed url="https://api.scalexpert.uatc.societegenerale.com/baas/uatc" %}
 
 {% hint style="info" %}
 Coming soon ! A Sandbox environment for none customer will be available in the coming months.&#x20;
