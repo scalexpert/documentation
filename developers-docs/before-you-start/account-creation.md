@@ -1,20 +1,20 @@
 ---
-description: What you need to know on account
+description: How to create your customer account
 ---
 
 # Account creation
 
 {% hint style="info" %}
-Important: no account creation is required to consult [API catalog](api-catalog.md#1-access-catalog) and documentation that are public.&#x20;
+Important: **no account creation is required to consult API catalog and documentation** that are public.  see more details [here](broken-reference).
 {% endhint %}
 
-**An account is required to subscribe to APIs.** The account creation is 4 steps process.&#x20;
+**A customer account is required to subscribe to APIs.** The account creation is 4 steps process.&#x20;
 
 {% tabs %}
 {% tab title="1-Login" %}
-On login page click on **"Start Now" link** to be redirected on the account creation page
+On login page click on **"Start now" link** to be redirected on the account creation page
 
-<figure><img src="../../.gitbook/assets/Annotation 2023-04-24 150143.jpg" alt=""><figcaption><p>Login page</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Capture d’écran du 2023-10-29 17-15-56.png" alt=""><figcaption><p>Login page</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="2-Account form" %}

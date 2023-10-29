@@ -1,12 +1,12 @@
 ---
-description: How to on board on the developer portal
+description: On board on the developer portal (API console)
 ---
 
 # On boarding API
 
 The developer portal is the application to:
 
-* Consult the APIs catalog and the API documentation (Public no authentication required)
+* Consult the APIs catalog and the API documentation (Public no authentication required). You can also access the API documentation from this documention [here](broken-reference).&#x20;
 * Manage your developers mechant's organization
 * Declare your [Client Apps](#user-content-fn-1)[^1] and get your credentials (Client ID and Secret)&#x20;
 * Subscribe to one or many APIs according solutions in your contract.
