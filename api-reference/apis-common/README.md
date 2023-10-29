@@ -14,6 +14,8 @@ This part of the guide will make an overview of all common concepts of the APis:
 * Versioning: how versions are managed and which versions of APIs are available at one instant
 * Error object & codes: how error object is structured ans what are the main error codes
 
+[more reading ...](api-urls.md)
+
 ### API documentation
 
 {% content-ref url="../e-financing-api/" %}
