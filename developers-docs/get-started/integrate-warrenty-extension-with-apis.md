@@ -12,14 +12,14 @@ To integrate one of our warrenty extension solution with APIs follow the below s
 
 Then consult this guide to know how to implement APIs
 
-{% content-ref url="../../integration-guides/integrations-modes/direct.md" %}
-[direct.md](../../integration-guides/integrations-modes/direct.md)
+{% content-ref url="../../integration-guides/integrations-modes/direct/" %}
+[direct](../../integration-guides/integrations-modes/direct/)
 {% endcontent-ref %}
 
 Test our APIs with our public Postman collection
 
-{% content-ref url="../../integration-guides/integrations-modes/apis-postman-collection.md" %}
-[apis-postman-collection.md](../../integration-guides/integrations-modes/apis-postman-collection.md)
+{% content-ref url="../../integration-guides/integrations-modes/direct/apis-postman-collection.md" %}
+[apis-postman-collection.md](../../integration-guides/integrations-modes/direct/apis-postman-collection.md)
 {% endcontent-ref %}
 
 At any time, you can refers to the API reference:&#x20;

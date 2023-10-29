@@ -33,8 +33,8 @@
 ## Integration Guides
 
 * [Integrations modes](integration-guides/integrations-modes/README.md)
-  * [APIs](integration-guides/integrations-modes/direct.md)
-  * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
+  * [APIs](integration-guides/integrations-modes/direct/README.md)
+    * [APIs postman collection](integration-guides/integrations-modes/direct/apis-postman-collection.md)
   * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
     * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
       * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
@@ -61,7 +61,7 @@
 * [Insurance API](api-reference/insurance-api/README.md)
   * [V 1.3.8 - Insurance API](api-reference/insurance-api/v-1.3.8-insurance-api.md)
   * [Retired versions Insurance API](api-reference/insurance-api/old-versions-insurance-api/README.md)
-    * [V 1.3.5 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.3.5-insurance-api.md)
+    * [V 1.3.5 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.3-insurance-api.md)
     * [V 1.1 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.1-insurance-api.md)
     * [V 1.0 - Insurance API](api-reference/insurance-api/old-versions-insurance-api/v-1.0.md)
   * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
