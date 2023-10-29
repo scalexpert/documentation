@@ -13,11 +13,9 @@ Long Term e-financing credit solution is proposed by FRANFINANCE subsidiary For 
 {% endhint %}
 
 1. e-Financing Long Term Credit journey for French buyers \
-   This step is executed by the producer (FRANFINANCE). This journey is a few screens credit experience of which the buyer will complete its credit application before getting a pre-acceptation from the bank.\
-
+   This step is executed by the producer (FRANFINANCE). This journey consist of a few screens credit experience of which the buyer will complete its credit application including KYC and contract signature before getting a pre-acceptation from the bank.&#x20;
 2. Confirmation page on e-commerce website\
-   After pre-acceptation from the bank, the buyer will be redirected on the e-merchant confirmation e-website page. The merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the resulting status. The status could be either PRE-ACCEPTED or REJECTED (cf. attribute field "consolidatedStatus").&#x20;
-3. When Status is PRE-ACCEPTED, the buyer will be redirected to the KYC and e-signature journey managed by a bank partner (WEBID).&#x20;
-4. Since contract is signed, the bank will confirm final acceptation. On daily basis the merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the resulting status. The status could be either ACCEPTED or REJECTED. If ACCEPTED the merchant can deliver the goods to the buyer.
+   After pre-acceptation from the bank, the buyer will be redirected on the e-merchant confirmation e-website page. The merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the status. The status could be either PRE-ACCEPTED or REJECTED (cf.  [status life cycle](e-financing-status-life-cycle.md)).&#x20;
+3. Since contract is signed, the bank will confirm final acceptation. On daily basis the merchant will have to access with [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the final status. The status could be either ACCEPTED or REJECTED. If ACCEPTED the merchant can deliver the goods to the buyer.
 
 <figure><img src="../../.gitbook/assets/Long Term Credit journey (France).png" alt=""><figcaption><p>LT credit France</p></figcaption></figure>
