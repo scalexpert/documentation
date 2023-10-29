@@ -8,8 +8,8 @@ Scope "`e-financing:rw"`
 
 ### Latest version:
 
-{% content-ref url="v-1.3-e-financing-api.md" %}
-[v-1.3-e-financing-api.md](v-1.3-e-financing-api.md)
+{% content-ref url="retired-versions-e-financing-api/v-1.3.1-e-financing-api.md" %}
+[v-1.3.1-e-financing-api.md](retired-versions-e-financing-api/v-1.3.1-e-financing-api.md)
 {% endcontent-ref %}
 
 ### Old versions:
