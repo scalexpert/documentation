@@ -12,6 +12,8 @@ end
 Buyer-#lightgreen>Finance:Complete a financing Long Term credit subscription
 activate Buyer #lightgreen
 activate Finance #black
+Buyer-#lightgreen>Finance:complete KYC (facial recognition)
+Buyer-#lightgreen>Finance:sign contract
 Buyer<--Finance:Redirect to Merchant confirmation page
 deactivate Finance
 deactivate Buyer
@@ -36,16 +38,12 @@ deactivate API
 Buyer<#steelblue--Merchant:Display confirmation page
 deactivate Buyer
 
-== Run e-Signature journey  == #lightgreen
 
-Buyer<--Finance:Redirect to e-signature journey
 activate Buyer #lightgreen
 activate Finance #black
-Buyer-#lightgreen>Finance:sign contract
-Buyer<--Finance:Confirm Contract is signed
 deactivate Buyer
 
-== Get final Validation from the banky  == #lightgreen
+== Get final Validation from the bank  == #lightgreen
 
 API<--Finance:Update ACCEPTED or REJECTED STATUS
 deactivate Finance
