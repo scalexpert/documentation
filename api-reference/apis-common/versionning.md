@@ -20,7 +20,7 @@ Minor versions and patches change will not impact the url meaning the endpoints 
 All change under major version are ascendant compatibles. In case of breaking that compatibility, a new major version will be created.
 {% endhint %}
 
-We will mention in the API reference pages of this guide the content of change operated in the versions and also we will keep the history of version change.
+Change log: We will maintain a "change log" section in the API reference pages of this guide with the content of change operated in the versions and also we will keep the history of version change.
 
 {% hint style="info" %}
 In the developer portal we will reference only the last version of APIs. But we will make available last and previous major versions during a 6 months minimum  period to allow customers making migration under last version.
