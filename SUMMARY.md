@@ -33,8 +33,8 @@
 ## Integration Guides
 
 * [Integrations modes](integration-guides/integrations-modes/README.md)
-  * [APIs](integration-guides/integrations-modes/direct/README.md)
-    * [APIs postman collection](integration-guides/integrations-modes/direct/apis-postman-collection.md)
+  * [APIs](integration-guides/integrations-modes/direct.md)
+    * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
   * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
     * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
       * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)

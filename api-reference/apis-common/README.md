@@ -31,3 +31,11 @@ This part of the guide will make an overview of all common concepts of the APis:
 ### API console
 
 {% embed url="https://dev.scalexpert.societegenerale.com/en/prod" %}
+Access the API console
+{% endembed %}
+
+### API collections
+
+{% content-ref url="../../integration-guides/integrations-modes/apis-postman-collection.md" %}
+[apis-postman-collection.md](../../integration-guides/integrations-modes/apis-postman-collection.md)
+{% endcontent-ref %}

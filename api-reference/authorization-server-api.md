@@ -24,7 +24,7 @@ Download swagger file:
 swagger auth-server API
 {% endfile %}
 
-See samples codes [here](../integration-guides/integrations-modes/direct/#authentication-and-authorization)
+See samples codes [here](../integration-guides/integrations-modes/direct.md#authentication-and-authorization)
 
 Link to developer portal documentation:
 

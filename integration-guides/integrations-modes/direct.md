@@ -31,18 +31,18 @@ The APIs allows you to interact with the our platform pro-grammatically, enablin
 
 For more details refer to:
 
-{% content-ref url="../../../api-reference/apis-common/" %}
-[apis-common](../../../api-reference/apis-common/)
+{% content-ref url="../../api-reference/apis-common/" %}
+[apis-common](../../api-reference/apis-common/)
 {% endcontent-ref %}
 
 #### Authentication and Authorization
 
-To access these APIs, you'll need to authenticate your requests by obtaining [an oAuth2 access token](./#obtain-an-oauth2-access-token). API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
+To access these APIs, you'll need to authenticate your requests by obtaining [an oAuth2 access token](direct.md#obtain-an-oauth2-access-token). API Keys are obtained from the developer portal, which serves as your access credential. They are used to authenticate your service using [**oAuth 2.0 client credentials flow.**](../../api-reference/apis-common/authentication.md) Upon authorization for the claimed scopes the issued token will be used to identify each subsequent request.
 
 Refer to authentication API reference for more details:
 
-{% content-ref url="../../../api-reference/apis-common/authentication.md" %}
-[authentication.md](../../../api-reference/apis-common/authentication.md)
+{% content-ref url="../../api-reference/apis-common/authentication.md" %}
+[authentication.md](../../api-reference/apis-common/authentication.md)
 {% endcontent-ref %}
 
 #### Obtain an oAuth2 access token
@@ -167,29 +167,29 @@ Refer to the **API reference** section for detailed information on each endpoint
 
 Before starting the integration process, make sure you have complete the prerequisites. Refer to "Before you start" pages for more details
 
-{% content-ref url="../../../developers-docs/before-you-start/" %}
-[before-you-start](../../../developers-docs/before-you-start/)
+{% content-ref url="../../developers-docs/before-you-start/" %}
+[before-you-start](../../developers-docs/before-you-start/)
 {% endcontent-ref %}
 
 Also have a look at "Security best practices" pages. For instance, make attention that API must be implemented at server side and not at front side.
 
-{% content-ref url="../../../security/security-best-practices.md" %}
-[security-best-practices.md](../../../security/security-best-practices.md)
+{% content-ref url="../../security/security-best-practices.md" %}
+[security-best-practices.md](../../security/security-best-practices.md)
 {% endcontent-ref %}
 
 #### API Access Credentials and Keys
 
 Refer to "Before you start/API key" section for instructions:
 
-{% content-ref url="../../../developers-docs/before-you-start/api-key.md" %}
-[api-key.md](../../../developers-docs/before-you-start/api-key.md)
+{% content-ref url="../../developers-docs/before-you-start/api-key.md" %}
+[api-key.md](../../developers-docs/before-you-start/api-key.md)
 {% endcontent-ref %}
 
 #### Testing Environment Setup
 
 Set up a testing environment to ensure smooth integration and testing of the E-Financing API:
 
-* [User Acceptance Test for customer (UATC) ](../../../api-reference/apis-common/api-urls.md#test-for-customer-uatc)environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
+* [User Acceptance Test for customer (UATC) ](../../api-reference/apis-common/api-urls.md#test-for-customer-uatc)environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
 * API Documentation: Familiarize yourself with the API documentation, including endpoint details, request/response examples, and any available snippets  that can expedite the integration process.
 
 {% hint style="info" %}
@@ -207,9 +207,9 @@ To determine the eligible e-financing solutions available for a specific purchas
 1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and country of the buyer end user (or by default country of your site).
 2. Make a GET Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
 3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated merchant communication kit informations.
-4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../../use-cases/showcasing-solutions.md)).&#x20;
+4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../use-cases/showcasing-solutions.md)).&#x20;
 
-Refer to [API GET /eligible-solutions](../../../api-reference/e-financing-api/)
+Refer to [API GET /eligible-solutions](../../api-reference/e-financing-api/)
 
 {% tabs %}
 {% tab title="Node.js" %}
@@ -307,7 +307,7 @@ To initiate an e-financing subscription for a customer, follow these steps:
 2. Make a POST Request: Use the appropriate API endpoint, passing the necessary customer information and subscription details.
 3. Handle Response: Capture and process the response, which will contain the subscription ID and any additional information provided by the API.
 
-Refer to [API POST /susbscriptions](../../../api-reference/e-financing-api/)
+Refer to [API POST /susbscriptions](../../api-reference/e-financing-api/)
 
 {% tabs %}
 {% tab title="Node.js" %}
