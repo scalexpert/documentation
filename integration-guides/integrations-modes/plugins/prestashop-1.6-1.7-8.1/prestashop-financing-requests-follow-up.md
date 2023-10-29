@@ -34,7 +34,7 @@ There is no automatic rules in place in this version to move on the order status
 This will come soon in a new release !
 {% endhint %}
 
-See more details on financing requests statuses here [E-financing solutions life cycle](../../../../use-cases/credit/e-financing-status-life-cycle.md).
+See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md).
 
 {% hint style="info" %}
 Financing request statuses are collected at different times: after return of financing customer journeys, on periodic basis for asynchronous steps. Some mechanism for requesting statuses are in place (for more details see advanced configuration guide).

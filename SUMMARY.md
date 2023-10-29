@@ -4,46 +4,22 @@
 
 * [Welcome to developers docs](README.md)
 
-## For Customers
+## FOR DISCOVERY
 
-* [Before you start](for-customers/before-you-start/README.md)
-  * [Account creation](for-customers/before-you-start/account-creation.md)
-  * [On boarding API](for-customers/before-you-start/on-boarding-api.md)
-  * [API catalog](for-customers/before-you-start/api-catalog.md)
-  * [API key](for-customers/before-you-start/api-key.md)
-  * [Advanced features](for-customers/before-you-start/advanced-features.md)
-* [Get Started](for-customers/get-started/README.md)
-  * [Integrate e-financing with APIs](for-customers/get-started/integrate-e-financing-with-apis.md)
-  * [Integrate Warrenty extension with APIs](for-customers/get-started/integrate-warrenty-extension-with-apis.md)
-
-## Use Cases
-
-* [e-Financing journeys](use-cases/credit/README.md)
-  * [Initiate an e-financing journey](use-cases/credit/initiate-an-e-financing-journey.md)
-  * [Split Payment Journey France](use-cases/credit/split-payment-journey-france.md)
-  * [Long Term Credit Journey France](use-cases/credit/long-term-credit-journey-france.md)
-  * [Long Term Credit Journey Germany](use-cases/credit/long-term-credit-journey-germany.md)
-  * [Funded, Cancellation journeys](use-cases/credit/funded-cancellation-or-reimbursed-journey.md)
-    * [Cancellation journey Split Payment](use-cases/credit/funded-cancellation-or-reimbursed-journey/cancellation-journey-split-payment.md)
-  * [E-financing Status life cycle](use-cases/credit/e-financing-status-life-cycle.md)
-* [Contextual Insurance journeys](use-cases/insurance/README.md)
-  * [Initiate an insurance journey](use-cases/insurance/initiate-an-insurance-journey.md)
-  * [Create an insurance quotation](use-cases/insurance/create-an-insurance-quotation.md)
-  * [Subscribe to an insurance policy](use-cases/insurance/subscribe-to-an-insurance-policy.md)
-  * [Insurance Status life cycle](use-cases/insurance/insurance-status-life-cycle.md)
-* [Showcasing solutions](use-cases/showcasing-solutions.md)
-
-## Integration Guides
-
-* [Integrations modes](integration-guides/integrations-modes/README.md)
-  * [APIs](integration-guides/integrations-modes/direct.md)
-    * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
-  * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
-    * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
-      * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
-      * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
-      * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
-* [Go-Live check-list](integration-guides/go-live-check-list.md)
+* [e-Financing journeys](for-discovery/credit/README.md)
+  * [Initiate an e-financing journey](for-discovery/credit/initiate-an-e-financing-journey.md)
+  * [Split Payment Journey France](for-discovery/credit/split-payment-journey-france.md)
+  * [Long Term Credit Journey France](for-discovery/credit/long-term-credit-journey-france.md)
+  * [Long Term Credit Journey Germany](for-discovery/credit/long-term-credit-journey-germany.md)
+  * [Funded, Cancellation journeys](for-discovery/credit/funded-cancellation-or-reimbursed-journey/README.md)
+    * [Cancellation journey Split Payment](for-discovery/credit/funded-cancellation-or-reimbursed-journey/cancellation-journey-split-payment.md)
+  * [E-financing Status life cycle](for-discovery/credit/e-financing-status-life-cycle.md)
+* [Contextual Insurance journeys](for-discovery/insurance/README.md)
+  * [Initiate an insurance journey](for-discovery/insurance/initiate-an-insurance-journey.md)
+  * [Create an insurance quotation](for-discovery/insurance/create-an-insurance-quotation.md)
+  * [Subscribe to an insurance policy](for-discovery/insurance/subscribe-to-an-insurance-policy.md)
+  * [Insurance Status life cycle](for-discovery/insurance/insurance-status-life-cycle.md)
+* [Showcasing solutions](for-discovery/showcasing-solutions.md)
 
 ## API Reference
 
@@ -70,6 +46,30 @@
   * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
     * [V 1.3.8 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.8-insurance-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
+
+## Ready to start
+
+* [Before you start](ready-to-start/before-you-start/README.md)
+  * [Account creation](ready-to-start/before-you-start/account-creation.md)
+  * [On boarding API](ready-to-start/before-you-start/on-boarding-api.md)
+  * [API catalog](ready-to-start/before-you-start/api-catalog.md)
+  * [API key](ready-to-start/before-you-start/api-key.md)
+  * [Advanced features](ready-to-start/before-you-start/advanced-features.md)
+* [Get Started](ready-to-start/get-started/README.md)
+  * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
+  * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
+
+## Integration Guides
+
+* [Integrations modes](integration-guides/integrations-modes/README.md)
+  * [APIs](integration-guides/integrations-modes/direct.md)
+    * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
+  * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
+    * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
+      * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
+      * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
+      * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
+* [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## Webhooks
 

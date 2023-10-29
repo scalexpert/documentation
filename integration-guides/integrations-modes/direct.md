@@ -167,8 +167,8 @@ Refer to the **API reference** section for detailed information on each endpoint
 
 Before starting the integration process, make sure you have complete the prerequisites. Refer to "Before you start" pages for more details
 
-{% content-ref url="../../for-customers/before-you-start/" %}
-[before-you-start](../../for-customers/before-you-start/)
+{% content-ref url="../../ready-to-start/before-you-start/" %}
+[before-you-start](../../ready-to-start/before-you-start/)
 {% endcontent-ref %}
 
 Also have a look at "Security best practices" pages. For instance, make attention that API must be implemented at server side and not at front side.
@@ -181,8 +181,8 @@ Also have a look at "Security best practices" pages. For instance, make attentio
 
 Refer to "Before you start/API key" section for instructions:
 
-{% content-ref url="../../for-customers/before-you-start/api-key.md" %}
-[api-key.md](../../for-customers/before-you-start/api-key.md)
+{% content-ref url="../../ready-to-start/before-you-start/api-key.md" %}
+[api-key.md](../../ready-to-start/before-you-start/api-key.md)
 {% endcontent-ref %}
 
 #### Testing Environment Setup
@@ -207,7 +207,7 @@ To determine the eligible e-financing solutions available for a specific purchas
 1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and country of the buyer end user (or by default country of your site).
 2. Make a GET Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
 3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated merchant communication kit informations.
-4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../use-cases/showcasing-solutions.md)).&#x20;
+4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../for-discovery/showcasing-solutions.md)).&#x20;
 
 Refer to [API GET /eligible-solutions](../../api-reference/e-financing-api/)
 

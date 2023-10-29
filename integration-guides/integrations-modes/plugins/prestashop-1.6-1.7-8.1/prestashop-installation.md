@@ -20,7 +20,7 @@ Installation guide done on version 1.7
 ## 2-Setting your API keys
 
 {% hint style="warning" %}
-At that stage, you must have an account and get your customers API keys. More details [here](../../../../for-customers/before-you-start/).
+At that stage, you must have an account and get your customers API keys. More details [here](../../../../ready-to-start/before-you-start/).
 {% endhint %}
 
 1. Go to Scalexpert menu  "administrer / paramétrer les clés".
