@@ -1,5 +1,5 @@
 ---
-description: How to integrate ScaleXpert products with Plugins CMS
+description: How to integrate Scalexpert solutions with Plugins CMS
 ---
 
 # Plugins CMS solutions
@@ -30,3 +30,5 @@ Access Github Scalexpert
 * E-financing split payment and long credit solutions for France
 * E-financing long credit solutions for Germany
 * Warranty extension solution for France
+
+For more details on our solutions have a look [here](broken-reference).

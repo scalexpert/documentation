@@ -1,10 +1,10 @@
 ---
-description: What you should know before you start
+description: For customers
 ---
 
 # Before you start
 
-Goal of this tutorial is to explain step-by-step and illustrate how you can use and integrate our solutions. But before you start there are some prerequisites and explanations you must understand:
+You choose our solutions, thank you ! :smile: Now let guide you  step-by-step and illustrate how you can use and integrate our solutions. But before you start there are some prerequisites and explanations you must understand:
 
 * Our solutions are integrated through APIs and plugins. But in any case you would need to **subscribe to APIs and get your credentials (API keys + secret).**
 * APIs are available on 2 environments: production and test. For subscribing to APIs **you will need to have an customer account.** The procedure to create an account is described [here](account-creation.md).

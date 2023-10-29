@@ -3,15 +3,18 @@
 ## Developers Docs
 
 * [Welcome to developers docs](README.md)
-* [Before you start](developers-docs/before-you-start/README.md)
-  * [Account creation](developers-docs/before-you-start/account-creation.md)
-  * [On boarding API](developers-docs/before-you-start/on-boarding-api.md)
-  * [API catalog](developers-docs/before-you-start/api-catalog.md)
-  * [API key](developers-docs/before-you-start/api-key.md)
-  * [Advanced features](developers-docs/before-you-start/advanced-features.md)
-* [Get Started](developers-docs/get-started/README.md)
-  * [Integrate e-financing with APIs](developers-docs/get-started/integrate-e-financing-with-apis.md)
-  * [Integrate Warrenty extension with APIs](developers-docs/get-started/integrate-warrenty-extension-with-apis.md)
+
+## For Customers
+
+* [Before you start](for-customers/before-you-start/README.md)
+  * [Account creation](for-customers/before-you-start/account-creation.md)
+  * [On boarding API](for-customers/before-you-start/on-boarding-api.md)
+  * [API catalog](for-customers/before-you-start/api-catalog.md)
+  * [API key](for-customers/before-you-start/api-key.md)
+  * [Advanced features](for-customers/before-you-start/advanced-features.md)
+* [Get Started](for-customers/get-started/README.md)
+  * [Integrate e-financing with APIs](for-customers/get-started/integrate-e-financing-with-apis.md)
+  * [Integrate Warrenty extension with APIs](for-customers/get-started/integrate-warrenty-extension-with-apis.md)
 
 ## Use Cases
 
