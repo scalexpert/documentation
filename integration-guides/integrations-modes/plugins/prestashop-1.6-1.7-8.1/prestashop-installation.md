@@ -12,7 +12,7 @@ Installation guide done on version 1.7
 
 {% embed url="https://github.com/scalexpert/scalexpert-prestashop/releases" %}
 
-1. Go to [Scalexpert github repository](https://github.com/scalexpert/scalexpert-prestashop) and download the version required.
+1. Go to Scalexpert github repository and download the version required.
 2. Go to Prestashop backoffice, module menu and install your module.
 
 <figure><img src="../../../../.gitbook/assets/1-prestashop-install-module (2).gif" alt=""><figcaption><p>Install Prestashop module</p></figcaption></figure>
