@@ -12,6 +12,14 @@ Installation guide done on version 1.7
 
 {% embed url="https://github.com/scalexpert/scalexpert-prestashop/releases" %}
 
+Scalexpert Prestashop plugins has been developed in 2 versions to support:\
+\- Prestahop 1.6 / 1.7\
+\- Prestashop 8.1 and upper
+
+{% hint style="warning" %}
+Version for prestashop 1.6 and 1.7 will support only PHP 7.0 and upper versions
+{% endhint %}
+
 1. Go to Scalexpert github repository and download the version required.
 2. Go to Prestashop backoffice, module menu and install your module.
 
