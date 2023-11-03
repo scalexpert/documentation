@@ -20,18 +20,3 @@ Split payment e-financing solution is proposed by FRANFINANCE SG subsidiary for 
    After the redirection, the merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the resulting status. The status could be either ACCEPTED or REJECTED (cf. attribute field "consolidatedStatus"). Once received the confirmation page will be displayed to the buyer. If ACCEPTED the merchant can deliver the goods to the buyer.
 
 <figure><img src="../../.gitbook/assets/Split payment journey (BNPL).png" alt=""><figcaption></figcaption></figure>
-
-<details>
-
-<summary>Card bank numbers for testing purpose</summary>
-
-* ACCEPTED (CB) - 5017 6791 1038 0400
-* REFUSED (CB) - 5017 6791 1038 0900
-* ACCEPTED (VISA) - 5017 6792 1000 0700
-* REFUSED (VISA) - 5017 6792 1000 0200
-* ACCEPTED (Mastercard) - 5017 6794 1000 0500
-* REFUSED (Mastercard) - 5017 6794 1000 0000
-
-For any other cases contact our integration support team [sg-ecommerce-support.world@socgen.com](mailto://sg-ecommerce-support.world@socgen.com)&#x20;
-
-</details>

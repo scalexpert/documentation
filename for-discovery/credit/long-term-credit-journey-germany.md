@@ -21,19 +21,3 @@ Long Term e-financing credit solution is proposed by HANSEATIC BANK SG, our subs
 4. Since contract is signed, the bank will confirm final acceptation. On daily basis the merchant will have to access the [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the resulting status. The status could be either ACCEPTED or REJECTED. If ACCEPTED the merchant can deliver the goods to the buyer.
 
 <figure><img src="../../.gitbook/assets/Long Term Credit journey (Germany).png" alt=""><figcaption></figcaption></figure>
-
-<details>
-
-<summary>IBAN and KYC pin codes for testing purposes</summary>
-
-Test IBAN [https://fr.iban.com/testibans](https://fr.iban.com/testibans)&#x20;
-
-**KYC pin codes**:\
-\- for successful KYC use 123456\
-\- for unsuccessful KYC use 654321&#x20;
-
-**Important:** you have to type in a real mobile number to receive the final SMS for signature
-
-For any other cases contact our integration support team [sg-ecommerce-support.world@socgen.com](mailto://sg-ecommerce-support.world@socgen.com)&#x20;
-
-</details>

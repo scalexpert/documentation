@@ -20,6 +20,7 @@
   * [Subscribe to an insurance policy](for-discovery/insurance/subscribe-to-an-insurance-policy.md)
   * [Insurance Status life cycle](for-discovery/insurance/insurance-status-life-cycle.md)
 * [Showcasing solutions](for-discovery/showcasing-solutions.md)
+* [Testing solutions](for-discovery/testing-solutions.md)
 
 ## API Reference
 
