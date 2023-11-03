@@ -19,17 +19,3 @@ Long Term e-financing credit solution is proposed by FRANFINANCE subsidiary For 
 3. Since contract is signed, the bank will confirm final acceptation. On daily basis the merchant will have to access with [`GET credit/v1/subscriptions/{creditSubscriptionId} API`](../../api-reference/e-financing-api/) in order to get the final status. The status could be either ACCEPTED or REJECTED. If ACCEPTED the merchant can deliver the goods to the buyer.
 
 <figure><img src="../../.gitbook/assets/Long Term Credit journey (France).png" alt=""><figcaption><p>LT credit France</p></figcaption></figure>
-
-<details>
-
-<summary>IBAN and KYC pin codes for testing purposes</summary>
-
-Test IBAN [https://fr.iban.com/testibans](https://fr.iban.com/testibans)&#x20;
-
-**KYC pin codes**:\
-\- for successful KYC use 123456\
-\- for unsuccessful KYC use 654321&#x20;
-
-**Important:** you have to type in a real mobile number to receive the final SMS for signature
-
-</details>
