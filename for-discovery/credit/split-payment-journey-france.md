@@ -32,4 +32,6 @@ Split payment e-financing solution is proposed by FRANFINANCE SG subsidiary for 
 * ACCEPTED (Mastercard) - 5017 6794 1000 0500
 * REFUSED (Mastercard) - 5017 6794 1000 0000
 
+For any other cases contact our integration support team [sg-ecommerce-support.world@socgen.com](mailto://sg-ecommerce-support.world@socgen.com)&#x20;
+
 </details>

@@ -28,7 +28,9 @@ Test IBAN [https://fr.iban.com/testibans](https://fr.iban.com/testibans)&#x20;
 
 **Important** Follow the "happy path" to complete your tests:\
 \- use real identity documents to complet the KYC step\
-\- Finance lower than 3000 € will be automatically accepted\
+\- Finance lower than 3000 € will be automatically accepted
+
+\
 For any other cases contact our integration support team [sg-ecommerce-support.world@socgen.com](mailto://sg-ecommerce-support.world@socgen.com)&#x20;
 
 </details>

@@ -34,4 +34,6 @@ Test IBAN [https://fr.iban.com/testibans](https://fr.iban.com/testibans)&#x20;
 
 **Important:** you have to type in a real mobile number to receive the final SMS for signature
 
+For any other cases contact our integration support team [sg-ecommerce-support.world@socgen.com](mailto://sg-ecommerce-support.world@socgen.com)&#x20;
+
 </details>
