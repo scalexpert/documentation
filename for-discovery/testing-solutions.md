@@ -6,11 +6,11 @@ description: Useful data for testing purposes
 
 ### e-Financing solutions
 
-French split payment journey will require to fill in a card bank number
+French split payment journey will require to fill in a French card bank number
 
-French Long credit journey will require to fill in an IBAN and also download identity documents to complete KYC steps. To follow the "happy path" to complete your tests use real identity documents to complet the KYC step and finance an amount lower than 3000 € will be automatically accepted
+French Long credit journey will require to fill in an IBAN and also download identity documents to complete KYC steps. To follow the "happy path" use real identity documents to complete the KYC step and put a finance amount lower than 3000 € to be automatically accepted.
 
-German long credit journey will require to fill an IBAN and KYC codes for KYC steps
+German long credit journey will require to fill in an German IBAN and KYC pin codes
 
 <details>
 
