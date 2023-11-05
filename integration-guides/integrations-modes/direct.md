@@ -337,7 +337,7 @@ Rendering of communication KIT (ex long term credit):
 Make sure at minimum "visualLegalText" is always rendered on your site for legal compliance.
 {% endhint %}
 
-#### Step 2: Initiate an E-Financing Subscription
+#### Step 3: Initiate an E-Financing Subscription
 
 To initiate an e-financing subscription for a customer, follow these steps:
 
@@ -639,7 +639,7 @@ Response response = client.newCall(request).execute();
 {% endtab %}
 {% endtabs %}
 
-#### Step 3: Retrieve E-Financing Subscription Details
+#### Step 4: Retrieve E-Financing Subscription Details
 
 To retrieve the details of a specific e-financing subscription, follow these steps:
 
@@ -735,29 +735,6 @@ Response response = client.newCall(request).execute();
 {% endtab %}
 {% endtabs %}
 
-### 5. Best Practices and Considerations
+Congratulations! :tada: You've now completed the API integration guide.&#x20;
 
-To ensure a successful API integration and optimal performance, consider the following best practices:
-
-* Data Security and Privacy: Follow secure coding practices, encrypt sensitive data, and adhere to industry standards for data protection and privacy. \
-  `(TODO : add content to security best practices page)`
-* Error Handling and Error Codes: Implement robust error handling mechanisms to gracefully handle API errors and provide meaningful error messages to users. \
-  `(TODO : add an error handling page)`
-* Performance Optimization: Optimize API requests and responses for efficiency, minimize unnecessary data transfers, and utilize caching mechanisms where applicable. \
-  `(TODO : provide guidance on effective token usage and renewal)`
-* Versioning and API Updates: Stay up-to-date with the E-Financing provider's API updates and versioning practices, ensuring compatibility and avoiding disruptions during future updates. \
-  `(TODO : add versioning rule page)`
-
-### 6. Troubleshooting and Support
-
-During the integration process, you may encounter issues or require assistance. Here are some resources for troubleshooting and support:
-
-* Documentation and Developer Resources: Refer to the comprehensive API documentation, integration guides, and FAQs.\
-  `(TODO : add FAQ section and feedback form/email for continuous improvement)`
-* Support Channels: Reach out to the support team through designated channels, such as email, support tickets, or community forums, for assistance with specific integration issues.\
-  `(TODO ??? create a public slack or equivalent with a bot who send an email to a support team when nobody is connected)`
-* Integration Testing: Conduct thorough testing in your development environment to identify and resolve any integration-related issues before deploying to production.
-
-Congratulations! You've now completed the API integration guide.&#x20;
-
-Happy integrating!
+Happy integrating! :clap:
