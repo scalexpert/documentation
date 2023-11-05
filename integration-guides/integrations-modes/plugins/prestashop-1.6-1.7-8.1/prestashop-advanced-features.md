@@ -4,6 +4,9 @@ description: Advanced features
 
 # Prestashop advanced features
 
+1. [Activate debug mode ](prestashop-advanced-features.md#activate-debug-mode)
+2. [Set up the "update financing request status pulling method" task on your server cron tab ](prestashop-advanced-features.md#set-up-update-status-pulling-method)
+
 ### Activate debug mode
 
 At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
@@ -30,3 +33,7 @@ $ less scalexperplugin-2023-11-05.log
 {% hint style="warning" %}
 Please communicate logs files when you contact the support for any issues encountered.
 {% endhint %}
+
+### Set up "Update financing request status pulling method"
+
+At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
