@@ -15,6 +15,10 @@ description: How to integrate our solutions with APIs
 5. Best Practices and Considerations
 6. Troubleshooting and Support
 
+{% hint style="info" %}
+In this guide you will find snippets for Node.js, Java, PHP and Python server langages.
+{% endhint %}
+
 ### 1. Introduction
 
 This API integration guide will walk you through the process of setting up your environments so you can later consume scalexpert APIs into your application or platform.
@@ -149,6 +153,26 @@ Response response = client.newCall(request).execute();
 ```
 {% endcode %}
 {% endtab %}
+
+{% tab title="Python" %}
+{% code title="Python request" overflow="wrap" lineNumbers="true" %}
+```python
+import requests
+
+url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/auth-server/api/v1/oauth2/token/oauth2/token"
+
+payload = 'grant_type=client_credentials&scope=e-financing%3Arw'
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Authorization': 'Basic ZmU3ZmVm...tRcnc9'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+```
+{% endcode %}
+{% endtab %}
 {% endtabs %}
 
 #### API Endpoints and Request/Response Formats
@@ -192,10 +216,6 @@ Set up a testing environment to ensure smooth integration and testing of the E-F
 * [User Acceptance Test for customer (UATC) ](../../api-reference/apis-common/api-urls.md#test-for-customer-uatc)environment that will simulates the production environment. Use this environment for development, integration, and testing purposes.
 * API Documentation: Familiarize yourself with the API documentation, including endpoint details, request/response examples, and any available snippets  that can expedite the integration process.
 
-{% hint style="info" %}
-In this guide you will find snippets for Node.js, Java, PHP server langages.
-{% endhint %}
-
 ### 4. API Integration Steps
 
 Now let's dive into the steps involved in integrating the **E-Financing** API into your application or platform:
@@ -220,8 +240,8 @@ var fs = require('fs');
 
 var options = {
   'method': 'GET',
-  'hostname': 'api.e-commerce.hml.societegenerale.com',
-  'path': '/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR',
+  'hostname': 'api.scalexpert.uatc.societegenerale.com',
+  'path': '/baas/uatc/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR',
   'headers': {
     'Authorization': 'Bearer eyJlbmMiOi...TxWr8u9ooNMZ3zI'
   },
@@ -256,7 +276,7 @@ req.end();
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR');
+$request->setUrl('https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -289,11 +309,31 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("text/plain");
 RequestBody body = RequestBody.create(mediaType, "");
 Request request = new Request.Builder()
-  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR")
+  .url("https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/eligible-solutions?financedAmount=500&buyerBillingCountry=FR")
   .method("GET", body)
   .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLUhTN...Wr8u9ooNMZ3zI")
   .build();
 Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Python" %}
+{% code title="Python request" overflow="wrap" lineNumbers="true" %}
+```python
+import requests
+
+url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/eligible-solutions?financedAmount=1000&buyerBillingCountry=FR"
+
+payload = {}
+headers = {
+  'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiYWxnIjoiQTI1NktXIn0.ftNiQraQFkH9i0oHOCGXZ465HxD8-lEzdPfczpGVWMk04zY...Fzgpmok-aK9ljGv7cM8'
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
 ```
 {% endcode %}
 {% endtab %}
@@ -356,8 +396,8 @@ var fs = require('fs');
 
 var options = {
   'method': 'POST',
-  'hostname': 'api.e-commerce.hml.societegenerale.com',
-  'path': '/baas/uat/e-financing/api/v1/subscriptions',
+  'hostname': 'api.e-commerce.uatc.societegenerale.com',
+  'path': '/baas/uatc/e-financing/api/v1/subscriptions',
   'headers': {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0J...u9ooNMZ3zI'
@@ -495,7 +535,7 @@ req.end();
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions');
+$request->setUrl('https://api.e-commerce.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/subscriptions');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -628,12 +668,147 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\r\n    \"financedAmount\": 119.9,\r\n    \"solutionCode\": \"SCFRSP-4XTS\",\r\n    \"merchantBasketId\": \"647aeb24-a89c-11ed-afa1-0242ac120002\",\r\n    \"merchantGlobalOrderId\": \"XbB6_sMPbkvRk0y#206578\",\r\n    \"merchantBuyerId\": \"701943\",\r\n    \"merchantUrls\": {\r\n        \"confirmation\": \"https://mymerchand.domain/uri\"\r\n    },\r\n    \"buyers\": [\r\n        {\r\n            \"billingContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"billingAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryContact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"Paul\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"deliveryAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"contact\": {\r\n                \"lastName\": \"Dupont\",\r\n                \"firstName\": \"P\",\r\n                \"commonTitle\": \"Mr.\",\r\n                \"email\": \"paul.dupont@mail.com\",\r\n                \"mobilePhoneNumber\": \"+33684749393\",\r\n                \"professionalTitle\": \"Professor\",\r\n                \"phoneNumber\": \"+33184749393\"\r\n            },\r\n            \"contactAddress\": {\r\n                \"locationType\": \"billingAddress\",\r\n                \"streetNumber\": 147,\r\n                \"streetNumberSuffix\": \"B\",\r\n                \"streetName\": \"main street\",\r\n                \"streetNameComplement\": \"block 47\",\r\n                \"zipCode\": \"92060\",\r\n                \"cityName\": \"Paris\",\r\n                \"regionName\": \"Île-de-France\",\r\n                \"countryCode\": \"FR\"\r\n            },\r\n            \"deliveryMethod\": \"Click & Collect\",\r\n            \"birthName\": \"Dupont\",\r\n            \"birthDate\": \"01021975\",\r\n            \"birthCityName\": \"Montpellier\",\r\n            \"birthCountryName\": \"FR\",\r\n            \"vip\": false\r\n        }\r\n    ],\r\n    \"basketDetails\": {\r\n        \"basketItems\": [\r\n            {\r\n                \"id\": \"M12345785513211\",\r\n                \"quantity\": 2,\r\n                \"model\": \"5KPM5\",\r\n                \"label\": \"PANTALON B MAGO\",\r\n                \"price\": 9500,\r\n                \"currencyCode\": \"EUR\",\r\n                \"orderId\": \"OD456742\",\r\n                \"brandName\": \"KitchenAid\",\r\n                \"description\": \"Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.\",\r\n                \"specifications\": \"Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60\",\r\n                \"category\": \"R78757857\",\r\n                \"isFinanced\": true,\r\n                \"sku\": \"50\"\r\n            }\r\n        ]\r\n    }\r\n}");
 Request request = new Request.Builder()
-  .url("https://api.e-commerce.hml.societegenerale.com/baas/uat/e-financing/api/v1/subscriptions")
+  .url("https://api.e-commerce.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/subscriptions")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLU...vTxWr8u9ooNMZ3zI")
   .build();
 Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Python" %}
+{% code title="Python Request" overflow="wrap" lineNumbers="true" %}
+```python
+import requests
+import json
+
+url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/subscriptions"
+
+payload = json.dumps({
+  "financedAmount": 3000,
+  "solutionCode": "SCFRSP-4XTS",
+  "merchantBasketId": "647aeb24-a89c-11ed-afa1-0242ac120002",
+  "merchantGlobalOrderId": "6Vh_mhvCUw9Nuvo#562850",
+  "merchantBuyerId": "701943",
+  "merchantUrls": {
+    "confirmation": "https://mymerchand.domain/uri"
+  },
+  "buyers": [
+    {
+      "billingContact": {
+        "lastName": "Dupont",
+        "firstName": "Paul",
+        "commonTitle": "MR",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "billingAddress": {
+        "locationType": "BILLING_ADDRESS",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "deliveryContact": {
+        "lastName": "Dupont",
+        "firstName": "Paul",
+        "commonTitle": "MR",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "deliveryAddress": {
+        "locationType": "DELIVERY_ADDRESS",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "contact": {
+        "lastName": "Dupont",
+        "firstName": "Paul",
+        "commonTitle": "MR",
+        "email": "paul.dupont@mail.com",
+        "mobilePhoneNumber": "+33684749393",
+        "professionalTitle": "Professor",
+        "phoneNumber": "+33184749393"
+      },
+      "contactAddress": {
+        "locationType": "MAIN_ADDRESS",
+        "streetNumber": 147,
+        "streetNumberSuffix": "B",
+        "streetName": "main street",
+        "streetNameComplement": "block 47",
+        "zipCode": "92060",
+        "cityName": "Paris",
+        "regionName": "Île-de-France",
+        "countryCode": "FR"
+      },
+      "deliveryMethod": "Click & Collect",
+      "birthName": "Dupont",
+      "birthDate": "1990-10-21",
+      "birthCityName": "Montpellier",
+      "birthCountryName": "FR",
+      "vip": False
+    }
+  ],
+  "basketDetails": {
+    "basketItems": [
+      {
+        "id": "M12345785513211",
+        "quantity": 2,
+        "model": "5KPM5",
+        "label": "PANTALON B MAGO",
+        "price": 1500,
+        "currencyCode": "EUR",
+        "orderId": "OD456742",
+        "brandName": "KitchenAid",
+        "description": "Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.",
+        "specifications": "Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60",
+        "category": "R78757857",
+        "isFinanced": True,
+        "sku": "50"
+      },
+      {
+        "id": "M12345786661",
+        "quantity": 2,
+        "model": "5KPM5",
+        "label": "P",
+        "price": 1500,
+        "currencyCode": "EUR",
+        "orderId": "OD456743",
+        "brandName": "KitchenAid",
+        "description": "Le robot pâtissier à bol relevable très résistant idéal pour mixer de grandes quantités d'ingrédients, équipé d'un bol en acier inoxydable amovible.",
+        "specifications": "Puissance (W) 315, Tension (V) 220-240, Fréquence (Hz) 50/60",
+        "category": "R78757887",
+        "isFinanced": True,
+        "sku": "ABC70"
+      }
+    ]
+  }
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0JDL...aK9ljGv7cM8'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
 ```
 {% endcode %}
 {% endtab %}
@@ -730,6 +905,25 @@ Request request = new Request.Builder()
   .addHeader("Authorization", "Bearer eyJlbmMiOiJBMjU2Q0JDLUhTNTE...zR3VcUj6m2ZXbgRPYXZ_8wKIRfI")
   .build();
 Response response = client.newCall(request).execute();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Python" %}
+{% code title="Python Requests" overflow="wrap" lineNumbers="true" %}
+```python
+import requests
+
+url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1/subscriptions/cd89186e-1054-4ed2-a4ce-e495082c689a"
+
+payload = {}
+headers = {
+  'Authorization': 'Bearer eyJlbmMiOiJBMjU2Q0JDLU...ok-aK9ljGv7cM8'
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 {% endcode %}
 {% endtab %}
