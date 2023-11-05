@@ -13,7 +13,7 @@ At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
 Once activated, any API requests will be logged on a file per day in the "{your server path}/prestashop/modules/scalexpertplugin/logs" directory.&#x20;
 
 ```bash
-$ cd lsprestashop/modules/scalexpertplugin/logs
+$ cd prestashop/modules/scalexpertplugin/logs
 $ ls -l
 $ total 376
 -rw-r--r-- 1 daemon daemon    305 Aug  2 11:47 index.php
