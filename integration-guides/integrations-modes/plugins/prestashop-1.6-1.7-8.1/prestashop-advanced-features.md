@@ -48,5 +48,9 @@ $ crontab -l
 # list your cron file
 ...
 # m h  dom mon dow   command
-0 * * * * http://35.181.94.127/fr/module/scalexpertplugin/maintenance
+0 * * * * http://{Your web server name}/fr/module/scalexpertplugin/maintenance
 </code></pre>
+
+You can also manually launch the task. It will display "Cron OK" if every thing OK.
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-33-12.png" alt=""><figcaption><p>Launch manually pulling of fainancing request updates</p></figcaption></figure>
