@@ -4,10 +4,11 @@ description: Advanced features
 
 # Prestashop advanced features
 
-1. [Activate debug mode ](prestashop-advanced-features.md#activate-debug-mode)
-2. [Set up the "update financing request status pulling method" task on your server cron tab ](prestashop-advanced-features.md#set-up-update-status-pulling-method)
+Activate [debug mode ](prestashop-advanced-features.md#1-activate-debug-mode)
 
-### Activate debug mode
+1. Set up the ["pulling of financing requests updates](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)" task on your server cron tab&#x20;
+
+### 1-Activate debug mode
 
 At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
 
@@ -34,6 +35,18 @@ $ less scalexperplugin-2023-11-05.log
 Please communicate logs files when you contact the support for any issues encountered.
 {% endhint %}
 
-### Set up "Update financing request status pulling method"
+### 2-Set up "pulling financing requests updates"
 
-At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
+In order to pull "financing requests updates" you must set up this task on your server using cron tab.
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-24-03.png" alt=""><figcaption><p>Set up pulling financing requests updates</p></figcaption></figure>
+
+<pre class="language-bash"><code class="lang-bash"><strong>$ crontab -e
+</strong><strong># add this line at the end of your cron file
+</strong>0 * * * * http://{Your web server name}/fr/module/scalexpertplugin/maintenance
+$ crontab -l 
+# list your cron file
+...
+# m h  dom mon dow   command
+0 * * * * http://35.181.94.127/fr/module/scalexpertplugin/maintenance
+</code></pre>
