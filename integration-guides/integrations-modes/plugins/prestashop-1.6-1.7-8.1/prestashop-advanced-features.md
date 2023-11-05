@@ -38,7 +38,7 @@ Please communicate logs files when you contact the support for any issues encoun
 
 In order to pull "financing requests updates" you must set up this task on your server using cron tab.
 
-<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-24-03.png" alt=""><figcaption><p>Set up pulling financing requests updates</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-24-03 (1).png" alt=""><figcaption><p>Set up pulling financing requests updates</p></figcaption></figure>
 
 <pre class="language-bash"><code class="lang-bash"><strong>$ crontab -e
 </strong><strong># add this line at the end of your cron file
