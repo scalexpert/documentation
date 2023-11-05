@@ -4,6 +4,10 @@ description: Useful data for testing purposes
 
 # Testing solutions
 
+{% hint style="info" %}
+Prerequisites: You will need to get a customer account and a test key before testing our solutions. For more details see "[Before you start"](../ready-to-start/before-you-start/) guide. (no sandbox available yet !)&#x20;
+{% endhint %}
+
 ### e-Financing solutions
 
 French split payment journey will require to fill in a French card bank number
