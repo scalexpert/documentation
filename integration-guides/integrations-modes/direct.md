@@ -207,7 +207,7 @@ To determine the eligible e-financing solutions available for a specific purchas
 1. Collect Purchase Information: Gather relevant purchase details, such as the total amount and country of the buyer end user (or by default country of your site).
 2. Make a GET Request: Utilize the API endpoint responsible for checking eligibility, passing the necessary purchase information.
 3. Handle Response: Capture and process the response, which will indicate the available e-financing solutions and their associated merchant communication kit informations.
-4. According the response render the solution to end users for instance on product page by showcasing the solutions (see more details [here](../../for-discovery/showcasing-solutions.md)).&#x20;
+4. According the response render the solution to end users for instance on product page by showcasing the solutions (see next step).&#x20;
 
 Refer to [API GET /eligible-solutions](../../api-reference/e-financing-api/)
 
@@ -298,6 +298,44 @@ Response response = client.newCall(request).execute();
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+#### Step 2: Showcasing the solutions
+
+By "showcasing solutions" we mean rendering the solutions at product or checkout pages (see more details [here](../../for-discovery/showcasing-solutions.md)). This will be possible with the response of [GET /eligible-solutions](../../api-reference/e-financing-api/) and object "`communicationKit`" and its attributes that contains texts with HTML, logos, images ...
+
+{% code title="Response GET /eligible-solutions" overflow="wrap" %}
+````json
+{
+    "solutions": [
+        {
+            "solutionCode": "SCFRLT-TXNO",
+            "familyCode": "SC",
+            "marketCode": "FR",
+            "conditions": "PS",
+            "communicationKit": {
+                "solutionCode": "SCFRLT-TXNO",
+                "visualTitle": "<div class=scalexpert_title>Etalez votre paiment avec un crédit</div>",
+                "visualDescription": "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.",
+                "visualInformationIcon": "https://scalexpert.societegenerale.com/app/merchantKit/visual_information_icon.svg",
+                "visualAdditionalInformation": "<div class=scalexpert_subtitle>Comment ça marche ?</div><ol> <li>Ajoutez le produit à votre panier et finalisez votre achat. Validez votre panier</li> <li>Au moment du paiement, choisissez d'étaler votre paiement avec un crédit.</li> <li>Renseignez les informations demandées, munissez-vous de votre pièce d'identité et signez électroniquement votre contrat de financement. Obtenez une réponse immédiate de notre partenaire FRANFINANCE. <br>C'est terminé! </li></ol>",
+                "visualLegalText": "<div class=scalexpert_subtitle>Mentions légales</div><p>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Offre valable toute l’année, à partir de 1000 euros de crédit et sous réserve d’acceptation du crédit affecté par FRANFINANCE (SA au capital de 31.357.776,00 euros - 719 807 406 RCS Nanterre - 53 rue du Port, CS 90201, 92724 Nanterre Cedex - France -, Intermédiaire en assurance inscrit l’ORIAS N° 07 008 346 - www.orias.fr). Vous disposez d’un délai de rétractation de 14 jours à compter de la date de signature du contrat de crédit. Le vendeur est intermédiaire de crédit non exclusif de FRANFINANCE, immatriculé à l’ORIAS sous le numéro XXXXX (www.orias.fr).</p>",
+                "visualTableImage": null,
+                "visualLogo": "https://scalexpert.societegenerale.com/app/merchantKit/e_financing_visual_logo_FR.svg",
+                "visualInformationNoticeURL": null,
+                "visualProductTermsURL": null
+            }
+        },
+```
+````
+{% endcode %}
+
+Rendering of communication KIT (ex long term credit):
+
+<figure><img src="../../.gitbook/assets/Capture d’écran du 2023-11-05 16-28-52.png" alt="" width="375"><figcaption><p>Communication Kit rendering</p></figcaption></figure>
+
+{% hint style="warning" %}
+Make sure at minimum "visualLegalText" is always rendered on your site for legal compliance.
+{% endhint %}
 
 #### Step 2: Initiate an E-Financing Subscription
 
