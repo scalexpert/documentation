@@ -36,7 +36,7 @@ Please communicate logs files when you contact the support for any issues encoun
 
 ### 2-Set up "pulling financing requests updates"
 
-In order to pull "financing requests updates" you must set up this task on your server using cron tab.
+In order to pull "financing requests updates" every hour you must set up this task on your server using cron tab.
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-24-03 (1).png" alt=""><figcaption><p>Set up pulling financing requests updates</p></figcaption></figure>
 
