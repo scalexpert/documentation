@@ -37,5 +37,5 @@ This will come soon in a new release !
 See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md).
 
 {% hint style="info" %}
-Financing request statuses are collected at different times: after return of financing customer journeys, on periodic basis for asynchronous steps. Some mechanism for requesting statuses are in place (for more details see advanced configuration guide).
+Financing request statuses are collected at different times: after return of financing customer journeys, on periodic basis for asynchronous steps. Some mechanism for requesting statuses are in place (for more details see [advanced configuration guide](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)).
 {% endhint %}
