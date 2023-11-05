@@ -4,9 +4,8 @@ description: Advanced features
 
 # Prestashop advanced features
 
-Activate [debug mode ](prestashop-advanced-features.md#1-activate-debug-mode)
-
-1. Set up the ["pulling of financing requests updates](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)" task on your server cron tab&#x20;
+1. Activate [debug mode ](prestashop-advanced-features.md#1-activate-debug-mode)
+2. Set up the ["pulling of financing requests updates](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)" task on your server cron tab&#x20;
 
 ### 1-Activate debug mode
 
