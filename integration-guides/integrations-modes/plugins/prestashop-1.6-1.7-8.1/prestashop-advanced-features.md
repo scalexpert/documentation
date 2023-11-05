@@ -52,4 +52,4 @@ $ crontab -l
 
 You can also manually launch the task. It will display "Cron OK" if every thing OK.
 
-<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-33-12.png" alt=""><figcaption><p>Launch manually pulling of fainancing request updates</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-33-12.png" alt=""><figcaption><p>Launch manually pulling of financing request updates</p></figcaption></figure>
