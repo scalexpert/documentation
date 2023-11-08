@@ -13,6 +13,12 @@ Announced : Prestashop & Magento plugins 1.0.0 are released
 * Prestashop 1.6, 1.7, 8.1
 * Magento CE & EE 2.4.3, 2.4.4 , 2.4.6
 
+Version for Prestashop 1.6 and 1.7 will support only PHP 7.0 and upper versions
+
+{% hint style="warning" %}
+Version for Prestashop 1.6 and 1.7 will support only PHP 7.0 and upper versions.&#x20;
+{% endhint %}
+
 You can download our plugins here:
 
 {% embed url="https://github.com/scalexpert" %}
