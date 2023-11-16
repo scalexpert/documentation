@@ -17,7 +17,7 @@ Scalexpert Prestashop plugins has been developed in 2 versions to support:\
 \- Prestashop 8.1 and upper
 
 {% hint style="warning" %}
-Version for Prestashop 1.6 and 1.7 will support only PHP 7.0 and upper versions
+Please check compatibility of your PHP version [here](../#plugins-php-requirements)
 {% endhint %}
 
 1. Go to Scalexpert GitHub repository and download the version required.
