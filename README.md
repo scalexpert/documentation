@@ -36,7 +36,7 @@ These guides are for you !
 
 ***
 
-## Need help?
+## Contact support
 
 Do you want to chat with us on slack?
 
