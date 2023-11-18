@@ -38,6 +38,4 @@ These guides are for you !
 
 ## Need help?
 
-Do you want to chat with us on slack?
-
-[<picture><source srcset=".gitbook/assets/slack-brand-refresh_03-new-logos_black (1).png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/slack-brand-refresh_03-new-logos-white.png" alt="Do want to chat with us on slack?" data-size="original"></picture>](https://scalexpert-for-dev.slack.com)&#x20;
+Do you want to chat with us on slack? [<picture><source srcset=".gitbook/assets/slack-brand-refresh_03-new-logos_black (1).png" media="(prefers-color-scheme: dark)"><img src=".gitbook/assets/slack-brand-refresh_03-new-logos-white.png" alt="Do want to chat with us on slack?" data-size="original"></picture>](https://scalexpert-for-dev.slack.com)&#x20;
