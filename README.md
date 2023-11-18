@@ -33,3 +33,7 @@ These guides are for you !
 ## Ready to start ! :rocket:
 
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>Before your start</td><td><ul><li>Account creation</li><li>Onboard API</li><li>API catalog</li><li>API key<br></li></ul></td><td></td><td></td><td><a href="ready-to-start/before-you-start/">before-you-start</a></td></tr><tr><td><p>Get started<br></p><ul><li>integrate e-financing journeys with APIs</li><li>integrate warranty extension journeys with APIs</li><li>Integrate our CMS plugins</li></ul></td><td></td><td></td><td></td><td><a href="ready-to-start/get-started/">get-started</a></td></tr></tbody></table>
+
+***
+
+![](.gitbook/assets/slack\_logo.gif)
