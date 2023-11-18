@@ -36,4 +36,8 @@ These guides are for you !
 
 ***
 
-![](.gitbook/assets/slack\_logo.gif)
+## Need help?
+
+Do you want to chat with us on slack?
+
+[<img src=".gitbook/assets/slack_logo.gif" alt="Do want to chat with us on slack?" data-size="original">](https://scalexpert-for-dev.slack.com)&#x20;
