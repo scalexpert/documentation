@@ -2,9 +2,9 @@
 description: Choose a mode to integrate our solutions
 ---
 
-# Integrations modes
+# Integration Modes
 
-They are 2 modes to integrate our solutions:
+There are two modes to integrate our solutions
 
 * Merchant web server (Server side): Custom integration with APIs
 * Merchant web client (Client side): Plugin integration for CMS modules &#x20;
