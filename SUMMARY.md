@@ -2,7 +2,7 @@
 
 ## Developers Docs
 
-* [Welcome to developers docs](README.md)
+* [Welcome to Scalexpert API docs](README.md)
 
 ## FOR DISCOVERY
 
