@@ -25,7 +25,7 @@ Announced : Prestashop & Magento plugins 1.0.0 are released
 | Magento CE | 2.4.6          | 8.2                             |
 | Magento EE | 2.4.3          | 7.4                             |
 | Magento EE | 2.4.4, 2.4.5   | 8.1                             |
-| Magento EE | 2.4.6          | 8.1                             |
+| Magento EE | 2.4.6          | 8.2                             |
 
 You can download our plugins here:
 
