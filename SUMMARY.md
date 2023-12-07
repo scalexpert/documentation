@@ -4,6 +4,31 @@
 
 * [Welcome to Scalexpert API docs](README.md)
 
+## Ready to start
+
+* [Before you start](ready-to-start/before-you-start/README.md)
+  * [Account creation](ready-to-start/before-you-start/account-creation.md)
+  * [On boarding API](ready-to-start/before-you-start/on-boarding-api.md)
+  * [API catalog](ready-to-start/before-you-start/api-catalog.md)
+  * [API key](ready-to-start/before-you-start/api-key.md)
+  * [Advanced features](ready-to-start/before-you-start/advanced-features.md)
+* [Get Started](ready-to-start/get-started/README.md)
+  * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
+  * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
+
+## Integration Guides
+
+* [Integration Modes](integration-guides/integrations-modes/README.md)
+  * [APIs](integration-guides/integrations-modes/direct.md)
+    * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
+  * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
+    * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
+      * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
+      * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
+      * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
+      * [Prestashop advanced features](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-advanced-features.md)
+* [Go-Live check-list](integration-guides/go-live-check-list.md)
+
 ## FOR DISCOVERY
 
 * [e-Financing journeys](for-discovery/credit/README.md)
@@ -48,31 +73,6 @@
     * [V 1.3.8 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.8-insurance-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
 
-## Ready to start
-
-* [Before you start](ready-to-start/before-you-start/README.md)
-  * [Account creation](ready-to-start/before-you-start/account-creation.md)
-  * [On boarding API](ready-to-start/before-you-start/on-boarding-api.md)
-  * [API catalog](ready-to-start/before-you-start/api-catalog.md)
-  * [API key](ready-to-start/before-you-start/api-key.md)
-  * [Advanced features](ready-to-start/before-you-start/advanced-features.md)
-* [Get Started](ready-to-start/get-started/README.md)
-  * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
-  * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
-
-## Integration Guides
-
-* [Integration Modes](integration-guides/integrations-modes/README.md)
-  * [APIs](integration-guides/integrations-modes/direct.md)
-    * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
-  * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
-    * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
-      * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
-      * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
-      * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
-      * [Prestashop advanced features](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-advanced-features.md)
-* [Go-Live check-list](integration-guides/go-live-check-list.md)
-
 ## Webhooks
 
 * [How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
@@ -80,3 +80,7 @@
 ## Security
 
 * [Security best practices](security/security-best-practices.md)
+
+## Support
+
+* [Contact support](support/contact-support.md)
