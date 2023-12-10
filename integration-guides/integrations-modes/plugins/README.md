@@ -39,6 +39,10 @@ Access Github Scalexpert
 [prestashop-1.6-1.7-8.1](prestashop-1.6-1.7-8.1/)
 {% endcontent-ref %}
 
+{% content-ref url="magento/" %}
+[magento](magento/)
+{% endcontent-ref %}
+
 ### Solutions supported:
 
 * E-financing split payment and long credit solutions for France
