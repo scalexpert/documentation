@@ -43,6 +43,16 @@ php bin/magento setup:static-content:deploy [locale]
 ```
 {% endcode %}
 
+### 2- Verify installation
+
+To verify installation:
+
+1. Connect your admin Magento dashboard
+2. Under menu "Stores" click on sub-menu "Configuration"
+3. Verify you have sub-menu "SCALEXPERT"
+
+<figure><img src="../../../../.gitbook/assets/1-magento-install-module.gif" alt=""><figcaption><p>Where to find menu scalexpert plugin</p></figcaption></figure>
+
 ### 3- To deactivate scalexpert Magento module (optional)
 
 {% code title="Linux Bash" overflow="wrap" %}
