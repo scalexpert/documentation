@@ -1,5 +1,5 @@
 ---
-description: How to customize your Scalexpert Prestashop plugin
+description: How to customize your scalexpert Prestashop plugin
 ---
 
 # Prestashop customization
@@ -11,7 +11,7 @@ Customization are available for each solutions activated.&#x20;
 * on product pages
 * on payment checkout pages&#x20;
 
-<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-10-21 18-57-42.png" alt=""><figcaption><p>Customize Scalexpert plugin</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-10-21 18-57-42.png" alt=""><figcaption><p>Customize scalexpert plugin</p></figcaption></figure>
 
 ## 1-Product pages customization
 

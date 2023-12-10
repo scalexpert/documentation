@@ -9,7 +9,7 @@ description: Advanced features
 
 ### 1-Activate debug mode
 
-At any moment you activate "Debug mode" on "Scalexpert/admin" menu.
+At any moment you activate "Debug mode" on "scalexpert/admin" menu.
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 12-26-12.png" alt=""><figcaption><p>Activate debug mode</p></figcaption></figure>
 

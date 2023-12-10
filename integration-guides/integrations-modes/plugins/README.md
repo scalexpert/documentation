@@ -1,5 +1,5 @@
 ---
-description: How to integrate Scalexpert solutions with Plugins CMS
+description: How to integrate scalexpert solutions with Plugins CMS
 ---
 
 # Plugins CMS solutions
@@ -30,8 +30,6 @@ Announced : Prestashop & Magento plugins 1.1.0 are released
 You can download our plugins here:
 
 {% embed url="https://github.com/scalexpert" %}
-Access Github Scalexpert
-{% endembed %}
 
 ### Consult our guides:
 

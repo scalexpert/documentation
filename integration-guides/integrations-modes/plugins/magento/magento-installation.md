@@ -1,5 +1,5 @@
 ---
-description: How to install and setup Scalexpert Magento 2 plugin
+description: How to install and setup scalexpert Magento 2 plugin
 ---
 
 # Magento installation

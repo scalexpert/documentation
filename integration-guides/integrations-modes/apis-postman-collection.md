@@ -12,6 +12,4 @@ Use it or download it !
 You would need API keys to test.  Please refers to our guide [here](../../ready-to-start/before-you-start/api-key.md).
 {% endhint %}
 
-{% embed url="https://www.postman.com/scalexpert/workspace/scalexpert-e-commerce-postman-collection-api/overview" %}
-Access Scalexpert Postman collection
-{% endembed %}
+{% embed url="https://www.postman.com/scalexpert/workspace/scalexpert-e-commerce-postman-collection-api" %}
