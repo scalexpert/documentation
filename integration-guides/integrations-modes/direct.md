@@ -373,11 +373,11 @@ Rendering of communication KIT (ex long term credit):
 
 <figure><img src="../../.gitbook/assets/Capture d’écran du 2023-11-05 16-28-52.png" alt="" width="375"><figcaption><p>Communication Kit rendering</p></figcaption></figure>
 
-<pre class="language-html" data-title="HTML rendering" data-overflow="wrap" data-line-numbers><code class="lang-html"><strong>&#x3C;!-- create css class scalexpert_title and scalexpert_subtitle and standard html tags according your graphical layout standards--> 
+<pre class="language-html" data-title="HTML rendering" data-overflow="wrap" data-line-numbers><code class="lang-html"><strong>&#x3C;!-- create css classes scalexpert_title and scalexpert_subtitle and standard html tags according your graphical layout standards--> 
 </strong><strong>
 </strong><strong>&#x3C;div class=scalexpert_title>Etalez votre paiment avec un crédit&#x3C;/div>
 </strong><strong>
-</strong>div class=scalexpert_subtitle>Comment ça marche ?&#x3C;/div>
+</strong>&#x3C;div class=scalexpert_subtitle>Comment ça marche ?&#x3C;/div>
 &#x3C;ol> 
     &#x3C;li>Ajoutez le produit à votre panier et finalisez votre achat. Validez votre panier&#x3C;/li>
     &#x3C;li>Au moment du paiement, choisissez d'étaler votre paiement avec un crédit.&#x3C;/li>
