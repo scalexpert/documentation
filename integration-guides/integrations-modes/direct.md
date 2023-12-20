@@ -373,6 +373,19 @@ Rendering of communication KIT (ex long term credit):
 
 <figure><img src="../../.gitbook/assets/Capture d’écran du 2023-11-05 16-28-52.png" alt="" width="375"><figcaption><p>Communication Kit rendering</p></figcaption></figure>
 
+<pre class="language-html" data-title="HTML rendering" data-overflow="wrap" data-line-numbers><code class="lang-html"><strong>&#x3C;div class=scalexpert_title>Etalez votre paiment avec un crédit&#x3C;/div>
+</strong><strong>
+</strong>div class=scalexpert_subtitle>Comment ça marche ?&#x3C;/div>
+&#x3C;ol> 
+    &#x3C;li>Ajoutez le produit à votre panier et finalisez votre achat. Validez votre panier&#x3C;/li>
+    &#x3C;li>Au moment du paiement, choisissez d'étaler votre paiement avec un crédit.&#x3C;/li>
+    &#x3C;li>Renseignez les informations demandées, munissez-vous de votre pièce d'identité et signez électroniquement votre contrat de financement. Obtenez une réponse immédiate de notre partenaire FRANFINANCE. &#x3C;br>C'est terminé! &#x3C;/li>
+&#x3C;/ol>
+
+&#x3C;div class=scalexpert_subtitle>Mentions légales&#x3C;/div>
+&#x3C;p>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Offre valable toute l’année, à partir de 1000 euros de crédit et sous réserve d’acceptation du crédit affecté par FRANFINANCE (SA au capital de 31.357.776,00 euros - 719 807 406 RCS Nanterre - 53 rue du Port, CS 90201, 92724 Nanterre Cedex - France -, Intermédiaire en assurance inscrit l’ORIAS N° 07 008 346 - www.orias.fr). Vous disposez d’un délai de rétractation de 14 jours à compter de la date de signature du contrat de crédit. Le vendeur est intermédiaire de crédit non exclusif de FRANFINANCE, immatriculé à l’ORIAS sous le numéro XXXXX (www.orias.fr).&#x3C;/p>
+</code></pre>
+
 {% hint style="warning" %}
 Make sure at minimum "visualLegalText" is always rendered on your site for legal compliance.
 {% endhint %}
