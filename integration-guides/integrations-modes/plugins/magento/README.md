@@ -9,3 +9,7 @@ If you want to integrate our solutions with scalexpert Magento 2 CMS plugin, you
 {% content-ref url="magento-installation.md" %}
 [magento-installation.md](magento-installation.md)
 {% endcontent-ref %}
+
+{% content-ref url="magento-customization.md" %}
+[magento-customization.md](magento-customization.md)
+{% endcontent-ref %}
