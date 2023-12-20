@@ -29,6 +29,7 @@
       * [Prestashop advanced features](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-advanced-features.md)
     * [Magento CE & EE 2.4.3, 2.4.4 , 2.4.6](integration-guides/integrations-modes/plugins/magento/README.md)
       * [Magento installation](integration-guides/integrations-modes/plugins/magento/magento-installation.md)
+      * [Magento customization](integration-guides/integrations-modes/plugins/magento/magento-customization.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## FOR DISCOVERY
