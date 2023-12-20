@@ -6,7 +6,6 @@ description: Status life cycle of a e-Financing subscription
 
 ### Statuses  definition:
 
-* REQUESTED: Subscription requested to financial institution&#x20;
 * INITIALIZED: Subscription has been initialized by financial institution
 * PRE\_ACCEPTED: Subscription pre-accepted pending KYC, contrat signature and final acceptation by financial institution
 * ACCEPTED: Subscription accepted by financial institution
@@ -21,8 +20,7 @@ description: Status life cycle of a e-Financing subscription
 title: E-financing subscription status life cycle
 ---
 stateDiagram-v2 
-    [*] --> REQUESTED
-    REQUESTED --> INITIALIZED 
+    [*] --> INITIALIZED
     INITIALIZED --> ABORTED: technical incident or user abort
     INITIALIZED --> PRE_ACCEPTED
 note right of PRE_ACCEPTED
