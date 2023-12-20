@@ -6,7 +6,7 @@ description: How to customize your scalexpert Prestashop plugin
 
 Customization is found at "scalexpert" > "Customization" menu.
 
-<figure><img src="../../../../.gitbook/assets/1-prestashop-custom-module (1).gif" alt=""><figcaption><p>access Magento scalexpert customization menu </p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/1-prestashop-custom-module (1) (1).gif" alt=""><figcaption><p>access Magento scalexpert customization menu </p></figcaption></figure>
 
 Customization are available for each solutions activated.&#x20;
 

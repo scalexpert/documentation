@@ -6,13 +6,11 @@ In order to bring your customer's attention to the credit offer, through the Pro
 
 On your **product page**, depending on the eligibility of the product's price, you will be able to display the relevant offers, right next to the price. You can of course customize the display by selecting the optional components that you wish to integrate, such as the logo: &#x20;
 
-&#x20;: ![](<../.gitbook/assets/image (9).png>)![](<../.gitbook/assets/image (5).png>)
+<figure><img src="../.gitbook/assets/3-prestashop-setting-product-page.gif" alt=""><figcaption><p>How to showcase solution on product page</p></figcaption></figure>
 
 Furthermore, on your **checkout page**, if the basket amount is eligible to a credit offer, which will be determined by the Product & services API, you will be able to display the credit payment method (see below) as well as an explanation of the installments _(split payment only)_&#x20;
 
-![](<../.gitbook/assets/image (12).png>)![](<../.gitbook/assets/image (4).png>)
-
-
+<figure><img src="../.gitbook/assets/3-prestashop-setting-checkout-pages.gif" alt=""><figcaption><p>How to showcase solution on check-out page</p></figcaption></figure>
 
 ## Showcasing insurance offers on your website
 
