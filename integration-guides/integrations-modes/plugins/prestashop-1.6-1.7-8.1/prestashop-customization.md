@@ -4,14 +4,16 @@ description: How to customize your scalexpert Prestashop plugin
 
 # Prestashop customization
 
+Customization is found at "scalexpert" > "Customization" menu.
+
+<figure><img src="../../../../.gitbook/assets/1-prestashop-custom-module (1).gif" alt=""><figcaption><p>access Magento scalexpert customization menu </p></figcaption></figure>
+
 Customization are available for each solutions activated.&#x20;
 
 2 levels of customization are possible:
 
 * on product pages
 * on payment checkout pages&#x20;
-
-<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-10-21 18-57-42.png" alt=""><figcaption><p>Customize scalexpert plugin</p></figcaption></figure>
 
 ## 1-Product pages customization
 
@@ -21,15 +23,17 @@ Customization are available for each solutions activated.&#x20;
 * Customize subtitle of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter (only available for Insurance solutions).
 * Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">
 
-<figure><img src="../../../../.gitbook/assets/3-prestashop-setting-product-page.gif" alt=""><figcaption><p>How solutions are displayed on product page</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-12-20 14-53-48.png" alt=""><figcaption><p>product page customization</p></figcaption></figure>
 
 ## 2-Payment Checkout page customization
 
 * Customize title of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter.
 * Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">
 
-<figure><img src="../../../../.gitbook/assets/3-prestashop-setting-checkout-pages.gif" alt=""><figcaption><p>How solutions are displayed in checkout pages</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-12-20 14-53-48.png" alt=""><figcaption><p>check-out page customization</p></figcaption></figure>
 
 ## 3-Product category customization
 
 * Select list of product catalog category to exclude of the solution scope. if excluded the solution will not be promoted in the product and checkout pages.&#x20;
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-12-20 14-56-47.png" alt=""><figcaption><p>product categories customization</p></figcaption></figure>
