@@ -27,7 +27,7 @@ By integrating these APIs, you'll be able to initiate and manage e-financing sub
 
 ### 2. API Overview
 
-The APIs allows you to interact with the our platform pro-grammatically, enabling you to initiate and manage financing or insurance proposals seamlessly. Here are some key aspects of the APIs:
+The APIs allow for seamless interaction with our platform, enabling you to initiate and manage financing or insurance proposals seamlessly pro-grammatically . Here are some key aspects of the APIs:
 
 * RESTful architecture: Utilize standard HTTP methods (GET, POST, PUT, DELETE) to interact with the API.
 * JSON-based data format: Send and receive data in JSON format, ensuring compatibility and ease of integration across different programming languages.
