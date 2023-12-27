@@ -13,12 +13,12 @@ layout:
   outline:
     visible: false
   pagination:
-    visible: false
+    visible: true
 ---
 
-# Welcome to Scalexpert API docs
+# Welcome to scalexpert API docs
 
-## Hey fellows developers ! :wave:
+## Hey fellow developers ! :wave:
 
 These guides are for you !
 
