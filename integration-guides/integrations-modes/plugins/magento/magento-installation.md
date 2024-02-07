@@ -4,6 +4,10 @@ description: How to install and setup scalexpert Magento 2 plugin
 
 # Magento installation
 
+{% hint style="danger" %}
+It is strongly recommended you manage saving your environment and be able to rollback it in case of any issue encountered during installation.&#x20;
+{% endhint %}
+
 ## 1-Installation from GitHub
 
 {% embed url="https://github.com/scalexpert/scalexpert-magento/releases" %}
