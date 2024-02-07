@@ -12,9 +12,9 @@ It is strongly recommended you manage saving your environment and be able to rol
 
 {% embed url="https://github.com/scalexpert/scalexpert-woocommerce/releases" %}
 
-scalexpert WooCommerce plugins has been developed in 2 configuration to support:\
+scalexpert WooCommerce plugins has been developed in 2 configurations:\
 \- WooCommerce 8.3, Wordpress 6.3, PHP 7.4\
-\- WooCommerce 8.3, Wordpress 6 .4, PHP 8.2
+\- WooCommerce 8.3, Wordpress 6.4, PHP 8.2
 
 {% hint style="warning" %}
 You don't find your configuration. Don't panic! :cry:  Let us know what is your configuration we will answer on the compatibility or possible solutions.
