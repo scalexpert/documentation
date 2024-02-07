@@ -43,6 +43,10 @@ You can download our plugins here:
 [magento](magento/)
 {% endcontent-ref %}
 
+{% content-ref url="woocommerce/" %}
+[woocommerce](woocommerce/)
+{% endcontent-ref %}
+
 ### Solutions supported:
 
 * E-financing split payment and long credit solutions for France
