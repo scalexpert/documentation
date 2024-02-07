@@ -16,18 +16,18 @@ Announced : new WooCommerce plugin released
 
 ### Plugins PHP requirements
 
-| Plugin      | Plugin version                | PHP version compatible          |
-| ----------- | ----------------------------- | ------------------------------- |
-| Prestashop  | 1.6                           | 7.0 and upper                   |
-| Prestashop  | 1.7                           | 7.1 and upper                   |
-| Prestashop  | 8.1                           | 7.2 and upper (8.1 recommended) |
-| Magento CE  | 2.4.3                         | 7.4                             |
-| Magento CE  | 2.4.4, 2.4.5                  | 8.1                             |
-| Magento CE  | 2.4.6                         | 8.2                             |
-| Magento EE  | 2.4.3                         | 7.4                             |
-| Magento EE  | 2.4.4, 2.4.5                  | 8.1                             |
-| Magento EE  | 2.4.6                         | 8.2                             |
-| WooCommerce | 8.3 (wordpress 6.3 and upper) | 7.4, 8.2                        |
+| Plugin      | Plugin version           | PHP version compatible          |
+| ----------- | ------------------------ | ------------------------------- |
+| Prestashop  | 1.6                      | 7.0 and upper                   |
+| Prestashop  | 1.7                      | 7.1 and upper                   |
+| Prestashop  | 8.1                      | 7.2 and upper (8.1 recommended) |
+| Magento CE  | 2.4.3                    | 7.4                             |
+| Magento CE  | 2.4.4, 2.4.5             | 8.1                             |
+| Magento CE  | 2.4.6                    | 8.2                             |
+| Magento EE  | 2.4.3                    | 7.4                             |
+| Magento EE  | 2.4.4, 2.4.5             | 8.1                             |
+| Magento EE  | 2.4.6                    | 8.2                             |
+| WooCommerce | 8.3 (wordpress 6.3, 6.4) | 7.4, 8.2                        |
 
 You can download our plugins here:
 
