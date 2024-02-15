@@ -68,7 +68,7 @@
     * [V 1.1 - e-Financing API](api-reference/e-financing-api/v-1.1-e-financing-api.md)
     * [V 1.0 - e-Financing API](api-reference/e-financing-api/v-1.0.md)
   * [UAT API for partners](api-reference/e-financing-api/uat-api-for-partners/README.md)
-    * [V 1.3.3 - e-Financing API](api-reference/e-financing-api/uat-api-for-partners/v-1.3.3-e-financing-api.md)
+    * [V 1.3.7 - e-Financing API](api-reference/e-financing-api/uat-api-for-partners/v-1.3.7-e-financing-api.md)
   * [e-financing error codes](api-reference/e-financing-api/e-financing-error-codes.md)
 * [Insurance API](api-reference/insurance-api/README.md)
   * [V 1.3.8 - Insurance API](api-reference/insurance-api/v-1.3.8-insurance-api.md)
