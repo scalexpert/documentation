@@ -5,7 +5,7 @@ description: How to install and setup scalexpert WooCommerce plugin
 # WooCommerce  installation
 
 {% hint style="danger" %}
-It is strongly recommended you manage saving your environment and be able to rollback it in case of any issue encountered during installation.&#x20;
+Before you start ! It is strongly recommended you manage saving your environment and be able to rollback it in case of any issue encountered during installation.&#x20;
 {% endhint %}
 
 ## 1-Installation from GitHub
@@ -18,7 +18,9 @@ scalexpert WooCommerce plugins has been developed in 2 configurations:\
 
 {% hint style="warning" %}
 You don't find your configuration. Don't panic! :cry:  Let us know what is your configuration we will answer on the compatibility or possible solutions.
+
+By the way, we recommended you updating version of PHP, WordPress to align with the configurations tested.&#x20;
 {% endhint %}
 
 1. Go to scalexpert GitHub repository and download the version required.
-2. Go to WooCommerce backoffice, module menu and install your module.
+2. Go to WooCommerce backoffice, module menu and install your plugin.
