@@ -4,15 +4,17 @@ description: Weebhook event types reference
 
 # Webhook event types
 
-{% hint style="info" %}
-The list of weebhook event types depends of the solutions[^1] you've subscribed.&#x20;
-{% endhint %}
+### List of event types
 
-The list of webhook event types must be retrieve with API `merchant-weebhooks/api/v1/event-types`
+The list of webhook event types must be retrieve with API `merchant-webhooks/api/v1/event-types`
+
+{% hint style="info" %}
+The list of webhook event types depends of the solutions[^1] you've subscribed.&#x20;
+{% endhint %}
 
 <details>
 
-<summary>Example of response of API merchant-weebhooks/api/v1/event-types</summary>
+<summary>Example of response of API merchant-webhooks/api/v1/event-types</summary>
 
 {% code title="Response of API merchant-webhooks/api/v1/event-types" overflow="wrap" %}
 ```yaml
@@ -177,5 +179,39 @@ The list of webhook event types must be retrieve with API `merchant-weebhooks/ap
 
 
 </details>
+
+### Payload of an event type
+
+You can find the documentation in the `API GET merchant-webhooks/api/v1/events` .
+
+Here is an exemple of  a payload:
+
+```json
+{
+  "totalEventCount": 158,
+  "events": [
+    {
+      "timestamp": "2023-06-27T13:20:30.456Z",
+      "id": "44f5060e-a89c-11ed-afa1-0242ac120002",
+      "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
+      "eventTypeCode": "CREDIT",
+      "eventCode": "CANCELLED",
+      "data": {
+        "eventTypeCode": "string",
+        "eventCode": "string",
+        "merchantGlobalOrderId": "string",
+        "insuranceSubscriptionId": "string",
+        "consolidatedStatus": "INITIALIZED"
+      },
+      "replayCount": 0,
+      "status": "ERROR",
+      "timestampOfLastDeliveryAttempt": "2023-06-27T13:20:30.456Z",
+      "httpStatusCodeOfLastDeliveryAttempt": 500
+    }
+  ]
+}
+```
+
+The "data" structure depends of "eventTypeCode"
 
 [^1]: Solutions "e-Financing", "Insurance" ...
