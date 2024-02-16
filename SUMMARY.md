@@ -81,6 +81,8 @@
   * [Insurance error codes](api-reference/insurance-api/insurance-error-codes.md)
 * [Webhook API](api-reference/webhook-api/README.md)
   * [Webhook error codes](api-reference/webhook-api/webhook-error-codes.md)
+  * [UAT API for partners](api-reference/webhook-api/uat-api-for-partners/README.md)
+    * [V 1.0.5 - Merchant-Webhooks API](api-reference/webhook-api/uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
 
 ## Webhooks
