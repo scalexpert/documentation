@@ -180,11 +180,15 @@ The list of webhook event types depends of the solutions[^1] you've subscribed.&
 
 </details>
 
-### Payload of an event type
+### Payload of an event types
 
-You can find the documentation in the `API GET merchant-webhooks/api/v1/events` .
+You can find the documentation embedded in the `API GET merchant-webhooks/api/v1/events`.
 
-Here is an exemple of  a payload:
+You can parse the response depending the content of "eventTypeCode" ("SC\_SUBSCRIPTION",  "SC\_CANCEL\_REQUEST", "CI\_SUBSCRIPTION", HELLO\_WORLD" ...)
+
+Here is an exemple of  a payload of event on e-Financing subscriptions object when status code is set to "PRE\_ACCEPTED" meaning the subscription is pending final back-office financial institution.
+
+The status "OK" and "replayCount" null mean that event have been received with success.&#x20;
 
 ```json
 {
@@ -194,24 +198,147 @@ Here is an exemple of  a payload:
       "timestamp": "2023-06-27T13:20:30.456Z",
       "id": "44f5060e-a89c-11ed-afa1-0242ac120002",
       "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
-      "eventTypeCode": "CREDIT",
-      "eventCode": "CANCELLED",
+      "eventTypeCode": "SC_SUBSCRIPTION",
+      "eventCode": "SC_SUBSCRIPTION_PRE_ACCEPTED",
       "data": {
-        "eventTypeCode": "string",
-        "eventCode": "string",
-        "merchantGlobalOrderId": "string",
-        "insuranceSubscriptionId": "string",
-        "consolidatedStatus": "INITIALIZED"
+        "eventTypeCode": "SC_SUBSCRIPTION",
+        "eventCode": "SC_SUBSCRIPTION_PRE_ACCEPTED",
+        "merchantGlobalOrderId": "MYORDER-12345",
+        "financedAmount": 500.00,
+        "consolidatedStatus": "PRE_ACCEPTED"
       },
       "replayCount": 0,
-      "status": "ERROR",
+      "status": "OK",
       "timestampOfLastDeliveryAttempt": "2023-06-27T13:20:30.456Z",
-      "httpStatusCodeOfLastDeliveryAttempt": 500
+      "httpStatusCodeOfLastDeliveryAttempt": 200
     }
   ]
 }
 ```
 
-The "data" structure depends of "eventTypeCode"
+The "data" structure depends of "eventTypeCode" attribute:
+
+### Event types "SC\_SUBSCRIPTION"
+
+Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financing-solution-codes)and events related to [status of credit subscriptions](../../for-discovery/credit/e-financing-status-life-cycle.md#statuses-definition) .
+
+{% code title="Payload SC_SUBSCRIPTION" overflow="wrap" %}
+```yaml
+    ScSubscriptionPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        financedAmount:
+          type: number
+          format: float
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) credit subscription
+```
+{% endcode %}
+
+### Event types "SC\_CANCEL\_REQUEST"
+
+Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financing-solution-codes)and events related to cancellations requests status.
+
+{% code title="Payload SC_CANCEL_REQUEST" overflow="wrap" %}
+```yaml
+    ScCancelRequestPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        cancelledAmount:
+          type: number
+          format: float
+        financedAmount:
+          type: number
+          format: float
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) credit subscription
+        cancellationStatus:
+          type: string
+          enum:
+            - REQUEST_FOR_PARTIAL_CANCELLATION
+            - REQUEST_FOR_CANCELLATION
+            - CANCELLATION_ACCEPTED
+            - CANCELLATION_REJECTED
+            - PARTIAL_CANCELLATION_ACCEPTED
+            - PARTIAL_CANCELLATION_REJECTED
+```
+{% endcode %}
+
+### Event types "CI\_SUBSCRIPTION"
+
+Concern only the ["insurance" solutions](../../for-discovery/insurance/#insurance-solutions-codes) and events related to [subscription status.](../../for-discovery/insurance/insurance-status-life-cycle.md#statuses-definition)
+
+{% code title="Payload CI_SUBSCRIPTION" overflow="wrap" %}
+```yaml
+    CiSubscriptionPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        insuranceSubscriptionId:
+          type: string
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) insurance subscription
+          enum:
+            - INITIALIZED
+            - SUBSCRIBED
+            - ACTIVATED
+            - CANCELLED
+            - TERMINATED
+            - ABORTED
+            - REJECTED
+```
+{% endcode %}
+
+### Event types "HELLO\_WORLD"
+
+This event type is only for testing purpose to enable testing you merchant configuration.
+
+{% code title="Payload HELLO_WORLD " overflow="wrap" %}
+```yaml
+    WebhookPayloadForHelloWorld:
+      required:
+        - eventTypeCode
+        - helloWorldMessage
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        helloWorldMessage:
+          type: string
+          description: Hello World message
+          example: Hello World !
+      description: >-
+        Payload of the HelloWorld event used to test the webhooks feature on the
+        merchant side (to test end-to-end connectivity)
+```
+{% endcode %}
 
 [^1]: Solutions "e-Financing", "Insurance" ...
