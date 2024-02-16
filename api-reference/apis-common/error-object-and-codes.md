@@ -155,8 +155,8 @@ A quota/throttling logic detected too many requests from client in current perio
 [insurance-error-codes.md](../insurance-api/insurance-error-codes.md)
 {% endcontent-ref %}
 
-{% content-ref url="../webhook-api/webhook-error-codes.md" %}
-[webhook-error-codes.md](../webhook-api/webhook-error-codes.md)
+{% content-ref url="../merchant-webhooks-api/webhook-error-codes.md" %}
+[webhook-error-codes.md](../merchant-webhooks-api/webhook-error-codes.md)
 {% endcontent-ref %}
 
 
