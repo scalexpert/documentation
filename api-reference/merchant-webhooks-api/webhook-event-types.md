@@ -184,7 +184,9 @@ The list of webhook event types depends of the solutions[^1] you've subscribed.&
 
 You can find the documentation embedded in the `API GET merchant-webhooks/api/v1/events`.
 
-You can parse the response depending the content of "eventTypeCode" ("SC\_SUBSCRIPTION",  "SC\_CANCEL\_REQUEST", "CI\_SUBSCRIPTION", HELLO\_WORLD" ...)
+{% hint style="warning" %}
+The "data" structure depends of "eventTypeCode" attribute. You can parse the response depending the content of "eventTypeCode" ("SC\_SUBSCRIPTION",  "SC\_CANCEL\_REQUEST", "CI\_SUBSCRIPTION", HELLO\_WORLD" ...)
+{% endhint %}
 
 Here is an exemple of  a payload of event on e-Financing subscriptions object when status code is set to "PRE\_ACCEPTED" meaning the subscription is pending final back-office financial institution.
 
@@ -215,8 +217,6 @@ The status "OK" and "replayCount" null mean that event have been received with s
   ]
 }
 ```
-
-The "data" structure depends of "eventTypeCode" attribute:
 
 ### Event types "SC\_SUBSCRIPTION"
 
