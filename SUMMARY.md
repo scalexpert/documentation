@@ -18,7 +18,7 @@
 
 ## Integration Guides
 
-* [Integration Modes](integration-guides/integrations-modes/README.md)
+* [🆕 Integration Modes](integration-guides/integrations-modes/README.md)
   * [APIs](integration-guides/integrations-modes/direct.md)
     * [APIs postman collection](integration-guides/integrations-modes/apis-postman-collection.md)
   * [🆕 Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
