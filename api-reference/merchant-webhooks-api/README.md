@@ -2,7 +2,7 @@
 description: Merchant Webhooks API reference
 ---
 
-# Merchant-Webhooks API
+# 🆕 Merchant-Webhooks API
 
 {% hint style="info" %}
 Merchant Webhooks API will be delivered soon! BETA version available for partners.

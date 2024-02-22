@@ -2,7 +2,7 @@
 description: How to integrate scalexpert solutions with Plugins CMS
 ---
 
-# Plugins CMS solutions
+# 🆕 Plugins CMS solutions
 
 {% hint style="info" %}
 Announced : new WooCommerce plugin released

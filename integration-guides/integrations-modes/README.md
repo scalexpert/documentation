@@ -2,7 +2,7 @@
 description: Choose a mode to integrate our solutions
 ---
 
-# Integration Modes
+# 🆕 Integration Modes
 
 There are two modes to integrate our solutions
 

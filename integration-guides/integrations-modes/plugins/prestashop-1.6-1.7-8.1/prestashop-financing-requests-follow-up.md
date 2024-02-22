@@ -26,20 +26,16 @@ Merchants can follow customers financing requests directly from the back-office 
 
 When a financing request is "INITIALIZED" , then a new customer order is created in PRESTASHOP with a new status "Awaiting Financing".&#x20;
 
-Then the financing customer journey start and PRESTASHOP will &#x20;
-
-Latest Financing request status is displayed on order detail management (see new bloc "Financing subscriptions") by the merchant in Prestashop back-office.
-
-
-
-
-
 {% hint style="warning" %}
-!
+Please review in the PRESTASHOP back-office menu "configure/shop parameters/order settings/statuses" parameters for this new status "awaiting financing". For instance we recommend not to activate "sending a email" to the customer at that stage.
 {% endhint %}
 
-See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md).
+Then the financing customer journey start and PRESTASHOP will  collect status from financing institution automatically (See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md)). Latest financing request status is displayed on order detail management (see new bloc "Financing subscriptions")  in PRESTASHOP back-office.
 
 {% hint style="info" %}
 Financing request statuses are collected at different times: after return of financing customer journeys, on periodic basis for asynchronous steps. Some mechanism for requesting statuses are in place (for more details see [advanced configuration guide](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)).
 {% endhint %}
+
+Mapping of financing requests and PRESTASHOP order statuses can be setup in the "scalexpert/admin" menu. So automatically, customer orders status will evolve accordingly.
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2024-02-22 19-03-27.png" alt=""><figcaption><p>mapping of financing and order statues</p></figcaption></figure>
