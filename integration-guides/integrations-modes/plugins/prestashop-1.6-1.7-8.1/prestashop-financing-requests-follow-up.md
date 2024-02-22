@@ -24,14 +24,18 @@ Merchants can follow customers financing requests directly from the back-office 
 
 ## 3- Financing request vs order management
 
-A New prestashop status "Awaiting Financing" have been created when the financing request is "REQUESTED".  Latest Financing request status is displayed on order detail management (see new bloc "Financing subscriptions") by the merchant in Prestashop back-office.
+When a financing request is "INITIALIZED" , then a new customer order is created in PRESTASHOP with a new status "Awaiting Financing".&#x20;
 
-The merchant will have the action to move on the order status manually according its own workflow management rules.
+Then the financing customer journey start and PRESTASHOP will &#x20;
+
+Latest Financing request status is displayed on order detail management (see new bloc "Financing subscriptions") by the merchant in Prestashop back-office.
+
+
+
+
 
 {% hint style="warning" %}
-There is no automatic rules in place in this version to move on the order status when the financing request status evolve.&#x20;
-
-This will come soon in a new release !
+!
 {% endhint %}
 
 See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md).
