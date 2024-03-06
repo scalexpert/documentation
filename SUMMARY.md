@@ -96,4 +96,4 @@
 
 ## Support
 
-* [Contact support](support/contact-support.md)
+* [How to contact us?](support/how-to-contact-us.md)
