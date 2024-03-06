@@ -80,6 +80,7 @@
     * [V 1.3.8 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.8-insurance-api.md)
   * [Insurance error codes](api-reference/insurance-api/insurance-error-codes.md)
 * [🆕 Merchant-Webhooks API](api-reference/merchant-webhooks-api/README.md)
+  * [V 1.0.6 - Merchant Webhooks API](api-reference/merchant-webhooks-api/v-1.0.6-merchant-webhooks-api.md)
   * [Webhook event types](api-reference/merchant-webhooks-api/webhook-event-types.md)
   * [Webhook error codes](api-reference/merchant-webhooks-api/webhook-error-codes.md)
   * [UAT API for partners](api-reference/merchant-webhooks-api/uat-api-for-partners/README.md)

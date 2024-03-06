@@ -5,13 +5,13 @@ description: Merchant Webhooks API reference
 # 🆕 Merchant-Webhooks API
 
 {% hint style="info" %}
-Merchant Webhooks API will be delivered soon! BETA version available for partners.
+Merchant Webhooks API has been released! :tada:
 {% endhint %}
 
-### Merchant Webhooks API BETA for partners (UAT)
+### Merchant Webhooks API
 
-{% content-ref url="uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md" %}
-[v-1.0.5-merchant-webhooks-api.md](uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md)
+{% content-ref url="v-1.0.6-merchant-webhooks-api.md" %}
+[v-1.0.6-merchant-webhooks-api.md](v-1.0.6-merchant-webhooks-api.md)
 {% endcontent-ref %}
 
 ### Webhook Event types

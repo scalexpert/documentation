@@ -1,0 +1,815 @@
+openapi: 3.0.1
+info:
+  title: Merchant-webhooks
+  description: >-
+    The common services is offered by the BAAS plateform. One of the main
+    services is the merchant webhook service. 
+
+    The Webhook Merchant API allows merchants to subscribe to various
+    transaction status events and receive notifications 
+
+    through configured callback APIs or by polling for these events.
+  termsOfService: 'http://www.societegenerale.com'
+  contact:
+    name: SG ECommerce Support Team
+    url: ''
+    email: sg-ecommerce-support.world@socgen.com
+  license:
+    name: Socgen
+    url: 'http://www.societegenerale.com'
+  version: 1.0.6
+  x-irt-code: A8821
+  x-trigram-code: BAX
+  x-api-audience: PUBLIC
+  x-sg-name: merchant-webhooks
+externalDocs:
+  description: Dev Docs
+  url: >-
+    https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/developers-docs/get-started
+servers:
+  - url: >-
+      https://api.scalexpert.societegenerale.com/baas/prod/merchant-webhooks/api/v1
+paths:
+  /webhooks:
+    get:
+      tags:
+        - Webhooks
+      summary: >-
+        Retrieve a webhook configuration (for a given event type code) for a
+        merchant
+      description: >-
+        Retrieve a webhook configuration (for a given event type code) for a
+        merchant
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: findMerchantWebhookConfig
+      parameters:
+        - name: eventTypeCode
+          in: query
+          required: true
+          schema:
+            type: string
+            description: >-
+              eventTypeCode for which the webhook configuration must be
+              retrieved.            
+
+              Can be SC_SUBSCRIPTION, CI_SUBSCRIPTION,
+              HELLO_WORLD...etc.            
+
+              - HELLO_WORLD: This Key word could be used for retrieving the
+              webhooks config already created for test.
+            example: SC_SUBSCRIPTION
+      responses:
+        '200':
+          description: Webhook configuration returned with success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantWebhookConfigResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+    put:
+      tags:
+        - Webhooks
+      summary: Configure a webhook (for a given event type) for a merchant
+      description: >-
+        Configure a webhook (for a given event type) for a merchant. The event
+        type must match the family code of the merchant's subscription product.
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: setMerchantWebConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MerchantWebhookConfigRequest'
+        required: true
+      responses:
+        '200':
+          description: Event returned with success
+          content:
+            application/json: {}
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  /events/tests/_trigger:
+    post:
+      tags:
+        - Events
+      summary: Trigger an event of type HELLO_WORLD to a merchant.
+      description: >-
+        Trigger an event of type HELLO_WORLD to a merchant in order to test its
+        endpoint of webhooks callback.
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: triggerEventHelloWorldForMerchant
+      responses:
+        '200':
+          description: Id of the triggered HELLO_WORLD event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerHelloWorldEventResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  /events:
+    get:
+      tags:
+        - Events
+      summary: Retrieve webhook events with a given delivery status
+      description: >-
+        Retrieve webhook events with a given delivery status (OK, ERROR,
+        INACTIVE...)
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: findWebhookEventsForMerchant
+      parameters:
+        - name: status
+          in: query
+          description: Delivery status of the events to retrieve
+          required: false
+          schema:
+            type: string
+            format: enum
+            enum:
+              - OK
+              - ERROR
+              - INACTIVE
+              - NO_CONFIG
+        - name: eventTypeCode
+          in: query
+          description: >-
+            eventTypeCode for which the webhook configuration must be retrieved.
+            Can be ANY, SC_SUBSCRIPTION, CI_SUBSCRIPTION, TEST...
+          required: false
+          schema:
+            type: string
+            example: SC_SUBSCRIPTION
+        - name: eventCode
+          in: query
+          description: event code for the event type
+          required: false
+          schema:
+            type: string
+            example:
+              - SC_SUBSCRIPTION_INITIALIZED
+              - SC_SUBSCRIPTION_PRE_ACCEPTED
+        - name: fromTimestamp
+          in: query
+          description: Event to retrieve must have a timestamp greater that fromTimestamp
+          required: false
+          schema:
+            type: string
+            format: date-time
+            example: '2023-06-27T15:20:30.456Z'
+        - name: toTimestamp
+          in: query
+          description: Event to retrieve must have a timestamp lower that toTimestamp
+          required: false
+          schema:
+            type: string
+            format: date-time
+            example: '2023-09-27T15:20:30.456Z'
+        - name: page
+          in: query
+          description: 'Page, starting from 1. Default is 1.'
+          required: false
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          description: Page size. Default is 20.
+          required: false
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Sort. Default is -timestamp.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Events returned with success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOfWebhookEventsForMerchant'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            '*/*':
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  '/events/{eventId}':
+    get:
+      tags:
+        - Events
+      summary: Retrieve a webhook event
+      description: Retrieve a webhook event using its id
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: findWebhookEventForMerchant
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Id of the event to retrieve
+            format: uuid
+      responses:
+        '200':
+          description: Event returned with success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEventForMerchant'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  /event-types:
+    get:
+      tags:
+        - Event Types
+      summary: >-
+        Retrieve available event type codes and associated event codes for a
+        merchant.
+      description: >-
+        - Retrieve available event type codes and associated event codes.
+
+        - Return an empty list of eventTypes if the merchant is not eligible for
+        any event-type.
+      externalDocs:
+        description: Documentation of error responses.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/webhook-api/webhook-error-codes
+      operationId: findWebhooksEventTypes
+      responses:
+        '200':
+          description: >-
+            List of available event type codes and associated event codes
+            returned with success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWebhookEventTypesResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+components:
+  schemas:
+    BaasExceptionHttpResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the error
+          format: date-time
+          example: '2023-01-29T10:05:38.429Z'
+        httpStatusCode:
+          type: integer
+          description: 'HTTP status code (404, 400, 500...)'
+          format: int32
+          example: 400
+        httpStatusMessage:
+          type: string
+          description: >-
+            HTTP status message ("Not Found", "Bad Request", "Internal Server
+            Error"...)
+          example: Bad Request
+        errorCode:
+          type: string
+          description: >-
+            The applicative error code. It is a machine readable code. Used when
+            BAD_REQUEST error to provide details about the error.
+          example: INVALID_EMAIL
+        errorMessage:
+          type: string
+          description: >-
+            The applicative error message. It is a human readable English
+            message.
+          example: The email address is not valid !
+        errors:
+          type: array
+          description: 'List of { error code, error message }.'
+          items:
+            $ref: '#/components/schemas/ErrorCodeAndMessage'
+        requestMethod:
+          type: string
+          description: >-
+            HTTP method used to make the request ("GET", "POST", "PUT",
+            "DELETE"...)
+          example: POST
+        requestURI:
+          type: string
+          description: HTTP URI used to make the request
+          example: /v1/user-account/users
+      description: Generic HTTP Error Response
+    ErrorCodeAndMessage:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      description: 'List of { error code, error message }.'
+    MerchantWebhookConfigRequest:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+          description: >-
+            Event type code for which we want to configure the webhook. Can be
+            ANY, SC_SUBSCRIPTION, SC_CANCEL_REQUEST, CI_SUBSCRIPTION,
+            HELLO_WORLD.
+          example: SC_SUBSCRIPTION
+        active:
+          type: boolean
+          description: Is this webhook active ? Default is false.
+          example: true
+        url:
+          type: string
+          description: Url to use for this webhook. Default is null.
+          format: url
+          example: 'https://www.acme.com/webhooks/events/credit'
+        authMethod:
+          type: string
+          description: Authentication method to use for this webhook. Default is null.
+          format: enum
+          example: BASIC_AUTH
+          enum:
+            - NONE
+            - BASIC_AUTH
+            - API_KEY
+        authLogin:
+          type: string
+          description: >-
+            Authentication login to use for this webhook if authentication
+            method is BASIC_AUTH. Default is null.
+          example: mySuperLogin
+        authPassword:
+          type: string
+          description: >-
+            Authentication password to use for this webhook if authentication
+            method is BASIC_AUTH. Default is null.
+          example: mySuperPassword
+        authScope:
+          type: string
+          description: >-
+            Authentication scope to use for this webhook. Not used so far
+            (OAUTH2 is not yet supported). Default is null.
+          example: mySuperScope
+        keyForSignature:
+          type: string
+          description: >-
+            Key to use to sign the events for this webhook (using HMAC-SHA256).
+            When the webhook endpoint will be called (during event delivery),
+            the header X-BAAS-SIGNATURE will contain the signature of the event.
+            Default is null.
+          example: e5399af3ebcde0f3ead45086e13e932f36b1e5a1db002c8bb6a2870a1d22a7b6
+        secret:
+          type: string
+          description: >-
+            Secret (or ApiKey if authentication method is API_KEY) to send
+            alongside with the events for this webhook. When the webhook
+            endpoint will be called (during event delivery), the header
+            X-BAAS-SECRET will contain the secret. If the authentication method
+            is API_KEY, the header Authorization will contain the secret.
+            Default is null.
+          example: mySuperSecretOrMyAPIKey
+        emailForAlerts:
+          type: string
+          description: >-
+            Email to use to notify alerts (typically used if too many errors are
+            encountered on a webhook)
+          example: support@acme.com
+        activeEventCodes:
+          type: array
+          description: >-
+            List of active event codes for the given event type. If this field
+            is not specified, all event codes that belong to the given
+            eventTypeCode will be activated (current and future).
+          example:
+            - SC_SUBSCRIPTION_ACCEPTED
+            - SC_SUBSCRIPTION_REJECTED
+          items:
+            type: string
+      description: Data to configure webhooks for a merchant
+    TriggerHelloWorldEventResponse:
+      required:
+        - eventId
+      type: object
+      properties:
+        eventId:
+          type: string
+          description: Id of the triggered HelloWorld event
+          format: uuid
+          example: 44f5060e-a89c-11ed-afa1-0242ac120002
+      description: Response of the request to trigger a HelloWorld event
+    MerchantWebhookConfigResponse:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+          description: >-
+            Event type code for which the webhook is configured. Can be ANY,
+            SC_SUBSCRIPTION, SC_CANCEL_REQUEST, CI_SUBSCRIPTION, HELLO_WORLD.
+          example: SC_SUBSCRIPTION
+        active:
+          type: boolean
+          description: Is this webhook active ? Default is false.
+          example: true
+        url:
+          type: string
+          description: Url to use for this webhook. Default is null.
+          format: url
+          nullable: true
+          example: 'https://www.acme.com/webhooks/events/credit'
+        authMethod:
+          type: string
+          description: Authentication method to use for this webhook. Default is null.
+          format: enum
+          nullable: true
+          example: BASIC_AUTH
+          enum:
+            - NONE
+            - BASIC_AUTH
+            - API_KEY
+        authLogin:
+          type: string
+          description: >-
+            Authentication login to use for this webhook if authentication
+            method is BASIC_AUTH. Default is null.
+          nullable: true
+          example: mySuperLogin
+        authPassword:
+          type: string
+          description: >-
+            Authentication password to use for this webhook if authentication
+            method is BASIC_AUTH. Default is null.
+          nullable: true
+          example: mySuperPassword
+        authScope:
+          type: string
+          description: >-
+            Authentication scope to use for this webhook. Not used so far
+            (OAUTH2 is not yet supported). Default is null.
+          nullable: true
+          example: mySuperScope
+        keyForSignature:
+          type: string
+          description: >-
+            Key to use to sign the events for this webhook (using HMAC-SHA256).
+            When the webhook endpoint will be called (during event delivery),
+            the header X-BAAS-SIGNATURE will contain the signature of the event.
+            Default is null.
+          nullable: true
+          example: e5399af3ebcde0f3ead45086e13e932f36b1e5a1db002c8bb6a2870a1d22a7b6
+        secret:
+          type: string
+          description: >-
+            Secret (or ApiKey if authentication method is API_KEY) to send
+            alongside with the events for this webhook. When the webhook
+            endpoint will be called (during event delivery), the header
+            X-BAAS-SECRET will contain the secret. If the authentication method
+            is API_KEY, the header Authorization will contain the secret.
+            Default is null.
+          nullable: true
+          example: mySuperSecretOrMyAPIKey
+        emailForAlerts:
+          type: string
+          description: >-
+            Email to use to notify alerts (typically used if too many errors are
+            encountered on a webhook)
+          nullable: true
+          example: support@acme.com
+        activeEventCodes:
+          type: array
+          description: >-
+            List of active event codes for this event type. If not present or
+            null, it means ALL event codes (current and future).
+          example:
+            - SC_SUBSCRIPTION_ACCEPTED
+            - SC_SUBSCRIPTION_REJECTED
+          items:
+            type: string
+      description: Configuration of webhooks for a merchant
+    CiSubscriptionPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        insuranceSubscriptionId:
+          type: string
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) insurance subscription
+          enum:
+            - INITIALIZED
+            - SUBSCRIBED
+            - ACTIVATED
+            - CANCELLED
+            - TERMINATED
+            - ABORTED
+            - REJECTED
+    PageOfWebhookEventsForMerchant:
+      required:
+        - totalEventCount
+      type: object
+      properties:
+        totalEventCount:
+          type: integer
+          description: Total event count
+          format: int32
+          example: 158
+        events:
+          type: array
+          description: List of events for the merchant
+          items:
+            $ref: '#/components/schemas/WebhookEventForMerchant'
+    ScCancelRequestPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        cancelledAmount:
+          type: number
+          format: float
+        financedAmount:
+          type: number
+          format: float
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) credit subscription
+        cancellationStatus:
+          type: string
+          enum:
+            - REQUEST_FOR_PARTIAL_CANCELLATION
+            - REQUEST_FOR_CANCELLATION
+            - CANCELLATION_ACCEPTED
+            - CANCELLATION_REJECTED
+            - PARTIAL_CANCELLATION_ACCEPTED
+            - PARTIAL_CANCELLATION_REJECTED
+    ScSubscriptionPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        merchantGlobalOrderId:
+          type: string
+        financedAmount:
+          type: number
+          format: float
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) credit subscription
+    WebhookEventForMerchant:
+      required:
+        - data
+        - eventTypeCode
+        - id
+        - status
+        - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the event
+          format: date-time
+          example: '2023-06-27T13:20:30.456Z'
+        id:
+          type: string
+          description: Id of the event
+          format: uuid
+          example: 44f5060e-a89c-11ed-afa1-0242ac120002
+        correlationId:
+          type: string
+          description: Correlation Id
+          format: uuid
+          example: 7d9670fe-a0cf-4073-afde-bdc61ca49f75
+        eventTypeCode:
+          type: string
+          description: Event Type code of the event
+          example: CREDIT
+        eventCode:
+          type: string
+          description: Event code of the event
+          example: CANCELLED
+        data:
+          $ref: '#/components/schemas/WebhookEventPayload'
+        replayCount:
+          type: integer
+          description: >-
+            Number of times this event has been replayed. Null if the event is
+            delivered for the first time. First replay has replayCount = 1.
+          format: int32
+        status:
+          type: string
+          description: Delivery status of the event
+          format: enum
+          example: ERROR
+          enum:
+            - OK
+            - ERROR
+            - INACTIVE
+            - NO_CONFIG
+        timestampOfLastDeliveryAttempt:
+          type: string
+          description: Timestamp of the last delivery attempt
+          format: date-time
+          example: '2023-06-27T13:20:30.456Z'
+        httpStatusCodeOfLastDeliveryAttempt:
+          type: integer
+          description: HTTP status of the last delivery attempt
+          format: int32
+          example: 500
+      description: Webhook event to send/sent to a merchant
+    WebhookEventPayload:
+      required:
+        - eventTypeCode
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+      description: Payload of the event
+      discriminator:
+        propertyName: eventTypeCode
+        mapping:
+          SC_SUBSCRIPTION: '#/components/schemas/ScSubscriptionPayload'
+          SC_CANCEL_REQUEST: '#/components/schemas/ScCancelRequestPayload'
+          CI_SUBSCRIPTION: '#/components/schemas/CiSubscriptionPayload'
+          HELLO_WORLD: '#/components/schemas/WebhookPayloadForHelloWorld'
+      oneOf:
+        - $ref: '#/components/schemas/CiSubscriptionPayload'
+        - $ref: '#/components/schemas/ScSubscriptionPayload'
+        - $ref: '#/components/schemas/ScCancelRequestPayload'
+        - $ref: '#/components/schemas/WebhookPayloadForHelloWorld'
+    WebhookPayloadForHelloWorld:
+      required:
+        - eventTypeCode
+        - helloWorldMessage
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        eventCode:
+          type: string
+        helloWorldMessage:
+          type: string
+          description: Hello World message
+          example: Hello World !
+      description: >-
+        Payload of the HelloWorld event used to test the webhooks feature on the
+        merchant side (to test end-to-end connectivity)
+    GetWebhookEventTypesResponse:
+      type: object
+      properties:
+        eventTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+      description: List of available event type codes and associated event codes
+    WebhookEventCode:
+      type: object
+      properties:
+        eventCode:
+          type: string
+        description:
+          type: string
+    WebhookEventType:
+      type: object
+      properties:
+        eventTypeCode:
+          type: string
+        description:
+          type: string
+        eventCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEventCode'
+  securitySchemes:
+    oauth-flows:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://sso.scalexpert.societegenerale.com/oauth/token'
+          scopes:
+            'common-services:rw': common-services scope
+security:
+  - oauth-flows:
+      - 'common-services:rw'
+x-sg-configuration:
+  gateways:
+    - name: baas-open-gateway
+      description: To expose Open APIs to BAAS partners
+      url: 'https://api.scalexpert.societegenerale.com/baas/prod'
