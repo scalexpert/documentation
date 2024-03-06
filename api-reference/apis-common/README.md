@@ -30,6 +30,10 @@ This part of the guide will make an overview of all common concepts of the APis:
 [authorization-server-api.md](../authorization-server-api.md)
 {% endcontent-ref %}
 
+{% content-ref url="../merchant-webhooks-api/" %}
+[merchant-webhooks-api](../merchant-webhooks-api/)
+{% endcontent-ref %}
+
 ### API console
 
 {% embed url="https://dev.scalexpert.societegenerale.com/en/prod" %}
