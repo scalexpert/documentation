@@ -23,4 +23,4 @@ We are committed to responding to you in a very short time.
 
 Need a Demo? Need more information about our solutions? click [here](https://scalexpert.societegenerale.com/nous-contacter)
 
-Feel in our contact form to be contacted by email, phone or Whatsapp.
+Fill in our contact form to be contacted by email, phone or Whatsapp.
