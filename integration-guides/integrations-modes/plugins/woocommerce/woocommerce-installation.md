@@ -41,3 +41,12 @@ At that stage, you must have an account and get your customers API keys. More de
 5. Validate you setting.
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2024-03-11 14-51-12.png" alt=""><figcaption><p>Enter your API keys and verify it</p></figcaption></figure>
+
+## 3- Verify your activated solutions
+
+1. Make sure you have all your solutions activated according to your contract. if not contact your support.
+2. Confirm your solutions list or deactivate the ones you don't want used in your CMS. \
+
+3. Validate your setting.
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2024-03-11 15-02-17.png" alt=""><figcaption><p>Activate / deactivate your solutions</p></figcaption></figure>
