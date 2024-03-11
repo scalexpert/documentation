@@ -30,8 +30,9 @@
     * [Magento CE & EE 2.4.3, 2.4.4 , 2.4.6](integration-guides/integrations-modes/plugins/magento/README.md)
       * [Magento installation](integration-guides/integrations-modes/plugins/magento/magento-installation.md)
       * [Magento customization](integration-guides/integrations-modes/plugins/magento/magento-customization.md)
-    * [WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
+    * [🆕 WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
       * [WooCommerce  installation](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md)
+      * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## FOR DISCOVERY

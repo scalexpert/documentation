@@ -10,7 +10,7 @@ Customization is found at "scalexpert" > "Customization" menu.
 
 Customization are available for each solutions activated.&#x20;
 
-2 levels of customization are possible:
+3 levels of customization are possible:
 
 * on product pages,
 * on payment checkout pages,
