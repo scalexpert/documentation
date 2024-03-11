@@ -26,4 +26,18 @@ By the way, we recommended you updating version of PHP, WordPress to align with 
 2. Go to WooCommerce backoffice, module menu and install your plugin.
 3. Once extension installed, activate it.
 
-<figure><img src="../../../../.gitbook/assets/1-woocommerce-install-module.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/1-woocommerce-install-module.gif" alt=""><figcaption><p>Install your extension and activate it</p></figcaption></figure>
+
+## 2-Setting your API keys
+
+{% hint style="warning" %}
+At that stage, you must have an account and get your customers API keys. More details [here](../../../../ready-to-start/before-you-start/).
+{% endhint %}
+
+1. Go to scalexpert menu  "SG scalexpert / Administrer".
+2. Select your environment TEST or PRODUCTION.
+3. Setup your API keys accordingly.
+4. Verify your key.
+5. Validate you setting.
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2024-03-11 14-51-12.png" alt=""><figcaption><p>Enter your API keys and verify it</p></figcaption></figure>
