@@ -35,23 +35,23 @@
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
-## FOR DISCOVERY
+## SOLUTIONS REFERENCE
 
-* [e-Financing journeys](for-discovery/credit/README.md)
-  * [Initiate an e-financing journey](for-discovery/credit/initiate-an-e-financing-journey.md)
-  * [Split Payment Journey France](for-discovery/credit/split-payment-journey-france.md)
-  * [Long Term Credit Journey France](for-discovery/credit/long-term-credit-journey-france.md)
-  * [Long Term Credit Journey Germany](for-discovery/credit/long-term-credit-journey-germany.md)
-  * [Funded, Cancellation journeys](for-discovery/credit/funded-cancellation-or-reimbursed-journey/README.md)
-    * [Cancellation journey Split Payment](for-discovery/credit/funded-cancellation-or-reimbursed-journey/cancellation-journey-split-payment.md)
-  * [E-financing Status life cycle](for-discovery/credit/e-financing-status-life-cycle.md)
-* [Contextual Insurance journeys](for-discovery/insurance/README.md)
-  * [Initiate an insurance journey](for-discovery/insurance/initiate-an-insurance-journey.md)
-  * [Create an insurance quotation](for-discovery/insurance/create-an-insurance-quotation.md)
-  * [Subscribe to an insurance policy](for-discovery/insurance/subscribe-to-an-insurance-policy.md)
-  * [Insurance Status life cycle](for-discovery/insurance/insurance-status-life-cycle.md)
-* [Showcasing solutions](for-discovery/showcasing-solutions.md)
-* [Testing solutions](for-discovery/testing-solutions.md)
+* [e-Financing journeys](solutions-reference/credit/README.md)
+  * [Initiate an e-financing journey](solutions-reference/credit/initiate-an-e-financing-journey.md)
+  * [Split Payment Journey France](solutions-reference/credit/split-payment-journey-france.md)
+  * [Long Term Credit Journey France](solutions-reference/credit/long-term-credit-journey-france.md)
+  * [Long Term Credit Journey Germany](solutions-reference/credit/long-term-credit-journey-germany.md)
+  * [Funded, Cancellation journeys](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/README.md)
+    * [Cancellation journey Split Payment](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/cancellation-journey-split-payment.md)
+  * [E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
+* [Contextual Insurance journeys](solutions-reference/insurance/README.md)
+  * [Initiate an insurance journey](solutions-reference/insurance/initiate-an-insurance-journey.md)
+  * [Create an insurance quotation](solutions-reference/insurance/create-an-insurance-quotation.md)
+  * [Subscribe to an insurance policy](solutions-reference/insurance/subscribe-to-an-insurance-policy.md)
+  * [Insurance Status life cycle](solutions-reference/insurance/insurance-status-life-cycle.md)
+* [Showcasing solutions](solutions-reference/showcasing-solutions.md)
+* [Testing solutions](solutions-reference/testing-solutions.md)
 
 ## API Reference
 

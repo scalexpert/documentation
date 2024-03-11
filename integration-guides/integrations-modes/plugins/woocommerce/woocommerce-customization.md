@@ -18,7 +18,7 @@ For each solution, a information message will remind you if the solution is acti
 
 ## 1-Product pages customization
 
-* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../for-discovery/showcasing-solutions.md).&#x20;
+* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../solutions-reference/showcasing-solutions.md).&#x20;
 * Chose the position of the solution insert into the page.
 * Customize title of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter.
 * Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">

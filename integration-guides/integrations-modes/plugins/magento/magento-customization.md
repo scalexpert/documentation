@@ -18,7 +18,7 @@ Customization are available for each solutions activated.&#x20;
 
 ## 1-Product pages customization
 
-* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../for-discovery/showcasing-solutions.md).&#x20;
+* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../solutions-reference/showcasing-solutions.md).&#x20;
 * Chose the position of the solution insert into the page. 3 options are available: \
   \- "under product name",\
   \- "under quantity field",\

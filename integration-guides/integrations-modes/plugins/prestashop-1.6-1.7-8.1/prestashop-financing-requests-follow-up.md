@@ -30,7 +30,7 @@ When a financing request is "INITIALIZED" , then a new customer order is created
 Please review in the PRESTASHOP back-office menu "configure/shop parameters/order settings/statuses" parameters for this new status "awaiting financing". For instance we recommend not to activate "sending a email" to the customer at that stage.
 {% endhint %}
 
-Then the financing customer journey start and PRESTASHOP will collect status updates from financing institution automatically (See more details on financing requests statuses here [E-financing solutions life cycle](../../../../for-discovery/credit/e-financing-status-life-cycle.md)). Latest financing request status is displayed on order detail management (see new bloc "Financing subscriptions")  in PRESTASHOP back-office.
+Then the financing customer journey start and PRESTASHOP will collect status updates from financing institution automatically (See more details on financing requests statuses here [E-financing solutions life cycle](../../../../solutions-reference/credit/e-financing-status-life-cycle.md)). Latest financing request status is displayed on order detail management (see new bloc "Financing subscriptions")  in PRESTASHOP back-office.
 
 {% hint style="info" %}
 Financing request statuses are collected at different times: after return of financing customer journeys, on periodic basis for asynchronous steps. Some mechanism for requesting statuses are in place (for more details see [advanced configuration guide](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)).

@@ -6,8 +6,8 @@ description: Warrenty extension - custom integration API
 
 To integrate one of our warrenty extension solution with APIs follow the below step-by-step guide:  &#x20;
 
-{% content-ref url="../../for-discovery/insurance/" %}
-[insurance](../../for-discovery/insurance/)
+{% content-ref url="../../solutions-reference/insurance/" %}
+[insurance](../../solutions-reference/insurance/)
 {% endcontent-ref %}
 
 Then consult this guide to know how to implement APIs

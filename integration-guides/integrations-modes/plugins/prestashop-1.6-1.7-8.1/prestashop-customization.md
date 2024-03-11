@@ -18,7 +18,7 @@ Customization are available for each solutions activated.&#x20;
 
 ## 1-Product pages customization
 
-* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../for-discovery/showcasing-solutions.md).&#x20;
+* Chose to display or not the solution insert on the product page. For more detail see [how to showcase solutions](../../../../solutions-reference/showcasing-solutions.md).&#x20;
 * Chose the position of the solution insert into the page (only 1 position available "under bloc: add to basket" on this version of the plugin)
 * Customize title of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter.
 * Customize subtitle of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter (only available for Insurance solutions).

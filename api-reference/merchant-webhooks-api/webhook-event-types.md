@@ -220,7 +220,7 @@ The status "OK" and "replayCount" null mean that event have been received with s
 
 ### Event types "SC\_SUBSCRIPTION"
 
-Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financing-solution-codes)and events related to [status of credit subscriptions](../../for-discovery/credit/e-financing-status-life-cycle.md#statuses-definition) .
+Concern only the "[e-financing" solutions ](../../solutions-reference/credit/#e-financing-solution-codes)and events related to [status of credit subscriptions](../../solutions-reference/credit/e-financing-status-life-cycle.md#statuses-definition) .
 
 {% code title="Payload SC_SUBSCRIPTION" overflow="wrap" %}
 ```yaml
@@ -246,7 +246,7 @@ Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financ
 
 ### Event types "SC\_CANCEL\_REQUEST"
 
-Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financing-solution-codes)and events related to cancellations requests status.
+Concern only the "[e-financing" solutions ](../../solutions-reference/credit/#e-financing-solution-codes)and events related to cancellations requests status.
 
 {% code title="Payload SC_CANCEL_REQUEST" overflow="wrap" %}
 ```yaml
@@ -284,7 +284,7 @@ Concern only the "[e-financing" solutions ](../../for-discovery/credit/#e-financ
 
 ### Event types "CI\_SUBSCRIPTION"
 
-Concern only the ["insurance" solutions](../../for-discovery/insurance/#insurance-solutions-codes) and events related to [subscription status.](../../for-discovery/insurance/insurance-status-life-cycle.md#statuses-definition)
+Concern only the ["insurance" solutions](../../solutions-reference/insurance/#insurance-solutions-codes) and events related to [subscription status.](../../solutions-reference/insurance/insurance-status-life-cycle.md#statuses-definition)
 
 {% code title="Payload CI_SUBSCRIPTION" overflow="wrap" %}
 ```yaml

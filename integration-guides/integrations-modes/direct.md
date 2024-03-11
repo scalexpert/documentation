@@ -341,7 +341,7 @@ print(response.text)
 
 #### Step 2: Showcasing the solutions
 
-By "showcasing solutions" we mean rendering the solutions at product or checkout pages (see more details [here](../../for-discovery/showcasing-solutions.md)). This will be possible with the response of [GET /eligible-solutions](../../api-reference/e-financing-api/) and object "`communicationKit`" and its attributes that contains texts with HTML, logos, images ...
+By "showcasing solutions" we mean rendering the solutions at product or checkout pages (see more details [here](../../solutions-reference/showcasing-solutions.md)). This will be possible with the response of [GET /eligible-solutions](../../api-reference/e-financing-api/) and object "`communicationKit`" and its attributes that contains texts with HTML, logos, images ...
 
 {% code title="Response GET /eligible-solutions" overflow="wrap" %}
 ````json

@@ -6,8 +6,8 @@ description: E-financing - Custom APi integration
 
 To integrate one of our e-financing solutions with APIs you may first choose one use cases and follow the below step-by-step guides:  &#x20;
 
-{% content-ref url="../../for-discovery/credit/" %}
-[credit](../../for-discovery/credit/)
+{% content-ref url="../../solutions-reference/credit/" %}
+[credit](../../solutions-reference/credit/)
 {% endcontent-ref %}
 
 Then consult this guide to know how to implement APIs
