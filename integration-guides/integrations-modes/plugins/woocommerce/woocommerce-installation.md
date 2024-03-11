@@ -22,5 +22,8 @@ You don't find your configuration. Don't panic! :cry:  Let us know what is your 
 By the way, we recommended you updating version of PHP, WordPress to align with the configurations tested.&#x20;
 {% endhint %}
 
-1. Go to scalexpert GitHub repository and download the version required.
+1. Go to [scalexpert GitHub repository](https://github.com/scalexpert/scalexpert-woocommerce/releases) and download the version required.
 2. Go to WooCommerce backoffice, module menu and install your plugin.
+3. Once extension installed, activate it.
+
+<figure><img src="../../../../.gitbook/assets/1-woocommerce-install-module.gif" alt=""><figcaption></figcaption></figure>
