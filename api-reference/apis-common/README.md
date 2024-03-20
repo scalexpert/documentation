@@ -42,6 +42,6 @@ Access the API console
 
 ### API collections
 
-{% content-ref url="../../integration-guides/integrations-modes/apis-postman-collection.md" %}
-[apis-postman-collection.md](../../integration-guides/integrations-modes/apis-postman-collection.md)
+{% content-ref url="../../integration-guides/integrations-modes/direct/apis-postman-collection.md" %}
+[apis-postman-collection.md](../../integration-guides/integrations-modes/direct/apis-postman-collection.md)
 {% endcontent-ref %}

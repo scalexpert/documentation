@@ -14,8 +14,8 @@ Scope "`e-financing:rw"`
 
 ### Old versions:
 
-{% content-ref url="old-versions-e-financing-api/" %}
-[old-versions-e-financing-api](old-versions-e-financing-api/)
+{% content-ref url="retired-versions-e-financing-api/" %}
+[retired-versions-e-financing-api](retired-versions-e-financing-api/)
 {% endcontent-ref %}
 
 ### UAT versions (only for partners)
