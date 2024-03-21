@@ -29,8 +29,6 @@ externalDocs:
 servers:
   - url: >-
       https://api.scalexpert.societegenerale.com/baas/prod/merchant-webhooks/api/v1
-  - url: >-
-      https://api.scalexpert.uatc.societegenerale.com/baas/uatc/merchant-webhooks/api/v1
 paths:
   /webhooks:
     get:
@@ -815,6 +813,3 @@ x-sg-configuration:
     - name: baas-open-gateway
       description: To expose Open APIs to BAAS partners
       url: 'https://api.scalexpert.societegenerale.com/baas/prod'
-   - name: baas-open-gateway-uatc
-      description: To expose Open APIs to BAAS partners
-      url: 'https://api.scalexpert.uatc.societegenerale.com/baas/uatc'
