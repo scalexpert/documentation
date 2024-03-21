@@ -14,8 +14,8 @@ You don't need to subscribe to this API. This is implicit by using a scope that 
 
 `Path: https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1`
 
-{% swagger src="../.gitbook/assets/swagger_baas-as_1.0.2.yaml" path="/oauth2/token" method="post" fullWidth="false" %}
-[swagger_baas-as_1.0.2.yaml](../.gitbook/assets/swagger_baas-as_1.0.2.yaml)
+{% swagger src="../.gitbook/assets/SG.BaaS-oauth2-1.0.2-swagger.yaml" path="/oauth2/token" method="post" %}
+[SG.BaaS-oauth2-1.0.2-swagger.yaml](../.gitbook/assets/SG.BaaS-oauth2-1.0.2-swagger.yaml)
 {% endswagger %}
 
 Download swagger file:

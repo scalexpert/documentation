@@ -1,0 +1,512 @@
+openapi: 3.0.0
+info:
+  x-sg-name: baas-as
+  title: BaaS AS
+  version: 1.0.2
+  description: |
+    ### Overview of the API
+                 
+     BaaS AS provides OpenId Connect compliant. It allows client (end-user) data
+     (so-called attributes or claims ) to be passed in
+     
+     a secure manner to a collaborator after an explicit consent of the
+     end-user.
+     
+     BaaS AS APIs endpoints allow :
+     
+     <ul>
+     
+     <li>A collaborator of the Société Générale to authenticate
+     themselves.</li>
+     
+     <li>A clients to explicitly consent that his data can be passed to a collaborator.</li>
+     
+     </ul>
+
+
+    #### Use case: Collaborators authentication
+                 
+     In this case collaborators will use a 3-legged flow to authenticate
+     themselves using Société Générale identities providers by following the
+     steps below :
+     
+     <ul>
+     <li>To get an authorization code, You should execute an authorization flow
+     with, at least, the scope openid using the url mentioned in the "Paths"
+     section: </br></br><b>https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/authorize</b></br></br>
+       Example:</br> <b>https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/authorize?client_id=52f2049...&redirect_uri=http://localhost:8080&scope=openid profile&response_type=code&state=dhyjj...</b></li></br>
+     <li>Request an access_token/id_token using the url: https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token</li>
+     </ul>
+  contact:
+    name: PAR-SocleDigitalAgence
+    email: PAR-SocleDigitalAgence@socgen.com
+    url: 'https://sbc.safe.socgen/groups/itim-socle-digital-agence'
+  termsOfService: 24/7
+  x-irt-code: A1911
+  x-trigram-code: SPY
+  x-api-audience: PARTNER
+basePath: /auth-server/api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /oauth2/authorize:
+    get:
+      summary: Authenticating end-user and retrieving authorization code
+      description: >
+        ### General 
+
+        This endpoint must be used by client applications to :
+          * Authenticate a user with a specific identity provider.
+          * Retrieve basic information about the user (in conjunction with the /oauth2/token endpoint)
+          * Retrieve detailed information about the user (in conjunction with the /oauth2/token and /oauth2/userinfo endpoints).
+
+        It implements the authorization endpoint described in both [OAuth 2.0
+        Authorisation Code Grant]
+        (https://tools.ietf.org/html/rfc6749#section-4.1) and [OpenId Connect
+        Authorization
+        Endpoint](https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint)
+
+        **Important :** this endpoint **must** be accessed using a browser.
+
+        ### How to use  
+
+        The client application must add a redirect link (HTTP 302) to the
+        authorize endpoint with the appropriate request parameters (described in
+        the parameters section of this endpoint).
+
+        After the end user authenticates and consents, the SG Sign-in
+        Authorization Server will trigger a redirect to the client application
+        endpoint, providing the generated authorization code in the request
+        parameters.
+
+        The client application can then use thes authorisation code to retrieve
+        an access token, a refresh token and an id token.
+
+
+        The following scopes are available:
+           * The openid field is **mandatory**.
+           * profile to retrieve the first name, last name, date of birth and gender of the end user
+
+
+        **_Example of authorization request_**
+
+        GET
+        /authorize?response_type=code&client_id=s6BhdRkqt3&scope=openid&state=xyz
+        &redirect_uri=https%3A%2F%2Fclient%2Eample%2Ecom%2Fcb HTTP/1.1
+
+        Host: server.example.com
+
+        In the case of a successful process, the response will be :
+
+        HTTP/1.1 302 Found
+
+        Location: https://{redirect_uri}/cb?code=SplxlOBeZQQYbYS6WxSbIA
+          &state=xyz
+
+        If this fails, the response will be (for example):
+
+        HTTP/1.1 302 Found Location:
+        https://{redirect_uri}/cb?error=access_denied&state=xyz 
+      security: []
+      parameters:
+        - name: response_type
+          type: string
+          required: true
+          in: query
+          description: >-
+            OAuth 2.0 Response type value that determines the authorization
+            processing flow to be used. It must be equal to code (implicit flow
+            is not supported)
+        - name: scope
+          type: string
+          required: true
+          in: query
+          description: >-
+            Scopes for which the authorization will be granted by the end-user
+            consent. Space separated list of strings.
+        - name: client_id
+          type: string
+          required: true
+          in: query
+          description: Client application id
+        - name: redirect_uri
+          type: string
+          required: true
+          in: query
+          description: Redirect URI to which the response will be sent
+        - name: state
+          type: string
+          required: false
+          in: query
+          description: >-
+            An opaque value used by the client to maintain state between the
+            request and the callback.
+      responses:
+        '302':
+          description: >-
+            Redirection when the authentication and authorisation flow is
+            completed. There are two possible outcomes; either the process was
+            successful, and the parameters of the response request include the
+            authorization code.  Or the process failed, and the response
+            includes an error code and a description in the request parameters.
+  /oauth2/token:
+    post:
+      description: >
+        ### General
+
+        This endpoint implements the requirements described in the following
+        related documents [OAuth 2.0 RFC
+        chapter](https://tools.ietf.org/html/rfc6749#section-3.2).
+
+
+        It allows a client application to retrieve:
+          * An access token to access BaaS AS /oauth2/userinfoendpoint.
+          * A refresh token to ease future access token retrieval.
+          * An id token containing basic authenticated end-user information.
+
+        Access token and id token are delivered as JSON Web Tokens (JWT).  The
+        access token is encrypted, the id Token is signed.
+      responses:
+        '200':
+          description: >-
+            The client application was authenticated, and addition information
+            provided in the request was validated (the authorization code
+            provided in the case of a authorization_code grant type was
+            correct).
+          schema:
+            type: object
+            properties:
+              access_token:
+                type: string
+                description: >-
+                  The access token issued by SG Signin. It is an **encrypted**
+                  JWT.
+                example: >-
+                  eyJraWQiOiJrc2MtYWxsLWRldi1jbGVfdGVzdF9yc2EyMDQ4IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJqZXJvbWUuY2hhdXZlYXVAc29jZ2VuLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJzcGFya3lfc3ViX3R5cGUiOiJFTkRfVVNFUiIsImlzcyI6Imh0dHBzOlwvXC9pYW0uaG1sLnNwYXJreS5hd3Muc29jZ2VuIiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwidHlwIjoiQmVhcmVyIiwiZ2l2ZW5fbmFtZSI6Ikplcm9tZSIsImNsaWVudF9pZCI6IjYyNmY0MTJmLTBhOWMtNGRkMi05MjYyLTUzNzczOWZiODI1MCIsImF1ZCI6IjYyNmY0MTJmLTBhOWMtNGRkMi05MjYyLTUzNzczOWZiODI1MCIsImF1dGhfdGltZSI6MTYxMTU2MTMwNCwidXJuOnRlc3QiOiJhIiwic2NvcGUiOlsib3BlbmlkIl0sImV4cCI6MTYxMTU2MjIwNSwiZmFtaWx5X25hbWUiOiJDaGF1dmVhdSIsImNsaWVudF9uYW1lIjoiSkNIIHRlc3RzIiwiaWF0IjoxNjExNTYxMzA1LCJlbWFpbCI6Implcm9tZS5jaGF1dmVhdUBzb2NnZW4uY29tIiwic3Bhcmt5X2lkX29yaWdpbiI6InNwYXJreSIsImp0aSI6IjEwMTI3M2IyLWY0YTYtNDEzOC1iMWE2LTk2ZjIyOGQ0ZjczZiJ9.klysSu-Ui0WtIEVJIqOIivef3YR6PpDoRwxuZ92ioAqugn09fZ3ogzFqswxAgospee3UuAWsymGC60YLosGL9LY4pJULUJM7_pCjn26y4nHpy5d0S5bIOsc8ZeYhe85Ihg7Ya45PB2gLCESDZOcbJYLU9UjdlVxm36hUmQcqFhZhohe3srRHIHBHcdOvpeoiAnPzEhyRUsc3BMr1xbmd5ptA795D5MJdH-u1-NtIxpNxzJqVQe47mCK1zq1aRb_pyzmOOrnKRd495fNMA-62JdLv4gs9NpOHjWia9tuZ_7d9gj7YheYpdvHlVPqpWk4qce7y3YOWDcMd3WD10z_hUw
+              token_type:
+                type: string
+                description: The access token is always of type Bearer.
+                example: Bearer
+              expires_in:
+                type: integer
+                description: The lifetime in seconds of the access token.
+                example: 900
+              state:
+                type: string
+                description: >-
+                  The state that was, initially, provided by the Client
+                  application in the /oauth2/authorize flow
+                example: '12345'
+              id_token:
+                type: string
+                description: >-
+                  (optional) The id token generated if openid scope has been
+                  requested by the Client application and granted by SG Signin. 
+                  It is a **non-encrypted** JWT.
+                example: >-
+                  eyJraWQiOiJrc2MtYWxsLWRldi1jbGVfdGVzdF9yc2EyMDQ4IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJqZXJvbWUuY2hhdXZlYXVAc29jZ2VuLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJzcGFya3lfc3ViX3R5cGUiOiJFTkRfVVNFUiIsImlzcyI6Imh0dHBzOlwvXC9pYW0uaG1sLnNwYXJreS5hd3Muc29jZ2VuIiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwidHlwIjoiSWRUb2tlbiIsImdpdmVuX25hbWUiOiJKZXJvbWUiLCJjbGllbnRfaWQiOiI2MjZmNDEyZi0wYTljLTRkZDItOTI2Mi01Mzc3MzlmYjgyNTAiLCJhdWQiOiI2MjZmNDEyZi0wYTljLTRkZDItOTI2Mi01Mzc3MzlmYjgyNTAiLCJhdXRoX3RpbWUiOjE2MTE1NjEzMDQsInVybjp0ZXN0IjoiYSIsImV4cCI6MTYxMTU2MjIwNSwiZmFtaWx5X25hbWUiOiJDaGF1dmVhdSIsImNsaWVudF9uYW1lIjoiSkNIIHRlc3RzIiwiaWF0IjoxNjExNTYxMzA1LCJlbWFpbCI6Implcm9tZS5jaGF1dmVhdUBzb2NnZW4uY29tIiwic3Bhcmt5X2lkX29yaWdpbiI6InNwYXJreSIsImp0aSI6IjU4YTYwMDVjLWQ4OGMtNGM1OS1hNWRhLTZkOTIxYzBiOTY2OCJ9.bp8z0yHEAJuhsv6Tz-ODX50yZDYlI5dvrLWC-GKudFOBo70BkDaFmb2q5nucfLnI9GLowoeCBNi3x0X12_ZhhBCAQ7KnVuibYvReF5xseHLyqjXZmoslxTr6P9AeaRj1oYavZTZWg-CLo0wysz1Ss_BWeXvdwAKHR4HezEnEM3JnNvx2MKu4_ycYJYAgcBBH92NbNK3Ux6yWRJz_Mra9Ei89N3Ixiwql465_ezNQr-RE0Ts8AchhXfCzj6BbuCL6jKNjNALMtVAO3Gh-TXx6J3qqLhy2v7CVaqUgMvNR6Wo2UWVJhPV5BVMqEhRnn8uihfCtxY_cmbnVgghSrhBDuw
+              refresh_token:
+                type: string
+                description: >-
+                  The refresh token, which can be used to obtain a new access
+                  token from BaaS AS.
+                example: >-
+                  64e4f419-8796-4a37-8f6b-f1de5958059c-a2119703-f8de-44d7-82a4-d6f237b54efd
+        '400':
+          description: >-
+            For authorization_code grant type, authorization code is either
+            invalid, already used or expired.
+        '401':
+          description: There was an issue with Client authentication.
+      tags:
+        - oauth2
+      summary: Request access token or id token
+      parameters:
+        - in: formData
+          name: grant_type
+          required: true
+          description: |
+            Grant type. available values: authorization_code or refresh_token.
+          type: string
+        - in: formData
+          name: code
+          required: false
+          description: >-
+            Authorization code delivered during the authorize flow. For
+            authorization_code grant only.
+          type: string
+        - in: formData
+          name: redirect_uri
+          type: string
+          required: false
+          description: >-
+            Client application redirect uri. Only valid for authorization_code
+            grant type.
+        - in: formData
+          name: refresh_token
+          type: string
+          required: false
+          description: >-
+            Refresh token delivered during the authorize flow. Only for
+            refresh_token grant type.
+        - in: formData
+          name: scope
+          type: string
+          required: false
+          description: >-
+            Space separated list of scopes. For refresh_token grant, list can be
+            a subset of the scope list for which the refresh token was,
+            initially, issued.
+        - name: Authorization
+          type: string
+          required: true
+          in: header
+          description: >-
+            Basic authorization header with base 64 encoded value of
+            "clientID:clientSecret"
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      security: []
+  /oauth2/userinfo:
+    get:
+      summary: Retrieve end-user information
+      description: >
+
+        This endpoint is used to retrieve detailed information about an end
+        user.
+
+        It must be called using an access token generated by BaaS AS. The access
+        token access token **must** have been assigned the openid scope. It
+        **may** also have received one or more of the following scopes:
+         * profile to retrieve the first name, last name, date of birth and gender of the end user (only for private)
+
+
+        For more details on a specific openid scopes, see documentation
+        /oauth2/token.
+
+        The figure below gives a high-level view of the flow to obtain user
+        information :
+
+
+          +---------+                                  +---------------+
+          |         |                                  |               |
+          |         +>-+(A)+ Client Authentication +-->+   BaaS AS     |
+          | Client  |                                  |               |
+          |         +<-+(B)+--+ Access Token +--------<+               |
+          |         |                                  |               |
+          |         |>-+(C)+ Access Token +----------->+               |
+          |         |                                  |               |
+          |         +<-+(D)+--+ User Info    +--------<+               |
+          |         |                                  |               |
+          +---------+                                  +---------------+
+
+
+        * (A) client authenticates and requests an acces token
+
+        * (B) BaaS AS delivers an access token.
+
+        * (C) The Client requests user information from BaaS AS, providing the
+        access token obtained in (B) in the Authorization header as a Bearer.
+
+        * (D) BaaS AS responds the user Information.
+      parameters:
+        - name: Authorization
+          type: string
+          required: true
+          in: header
+          description: OAuth2 bearer token
+      responses:
+        '200':
+          description: >-
+            A json object containing user information. The content depends on
+            the scopes that was claimed with the access token
+        '400':
+          description: Bad request issue (invalid url for instance)
+        '401':
+          description: Bearer token provided is either malformed or not valid.
+        '403':
+          description: Token was not granted for the openid scope
+        '500':
+          description: |
+            Internal issue
+      security:
+        - oauth-3-legged:
+            - openid
+  /oauth2/jwks.json:
+    get:
+      summary: BaaS AS public keys for Id Token signature validation
+      description: This endpoint is used to validate Id Token signed by BaaS AS. Note.
+      responses:
+        '200':
+          description: 200 OK
+      security: []
+definitions:
+  Client:
+    type: object
+    required:
+      - name
+      - description
+      - clientType
+    properties:
+      id:
+        type: string
+      secret:
+        type: string
+      name:
+        type: string
+        example: Cool App
+      description:
+        type: string
+        example: My SG Signin client app
+      clientType:
+        type: string
+        enum:
+          - CONFIDENTIAL
+          - PUBLIC
+      redirectUris:
+        type: array
+        items:
+          type: string
+      managers:
+        type: array
+        items:
+          type: string
+      caChain:
+        type: string
+    xml:
+      name: Client
+  Consent:
+    type: object
+    properties:
+      scopeName:
+        type: string
+        description: Scope Name
+        example: aisp
+      clientId:
+        type: string
+        description: Client ID
+        example: 45c13f35-be69-44cb-a78d-07fe300a4f7b
+      clientName:
+        type: string
+        description: Client Name
+        example: Cool App
+    required:
+      - scopeName
+      - clientId
+      - clientName
+  ConsentArray:
+    type: array
+    items:
+      $ref: '#/definitions/Consent'
+    xml:
+      name: ConsentArray
+  Scope:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Scope Name
+        example: aisp
+      enDescription:
+        type: string
+        description: string
+        example: this is an example
+      frDescription:
+        type: string
+        description: string
+        example: ceci est un exemple
+      endUserMFA:
+        type: boolean
+        description: end user MFA
+        example: true
+      managers:
+        type: array
+        items:
+          type: string
+        description: managers list
+        example: PAR-SocleDigitalAgence@socgen.com
+      refreshTokenTTL:
+        type: integer
+        format: int32
+        description: TTL refresh token
+        example: '720'
+      consentTTL:
+        type: integer
+        format: int32
+        description: TTL refresh token
+        example: '320'
+      trustCaChain:
+        type: string
+        description: Trust CA chain
+        example: ''
+  Application:
+    properties:
+      id:
+        type: string
+        description: application id
+      name:
+        type: string
+        description: application name
+      clientType:
+        type: string
+        description: client type
+      description:
+        type: string
+        description: application description
+      managers:
+        type: array
+        description: application managers
+        items:
+          type: string
+      mandatoryTrigramRole:
+        type: string
+        description: mandatory role
+      disable:
+        type: boolean
+        description: disabled application
+    additionalProperties: true
+    description: Sparky application
+externalDocs:
+  description: Consumer Onboarding
+  url: 'https://dev.scalexpert.societegenerale.com/fr/prod/demarrage'
+tags:
+  - name: Identity
+    description: Identity
+  - name: OpenId
+    description: OpenId
+  - name: OAuth2
+    description: OAuth2
+  - name: GDPR-compliant
+    description: GDPR-compliant
+  - name: Encrypted
+    description: Encrypted
+security:
+  - oauth-3-legged:
+      - openid
+      - profile
+securityDefinitions:
+  oauth-3-legged:
+    type: oauth2
+    authorizationUrl: >-
+      This url must be used to request an explicit consent of the
+      client(end-user) to get his identities data (so-called attributes or
+      claims),
+
+      https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/authorize
+    tokenUrl: >-
+      https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token
+    flow: accessCode
+    scopes:
+      openid: ''
+      profile: ''
+x-sg-configuration:
+  gateways:
+    - name: baas-open-gateway
+      description: To expose Open APIs to BAAS partners
+      url: 'https://api.scalexpert.societegenerale.com/baas/prod'
