@@ -60,5 +60,32 @@ Chose [events types](../api-reference/merchant-webhooks-api/webhook-event-types.
 You can listen multiple events types on the same endpoint. But we recommend subscribing separated endpoints because it will be easier to parse the payload according event type structure. see more details on event types [there](../api-reference/merchant-webhooks-api/webhook-event-types.md).&#x20;
 {% endhint %}
 
+### Manage webhooks endpoints
 
+Once webhooks added, you van manage your webhooks endpoints at the webhooks tab. Manage webhooks allow you to change the configuration, activate/deactivate events.&#x20;
 
+{% hint style="info" %}
+You can activate/deactivate webhooks at any time for all events subscribed or events by events.&#x20;
+{% endhint %}
+
+<figure><img src="../.gitbook/assets/Capture d’écran du 2024-03-21 15-23-41.png" alt=""><figcaption><p>Manage webhooks endpoints</p></figcaption></figure>
+
+### Test your webhooks configuration
+
+We have added a special event type "HELLO\_WORLD" to allow you testing your webhooks url configuration.&#x20;
+
+{% hint style="warning" %}
+For now this feature is only available through API. if you want us to release it on merchant portal let us know [support](../support/how-to-contact-us.md) :e-mail:
+{% endhint %}
+
+### Retrieve events&#x20;
+
+You can retrieve all events received and get details though [merchant-webhooks API](../api-reference/merchant-webhooks-api/).&#x20;
+
+{% hint style="warning" %}
+For now this feature is only available through API. if you want us to release it on merchant portal let us know [support](../support/how-to-contact-us.md) :e-mail:
+{% endhint %}
+
+## 2-Subscribe through merchant-webhooks API
+
+All the features described below and more are available though [merchant-webhooks API](../api-reference/merchant-webhooks-api/).&#x20;
