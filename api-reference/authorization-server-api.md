@@ -28,4 +28,4 @@ See samples codes [here](../integration-guides/integrations-modes/direct/#authen
 
 Link to developer portal documentation:
 
-{% embed url="https://dev.e-commerce.societegenerale.com/en/prod/api/baas-as:1.0.0" %}
+{% embed url="https://dev.scalexpert.societegenerale.com/fr/prod/api/baas-as:1.0.2" %}
