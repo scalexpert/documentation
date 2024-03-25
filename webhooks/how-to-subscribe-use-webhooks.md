@@ -99,9 +99,15 @@ The logic is the same as described in above chapters.
 `{a dedicated "evenTypeCode"}` to listen all events from a dedicated event type code\
 `"HELLO_WORD"` special value to test your configuration only\
 \
-other parameters are optional\
+other parameters are optional
+
+{% hint style="info" %}
+if you don't complete a configuration of a webhook url endpoint, events of the related "EventTypeCode" will be not sent **but all events will be stored waiting your retrieval with API GET /events.** This allow you to pull events instead of getting requested on the fly.
+{% endhint %}
+
 `"active":` true make your configuration active,\
-`"url":` enter your webhook url endpoint\
+`"url":` enter your webhook url endpoint
+
 security fields `[authMethod;authLogin ...]`: see above chapter\
 `"emailForAlerts":` enter an email address to receive alerts when an event is triggered on your webhook\
 `"activeEventCodes":` list of "eventsCodes" you want to listen. by default all eventsCodes from the mentionned "eventTypeCode" are listenned&#x20;
@@ -143,12 +149,104 @@ This will trigger an event "HELLO\_WORLD" to the dedicated configuration. No par
   "eventCode": "HELLO_WORLD",
   "data": {
     "eventTypeCode": "HELLO_WORLD",
-    "eventCode": "HELLO_WORLD"
-  },
-  "replayCount": 0,
-  "status": "OK",
-  "timestampOfLastDeliveryAttempt": "2023-01-29T10:05:38.429Z",
-  "httpStatusCodeOfLastDeliveryAttempt": 200
+    "eventCode": "HELLO_WORLD",
+    "helloWorldMessage": "HELLO_WORLD"
+    }
+}
+```
+{% endcode %}
+
+### Consume webhooks events
+
+Once your configuration is tested and activated you will received automatically events on your webhook url. Each event would be structured as:
+
+{% code title="Event request Body structure" overflow="wrap" %}
+```json
+{
+    "timestamp": "2023-06-27T13:20:30.456Z",
+    "id": "44f5060e-a89c-11ed-afa1-0242ac120002",
+    "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
+    "eventTypeCode": "SC_SUBSCRIPTION",
+    "eventCode": "SC_SUBSCRIPTION_PRE_ACCEPTED",
+    "data": {
+      "eventTypeCode": "SC_SUBSCRIPTION",
+      "eventCode": "SC_SUBSCRIPTION_PRE_ACCEPTED",
+      "merchantGlobalOrderId": "MYORDER-12345",
+      "financedAmount": 500.00,
+      "consolidatedStatus": "PRE_ACCEPTED"
+    }
+}
+```
+{% endcode %}
+
+{% hint style="info" %}
+"Data" structure is depending on related "eventTypeCode". see more details on [event types](../api-reference/merchant-webhooks-api/webhook-event-types.md).&#x20;
+{% endhint %}
+
+Once processed by your server and response is 200 OK, event is considered as consumed and will not be resent.
+
+If the response <> 200 OK, then event is considered as not consumed and a replay operation will occurs according the replay mechanism (every 10 minutes during 10 days). Each replay operation will be counted.&#x20;
+
+### Retrieve webhooks events
+
+At any moment, you can retrieve events sent with [`API /events`](../api-reference/merchant-webhooks-api/)filtered by status `[OK| ERROR|INACTIVE |NO_CONFIG]` or a specific "eventTypeCode" or "eventCode" for a period.&#x20;
+
+Status meaning:
+
+* OK: Event with status 200 OK
+* ERROR :  event with status <> 200 OK
+* INACTIVE: event with configuration inactive
+* NO\_CONFIG: event with incomplete (no url) configuraton.&#x20;
+
+{% hint style="info" %}
+Even if configuration is inactive or incomplete, you can retrieve events you would have received other way. This allow you to pull events instead and getting it on the fly.&#x20;
+{% endhint %}
+
+A list of events with their status will be returned:
+
+{% code title="List of events sent" %}
+```json
+{
+  "totalEventCount": 5,
+  "events": [
+    {
+      "timestamp": "2023-11-02T01:30:00.00Z",
+      "id": "bf6f6023-93a2-4266-9a2c-3579d803c09c",
+      "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
+      "eventTypeCode": "SC_SUBSCRIPTION",
+      "eventCode": "SC_SUBSCRIPTION_ACCEPTED",
+      "data": {
+        "eventTypeCode": "SC_SUBSCRIPTION",
+        "eventCode": "SC_SUBSCRIPTION_ACCEPTED",
+        "merchantGlobalOrderId": "340005489",
+        "financedAmount": 119.9,
+        "consolidatedStatus": "ACCEPTED"
+      },
+      "replayCount": 10,
+      "status": "ERROR",
+      "timestampOfLastDeliveryAttempt": "2023-01-29T10:05:38.429Z",
+      "httpStatusCodeOfLastDeliveryAttempt": 401
+    },
+    {
+      "timestamp": "2023-02-15T01:30:00.00Z",
+      "id": "bf6f6023-93a2-4266-9a2c-3579d803c10c",
+      "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f76",
+      "eventTypeCode": "SC_SUBSCRIPTION",
+      "eventCode": "SC_SUBSCRIPTION_REJECTED",
+      "data": {
+        "eventTypeCode": "SC_SUBSCRIPTION",
+        "eventCode": "SC_SUBSCRIPTION_REJECTED",
+        "merchantGlobalOrderId": "340005490",
+        "financedAmount": 500.0,
+        "consolidatedStatus": "REJECTED"
+      },
+      "replayCount": 0,
+      "status": "ok",
+      "timestampOfLastDeliveryAttempt": "2023-02-15T10:05:38.429Z",
+      "httpStatusCodeOfLastDeliveryAttempt": 200
+    },
+    ...
+  ]
 }
 ```
 {% endcode %}

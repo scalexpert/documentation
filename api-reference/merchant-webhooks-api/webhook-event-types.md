@@ -190,13 +190,8 @@ The "data" structure depends of "eventTypeCode" attribute. You can parse the res
 
 Here is an exemple of  a payload of event on e-Financing subscriptions object when status code is set to "PRE\_ACCEPTED" meaning the subscription is pending final back-office financial institution.
 
-The status "OK" and "replayCount" null mean that event have been received with success.&#x20;
-
 ```json
 {
-  "totalEventCount": 158,
-  "events": [
-    {
       "timestamp": "2023-06-27T13:20:30.456Z",
       "id": "44f5060e-a89c-11ed-afa1-0242ac120002",
       "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
@@ -208,13 +203,7 @@ The status "OK" and "replayCount" null mean that event have been received with s
         "merchantGlobalOrderId": "MYORDER-12345",
         "financedAmount": 500.00,
         "consolidatedStatus": "PRE_ACCEPTED"
-      },
-      "replayCount": 0,
-      "status": "OK",
-      "timestampOfLastDeliveryAttempt": "2023-06-27T13:20:30.456Z",
-      "httpStatusCodeOfLastDeliveryAttempt": 200
-    }
-  ]
+      }
 }
 ```
 
