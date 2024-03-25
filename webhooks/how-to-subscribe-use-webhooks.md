@@ -49,7 +49,7 @@ Secret is required for authentication None or API key. Secret is a string shared
 Signature key is optional field for signing events with header X-BAAS-SIGNATURE. This add more security if needed.
 
 {% hint style="warning" %}
-When signature is used you would have to verify the signature before consuming event. See dedicated chapter "Verify signature of webhook event"  &#x20;
+When signature is used you would have to verify the signature before consuming event. See dedicated chapter "[Verify signature of webhook event"](how-to-subscribe-use-webhooks.md#verify-signature-of-webhooks-events-optional)  &#x20;
 {% endhint %}
 
 #### Configure your endpoint to listen events
