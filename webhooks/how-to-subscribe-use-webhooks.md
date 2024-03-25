@@ -255,7 +255,7 @@ In the webhook configuration, If you enter a "keyForSignature" value then for ea
 
 Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the event paylod.
 
-{% code title="sample of  function to very the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
+{% code title="sample of  function to verify the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
 ```java
 @PostMapping(value = "/webhooks/smart-credit-subscription", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
 public ResponseEntity<String> snippet_webhookForSmartCreditSubscription(@RequestBody String webhookEventAsString, HttpServletRequest httpRequest) {
