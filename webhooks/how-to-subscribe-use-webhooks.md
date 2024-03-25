@@ -86,55 +86,6 @@ You can retrieve all events received and get details though [merchant-webhooks A
 For now this feature is only available through API. if you want us to release it on merchant portal let us know [support](../support/how-to-contact-us.md) :e-mail:
 {% endhint %}
 
-## 2-Subscribe through merchant-webhooks API
-
-**All the features described below and more are available though** [**`merchant-webhooks API`**](../api-reference/merchant-webhooks-api/).&#x20;
-
-The logic is the same as described in above chapters.
-
-### Configure your webhook endpoints url to listen events from one [event type](../api-reference/merchant-webhooks-api/#webhook-event-types) code with `API PUT /webhooks`
-
-**At minimum one `"eventypecode"` is required** in the body of the request. The following values are possible:\
-`"ANY"` if you want to listen all event types depending on your solutions subscription\
-`{a dedicated "evenTypeCode"}` to listen all events from a dedicated event type code\
-`"HELLO_WORD"` special value to test your configuration only\
-\
-other parameters are optional
-
-{% hint style="info" %}
-if you don't complete a configuration of a webhook url endpoint, events of the related "EventTypeCode" will be not sent **but all events will be stored waiting your retrieval with API GET /events.** This allow you to pull events instead of getting requested on the fly.
-{% endhint %}
-
-`"active":` true make your configuration active,\
-`"url":` enter your webhook url endpoint
-
-security fields `[authMethod;authLogin ...]`: see above chapter\
-`"emailForAlerts":` enter an email address to receive alerts when an event is triggered on your webhook\
-`"activeEventCodes":` list of "eventsCodes" you want to listen. by default all eventsCodes from the mentionned "eventTypeCode" are listenned&#x20;
-
-{% code title="Example PUT  /webhooks" %}
-```json
-{
-  "eventTypeCode": "SC_SUBSCRIPTION",
-  "active": true,
-  "url": "https://www.acme.com/webhooks/events/credit",
-  "authMethod": "BASIC_AUTH",
-  "authLogin": "mySuperLogin",
-  "authPassword": "mySuperPassword",
-  "authScope": "mySuperScope",
-  "keyForSignature": "e5399af3ebcde0f3ead45086e13e932f36b1e5a1db002c8bb6a2870a1d22a7b6",
-  "secret": "mySuperSecretOrMyAPIKey",
-  "emailForAlerts": "support@acme.com",
-  "activeEventCodes": [
-    "SC_SUBSCRIPTION_ACCEPTED",
-    "SC_SUBSCRIPTION_REJECTED"
-  ]
-}
-```
-{% endcode %}
-
-You can Verify your configuration with `API GET /webhooks`
-
 ### Test your webhook endpoint with `API /events/tests/_trigger` to trigger an `"HELLO_WORLD"` event
 
 This will trigger an event "HELLO\_WORLD" to the dedicated configuration. No parameter are required. Event received is factice and will be structured as normal event but with "HELLO\_WORD" payload data.
