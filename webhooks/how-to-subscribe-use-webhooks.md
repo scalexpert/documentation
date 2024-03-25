@@ -35,21 +35,21 @@ Mandatory fields <mark style="color:red;">\*</mark>
 
 Fields to complete according authentication method:
 
-| None                                      | Basic auth                                          | API key                                   |
-| ----------------------------------------- | --------------------------------------------------- | ----------------------------------------- |
-| Signature key                             | Identifier/login <mark style="color:red;">\*</mark> | Signature key                             |
-| Secret <mark style="color:red;">\*</mark> | Password <mark style="color:red;">\*</mark>         | Secret <mark style="color:red;">\*</mark> |
-|                                           | Signature key                                       |                                           |
-|                                           | Secret                                              |                                           |
+| None                                      | Basic auth                                          | API key                                             |
+| ----------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| Secret <mark style="color:red;">\*</mark> | Identifier/login <mark style="color:red;">\*</mark> | Secret (API key) <mark style="color:red;">\*</mark> |
+| Signature key                             | Password <mark style="color:red;">\*</mark>         | Signature key                                       |
+|                                           | Signature key                                       |                                                     |
+|                                           |                                                     |                                                     |
 
 Identifier/login and password fields are required for basic auth only.
 
 Secret is required for authentication None or API key. Secret is a string shared between you and scalexpert.&#x20;
 
-Signature key is optional field for encrypting the body of the request. This add more security if needed.
+Signature key is optional field for signing events with header X-BAAS-SIGNATURE. This add more security if needed.
 
 {% hint style="warning" %}
-When signature is used you would need to decrypt the body of the request by using a dedicated algorithm. see dedicated chapter "Decrypt webhook payload event"  &#x20;
+When signature is used you would have to verify the signature before consuming event. See dedicated chapter "Verify signature of webhook event"  &#x20;
 {% endhint %}
 
 #### Configure your endpoint to listen events
@@ -248,3 +248,11 @@ A list of events with their status will be returned:
 }
 ```
 {% endcode %}
+
+### Verify signature of webhooks events (optional)
+
+If you choose in your webhook configuration to enter a "keyForSignature" value then payload of events will be crypted using HMAC-SHA256 algorithm with a header X-BAAS-SIGNATURE.
+
+
+
+&#x20; &#x20;
