@@ -255,7 +255,7 @@ In the webhook configuration, If you enter a "keyForSignature" value then for ea
 
 Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the event paylod.
 
-{% code title="sample of  function to verify the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
+{% code title="sample of  function to verify the X-BAAS-SIGNATURE (1/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 **
 * Example of a REST/JSON webhook endpoint with validation of the signature contained in the HTTP header X-BAAS-SIGNATURE.
@@ -289,7 +289,7 @@ public ResponseEntity<Void> snippet_webhookForSmartCreditSubscription(@RequestBo
 ```
 {% endcode %}
 
-{% code title="sample of  function to verify the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
+{% code title="sample of  function to verify the X-BAAS-SIGNATURE (2/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 /**
  * This operation is used to check that the received event (on a HTTP REST/JSON webhook endpoint) has been triggered
@@ -341,7 +341,7 @@ public boolean snippet_isSignatureValid(String webhookEventForMerchantAsString, 
 ```
 {% endcode %}
 
-{% code title="tility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
+{% code title="Utility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
 ```java
 /**
  * Utility operation to generate a hmac of some String using SHA256.
