@@ -257,76 +257,110 @@ Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the 
 
 {% code title="sample of  function to verify the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
 ```java
-@PostMapping(value = "/webhooks/smart-credit-subscription", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-public ResponseEntity<String> snippet_webhookForSmartCreditSubscription(@RequestBody String webhookEventAsString, HttpServletRequest httpRequest) {
+**
+* Example of a REST/JSON webhook endpoint with validation of the signature contained in the HTTP header X-BAAS-SIGNATURE.
+*
+* @param webhookEventAsString: Body of the http request as String. The body must be a JSON object with a structure compatible with the event format described in the developer portal.
+* @param httpRequest:     The HttpServletRequest automatically injected by Spring (used to get headers)
+* @return the response must be empty, the only important point is that you must return the status code 200-OK or 201-CREATED to acknowledge that the event has been taken into account/processed
+* (if the returned status code is NOT 200-OK or 201-CREATED, the event will be retriggered/redelivered in few minutes)
+*/
+@PostMapping(value = "/webhooks/smart-credit-subscription", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<Void> snippet_webhookForSmartCreditSubscription(@RequestBody String webhookEventAsString, HttpServletRequest httpRequest) {
+
+    // Get the key to use to check the signature of the body of the http request. The key is defined by the merchant during the declaration of the webhook endpoint in the merchant portal.
     String keyForSignature = "123456";
-    String valueOfSignatureHeader = httpRequest.getHeader("X-BAAS-SIGNATURE");
-    if (crypto.snippet_isSignatureValid(webhookEventAsString, keyForSignature, valueOfSignatureHeader)) {
-        // parse the webhookEventAsString to some POJO class WebhookEvent ...
-        // process the webhookEvent...
-        return ResponseEntity.ok("OK");
+
+    // Check if the signature of the request body (with keyForSignature) and the signature in the HTTP header X-BAAS-SIGNATURE match
+    boolean isSignatureValid = snippet_isSignatureValid(webhookEventAsString, keyForSignature, httpRequest);
+
+    if (isSignatureValid) {
+        // If the signature is valid...
+        //      parse the webhookEventAsString to some POJO class WebhookEvent ...
+        //      process the webhookEvent...
+        //      return the status code 200-OK or 201-CREATED
+        return ResponseEntity.ok().build(); // The response body must be empty, only the returned HTTP status code is important
     } else {
-        return ResponseEntity.badRequest().body("INVALID_SIGNATURE");
+        // If the signature is NOT valid...
+        //      return the status code 400-BAD-REQUEST (could be also 403-FORBIDDEN...)
+        return ResponseEntity.badRequest().build(); // The response body must be empty, only the returned HTTP status code is important
     }
 }
+```
+{% endcode %}
 
+{% code title="sample of  function to verify the X-BAAS-SIGNATURE" overflow="wrap" lineNumbers="true" %}
+```java
+/**
+ * This operation is used to check that the received event (on a HTTP REST/JSON webhook endpoint) has been triggered
+ * by a trusted source (like BaaS/ScaleExpert) and has not been altered/modified by an intermediary component (man-in-the-middle attack).
+ * @param webhookEventForMerchantAsString: Body of the http request as String. The body must be a JSON object with a structure compatible with the event format described in the developer portal.
+ * @param keyForSignature: Key to use to check the signature of the body of the http request. The key is defined by the merchant during the declaration of the webhook endpoint in the merchant portal.
+ * @param httpRequest:     The HttpServletRequest automatically injected by Spring (used to get headers)
+ * @return true if the signature of the body (with keyForSignature) and the signature in the HTTP header X-BAAS-SIGNATURE match.
+ */
+public boolean snippet_isSignatureValid(String webhookEventForMerchantAsString, String keyForSignature, HttpServletRequest httpRequest) {
+    String HTTP_HEADER_FOR_BAAS_SIGNATURE = "X-BAAS-SIGNATURE";
+    String HTTP_HEADER_FOR_BAAS_SIGNATURE_TIMESTAMP = "X-BAAS-SIGNATURE-TIMESTAMP";
 
+    // If there is no Signature header, then there is no signature to check, so we consider it is ok to continue
+    String valueOfSignatureHttpHeader = httpRequest.getHeader(HTTP_HEADER_FOR_BAAS_SIGNATURE);
+    if (valueOfSignatureHttpHeader == null || valueOfSignatureHttpHeader.isEmpty()) {
+        return true;
+    }
 
-public boolean snippet_isSignatureValid(String webhookEventForMerchantAsString, String keyForSignature, String valueOfSignatureHeader) {
-    // If there is no Signature header, then there is no signature to check, so we consider it is ok to continue
-    if (valueOfSignatureHeader == null || valueOfSignatureHeader.isEmpty()) {
-        return true;
-    }
+    String timestampInHttpHeaderAsString = httpRequest.getHeader(HTTP_HEADER_FOR_BAAS_SIGNATURE_TIMESTAMP);
+    if (timestampInHttpHeaderAsString == null || timestampInHttpHeaderAsString.isEmpty()) {
+        throw new RuntimeException("Timestamp is missing in HTTP Header " + HTTP_HEADER_FOR_BAAS_SIGNATURE_TIMESTAMP);
+    }
+    String hmacInHtpHeaderAsString = httpRequest.getHeader(HTTP_HEADER_FOR_BAAS_SIGNATURE);    // never null nor empty because of the test at the very beginning of this operation
 
-    // Extract the timestamp and the signature from the Signature header
-    String[] timestampAndHmacInHttpHeader = valueOfSignatureHeader.split(",");
-    if (timestampAndHmacInHttpHeader == null || timestampAndHmacInHttpHeader.length != 2) {
-        throw new RuntimeException("Invalid signature in HTTP Header " + HTTP_HEADER_FOR_BAAS_SIGNATURE + ". Must be of the form t=<timestamp>;v1=<signatureUsingHmacSHA256>");
-    }
-    String timestampInHttpHeaderAsStringWithPrefix = timestampAndHmacInHttpHeader[0];
-    String hmacInHtpHeaderAsStringWithPrefix = timestampAndHmacInHttpHeader[1];
+    // Check that the timestamp is close to now (less than 5 minutes)
 
-    // Check that the timestamp is close to now (less than 5 minutes)
-    if (!timestampInHttpHeaderAsStringWithPrefix.startsWith("t=")) {
-        throw new RuntimeException("Invalid timestamp in HTTP Header " + HTTP_HEADER_FOR_BAAS_SIGNATURE + ". Must be of the form t=<timestamp>");
-    }
-    String timestampInHttpHeaderAsString = timestampInHttpHeaderAsStringWithPrefix.substring("t=".length());
-    boolean isTimestampCloseToNow;
-    DateTimeFormatter fmt = DateTimeFormatter.ISO_INSTANT.withZone(ZoneOffset.UTC);
-    Instant timestampInHttpHeader = null;
-    try {
-        timestampInHttpHeader = Instant.from(fmt.parse(timestampInHttpHeaderAsString));
-    } catch (Exception ex) {
-        String errMsg = "Error while parsing timestamp " + timestampInHttpHeaderAsString;
-        throw new RuntimeException(errMsg, ex);
-    }
-    isTimestampCloseToNow = Instant.now().minusSeconds(5 * 60).isBefore(timestampInHttpHeader);
+    boolean isTimestampCloseToNow;
+    DateTimeFormatter fmt = DateTimeFormatter.ISO_INSTANT.withZone(ZoneOffset.UTC);
+    Instant timestampInHttpHeader = null;
+    try {
+        timestampInHttpHeader = Instant.from(fmt.parse(timestampInHttpHeaderAsString));
+    } catch (Exception ex) {
+        String errMsg = "Error while parsing timestamp " + timestampInHttpHeaderAsString;
+        telemetry.error(errMsg, ex);
+        throw new RuntimeException(errMsg, ex);
+    }
+    isTimestampCloseToNow = Instant.now().minusSeconds(MAX_AGE_IN_SECONDS_FOR_SIGNATURE_TIMESTAMP).isBefore(timestampInHttpHeader);
 
-    // Check that the hmac SHA256 is ok
-    if (!hmacInHtpHeaderAsStringWithPrefix.startsWith("v1")) {
-        throw new RuntimeException("Invalid hmac in HTTP Header " + HTTP_HEADER_FOR_BAAS_SIGNATURE + ". Must be of the form v1=<signatureUsingHmacSHA256>");
-    }
-    String hmacInHtpHeaderAsString = hmacInHtpHeaderAsStringWithPrefix.substring("v1=".length());
-    String payloadToSign = timestampInHttpHeaderAsString + "." + webhookEventForMerchantAsString;
-    String hmacOfTheBody = snippet_hmacSHA256(payloadToSign, keyForSignature);
-    boolean areHmacEqual = hmacOfTheBody.equalsIgnoreCase(hmacInHtpHeaderAsString);
+    // Check that the hmac is ok
 
-    // The signature is ok if the hmac SHA 256 is ok and the timestamp is ok
-    return areHmacEqual && isTimestampCloseToNow;
+    String payloadToSign = timestampInHttpHeaderAsString + "." + webhookEventForMerchantAsString;
+    String hmacOfTheBody = snippet_hmacSHA256(payloadToSign, keyForSignature);
+    boolean areHmacEqual = hmacOfTheBody.equalsIgnoreCase(hmacInHtpHeaderAsString);
+
+    // The signature is ok if the hmac SHA 256 is ok and the timestamp is ok
+    return areHmacEqual && isTimestampCloseToNow;
 }
+```
+{% endcode %}
 
+{% code title="tility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
+```java
+/**
+ * Utility operation to generate a hmac of some String using SHA256.
+ * @param clearText: String in clear text for which we want to calculate the hmac.
+ * @param key: Key to use to calculate the hmac.
+ * @return the hmac of the string using SHA256.
+ */
 private String snippet_hmacSHA256(String clearText, String key) {
-    try {
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "HmacSHA256");
-        Mac mac = Mac.getInstance("HmacSHA256");
-        mac.init(secretKeySpec);
-        byte[] encryptedText = mac.doFinal(clearText.getBytes());
-        return Hex.encodeHexString(encryptedText);
+    try {
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "HmacSHA256");
+        Mac mac = Mac.getInstance("HmacSHA256");
+        mac.init(secretKeySpec);
+        byte[] encryptedText = mac.doFinal(clearText.getBytes());
+        return Hex.encodeHexString(encryptedText);
 
-    } catch (Exception ex) {
-        String errMsg = String.format("Error while calculating hmacSHA256. Error was %s", ex.getMessage());
-        throw new RuntimeException(errMsg, ex);
-    }
+    } catch (Exception ex) {
+        String errMsg = String.format("Error while calculating hmacSHA256. Error was %s", ex.getMessage());
+        throw new RuntimeException(errMsg, ex);
+    }
 }
 ```
 {% endcode %}
