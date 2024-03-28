@@ -215,11 +215,11 @@ Status meaning:
 * OK: Event with status 200 OK or 201 CREATED
 * ERROR :  event with status <> 200 OK and 201 CREATED
 * INACTIVE: event with configuration inactive
-* NO\_CONFIG: no configuration
+* NO\_CONFIG: no configuration found for this event
 * (KILLED): event killed by scalexpert support team for internal reason
 
 {% hint style="info" %}
-Even if a configuration is inactive or incomplete, you can still retrieve events that would otherwise be inaccessible. This functionality enables you to pull events on demand, allowing for more flexible data management.
+Even if a configuration is inactive or isn't found, you can still retrieve events through API GET /events. This functionality enables you to pull events on demand, allowing for more flexible data management.
 {% endhint %}
 
 A list of events with their status will be returned:
