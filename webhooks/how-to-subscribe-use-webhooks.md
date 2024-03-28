@@ -183,7 +183,7 @@ Once your configuration is tested and activated you will received automatically 
 
 Once processed by your server and response is 200 OK, event is considered as consumed and will not be resent.
 
-If the response <> 200 OK, then event is considered as not consumed and a replay operation will occurs according the replay mechanism (every 10 minutes during 10 days). Each replay operation will be counted.&#x20;
+If the response <> 200 OK, then event is considered as not consumed and a replay operation will occurs according the replay mechanism (every 10 minutes during 5 days). Each replay operation will be counted.&#x20;
 
 ### Retrieve webhooks events
 
