@@ -203,13 +203,13 @@ Once your configuration is tested and activated you will received automatically 
 "Data" structure is depending on related "eventTypeCode". see more details on [event types](../api-reference/merchant-webhooks-api/webhook-event-types.md).&#x20;
 {% endhint %}
 
-Once processed by your server and response is 200 OK, event is considered as consumed and will not be resent.
+Once processed by your server and response is 200 OK or 201 CREATED, event is considered as consumed and will not be resent.
 
 {% hint style="warning" %}
 The response body of your webhook MUST be empty.&#x20;
 {% endhint %}
 
-If the response <> 200 OK, then event is considered as not consumed and a replay operation will occur according the replay mechanism (every 10 minutes during 5 days). Each replay operation will be counted.&#x20;
+If the response <> 200 OK and 201 CREATED, then event is considered as not consumed and a replay operation will occur according the replay mechanism (every 10 minutes during 5 days). Each replay operation will be counted.&#x20;
 
 ### Retrieve webhooks events
 
