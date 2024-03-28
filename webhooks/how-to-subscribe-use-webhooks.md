@@ -97,17 +97,9 @@ The logic is the same as described in above chapters.
 **At minimum one `"evenTypeCode"` is required** in the body of the request. The following values are possible:\
 `"ANY"` if you want to listen all event types depending on your solutions subscription\
 `{a dedicated "evenTypeCode"}` to listen all events from a dedicated event type code\
-`"HELLO_WORD"` special value to test your configuration only\
-\
-other parameters are optional&#x20;
+`"HELLO_WORD"` special value to test your configuration only
 
-`"active": true`  make your configuration active.
-
-This parameter will allow you to update your configuration partially and once completed to activate it.
-
-{% hint style="danger" %}
-Pay attention to activate your configuration ONLY if  you completed parameters "url" and "security fields" otherwise it will generate an error on production. We recommend strongly to [test your configuration](how-to-subscribe-use-webhooks.md#test-your-webhooks-configuration) with event "HELLO\_WORLD" before activating.
-{% endhint %}
+**Complete your configuration with "url" and security attributes:**
 
 `"url":` enter your webhook url endpoint (<mark style="color:red;">required if configuration active</mark>)
 
@@ -123,11 +115,22 @@ Mandatory fields <mark style="color:red;">\*</mark>
 | secret <mark style="color:red;">\*</mark> | authLogin <mark style="color:red;">\*</mark>    | secret (API key) <mark style="color:red;">\*</mark> |
 | keyForSignature                           | authPassword <mark style="color:red;">\*</mark> | keyForSignature                                     |
 |                                           | keyForSignature                                 |                                                     |
-|                                           |                                                 |                                                     |
+
+Optional attributes:
 
 `"emailForAlerts":` enter an email address to receive alerts when an event is not successfully delivered to your webhook
 
 `"activeEventCodes":` list of "eventsCodes" you want to listen. by default all eventsCodes from the mentioned "eventTypeCode" are listened&#x20;
+
+### Activate your configuration
+
+You can update your configuration many times till attribute "`activate": false` is mentioned.&#x20;
+
+`"active": true`  make your configuration active.
+
+{% hint style="danger" %}
+Pay attention to activate your configuration ONLY if  you completed parameters "url" and "security fields" otherwise it will generate an error on production. We recommend strongly to [test your configuration](how-to-subscribe-use-webhooks.md#test-your-webhooks-configuration) with event "HELLO\_WORLD" before activating.
+{% endhint %}
 
 {% code title="Example PUT  /webhooks" %}
 ```json
@@ -149,6 +152,8 @@ Mandatory fields <mark style="color:red;">\*</mark>
 }
 ```
 {% endcode %}
+
+### Test your configuration
 
 You can Verify your configuration with `API GET /webhooks`Test your webhook endpoint with `API /events/tests/_trigger` to trigger an `"HELLO_WORLD"` event
 
