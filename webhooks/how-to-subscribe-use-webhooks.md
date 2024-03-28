@@ -94,23 +94,40 @@ The logic is the same as described in above chapters.
 
 ### Configure your webhook endpoints url to listen events from one [event type](../api-reference/merchant-webhooks-api/#webhook-event-types) code with `API PUT /webhooks`
 
-**At minimum one `"eventypecode"` is required** in the body of the request. The following values are possible:\
+**At minimum one `"evenTypeCode"` is required** in the body of the request. The following values are possible:\
 `"ANY"` if you want to listen all event types depending on your solutions subscription\
 `{a dedicated "evenTypeCode"}` to listen all events from a dedicated event type code\
 `"HELLO_WORD"` special value to test your configuration only\
 \
-other parameters are optional
+other parameters are optional&#x20;
 
-{% hint style="info" %}
-if you don't complete a configuration of a webhook url endpoint, events of the related "EventTypeCode" will be not sent **but all events will be stored waiting your retrieval with API GET /events.** This allow you to pull events instead of getting requested on the fly.
+`"active": true`  make your configuration active.
+
+This parameter will allow you to update your configuration partially and once completed to activate it.
+
+{% hint style="danger" %}
+Pay attention to activate your configuration ONLY if  you completed parameters "url" and "security fields" otherwise it will generate an error on production. We recommend strongly to [test your configuration](how-to-subscribe-use-webhooks.md#test-your-webhooks-configuration) with event "HELLO\_WORLD" before activating.
 {% endhint %}
 
-`"active":` true make your configuration active,\
-`"url":` enter your webhook url endpoint
+`"url":` enter your webhook url endpoint (<mark style="color:red;">required if configuration active</mark>)
 
-security fields `[authMethod;authLogin ...]`: see above chapter\
-`"emailForAlerts":` enter an email address to receive alerts when an event is triggered on your webhook\
-`"activeEventCodes":` list of "eventsCodes" you want to listen. by default all eventsCodes from the mentionned "eventTypeCode" are listenned&#x20;
+Security attributes (<mark style="color:red;">required if configuration active</mark>):
+
+`"authMethod ":` choose among the authentication method available \[`None | Basic auth | API key]`\
+Fields to complete according authentication method:
+
+Mandatory fields <mark style="color:red;">\*</mark>
+
+| None                                      | Basic auth                                      | API key                                             |
+| ----------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| secret <mark style="color:red;">\*</mark> | authLogin <mark style="color:red;">\*</mark>    | secret (API key) <mark style="color:red;">\*</mark> |
+| keyForSignature                           | authPassword <mark style="color:red;">\*</mark> | keyForSignature                                     |
+|                                           | keyForSignature                                 |                                                     |
+|                                           |                                                 |                                                     |
+
+`"emailForAlerts":` enter an email address to receive alerts when an event is not successfully delivered to your webhook
+
+`"activeEventCodes":` list of "eventsCodes" you want to listen. by default all eventsCodes from the mentioned "eventTypeCode" are listened&#x20;
 
 {% code title="Example PUT  /webhooks" %}
 ```json
@@ -124,7 +141,7 @@ security fields `[authMethod;authLogin ...]`: see above chapter\
   "authScope": "mySuperScope",
   "keyForSignature": "e5399af3ebcde0f3ead45086e13e932f36b1e5a1db002c8bb6a2870a1d22a7b6",
   "secret": "mySuperSecretOrMyAPIKey",
-  "emailForAlerts": "support@acme.com",
+  "emailForAlerts": "mySupport@merchant.com",
   "activeEventCodes": [
     "SC_SUBSCRIPTION_ACCEPTED",
     "SC_SUBSCRIPTION_REJECTED"
@@ -183,7 +200,11 @@ Once your configuration is tested and activated you will received automatically 
 
 Once processed by your server and response is 200 OK, event is considered as consumed and will not be resent.
 
-If the response <> 200 OK, then event is considered as not consumed and a replay operation will occurs according the replay mechanism (every 10 minutes during 5 days). Each replay operation will be counted.&#x20;
+{% hint style="warning" %}
+The response body of your webhook MUST be empty.&#x20;
+{% endhint %}
+
+If the response <> 200 OK, then event is considered as not consumed and a replay operation will occur according the replay mechanism (every 10 minutes during 5 days). Each replay operation will be counted.&#x20;
 
 ### Retrieve webhooks events
 
@@ -191,13 +212,14 @@ At any moment, you can retrieve events sent with [`API /events`](../api-referenc
 
 Status meaning:
 
-* OK: Event with status 200 OK
-* ERROR :  event with status <> 200 OK
+* OK: Event with status 200 OK or 201 CREATED
+* ERROR :  event with status <> 200 OK and 201 CREATED
 * INACTIVE: event with configuration inactive
-* NO\_CONFIG: event with incomplete (no url) configuraton.&#x20;
+* NO\_CONFIG: no configuration
+* (KILLED): event killed by scalexpert support team for internal reason
 
 {% hint style="info" %}
-Even if configuration is inactive or incomplete, you can retrieve events you would have received other way. This allow you to pull events instead and getting it on the fly.&#x20;
+Even if a configuration is inactive or incomplete, you can still retrieve events that would otherwise be inaccessible. This functionality enables you to pull events on demand, allowing for more flexible data management.
 {% endhint %}
 
 A list of events with their status will be returned:
@@ -251,11 +273,13 @@ A list of events with their status will be returned:
 
 ### Verify signature of webhooks events (optional)
 
-In the webhook configuration, If you enter a "keyForSignature" value then for each event sent a header "X-BAAS-SIGNATURE" will be provided. This header value will be computed using HMAC-SHA256 algorithm and combining the payload string of event and the "keyForSignature" value. This will ensure that payload of event are correct and not falsified by malevolent actor.
+In the webhook configuration, If you enter a "keyForSignature" value then for each event sent thse headers "X-BAAS-SIGNATURE" and "X-BAAS-SIGNATURE-TIMESTAMP" will be provided. "X-BAAS-SIGNATURE" header value will be computed using HMAC-SHA256 algorithm and combining the payload string of event and the "keyForSignature" value. This will ensure that payload of event are correct and not falsified by malevolent actor.
 
-Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the event paylod.
+Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the event payload.
 
-{% code title="sample of  function to verify the X-BAAS-SIGNATURE (1/2)" overflow="wrap" lineNumbers="true" %}
+Header "X-BAAS-SIGNATURE-TIMESTAMP" is intended to check if event received is "freshly" sent and not a older one.
+
+{% code title="Java - sample of  function to verify the X-BAAS-SIGNATURE (1/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 **
 * Example of a REST/JSON webhook endpoint with validation of the signature contained in the HTTP header X-BAAS-SIGNATURE.
@@ -289,7 +313,7 @@ public ResponseEntity<Void> snippet_webhookForSmartCreditSubscription(@RequestBo
 ```
 {% endcode %}
 
-{% code title="sample of  function to verify the X-BAAS-SIGNATURE (2/2)" overflow="wrap" lineNumbers="true" %}
+{% code title="Java - sample of  function to verify the X-BAAS-SIGNATURE (2/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 /**
  * This operation is used to check that the received event (on a HTTP REST/JSON webhook endpoint) has been triggered
@@ -341,7 +365,7 @@ public boolean snippet_isSignatureValid(String webhookEventForMerchantAsString, 
 ```
 {% endcode %}
 
-{% code title="Utility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
+{% code title="Java - Utility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
 ```java
 /**
  * Utility operation to generate a hmac of some String using SHA256.
