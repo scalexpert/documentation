@@ -42,6 +42,8 @@ info:
   x-api-audience: PUBLIC
   termsOfService: |
     24x7
+  x-hideTryItPanel: true
+  x-codeSamples: false
 servers:
   - url: >-
       https://api.scalexpert.uatc.societegenerale.com/baas/uatc/e-financing/api/v1
@@ -51,8 +53,6 @@ tags:
   - name: Subscriptions
   - name: Delivery
   - name: Cancellation
-  x-hideTryItPanel: true
-  x-codeSamples: false
 paths:
   /eligible-solutions:
     get:

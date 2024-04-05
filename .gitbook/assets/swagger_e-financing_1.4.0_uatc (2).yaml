@@ -51,8 +51,6 @@ tags:
   - name: Subscriptions
   - name: Delivery
   - name: Cancellation
-  x-hideTryItPanel: true
-  x-codeSamples: false
 paths:
   /eligible-solutions:
     get:
