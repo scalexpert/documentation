@@ -2,7 +2,7 @@
 description: Merchant webhooks tutorial (Work in progress)
 ---
 
-# 🚧 How to subscribe, use Webhooks
+# 🆕 How to subscribe, use Webhooks
 
 {% hint style="info" %}
 Merchant Webhooks has just been released! :tada:  Pulling method stay another alternative but we recommend using webhooks instead. &#x20;
@@ -115,6 +115,10 @@ Mandatory fields <mark style="color:red;">\*</mark>
 | secret <mark style="color:red;">\*</mark> | authLogin <mark style="color:red;">\*</mark>    | secret (API key) <mark style="color:red;">\*</mark> |
 | keyForSignature                           | authPassword <mark style="color:red;">\*</mark> | keyForSignature                                     |
 |                                           | keyForSignature                                 |                                                     |
+
+{% hint style="warning" %}
+Field "authScope" is depreciated. Please do not use it.&#x20;
+{% endhint %}
 
 Optional attributes:
 
@@ -284,6 +288,8 @@ Thus, you would need to verify the header "X-BAAS-SIGNATURE" before parsing the 
 
 Header "X-BAAS-SIGNATURE-TIMESTAMP" is intended to check if event received is "freshly" sent and not a older one.
 
+{% tabs %}
+{% tab title="Verify signature 1/2" %}
 {% code title="Java - sample of  function to verify the X-BAAS-SIGNATURE (1/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 **
@@ -317,7 +323,9 @@ public ResponseEntity<Void> snippet_webhookForSmartCreditSubscription(@RequestBo
 }
 ```
 {% endcode %}
+{% endtab %}
 
+{% tab title="Verify signature 2/2" %}
 {% code title="Java - sample of  function to verify the X-BAAS-SIGNATURE (2/2)" overflow="wrap" lineNumbers="true" %}
 ```java
 /**
@@ -369,7 +377,9 @@ public boolean snippet_isSignatureValid(String webhookEventForMerchantAsString, 
 }
 ```
 {% endcode %}
+{% endtab %}
 
+{% tab title="Utility hmac" %}
 {% code title="Java - Utility operation to generate a hmac of some String using SHA256." overflow="wrap" lineNumbers="true" %}
 ```java
 /**
@@ -393,3 +403,5 @@ private String snippet_hmacSHA256(String clearText, String key) {
 }
 ```
 {% endcode %}
+{% endtab %}
+{% endtabs %}

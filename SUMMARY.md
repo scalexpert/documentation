@@ -93,7 +93,7 @@
 
 ## Webhooks
 
-* [🚧 How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
+* [🆕 How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
 
 ## Security
 
