@@ -13,3 +13,7 @@ If you want to integrate our solutions with Scalexpert Prestashop CMS plugin, yo
 {% content-ref url="woocommerce-customization.md" %}
 [woocommerce-customization.md](woocommerce-customization.md)
 {% endcontent-ref %}
+
+{% content-ref url="woocommerce-themes-setting-and-customization.md" %}
+[woocommerce-themes-setting-and-customization.md](woocommerce-themes-setting-and-customization.md)
+{% endcontent-ref %}
