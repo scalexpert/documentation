@@ -20,7 +20,7 @@ Once selected, the merchant organization will appear on the banner.
 {% tab title="2-Display Application " %}
 From the application menu, access your application ...
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Application page</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>Application page</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="3-API key" %}

@@ -33,6 +33,7 @@
     * [🆕 WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
       * [WooCommerce  installation](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md)
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
+      * [🆕 WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## SOLUTIONS REFERENCE

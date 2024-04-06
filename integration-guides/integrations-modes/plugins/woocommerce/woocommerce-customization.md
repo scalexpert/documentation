@@ -1,3 +1,7 @@
+---
+description: Customization options
+---
+
 # Woocommerce customization
 
 Customization is found at "SG scalexpert" > "Personaliser" menu.
