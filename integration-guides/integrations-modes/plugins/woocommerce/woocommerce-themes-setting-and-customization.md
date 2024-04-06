@@ -23,7 +23,11 @@ First, identify the theme you are using on your back-office "themes" menu:
 
 <figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Wordpress Theme menu management</p></figcaption></figure>
 
-&#x20;Second, verify your in "WooCommerce" menu "setting/advanced"  that all pages used are fill-in:
+&#x20;Second, verify your in "WooCommerce" menu "setting/advanced"  that all pages used are filled&#x20;
+
+{% hint style="warning" %}
+Especially check that the "CGV" page is well filled otherwise you will not be able to activate the scalexpert payment button in the checkout page.&#x20;
+{% endhint %}
 
 <figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption><p>WooCommerce advanced pages setting</p></figcaption></figure>
 
@@ -150,5 +154,5 @@ For more information on woocommerce templates structure directory see the [relat
 We hope this tutorial will help you on the resolution of issues you may encountered in the customization of your theme.&#x20;
 
 {% hint style="info" %}
-No, we are very sorry for that! Because Wordpress theme are quite complex and we can't ensure to cover all the customization cases. If you are a developer we recommend you to read the related "Handbook" from wordpress [https://developer.wordpress.org/themes/](https://developer.wordpress.org/themes/)  and also [https://woo.com/document/template-structure/](https://woo.com/document/template-structure/) . Otherwise, we strongly recommend you to look at your IT or your theme support maintenance team.
+No, we are very sorry for that! Because Wordpress theme are quite complex, we can't ensure to cover all the customization cases. If you are a developer we recommend you to read the related "Handbook" from wordpress [https://developer.wordpress.org/themes/](https://developer.wordpress.org/themes/)  and also [https://woo.com/document/template-structure/](https://woo.com/document/template-structure/) . Otherwise, we strongly recommend you to look at your IT or your theme support maintenance team.
 {% endhint %}
