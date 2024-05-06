@@ -18,10 +18,10 @@
 
 ## Integration Guides
 
-* [🆕 Integration Modes](integration-guides/integrations-modes/README.md)
+* [Integration Modes](integration-guides/integrations-modes/README.md)
   * [APIs](integration-guides/integrations-modes/direct/README.md)
     * [APIs postman collection](integration-guides/integrations-modes/direct/apis-postman-collection.md)
-  * [🆕 Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
+  * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
     * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
       * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
       * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
@@ -30,10 +30,11 @@
     * [Magento CE & EE 2.4.3, 2.4.4 , 2.4.6](integration-guides/integrations-modes/plugins/magento/README.md)
       * [Magento installation](integration-guides/integrations-modes/plugins/magento/magento-installation.md)
       * [Magento customization](integration-guides/integrations-modes/plugins/magento/magento-customization.md)
-    * [🆕 WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
+    * [WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
       * [WooCommerce  installation](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md)
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
-      * [🆕 WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
+      * [WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
+  * [🚧 PSP integration (e-financing only)](integration-guides/integrations-modes/psp-integration-e-financing-only.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## SOLUTIONS REFERENCE
