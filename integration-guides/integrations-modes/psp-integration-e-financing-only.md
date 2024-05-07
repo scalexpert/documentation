@@ -52,7 +52,7 @@ As a PSP, you will have to use the same [API endpoints](../../api-reference/e-fi
 As a PSP you will receive one API key for all your merchants. This will avoid integrating API keys each time you onboard a new merchant and during API calls.
 {% endhint %}
 
-[Documentation of API ](../../api-reference/e-financing-api/)is the same except you will have to provide one additional information as a header of the requests:
+[Documentation of API ](../../api-reference/e-financing-api/)is the same except you will have to provide one additional information as a header of the requests
 
 Header to be provide: `X-BAAS-CLIENT-REF-FOR-PROXI-ID`
 
@@ -69,6 +69,10 @@ As explained before, as a PSP you will have to provide the Merchant's reference 
 ### Webhook integration
 
 If you want to receive events through webhook endpoints, you will have to integrate only once independently of merchants integrations. You will receive all your PSP merchants events with additional header `X-BAAS-CLIENT-REF-FOR-PROXI-ID` allowing you to dispatch them by merchant.
+
+{% content-ref url="../../webhooks/how-to-subscribe-use-webhooks.md" %}
+[how-to-subscribe-use-webhooks.md](../../webhooks/how-to-subscribe-use-webhooks.md)
+{% endcontent-ref %}
 
 [^1]: PSP is Payment Service Provider
 
