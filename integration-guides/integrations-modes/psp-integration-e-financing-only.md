@@ -54,6 +54,10 @@ As a PSP you will receive one API key for all your merchants. This will avoid in
 
 [Documentation of API ](../../api-reference/e-financing-api/)is the same except you will have to provide one additional information as a header of the requests
 
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
+
 Header to be provide: `X-BAAS-CLIENT-REF-FOR-PROXI-ID`
 
 {% code title="Sample of API request" overflow="wrap" %}
