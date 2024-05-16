@@ -2,10 +2,10 @@
 description: How to integrate scalexpert solutions with Plugins CMS
 ---
 
-# 🆕 Plugins CMS solutions
+# Plugins CMS solutions
 
 {% hint style="info" %}
-Announced : new WooCommerce plugin released
+Announced : new version of prestashop 1.3.0 with simulator widget has just been released. Magento will follow soon.
 {% endhint %}
 
 ### Available plugins:
