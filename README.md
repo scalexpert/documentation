@@ -22,11 +22,11 @@ layout:
 
 These guides are for you !
 
-### What's new on this site! :new:
+### What's New? :new:
 
 <details>
 
-<summary>Hey! Pay attention and notice what's changing... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
+<summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
 * #### New version of [E-financing API V 1.4.0 ](api-reference/e-financing-api/v-1.4.0-e-financing-api.md)with new endpoint /[\_simulate-solutions](api-reference/e-financing-api/v-1.4.0-e-financing-api.md#simulations) to simulate e-financing solution on product and checkout pages.
 * #### New API [merchants-webhooks](api-reference/merchant-webhooks-api/) to receive asynchronous notification. Please consult the new guide ["How to susbscribe, use webhooks".](webhooks/how-to-subscribe-use-webhooks.md)
