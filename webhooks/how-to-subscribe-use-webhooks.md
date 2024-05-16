@@ -5,7 +5,11 @@ description: Merchant webhooks tutorial (Work in progress)
 # 🆕 How to subscribe, use Webhooks
 
 {% hint style="info" %}
-Merchant Webhooks has just been released! :tada:  Pulling method stay another alternative but we recommend using webhooks instead. &#x20;
+Merchant Webhooks has just been released! :tada:  Pulling event via API method stay another good alternative (plugin integration is using pulling for now) but using webhooks especially for merchants with custom API integration that want instantness of information could be the solution.&#x20;
+{% endhint %}
+
+{% hint style="danger" %}
+Nevertheless, webhooks method is more complex than pulling as it requires security skills such authorizing flows between our backends and your systems. Also, asynchronous flows could be more tricky to manage in case of network or system failure. so we recommend  to well study your need before starting. The reading of this guide would help you in your integration.&#x20;
 {% endhint %}
 
 ## How to subscribe to Merchant webhooks
@@ -62,10 +66,16 @@ You can listen multiple events types on the same endpoint. But we recommend subs
 
 ### Manage webhooks endpoints
 
-Once webhooks added, you van manage your webhooks endpoints at the webhooks tab. Manage webhooks allow you to change the configuration, activate/deactivate events.&#x20;
+Once webhooks added, you can manage your webhooks endpoints at the webhooks tab. Manage webhooks allow you to change the configuration, activate/deactivate events.&#x20;
 
 {% hint style="info" %}
 You can activate/deactivate webhooks at any time for all events subscribed or events by events.&#x20;
+{% endhint %}
+
+{% hint style="danger" %}
+Pay attention activation of weebhook is not immediate (only at first time) because we would need to declare your webhook url endpoint as authorized outbound flow (a delay of 6 open days would be necessary).
+
+Also for security reasons, you may need to register IP address of our systems into your network configuration to authorized in-bounds flows. In case of, contact us to obtain range of IP adresses to configure.   &#x20;
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/Capture d’écran du 2024-03-21 15-23-41.png" alt=""><figcaption><p>Manage webhooks endpoints</p></figcaption></figure>
@@ -131,6 +141,12 @@ Optional attributes:
 You can update your configuration many times till attribute "`activate": false` is mentioned.&#x20;
 
 `"active": true`  make your configuration active.
+
+{% hint style="danger" %}
+Pay attention activation of weebhook is not immediate (only at first time) because we would need to declare your webhook url endpoint as authorized outbound flow (a delay of 6 open days would be necessary).
+
+Also for security reasons, you may need to register IP address of our systems into your network configuration to authorized in-bounds flows. In case of, contact us to obtain range of IP adresses to configure.&#x20;
+{% endhint %}
 
 {% hint style="danger" %}
 Pay attention to activate your configuration ONLY if  you completed parameters "url" and "security fields" otherwise it will generate an error on production. We recommend strongly to [test your configuration](how-to-subscribe-use-webhooks.md#test-your-webhooks-configuration) with event "HELLO\_WORLD" before activating.
