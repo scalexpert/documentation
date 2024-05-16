@@ -11,7 +11,7 @@ description: Status life cycle of a e-Financing subscription
 * ACCEPTED: Subscription accepted by financial institution
 * REJECTED: subscription rejected by financial institution
 * ABORTED: subscription has been aborted due to technical incident or user abort
-* CANCELLED: subscription cancelled by financial institution&#x20;
+* CANCELLED: subscription cancelled by financial institution or e-buyer&#x20;
 
 ### Status life cycle:
 
@@ -29,6 +29,7 @@ pending KYC, signature
 end note
     PRE_ACCEPTED --> ACCEPTED
     PRE_ACCEPTED --> REJECTED
+    PRE_ACCEPTED --> CANCELLED: cancelled by e-buyer
     INITIALIZED --> ACCEPTED
     INITIALIZED --> REJECTED
     ACCEPTED --> ACCEPTED: partial cancellation
