@@ -2,7 +2,7 @@
 description: e- Financing API reference versions
 ---
 
-# e-Financing API
+# 🆕 e-Financing API
 
 Scope "`e-financing:rw"`
 

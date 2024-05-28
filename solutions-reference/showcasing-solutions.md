@@ -8,7 +8,7 @@ On your **product page**, depending on the eligibility of the product's price, y
 
 See more details how to render a solution [here](../integration-guides/integrations-modes/direct/#step-2-showcasing-the-solutions).
 
-<figure><img src="../.gitbook/assets/3-prestashop-setting-product-page.gif" alt=""><figcaption><p>How to showcase solution on product page</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/prestashop-product-page-simulator.gif" alt=""><figcaption><p>How to showcase solution on product page</p></figcaption></figure>
 
 Furthermore, on your **checkout page**, if the basket amount is eligible to a credit offer, which will be determined by the Product & services API, you will be able to display the credit payment method (see below) as well as an explanation of the installments _(split payment only)_&#x20;
 

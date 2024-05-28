@@ -2,7 +2,7 @@
 description: Themes & Templates guidelines
 ---
 
-# 🆕 WooCommerce themes setting and customization
+# WooCommerce themes setting and customization
 
 ### Why do I need to do something?
 
