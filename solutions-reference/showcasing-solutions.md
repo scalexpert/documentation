@@ -12,7 +12,7 @@ See more details how to render a solution [here](../integration-guides/integrati
 
 Furthermore, on your **checkout page**, if the basket amount is eligible to a credit offer, which will be determined by the Product & services API, you will be able to display the credit payment method (see below) as well as an explanation of the installments _(split payment only)_&#x20;
 
-<figure><img src="../.gitbook/assets/3-prestashop-setting-checkout-pages.gif" alt=""><figcaption><p>How to showcase solution on check-out page</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/prestashop-checkout-page-simulator.gif" alt=""><figcaption><p>How to showcase solution on check-out page</p></figcaption></figure>
 
 ## Showcasing insurance offers on your website
 
