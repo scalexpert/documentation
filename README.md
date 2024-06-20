@@ -30,7 +30,7 @@ These guides are for you !
 
 #### June changes
 
-* New version E-financing API V 1.5.2 with minors changes
+* New version [E-financing API V 1.5.2](api-reference/e-financing-api/v-1.5.2-e-financing-api.md) with minors changes
 
 #### April-May changes
 
