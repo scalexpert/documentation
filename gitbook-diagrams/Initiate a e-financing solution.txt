@@ -30,7 +30,7 @@ Merchant<#red--API:200 OK (e-financing solutions)
 activate Finance #black
 deactivate Finance
 opt Display simulations
-Merchant-#steelblue>API:Request e-financing simulations offers\nAPI GET e-financing/api/v1/simulate-solutions
+Merchant-#steelblue>API:Request e-financing simulations offers\nAPI POST e-financing/api/v1/simulate-solutions
 API->Finance:Request e-financing simulations
 API<--Finance:list of e-financing simulations
 Merchant<#red--API:200 OK (e-financing simulations)
