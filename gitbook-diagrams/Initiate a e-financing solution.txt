@@ -1,4 +1,4 @@
-title Initiate a e-financing solution
+title Simulate & initiate a e-financing solution
 
 actor#lightgreen Buyer
 fontawesome5solid f54e Merchant #steelblue
@@ -9,24 +9,34 @@ end
 
 
 
-== Display eligible e-financing solutions  == #lightgreen
+== Display & simulate eligible e-financing solutions  == #lightgreen
 
 Buyer-#lightgreen>Merchant:visit product or checkout page
 activate Buyer #lightgreen
 activate Merchant #steelblue
 
-opt If no Access Token or experired
+expandable+ Get access token
+opt If no Access Token or expired
 Merchant-#steelblue>API:Request access Token
-activate API #red
 Merchant<#red--API:Access Token
+end
+activate API #red
 deactivate API
 end
 
 Merchant-#steelblue>API:Request eligible financing offers\nAPI GET e-financing/api/v1/eligible-solutions
 activate API #red
 Merchant<#red--API:200 OK (e-financing solutions)
+activate Finance #black
+deactivate Finance
+opt Display simulations
+Merchant-#steelblue>API:Request e-financing simulations offers\nAPI GET e-financing/api/v1/simulate-solutions
+API->Finance:Request e-financing simulations
+API<--Finance:list of e-financing simulations
+Merchant<#red--API:200 OK (e-financing simulations)
+end
 deactivate API
-Buyer<#steelblue--Merchant:Display e-financing solutions
+Buyer<#steelblue--Merchant:Display e-financing solutions & simulations
 deactivate Merchant
 deactivate Buyer
 
@@ -36,6 +46,15 @@ Buyer-#lightgreen>Merchant:On checkout payment page
 activate Buyer #lightgreen
 activate Merchant #steelblue
 Buyer-#lightgreen>Merchant:Choose and Subscribe for a financing offer
+
+expandable+ Get access token
+opt If no Access Token or expired
+Merchant-#steelblue>API:Request access Token
+Merchant<#red--API:Access Token
+end
+activate API #red
+deactivate API
+end
 
 Merchant-#steelblue>API:Request subscription for a e-financing solutions\nAPI POST e-financing/api/v1/suscriptions
 activate API #red
