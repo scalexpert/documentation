@@ -46,7 +46,7 @@
   * [Long Term Credit Journey Germany](solutions-reference/credit/long-term-credit-journey-germany.md)
   * [Funded, Cancellation journeys](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/README.md)
     * [Cancellation journey Split Payment](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/cancellation-journey-split-payment.md)
-  * [E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
+  * [🆕 E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
 * [Contextual Insurance journeys](solutions-reference/insurance/README.md)
   * [Initiate an insurance journey](solutions-reference/insurance/initiate-an-insurance-journey.md)
   * [Create an insurance quotation](solutions-reference/insurance/create-an-insurance-quotation.md)

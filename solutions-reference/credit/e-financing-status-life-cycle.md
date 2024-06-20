@@ -2,7 +2,7 @@
 description: Status life cycle of a e-Financing subscription
 ---
 
-# E-financing Status life cycle
+# 🆕 E-financing Status life cycle
 
 ### Statuses  definition:
 
@@ -25,9 +25,16 @@ stateDiagram-v2
     INITIALIZED --> PRE_ACCEPTED
 note right of PRE_ACCEPTED
 pending KYC, signature 
-& contract validation
+& contract validation,
+waiting e-buyer 
+additional information
 end note
     PRE_ACCEPTED --> ACCEPTED
+note right of ACCEPTED
+accepted directly or,
+waiting delivery or,
+waiting funding
+end note
     PRE_ACCEPTED --> REJECTED
     PRE_ACCEPTED --> CANCELLED: cancelled by e-buyer
     INITIALIZED --> ACCEPTED
