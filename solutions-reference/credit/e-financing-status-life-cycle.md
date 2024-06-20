@@ -39,3 +39,34 @@ end note
     ABORTED --> [*]
 
 ```
+
+### Status life cycle with sub-statuses
+
+
+
+```mermaid
+---
+title: E-financing subscription status life cycle with sub-statuses
+---
+stateDiagram-v2 
+    [*] --> INITIALIZED
+note right of INITIALIZED
+subscription in progress 
+end note
+    INITIALIZED --> ABORTED: technical incident or user abort
+    INITIALIZED --> PRE_ACCEPTED
+note right of PRE_ACCEPTED
+pending KYC, signature 
+& contract validation
+end note
+    PRE_ACCEPTED --> ACCEPTED
+    PRE_ACCEPTED --> REJECTED
+    PRE_ACCEPTED --> CANCELLED: cancelled by e-buyer
+    INITIALIZED --> ACCEPTED
+    INITIALIZED --> REJECTED
+    ACCEPTED --> ACCEPTED: partial cancellation
+    ACCEPTED --> CANCELLED: full cancellation
+    REJECTED --> [*]
+    CANCELLED --> [*]
+    ABORTED --> [*]
+```
