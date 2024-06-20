@@ -28,6 +28,10 @@ These guides are for you !
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+#### June changes
+
+* New version E-financing API V 1.5.2 with minors changes
+
 #### April-May changes
 
 * #### New version of [E-financing API V 1.4.0 ](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md)with new endpoint /[\_simulate-solutions](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md#simulations) to simulate e-financing solution on product and checkout pages.
