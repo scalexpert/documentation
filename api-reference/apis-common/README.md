@@ -26,16 +26,16 @@ This part of the guide will make an overview of all common concepts of the APis:
 [insurance-api](../insurance-api/)
 {% endcontent-ref %}
 
-{% content-ref url="../authorization-server-api.md" %}
-[authorization-server-api.md](../authorization-server-api.md)
+{% content-ref url="../marketplace-services-api/" %}
+[marketplace-services-api](../marketplace-services-api/)
 {% endcontent-ref %}
 
 {% content-ref url="../merchant-webhooks-api/" %}
 [merchant-webhooks-api](../merchant-webhooks-api/)
 {% endcontent-ref %}
 
-{% content-ref url="../marketplace-services-api/" %}
-[marketplace-services-api](../marketplace-services-api/)
+{% content-ref url="../authorization-server-api.md" %}
+[authorization-server-api.md](../authorization-server-api.md)
 {% endcontent-ref %}
 
 ### API console
