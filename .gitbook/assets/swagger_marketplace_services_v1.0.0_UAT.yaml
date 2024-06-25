@@ -1,0 +1,4268 @@
+---
+openapi: 3.0.3
+info:
+  title: Marketplace services
+  description: "* The Marketplace Services API is used to execute  the payment process from order until the payout.\n* It offers the ability to register orders, transactions and then apply order-splits, transfers and payouts.\n* Once the order is registered, the marketplace associates the transactions with the order. Then, the marketplace allocates funds to each seller and charges fees through the order-splits endpoint.\n* Finally, the marketplace can make payments to the seller's external account or to its own external account. \n* The endpoint /transfers provides the ability for the Marketplace to move funds  between the seller account and the Marketplace account or vice versa.\n"
+  contact:
+    name: SG ECommerce Support Team
+    email: sg-ecommerce-support.world@socgen.com
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/SG.BaaS/BFOA_MarketPlace/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://api.scalexpert.hml.societegenerale.com/baas/uat/marketplace-services/api/
+  description: SwaggerHub API Auto Mocking
+security:
+- oauth-flows:
+  - marketplace-services:rw
+tags:
+- name: Orders
+- name: Transactions
+- name: OrderSplits
+- name: Transfers
+- name: PayoutMerchants
+- name: PayoutSellers
+- name: PayoutSellerAmounts
+- name: Accounts
+paths:
+  /v1/orders:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve all orders
+      description: |
+        Retrieve the list of orders including products and transactions informations for a specific merchant (marketplace).
+      operationId: retrieveOrders
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: lastUpdateDate
+        in: query
+        description: "Date of the last update on the order. Using the ISO format in UTC YYYY-MM-DD (new transaction, new payout, other....)"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+          example: 2023-04-22
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - Orders
+      summary: Register a new order
+      description: |
+        Create a new instance of order related to a  marketplace order
+      operationId: demandOrders
+      requestBody:
+        description: order request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        "201":
+          description: Order has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/transactions:
+    get:
+      tags:
+      - Transactions
+      summary: Retrieve all transactions
+      description: |
+        Retrieve the list of tansactions for a specific merchant (marketplace).
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - Transactions
+      summary: Register a transaction
+      description: |
+        Create a new instance of transaction related to the order.
+      operationId: generateTransactions
+      requestBody:
+        description: Transaction request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        "201":
+          description: The transaction has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/transactions/{transactionId}:
+    get:
+      tags:
+      - Transactions
+      summary: Retrieve a specific transaction
+      description: |
+        Retrieve a transaction by transactionId (technical identifier)
+      operationId: getTransaction
+      parameters:
+      - name: transactionId
+        in: path
+        description: Unique technical identifier of the transaction
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Transaction unique id
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/order-splits:
+    post:
+      tags:
+      - OrderSplits
+      summary: Apply an order-split by sellers
+      description: |
+        Split an order to allocate amounts to different sellers
+      operationId: OrderSplit
+      requestBody:
+        description: transaction request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SplitOrdersRequest'
+      responses:
+        "200":
+          description: OK Split has been applied
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/payout-merchants:
+    get:
+      tags:
+      - PayoutMerchants
+      summary: Retrieve all payoutMerchants
+      description: Retrieve the list of payoutMerchant for a specific merchant (marketplace).
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - PayoutMerchants
+      summary: Perform a payoutMerchant
+      description: A payoutMerchant is used to transfer funds to the external bank account of the merchant (marketplace)
+      requestBody:
+        description: transfer request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMerchantRequest'
+      responses:
+        "201":
+          description: The payoutMerchant has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMerchantResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/payout-merchants/{payoutMerchantId}:
+    get:
+      tags:
+      - PayoutMerchants
+      summary: Retrieve a specific payoutMerchant
+      description: Retrieve specific payoutMerchant by payoutMerchantId (technical identifier)
+      parameters:
+      - name: payoutMerchantId
+        in: path
+        description: Unique technical identifier of the payoutMerchant
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 9
+          type: integer
+          description: External ID. Space are not authorized starting or ending an externalID.
+          format: int32
+          example: 123456789
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMerchantResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    delete:
+      tags:
+      - PayoutMerchants
+      summary: Delete a specific payoutMerchant
+      description: "To delete a payoutMerchant, Only payoutMerchant with PENDING status can be deleted"
+      parameters:
+      - name: payoutMerchantId
+        in: path
+        description: Unique technical identifier of the payoutMerchant
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 9
+          type: integer
+          description: External ID. Space are not authorized starting or ending an externalID.
+          format: int32
+          example: 123456789
+      responses:
+        "204":
+          description: The payoutMerchant has been deleted
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/sellers/{sellerId}/payout-sellers:
+    get:
+      tags:
+      - PayoutSellers
+      summary: Retrieve all payoutSeller
+      description: Retreive the list of payoutSeller for a specific Seller.
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - PayoutSellers
+      summary: Perform a payoutSeller
+      description: A payoutSeller is used to transfer funds to the external bank account of the Seller.
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      requestBody:
+        description: transfer request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSellerRequest'
+            examples:
+              TotalAvailableAmountRequest:
+                $ref: '#/components/examples/TotalAvailableAmountRequest'
+              PartialAvailableAmountRequest:
+                $ref: '#/components/examples/PartialAvailableAmountRequest'
+      responses:
+        "201":
+          description: PayoutSellers has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerResponse'
+              examples:
+                TotalAvailableAmountResponse:
+                  $ref: '#/components/examples/TotalAvailableAmountResponse'
+                PartialAvailableAmountResponse:
+                  $ref: '#/components/examples/PartialAvailableAmountResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/sellers/{sellerId}/payout-sellers/{payoutSellerId}:
+    get:
+      tags:
+      - PayoutSellers
+      summary: Retrieve a specific payoutSeller
+      description: Retrieve specific payoutSeller by payoutSellerId (technical identifier)
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: payoutSellerId
+        in: path
+        description: Unique technical identifier of the payoutSeller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          description: Unique technical ID of the payoutSeller
+          format: int32
+          example: 123456789
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    delete:
+      tags:
+      - PayoutSellers
+      summary: Delete a payoutSeller
+      description: "To delete a payoutSeller, Only payoutSeller with PENDING status can be deleted"
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: payoutSellerId
+        in: path
+        description: Unique technical identifier of the payoutSeller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          description: Unique technical ID of the payoutSeller
+          format: int32
+          example: 123456789
+      responses:
+        "204":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/sellers/{sellerId}/payout-seller-amounts:
+    get:
+      tags:
+      - PayoutSellerAmounts
+      summary: Retrieve all payoutSellerAmounts
+      description: Retrieve the list of payoutSellerAmount for a specific Seller.
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - PayoutSellerAmounts
+      summary: Create a payoutSellerAmount
+      description: A payoutSellerAmount is used to transfer funds to the external bank account of the Seller from an amount.
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sellerId_payoutselleramounts_body'
+        required: true
+      responses:
+        "201":
+          description: The payoutSellerAmount has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerAmount'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/sellers/{sellerId}/payout-seller-amounts/{payoutSellerAmountId}:
+    get:
+      tags:
+      - PayoutSellerAmounts
+      summary: Retrieve a specific payoutSellerAmount
+      description: Retrieve specific payoutSellerAmount by payoutSelleramountId (technical identifier)
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: payoutSellerAmountId
+        in: path
+        description: Unique technical identifier of payoutSellerAmount
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/payoutSellerAmountId'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerAmount'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    delete:
+      tags:
+      - PayoutSellerAmounts
+      summary: Delete the specified instance of payoutSellerAmount by payoutSellerAmountId
+      description: "To delete a payoutSellerAmount, Only payoutSellerAmount with PENDING status can be deleted"
+      parameters:
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: payoutSellerAmountId
+        in: path
+        description: Unique technical identifier of payoutSellerAmount
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/payoutSellerAmountId_1'
+      responses:
+        "204":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/transfers:
+    get:
+      tags:
+      - Transfers
+      summary: Retrieve all transfers
+      description: Retrieve the list of transfers created by a specific merchant (marketplace).
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    post:
+      tags:
+      - Transfers
+      summary: Perform a transfer
+      description: |
+        Make a transfer for a seller account or a marketplace account for purposes such as the payment of a subscription, of a fee or for commercial gesture. The transfers are always initiated by the merchant (marketplace), wether they are in its favor or in the seller's favor.There can never be a transfer between two sellers.
+      operationId: demandTransfers
+      requestBody:
+        description: transfer request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+      responses:
+        "201":
+          description: The transfer has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/transfers/{transferId}:
+    get:
+      tags:
+      - Transfers
+      summary: Retrieve a specific transfers
+      description: Retrieve a transfer by transferId (technical identifier)
+      parameters:
+      - name: transferId
+        in: path
+        description: Unique technical identifier of the transfer
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+    delete:
+      tags:
+      - Transfers
+      summary: Delete a specific transfer
+      description: |
+        Delete a transfer by transferId (technical identifier). Only transfer with PENDING status can be deleted
+      parameters:
+      - name: transferId
+        in: path
+        description: Unique technical identifier of the transfer
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "204":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Retrieve all accounts
+      description: Retrieve the list of accounts for a specific merchant.
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: balanceExtractionDate
+        in: query
+        description: Balances extraction date of the account values. Using the format 'YYYY-MM-DD'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+          example: 2023-04-22
+      - name: accountType
+        in: query
+        description: type of the account to consider.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: the type of account
+          example: SETTLEMENT
+          enum:
+          - SETTLEMENT
+          - CANTONMENT
+          - MAIN
+      - name: embededLines
+        in: query
+        description: "When true, the subresource lines will be returned in the response otherwise, it will be hidden . Default value = false."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          example: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_6'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+  /v1/sellers/{sellerId}/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Retrieve the seller account
+      description: Retreive the accounts of a specific seller.
+      parameters:
+      - name: page
+        in: query
+        description: "Page number, starting from 1."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: sellerId
+        in: path
+        description: Unique technical identifier of the seller
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 987456
+      - name: balanceExtractionDate
+        in: query
+        description: Balances extraction date of the account values. Using the format 'YYYY-MM-DD'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+          example: 2023-04-22
+      - name: embededLines
+        in: query
+        description: "When true, the subresource lines will be returned in the response otherwise, it will be hidden. Default value = false."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          example: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "400"
+                httpStatusMessage: BAD REQUEST
+                errorCode: MISSING DATA
+                errorMessage: The parameter `channel` is missing
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "401":
+          description: Authentication Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "401"
+                httpStatusMessage: UNAUTHORIZED
+                errorCode: UNAUTHORIZED
+                errorMessage: Authentication failed
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "403":
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "403"
+                httpStatusMessage: ACCESS DENIED
+                errorCode: ACCESS DENIED
+                errorMessage: access denied
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "404":
+          description: Not Found Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "404"
+                httpStatusMessage: NOT FOUND
+                errorCode: NOT FOUND
+                errorMessage: The parameter `channel` is unknown
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: 2022-07-28T22:25:51Z
+                httpStatusCode: "500"
+                httpStatusMessage: INTERNAL SERVER ERROR
+                errorCode: INTERNAL SERVER ERROR
+                errorMessage: The server encountered an error
+                requestMethod: POST
+                requestURI: /v1/ordersplit
+components:
+  schemas:
+    OrderResponse:
+      required:
+      - amount
+      - currencyCode
+      - items
+      - lastUpdateTimestamp
+      - merchantGlobalOrderId
+      - orderId
+      - orderSplits
+      - orderType
+      - payoutSellers
+      - registrationTimestamp
+      - solutionCode
+      - transactions
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: Unique technical identifier of the order
+          format: int32
+          example: 123456789
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: External refernce Id of the Order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        amount:
+          type: number
+          description: Total amount of the order.
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter
+          example: EUR
+        orderType:
+          type: string
+          description: used to define the type of the order. Default value PURCHASE
+          example: PURCHASE
+          enum:
+          - PURCHASE
+          - CREDIT_NOTE
+        registrationTimestamp:
+          type: string
+          description: Creation order date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        lastUpdateTimestamp:
+          type: string
+          description: Date of the last update on the order. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        items:
+          $ref: '#/components/schemas/items'
+        transactions:
+          $ref: '#/components/schemas/TransactionsTab'
+        orderSplits:
+          $ref: '#/components/schemas/OrderSplitsTab'
+        payoutSellers:
+          $ref: '#/components/schemas/PayoutOrderTab'
+    OrderRequest:
+      required:
+      - amount
+      - currencyCode
+      - merchantGlobalOrderId
+      - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the Order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        amount:
+          type: number
+          description: Total amount of the order
+          format: float
+          example: 64
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        orderType:
+          type: string
+          description: used to define the type of the order. Default value PURCHASE
+          example: PURCHASE
+          enum:
+          - PURCHASE
+          - CREDIT_NOTE
+        items:
+          $ref: '#/components/schemas/items'
+    PayoutMerchantRequest:
+      required:
+      - amount
+      - currencyCode
+      - merchantPayoutMerchantId
+      - solutionCode
+      type: object
+      properties:
+        merchantPayoutMerchantId:
+          type: string
+          description: External reference Id of the payoutMerchant on the merchant side.
+          example: 1234-azerty-56789
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+          format: date-time
+        amount:
+          type: number
+          description: Payout merchant amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+    PayoutMerchantResponse:
+      required:
+      - amount
+      - currencyCode
+      - executionDate
+      - merchantPayoutMerchantId
+      - payoutMerchantId
+      - solutionCode
+      - status
+      type: object
+      properties:
+        payoutMerchantId:
+          type: integer
+          description: Unique technical identifier of the payoutMarchant.
+          format: int32
+          example: 4
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+          format: date-time
+        amount:
+          type: number
+          description: Payout merchant amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        status:
+          type: string
+          description: status
+          example: VALIDATED
+          enum:
+          - PENDING
+          - VALIDATED
+          - CANCELED
+        merchantPayoutMerchantId:
+          type: string
+          description: External reference Id of the payoutMerchant on the merchant side.
+          example: 1234-azerty-56789
+    PayoutSellerRequest:
+      required:
+      - currencyCode
+      - merchantPayoutSellerId
+      - reasonLabel
+      - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-SXTS
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          $ref: '#/components/schemas/Date'
+        transfers:
+          $ref: '#/components/schemas/merchantTransfersPayout'
+        payoutOrders:
+          $ref: '#/components/schemas/OrderPost'
+        merchantPayoutSellerId:
+          type: string
+          description: External reference Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+    PayoutSellerResponse:
+      required:
+      - executionDate
+      - merchantPayoutSellerId
+      - payoutOrders
+      - payoutPayment
+      - payoutSellerId
+      - reasonLabel
+      - solutionCode
+      - transfers
+      type: object
+      properties:
+        payoutSellerId:
+          type: integer
+          description: Unique technical ID of the payoutSeller
+          format: int32
+          example: 123456789
+        merchantPayoutSellerId:
+          type: string
+          description: External reference Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-SXTS
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ.
+          format: date-time
+          example: 2023-04-22T06:00:00Z
+        transfers:
+          $ref: '#/components/schemas/transfers'
+        payoutOrders:
+          $ref: '#/components/schemas/OrdersTab'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+    PayoutSellerAmountPost:
+      required:
+      - merchantPayoutSellerAmountId
+      - reasonLabel
+      - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-SXTS
+        reasonLabel:
+          maxLength: 140
+          type: string
+          description: "Label of the payout. Max 140 characters. Displayed to the receiver of funds. This field must match this format '[a-zA-Z0-9\\/\\–\\?\\:\\(\\)\\.\\,\\‘\\+\\s]{0,140}'"
+          example: payout for April 2023
+        executionDate:
+          $ref: '#/components/schemas/Date'
+        payout:
+          $ref: '#/components/schemas/PayoutSellerAmountPost_payout'
+        merchantPayoutSellerAmountId:
+          description: External reference Id of the payoutSellerAmount on the merchant side.
+          allOf:
+          - $ref: '#/components/schemas/ExternalId'
+    PayoutSellerAmount:
+      required:
+      - executionDate
+      - merchantId
+      - merchantPayoutSellerAmountId
+      - payout
+      - payoutPayment
+      - payoutSellerAmountId
+      - reasonLabel
+      - solutionCode
+      type: object
+      properties:
+        payoutSellerAmountId:
+          description: Unique technical identifier of payoutSellerAmount
+          allOf:
+          - $ref: '#/components/schemas/InternalId'
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-SXTS
+        reasonLabel:
+          maxLength: 140
+          type: string
+          description: "Label of the payout. Max 140 characters. Displayed to the receiver of funds.This field must match this format '[a-zA-Z0-9\\/\\–\\?\\:\\(\\)\\.\\,\\‘\\+\\s]{0,140}'"
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ.
+          format: date-time
+        payout:
+          $ref: '#/components/schemas/PayoutSellerAmount_payout'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutSellerAmount_payoutPayment'
+        merchantPayoutSellerAmountId:
+          description: External reference Id of the payoutSellerAmount on the merchant side.
+          allOf:
+          - $ref: '#/components/schemas/ExternalId'
+    InternalId:
+      type: integer
+      description: Unique technical identifier
+      format: int32
+      example: 123456789
+    ExternalId:
+      type: string
+      example: 1234-azerty-56789
+    TransferRequest:
+      required:
+      - accountingEntry
+      - amount
+      - currencyCode
+      - merchantTransferId
+      - reasonCode
+      - reasonLabel
+      - sellerId
+      - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        accountingEntry:
+          type: string
+          description: Identify the transfer way. TRANSFER_TO_MARKETPLACE is a payment from the seller to the marketplace. TRANSFER_TO_SELLER is the opposite
+          example: TRANSFER_TO_MARKETPLACE
+          enum:
+          - TRANSFER_TO_MARKETPLACE
+          - TRANSFER_TO_SELLER
+        reasonCode:
+          type: string
+          description: Attach the transfer to a specific accounting category for reporting use
+          example: SUBSCRIPTION
+          enum:
+          - SUBSCRIPTION
+          - COMMERCIAL_GESTURE
+          - OTHER
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Transfer execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default.
+          format: date-time
+        amount:
+          type: number
+          description: Transfert amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: "9887975454"
+    SplitOrdersRequest:
+      required:
+      - merchantGlobalOrderId
+      - solutionCode
+      - splits
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the Order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        splits:
+          type: array
+          description: splits related to the order
+          items:
+            $ref: '#/components/schemas/Seller'
+    TransferResponse:
+      required:
+      - accountingEntry
+      - amount
+      - currencyCode
+      - executionDate
+      - merchantTransferId
+      - reasonCode
+      - reasonLabel
+      - sellerId
+      - solutionCode
+      - status
+      - transferId
+      - transferProducer
+      - transferStatus
+      type: object
+      properties:
+        transferId:
+          type: integer
+          description: Unique technical identifier of the transfer
+          format: int32
+          example: 123456789
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: "9887975454"
+        solutionCode:
+          type: string
+          description: Solution Code used for MarketPlace
+          example: MPFRGE-TXTS
+        accountingEntry:
+          type: string
+          description: Identify the transfer way. TRANSFER_TO_MARKETPLACE is a payment from the seller to the marketplace. TRANSFER_TO_SELLER is the opposite
+          example: TRANSFER_TO_MARKETPLACE
+          enum:
+          - TRANSFER_TO_MARKETPLACE
+          - TRANSFER_TO_SELLER
+        reasonCode:
+          type: string
+          description: Attach the transfer to a specific accounting category for reporting use
+          example: SUBSCRIPTION
+          enum:
+          - SUBSCRIPTION
+          - COMMERCIAL_GESTURE
+          - OTHER
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: Transfer execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        amount:
+          type: number
+          description: Transfer amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        status:
+          type: string
+          description: status
+          example: VALIDATED
+          enum:
+          - PENDING
+          - VALIDATED
+          - CANCELED
+    Amount:
+      type: number
+      description: Amount
+      format: float
+      example: 65
+    Currency:
+      type: string
+      description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+      example: EUR
+    Date:
+      type: string
+      description: Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+      format: date-time
+      example: 2023-04-22T06:00:00Z
+    Status:
+      type: string
+      enum:
+      - PENDING
+      - VALIDATED
+      - CANCELED
+    merchantTransfersPayout:
+      type: array
+      description: Transfer related to the seller. if not specified the default value will be the total pending transfers amount
+      items:
+        $ref: '#/components/schemas/merchantTransferIdItem'
+    merchantTransferIdItem:
+      required:
+      - merchantTransferId
+      type: object
+      properties:
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: 1234-azerty-56789
+    PayoutOrderTab:
+      minItems: 0
+      type: array
+      description: PayoutSellers list belonging to the order
+      items:
+        $ref: '#/components/schemas/PayoutSellersInOrder'
+    PayoutSellersTab:
+      minItems: 0
+      type: array
+      description: PayoutSellers list belonging to the order
+      items:
+        $ref: '#/components/schemas/PayoutSellers'
+    PayoutSellers:
+      required:
+      - executionDate
+      - merchantTransfers
+      - payoutOrders
+      - payoutPayment
+      - reasonLabel
+      - transfers
+      type: object
+      properties:
+        payoutSellerId:
+          type: integer
+          description: Unique technical identifier of the payoutSeller.
+          format: int32
+          example: 123456789
+        merchantPayoutSellerId:
+          type: string
+          description: External reference identifier of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: PayoutSellers execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ.
+          format: date-time
+        transfers:
+          $ref: '#/components/schemas/transfers'
+        payoutOrders:
+          $ref: '#/components/schemas/OrdersTab'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+    PayoutSellersInOrder:
+      required:
+      - executionDate
+      - merchantPayoutSellerId
+      - merchantTransfers
+      - payoutOrders
+      - payoutPayment
+      - payoutSellerId
+      - reasonLabel
+      - transfers
+      type: object
+      properties:
+        payoutSellerId:
+          type: integer
+          description: Unique technical identifier of the payoutSeller
+          format: int32
+          example: 123456789
+        merchantPayoutSellerId:
+          type: string
+          description: External refernce Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        reasonLabel:
+          type: string
+          description: Label of the payout. Max 140 characters. Displayed to the receiver of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: PayoutSellers execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        transfers:
+          $ref: '#/components/schemas/transfers'
+        payoutOrders:
+          $ref: '#/components/schemas/PayoutOrdersTab'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+    PayoutPayment:
+      required:
+      - currencyCode
+      - paymentAmount
+      - paymentStatus
+      type: object
+      properties:
+        paymentStatus:
+          type: string
+          description: status
+          example: VALIDATED
+          enum:
+          - PENDING
+          - VALIDATED
+          - CANCELED
+        paymentAmount:
+          type: number
+          description: Payment amount. Always positive value
+          format: float
+          example: 85
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+      description: Payment related to the payoutSeller
+    transfers:
+      minItems: 0
+      type: array
+      description: Transfer to pay during the payoutseller
+      items:
+        $ref: '#/components/schemas/merchantTransfers'
+    merchantTransfers:
+      required:
+      - currencyCode
+      - merchantTransferId
+      - payoutAmount
+      type: object
+      properties:
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: 1234-azerty-56789
+        payoutAmount:
+          type: number
+          description: Payout amount.  Always positive value
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+    SellersAfterSplit:
+      type: array
+      items:
+        $ref: '#/components/schemas/SellerAfterSplit'
+    SellerAfterSplit:
+      required:
+      - absoluteAmount
+      - amount
+      - amountType
+      - currencyCode
+      - fee
+      - feeType
+      - isCashed
+      - marketplaceFeeAmount
+      - model
+      - sellerId
+      - splitProducerFeeAmount
+      type: object
+      properties:
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        amount:
+          type: number
+          description: Always positive value
+          format: float
+          example: 65
+        amountType:
+          type: string
+          description: "SELLER_PAYMENT is the money to pay the seller, SELLER_REFUND if the money goes back to the merchant"
+          example: SELLER_PAYMENT
+          enum:
+          - SELLER_PAYMENT
+          - SELLER_REFUND
+        fee:
+          type: number
+          description: Fee amount. Always positive value
+          format: float
+          example: 65
+        feeType:
+          type: string
+          description: "MERCHANT_FEE is the fees is to pay the merchant, MERCHANT_FEE_BACK if the fees goes back to the seller (reimbursment)"
+          example: MERCHANT_FEE
+          enum:
+          - MERCHANT_FEE
+          - MERCHANT_FEE_BACK
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        model:
+          type: string
+          description: used to know who is responsible from the sale.  * 3P is a model in which the third-party seller is responsible for the product and bears the billing. * 2P is a buy-sell-on-the-fly model where the marketplace is responsible for invoicing
+          example: 3P
+          enum:
+          - 2P
+          - 3P
+        splitProducerFeeAmount:
+          type: number
+          description: The fee amount dedicated for the producer (BAAS).
+          format: float
+          example: 65
+        isCashed:
+          type: boolean
+          description: to know if the line is cashed or still pending
+    Seller:
+      required:
+      - amount
+      - amountType
+      - currencyCode
+      - fee
+      - feeType
+      - model
+      - sellerId
+      type: object
+      properties:
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        amount:
+          type: number
+          description: Split amount. Always positive value
+          format: float
+          example: 65
+        amountType:
+          type: string
+          description: "SELLER_PAYMENT is the money to pay the seller, SELLER_REFUND if the money goes back to the merchant"
+          example: SELLER_PAYMENT
+          enum:
+          - SELLER_PAYMENT
+          - SELLER_REFUND
+        fee:
+          type: number
+          description: Fee amount. Always positive value
+          format: float
+          example: 65
+        feeType:
+          type: string
+          description: "MERCHANT_FEE is the fees is to pay the merchant, MERCHANT_FEE_BACK if the fees goes back to the seller (reimbursment)"
+          example: MERCHANT_FEE
+          enum:
+          - MERCHANT_FEE
+          - MERCHANT_FEE_BACK
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        model:
+          type: string
+          description: 'used to know who is responsible from the sale. * 3P is a model in which the third-party seller is responsible for the product and bears the billing. * 2P is a buy-sell-on-the-fly model where the marketplace is responsible for invoicing '
+          example: 3P
+          enum:
+          - 2P
+          - 3P
+    OrderSplitsTab:
+      minItems: 0
+      type: array
+      description: Splits list belonging to the order
+      items:
+        $ref: '#/components/schemas/OrderSplits'
+    OrderSplits:
+      required:
+      - splits
+      type: object
+      properties:
+        splits:
+          $ref: '#/components/schemas/SellersAfterSplit'
+    TransactionsTab:
+      minItems: 0
+      type: array
+      description: Transactions list belonging to the order
+      items:
+        $ref: '#/components/schemas/Transactions'
+    Transactions:
+      required:
+      - amount
+      - currencyCode
+      - executionDate
+      - isPaid
+      - merchantTransationId
+      - paymentMethodName
+      - transactionId
+      - type
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          description: Unique technical Id
+          format: int32
+          example: 123456789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+          enum:
+          - PAYMENT
+          - REFUND
+          - CREDIT
+        executionDate:
+          type: string
+          description: Transaction execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        amount:
+          type: number
+          description: Transaction amount.
+          format: float
+          example: 64
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        merchantTransationId:
+          type: string
+          description: External refernce Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        paymentMethodName:
+          type: string
+          description: payment method name
+          enum:
+          - PAYXPERT
+          - SOGECOMMERCE
+          - VIREMENT
+          - FINTECTURE
+        isPaid:
+          type: boolean
+          description: To know if the transaction's payment is received or not
+          example: true
+    Order:
+      required:
+      - currencyCode
+      - merchantGlobalOrderId
+      - payoutEffectiveAmount
+      - payoutRequestedAmount
+      - payoutResidualAmount
+      type: object
+      properties:
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        payoutRequestedAmount:
+          type: number
+          description: Payout resqueted amount. Always positive value
+          format: float
+          example: 65
+        payoutEffectiveAmount:
+          type: number
+          description: Payout amount
+          format: float
+          example: 20
+        payoutResidualAmount:
+          type: number
+          description: Payout available amount
+          format: float
+          example: 0
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+    PayoutOrder:
+      required:
+      - currencyCode
+      - payoutEffectiveAmount
+      - payoutResidualAmount
+      type: object
+      properties:
+        payoutRequestedAmount:
+          type: number
+          description: Payout Requested amount
+          format: float
+          example: 65
+        payoutEffectiveAmount:
+          type: number
+          description: Payout amount
+          format: float
+          example: 20
+        payoutResidualAmount:
+          type: number
+          description: Payout available amount
+          format: float
+          example: 0
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+    OrderPost:
+      type: array
+      description: Order related to the seller. if not specified the default value will be the total of all pending orders amount
+      items:
+        $ref: '#/components/schemas/OrderPost_inner'
+    OrdersTab:
+      minItems: 0
+      type: array
+      description: Order to pay during the payoutSeller
+      items:
+        $ref: '#/components/schemas/Order'
+    PayoutOrdersTab:
+      minItems: 0
+      type: array
+      description: Order to pay during the payoutSeller
+      items:
+        $ref: '#/components/schemas/PayoutOrder'
+    items:
+      minItems: 0
+      type: array
+      description: Items list belonging to the order
+      items:
+        $ref: '#/components/schemas/items_inner'
+    TransactionRequest:
+      required:
+      - amount
+      - currencyCode
+      - executionDate
+      - merchant
+      - merchantGlobalOrderId
+      - merchantTransactionId
+      - paymentMethodName
+      - solutionCode
+      - type
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for Market Place
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        merchantTransactionId:
+          type: string
+          description: External reference Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+          enum:
+          - PAYMENT
+          - REFUND
+          - CREDIT
+        executionDate:
+          type: string
+          description: Transaction execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        amount:
+          type: number
+          description: Transaction amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        paymentMethodName:
+          type: string
+          description: payment method name
+          enum:
+          - PAXPERT
+          - SOGECOMMERCE
+          - VIREMENT
+          - FINTECTURE
+    TransactionResponse:
+      required:
+      - amount
+      - currencyCode
+      - executionDate
+      - isPaid
+      - merchant
+      - merchantGlobalOrderId
+      - merchantTransactionId
+      - paymentMethodName
+      - solutionCode
+      - transaction
+      - transactionId
+      - type
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          description: Unique technical transaction identifier
+          format: int32
+          example: 321
+        solutionCode:
+          type: string
+          description: Solution Code used for Market Place
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        merchantTransactionId:
+          type: string
+          description: External reference Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        orderId:
+          type: integer
+          description: Unique technical identifier of the order
+          format: int32
+          example: 123456789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+          enum:
+          - PAYMENT
+          - REFUND
+          - CREDIT
+        executionDate:
+          type: string
+          description: Transaction execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        amount:
+          type: number
+          description: Transaction amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        paymentMethodName:
+          type: string
+          description: payment method name
+          enum:
+          - PAXPERT
+          - SOGECOMMERCE
+          - VIREMENT
+          - FINTECTURE
+        isPaid:
+          type: boolean
+          description: To know if the transaction's payment is received or not
+          example: true
+    MerchantAccount:
+      required:
+      - accountType
+      - balance
+      - balanceExtractionDate
+      - balancesHistory
+      - currency
+      - currentBalance
+      - forecastBalance
+      type: object
+      properties:
+        accountType:
+          type: string
+          description: the type of account
+          example: SETTLEMENT
+          enum:
+          - SETTLEMENT
+          - CANTONMENT
+          - MAIN
+        balanceExtractionDate:
+          type: string
+          description: Extraction date of the currentBalance and forecastBalance fields. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        currentBalance:
+          description: account balance when the request is made (whatever the date in query)
+          example: 9999.99
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        forecastBalance:
+          description: account forcasted balance when the request is made
+          example: 4850
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+        balancesHistory:
+          $ref: '#/components/schemas/MerchantAccount_balancesHistory'
+        lines:
+          minItems: 0
+          type: array
+          description: All transactions lines on the account
+          items:
+            allOf:
+            - $ref: '#/components/schemas/Line'
+    SellerAccount:
+      required:
+      - accountType
+      - balance
+      - balanceExtractionDate
+      - balancesHistory
+      - currency
+      - currentBalance
+      - forecastBalance
+      type: object
+      properties:
+        accountType:
+          type: string
+          description: the type of account
+          example: MAIN
+          enum:
+          - MAIN
+        balanceExtractionDate:
+          type: string
+          description: Date of the currentBalance and forecastBalance fieldsCreation date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        currentBalance:
+          description: account balance when the request is made (whatever the date in query)
+          example: 9999.99
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        forecastBalance:
+          description: account forcasted balance when the request is made
+          example: 4500.1
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+        balancesHistory:
+          $ref: '#/components/schemas/SellerAccount_balancesHistory'
+        lines:
+          minItems: 0
+          type: array
+          description: All transactions lines on the account
+          items:
+            allOf:
+            - $ref: '#/components/schemas/Line'
+    Line:
+      required:
+      - accountingEntry
+      - amount
+      - isCashed
+      - lineId
+      - lineType
+      - merchantGlobalOrderId
+      - operationDate
+      type: object
+      properties:
+        lineId:
+          allOf:
+          - $ref: '#/components/schemas/InternalId'
+        accountingEntry:
+          type: string
+          description: type of the entry to classify into the different accounts
+          example: SETTLEMENT
+          enum:
+          - SELLER_PAYMENT
+          - SELLER_REFUND
+          - MKTP_FEES
+          - BMPS_FEES
+          - MKTP_FEES_BACK
+          - BMPS_FEES_BACK
+          - TRANSFER_TO_MARKETPLACE
+          - TRANSFER_TO_SELLER
+          - ACQUIRING_FEE_BAILOUT
+          - PAYIN_CREDIT_BAILOUT
+          - PAYIN_REFUND_BAILOUT
+          - ROLLING_RESERVE_ACQ_EVOL_BAILOUT
+          - PAYIN_PAYMENT
+          - PAYIN_REFUND
+          - PAYIN_CREDIT
+          - COLLECTE_SETTLEMENT
+          - SETTLEMENT_CANTONMENT
+          - CASHOUT_MKTP
+          - CASHOUT_SELLER
+          - STANDARD_DEPOSIT
+        accountingLabel:
+          type: string
+          description: label associated to accountingEntry for display purpose
+          example: transfer or payment reason or other
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        operationDate:
+          $ref: '#/components/schemas/Date'
+        cashedDate:
+          type: string
+          description: Date of cash execution. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+        isCashed:
+          type: boolean
+          description: to know if the line is cashed or still pending
+        lineType:
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+        amount:
+          type: number
+          description: credited or debited amount
+          format: float
+          example: 65
+    DateTime:
+      type: string
+      description: Creation date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+      format: date-time
+    BaasExceptionHttpResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the error
+        httpStatusCode:
+          type: integer
+          description: "HTTP status code (404, 400, 500...)"
+          format: int32
+        httpStatusMessage:
+          type: string
+          description: "HTTP status message (\"Not Found\", \"Bad Request\", \"Internal Server Error\"...)"
+        errorCode:
+          type: string
+          description: The applicative error code. It is a machine readable code. Used when BAD_REQUEST error to provide details about the error.
+        errorMessage:
+          type: string
+          description: The applicative error message. It is a human readable English message.
+        requestMethod:
+          type: string
+          description: "HTTP method used to make the request (\"GET\", \"POST\", \"PUT\", \"DELETE\"...)"
+        requestURI:
+          type: string
+          description: HTTP URI used to make the request
+      description: Generic Error Response
+    inline_response_200:
+      required:
+      - orders
+      - pageCount
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        orders:
+          minItems: 0
+          type: array
+          description: "An empty orders list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/OrderResponse'
+    inline_response_201:
+      required:
+      - orderId
+      properties:
+        orderId:
+          type: integer
+          description: Unique technical order identifier
+          format: int32
+          example: 123456789
+    inline_response_200_1:
+      required:
+      - pageCount
+      - transactions
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of page
+          format: int64
+          example: 1
+        transactions:
+          minItems: 0
+          type: array
+          description: "An empty transactions list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/TransactionResponse'
+    inline_response_200_2:
+      required:
+      - pageCount
+      - payoutMerchants
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of page
+          format: int64
+          example: 1
+        payoutMerchants:
+          minItems: 0
+          type: array
+          description: "An empty payoutMerchants list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PayoutMerchantResponse'
+    inline_response_200_3:
+      required:
+      - pageCount
+      - payoutSellers
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        payoutSellers:
+          minItems: 0
+          type: array
+          description: "An empty payoutSellers list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PayoutSellerResponse'
+    inline_response_200_4:
+      required:
+      - pageCount
+      - payoutSellerAmounts
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        payoutSellerAmounts:
+          minItems: 0
+          type: array
+          description: "An empty payoutSellerAmounts list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PayoutSellerAmount'
+    sellerId_payoutselleramounts_body:
+      allOf:
+      - $ref: '#/components/schemas/PayoutSellerAmountPost'
+    payoutSellerAmountId:
+      description: payoutSellerAmount unique id
+      allOf:
+      - $ref: '#/components/schemas/InternalId'
+    payoutSellerAmountId_1:
+      description: payoutSellerAmount unique id
+      allOf:
+      - $ref: '#/components/schemas/InternalId'
+    inline_response_200_5:
+      required:
+      - pageCount
+      - transfers
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        transfers:
+          minItems: 0
+          type: array
+          description: "An empty tranfers list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/TransferResponse'
+    inline_response_200_6:
+      required:
+      - accounts
+      - pageCount
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        accounts:
+          minItems: 0
+          type: array
+          description: "accounts belonging to the Marketplace. An empty accounts list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MerchantAccount'
+    inline_response_200_7:
+      required:
+      - accounts
+      - pageCount
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int64
+          example: 1
+        accounts:
+          minItems: 0
+          type: array
+          description: "accounts belonging to the seller.  An empty accounts list is returned , if no items is retrieved."
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SellerAccount'
+    PayoutSellerAmountPost_payout:
+      required:
+      - askedAmount
+      - currencyCode
+      type: object
+      properties:
+        askedAmount:
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        currencyCode:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+      description: Payout amount. Dafault value will be the available amount
+    PayoutSellerAmount_payout:
+      required:
+      - askedAmount
+      - currencyCode
+      - payoutAmount
+      - payoutAvailableAmount
+      type: object
+      properties:
+        askedAmount:
+          description: asked amount for the payout
+          example: 65
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        payoutAmount:
+          description: amount paid for the payout
+          example: 20
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        payoutAvailableAmount:
+          description: amount available for payout after the payout execution
+          example: 0
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        currencyCode:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+      description: amounts belonging to the payout seller amounts
+    PayoutSellerAmount_payoutPayment:
+      required:
+      - currencyCode
+      - paymentAmount
+      - paymentStatus
+      - solutionCode
+      type: object
+      properties:
+        paymentStatus:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+        paymentAmount:
+          type: number
+          description: Payment amount. Always positive value
+          format: float
+          example: 85
+        currencyCode:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+      description: payment of the payoutSellerAmount
+    OrderPost_inner:
+      required:
+      - merchantGlobalOrderId
+      properties:
+        merchantGlobalOrderId:
+          type: string
+          description: External reference Id of the order on the merchant side as a whole - as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        payoutRequestedAmount:
+          type: number
+          description: Payout requested amount.
+          format: float
+          example: 65
+    items_inner:
+      required:
+      - amount
+      - currencyCode
+      - gtin
+      - label
+      - price
+      - quantity
+      type: object
+      properties:
+        gtin:
+          type: string
+          description: International reference
+          example: "7512345678915"
+        label:
+          type: string
+          description: description of the product
+          example: Tea cup
+        quantity:
+          type: integer
+          description: number of this products in the basket
+          format: int32
+          example: 4
+        price:
+          type: number
+          description: Unit price of the item without discount.
+          format: float
+          example: 15.55
+        currencyCode:
+          type: string
+          description: Currency code applicable to prices based on ISO4217. 3 letter currency code
+          example: EUR
+        amount:
+          type: number
+          description: Total amount
+          format: float
+          example: 64
+      description: Details of item purchased
+    MerchantAccount_balancesHistory:
+      required:
+      - balanceExtractionDate
+      - currentBalance
+      - date
+      - openingBalance
+      type: object
+      properties:
+        openingBalance:
+          description: balance in the beggining of the day requested
+          example: 4500.1
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        closingBalance:
+          description: balance at the end of the day requested (if the requested day is closed)
+          example: 6321.11
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        date:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+    SellerAccount_balancesHistory:
+      required:
+      - date
+      - openingBalance
+      type: object
+      properties:
+        openingBalance:
+          description: balance in the beggining of the day requested
+          example: 1841.36
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        closingBalance:
+          description: balance at the end of the day requested (if the requested day is closed)
+          example: 3200.1
+          allOf:
+          - $ref: '#/components/schemas/Amount'
+        date:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+  responses:
+    bad_request_error:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaasExceptionHttpResponse'
+          example:
+            timestamp: 2022-07-28T22:25:51Z
+            httpStatusCode: "400"
+            httpStatusMessage: BAD REQUEST
+            errorCode: MISSING DATA
+            errorMessage: The parameter `channel` is missing
+            requestMethod: POST
+            requestURI: /v1/ordersplit
+    authentication_error:
+      description: Authentication Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaasExceptionHttpResponse'
+          example:
+            timestamp: 2022-07-28T22:25:51Z
+            httpStatusCode: "401"
+            httpStatusMessage: UNAUTHORIZED
+            errorCode: UNAUTHORIZED
+            errorMessage: Authentication failed
+            requestMethod: POST
+            requestURI: /v1/ordersplit
+    access_denied_error:
+      description: Access Denied
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaasExceptionHttpResponse'
+          example:
+            timestamp: 2022-07-28T22:25:51Z
+            httpStatusCode: "403"
+            httpStatusMessage: ACCESS DENIED
+            errorCode: ACCESS DENIED
+            errorMessage: access denied
+            requestMethod: POST
+            requestURI: /v1/ordersplit
+    not_found_error:
+      description: Not Found Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaasExceptionHttpResponse'
+          example:
+            timestamp: 2022-07-28T22:25:51Z
+            httpStatusCode: "404"
+            httpStatusMessage: NOT FOUND
+            errorCode: NOT FOUND
+            errorMessage: The parameter `channel` is unknown
+            requestMethod: POST
+            requestURI: /v1/ordersplit
+    internal_server_error:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaasExceptionHttpResponse'
+          example:
+            timestamp: 2022-07-28T22:25:51Z
+            httpStatusCode: "500"
+            httpStatusMessage: INTERNAL SERVER ERROR
+            errorCode: INTERNAL SERVER ERROR
+            errorMessage: The server encountered an error
+            requestMethod: POST
+            requestURI: /v1/ordersplit
+  parameters:
+    ThirdPartyIdParam:
+      name: X-BAAS-THIRD-PARTY-ID
+      in: header
+      description: ThirdParty unique identifier
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+    OrderIdParam:
+      name: orderId
+      in: path
+      description: Unique technical identifier of the order
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
+        format: int32
+    payoutMerchantIdParam:
+      name: payoutMerchantId
+      in: path
+      description: Unique technical identifier of the payoutMerchant
+      required: true
+      style: simple
+      explode: false
+      schema:
+        maxLength: 9
+        type: integer
+        description: External ID. Space are not authorized starting or ending an externalID.
+        format: int32
+        example: 123456789
+    payoutSellerIdParam:
+      name: payoutSellerId
+      in: path
+      description: Unique technical identifier of the payoutSeller
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
+        description: Unique technical ID of the payoutSeller
+        format: int32
+        example: 123456789
+    sellerIdParam:
+      name: sellerId
+      in: path
+      description: Unique technical identifier of the seller
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
+        format: int32
+        example: 987456
+    transferIdParam:
+      name: transferId
+      in: path
+      description: Unique technical identifier of the transfer
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
+        format: int32
+    merchantGlobalOrderIdParam:
+      name: merchantGlobalOrderId
+      in: path
+      description: External refernce Id of the Order on the merchant side as a whole - as long as the items are not dispatched separately.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
+        format: int32
+    PageNumber:
+      name: page
+      in: query
+      description: "Page number, starting from 1."
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: A limit on the number of objects to be returned. Limit can range between 1 and 100.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: integer
+        format: int32
+        default: 10
+    LastChangeDate:
+      name: lastUpdateDate
+      in: query
+      description: "Date of the last update on the order. Using the ISO format in UTC YYYY-MM-DD (new transaction, new payout, other....)"
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        format: date
+        example: 2023-04-22
+  examples:
+    TotalAvailableAmountRequest:
+      summary: Payout seller of the total available amount
+      value:
+        solutionCode: MPFRGE-TXTS
+        reasonLabel: PayoutAvailableAmount
+        executionDate: 2023-07-26T10:55:33:432Z
+        merchantPayoutSellerId: "102"
+        currencyCode: EUR
+    PartialAvailableAmountRequest:
+      summary: Payout seller of the partial available amount
+      value:
+        solutionCode: MPFRGE-TXTS
+        reasonLabel: PayoutPartialAmount
+        executionDate: 2023-07-26T10:55:33:432Z
+        merchantPayoutSellerId: "102"
+        currencyCode: EUR
+        transfers:
+        - merchantTransferId: "342"
+        payoutOrders:
+        - merchantGlobalOrderId: A001
+          payoutRequestedAmount: "100"
+    TotalAvailableAmountResponse:
+      summary: Payout seller of the total available amount
+      value:
+        solutionCode: MPFRGE-TXTS
+        executionDate: 2023-07-26T10:55:33:432Z
+        merchantPayoutSellerId: "102"
+        payoutSellerId: 6611
+        reasonLabel: PayoutAvailableAmount
+        transfers:
+        - merchantTransferId: "342"
+          payoutAmount: 65
+          currencyCode: EUR
+        payoutOrders:
+        - merchantGlobalOrderId: 1234-azerty-56789
+          payoutRequestedAmount: 0
+          payoutEffectiveAmount: 65
+          payoutResidualAmount: 0
+          currencyCode: EUR
+        payoutPayment:
+          paymentAmount: 130
+          currencyCode: EUR
+          paymentStatus: VALIDATED
+    PartialAvailableAmountResponse:
+      summary: Payout seller of the partial available amount
+      value:
+        solutionCode: MPFRGE-TXTS
+        reasonLabel: PayoutPartialAmount
+        executionDate: 2023-07-26T10:55:33:432Z
+        merchantPayoutSellerId: "102"
+        payoutSellerId: 6611
+        currencyCode: EUR
+        transfers:
+        - merchantTransferId: "342"
+          payoutAmount: 65
+          currencyCode: EUR
+        payoutOrders:
+        - merchantGlobalOrderId: 1234-azerty-56789
+          payoutRequestedAmount: 100
+          payoutEffectiveAmount: 100
+          payoutResidualAmount: 0
+          currencyCode: EUR
+        payoutPayment:
+          paymentStatus: VALIDATED
+          paymentAmount: 165
+          currencyCode: EUR
+  securitySchemes:
+    oauth-flows:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token
+          scopes:
+            marketplace-services:rw: ""
+x-sg-configuration:
+  gateways:
+  - name: baas-open-gateway
+    description: To expose Open APIs to BAAS partners
+    url: https://api.e-commerce.societegenerale.com/baas/prod

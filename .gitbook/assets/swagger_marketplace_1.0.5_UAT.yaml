@@ -1,0 +1,2802 @@
+openapi: 3.0.1
+info:
+  title: Marketplace
+  description: >
+    * The Marketplace Services API is used to execute  the payment process from
+    order until the payout.
+
+    * It offers the ability to register orders, transactions and then apply
+    order-splits, transfers and payouts.
+
+    * Once the order is registered, the marketplace associates the transactions
+    with the order. Then, the marketplace allocates funds to each seller and
+    charges fees through the order-splits endpoint.
+
+    * Finally, the marketplace can make payments to the seller's external
+    account or to its own external account. 
+
+    * The endpoint /transfers provides the ability for the Marketplace to move
+    funds  between the seller account and the Marketplace account or vice
+    versa.license: Socgen
+  termsOfService: 'http://www.societegenerale.com'
+  contact:
+    name: SG ECommerce Support Team
+    url: ''
+    email: sg-ecommerce-support.world@socgen.com
+  license:
+    url: 'http://www.societegenerale.com'
+  version: 1.0.5
+  x-irt-code: A8821
+  x-trigram-code: BAX
+  x-api-audience: PUBLIC
+  x-sg-name: marketplace
+servers:
+  - url: 'https://api.scalexpert.hml.societegenerale.com/baas/uat/marketplace/api/v1'
+tags:
+  - name: Orders
+  - name: Transactions
+  - name: OrderSplits
+  - name: Transfers
+  - name: PayoutMerchants
+  - name: PayoutSellers
+  - name: PayoutSellerAmounts
+  - name: Accounts
+paths:
+  /transfers:
+    get:
+      tags:
+        - Transfers
+      summary: Retrieve all Transfers
+      description: >-
+        Retrieve the list of transfers created by a specific merchant
+        (marketplace).
+      operationId: retrieveTransfers
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransfersResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/transfers
+    post:
+      tags:
+        - Transfers
+      summary: Perform a transfer
+      description: >-
+        Make a transfer for a seller account or a marketplace account for
+        purposes such as the payment of a subscription, of a fee or for
+        commercial gesture. The transfers are always initiated by the merchant
+        (marketplace), wether they are in its favor or in the seller's
+        favor.There can never be a transfer between two sellers.
+      operationId: createTransfer
+      requestBody:
+        description: transfer request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+        required: true
+      responses:
+        '201':
+          description: The transfer has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/transfers
+  /transactions:
+    get:
+      tags:
+        - Transactions
+      summary: Retrieve all transactions
+      description: Retrieve the list of transactions for a specific merchant (marketplace).
+      operationId: getTransactions
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+      responses:
+        '200':
+          description: List of Transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/transactions
+    post:
+      tags:
+        - Transactions
+      summary: Register a transaction
+      description: Create a new instance of transaction related to the order.
+      operationId: generateTransactions
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: transaction request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+        required: true
+      responses:
+        '201':
+          description: The transaction has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/transactions
+  '/sellers/{sellerId}/payout-sellers':
+    get:
+      tags:
+        - PayoutSellers
+      summary: Retrieve all payoutSeller
+      description: Retrieve the list of payoutSeller for a specific seller.
+      operationId: retrievePayoutSellers
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellersResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-sellers'
+    post:
+      tags:
+        - PayoutSellers
+      summary: Perform a payoutSeller
+      description: >-
+        A payoutSeller is used to transfer funds to the external bank account of
+        the Seller.
+      operationId: createPayoutSeller
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+      requestBody:
+        description: payoutSeller request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSellerRequest'
+        required: true
+      responses:
+        '201':
+          description: The payoutSeller has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: '/v1/sellers/{sellerId}/payout-sellers'
+  '/sellers/{sellerId}/payout-seller-amounts':
+    get:
+      tags:
+        - PayoutSellerAmounts
+      summary: Retrieve all instances of payoutSellerAmount
+      description: Retrieve the list of payoutSellerAmount for a specific Seller.
+      operationId: retrievePayoutSellerAmounts
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerAmountsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-seller-amounts'
+    post:
+      tags:
+        - PayoutSellerAmounts
+      summary: Create a payoutSellerAmount
+      description: >-
+        A payoutSeller is used to transfer funds to the external bank account of
+        the Seller from an amount.
+      operationId: createPayoutSellerAmount
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+      requestBody:
+        description: payoutSellerAmount request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSellerAmountRequest'
+        required: true
+      responses:
+        '201':
+          description: The payoutSellerAmount has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerAmountResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: '/v1/sellers/{sellerId}/payout-seller-amounts'
+  /payout-merchants:
+    get:
+      tags:
+        - PayoutMerchants
+      summary: Retrieve all payoutMerchants
+      description: >-
+        Retrieve the list of payoutMerchant for a specific merchant
+        (marketplace).
+      operationId: retrievePayoutMerchants
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMerchantsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/payout-merchants
+    post:
+      tags:
+        - PayoutMerchants
+      summary: Perform a payoutMerchant
+      description: >-
+        A payoutMerchant is used to transfer funds to the external bank account
+        of the merchant (marketplace)
+      operationId: createPayoutMerchant
+      requestBody:
+        description: payoutMerchant request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMerchantRequest'
+        required: true
+      responses:
+        '201':
+          description: The payoutMerchant has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMerchantResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/payout-merchants
+  /orders:
+    get:
+      tags:
+        - Orders
+      summary: Retrieve all orders
+      description: >-
+        Retrieve the list of orders including products and transactions
+        information for a specific merchant (marketplace).
+      operationId: retrieveOrders
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+        - name: lastUpdateDate
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              Date of the last update on the order. Using the ISO format in UTC
+              YYYY-MM-DD (new transaction, new payout, other....)
+            example: '2023-02-13'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdersResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/orders
+    post:
+      tags:
+        - Orders
+      summary: Order demand from the merchant
+      description: Create a new instance of order by merchantGlobalOrderId.
+      operationId: demandOrders
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: Order request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+        required: true
+      responses:
+        '201':
+          description: Order has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderPostResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/order-splits
+  /order-splits:
+    post:
+      tags:
+        - OrderSplits
+      summary: Apply an order-split by sellers
+      description: Split an order to allocate amounts to different sellers
+      operationId: OrderSplits
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: Split order request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderSplitRequest'
+        required: true
+      responses:
+        '200':
+          description: OK Split has been applied
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/order-splits
+  '/transfers/{transferId}':
+    get:
+      tags:
+        - Transfers
+      summary: Retrieve a specific transfers
+      description: Retrieve a transfer by transferId (technical identifier)
+      operationId: retrieveTransfer
+      parameters:
+        - name: transferId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the transfer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransfersResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: DELETE
+                    requestURI: /v1/transfers
+    delete:
+      tags:
+        - Transfers
+      summary: Delete a specific transfer
+      description: >-
+        Delete a transfer by transferId (technical identifier). Only transfer
+        with PENDING status can be deleted
+      operationId: deleteTransfer
+      parameters:
+        - name: transferId
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Unique technical identifier of the transfer
+      responses:
+        '204':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: DELETE
+                    requestURI: /v1/transfers
+  '/transactions/{transactionId}':
+    get:
+      tags:
+        - Transactions
+      summary: Retrieve a specific transaction
+      description: Retrieve a transaction by transactionId (technical identifier)
+      operationId: getTransaction
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the transaction
+      responses:
+        '200':
+          description: List of Transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/transactions
+  '/sellers/{sellerId}/payout-sellers/{payoutSellerId}':
+    get:
+      tags:
+        - PayoutSellers
+      summary: Retrieve a specific payoutSeller
+      description: Retrieve specific payoutSeller by payoutSellerId (technical identifier)
+      operationId: retrievePayoutSeller
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: payoutSellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the payoutSeller
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-sellers'
+    delete:
+      tags:
+        - PayoutSellers
+      summary: Delete a payoutSeller
+      description: >-
+        To delete a payoutSeller, Only payoutSeller with PENDING status can be
+        deleted
+      operationId: deletePayoutSeller
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: payoutSellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the payoutSeller
+      responses:
+        '204':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-sellers'
+  '/sellers/{sellerId}/payout-seller-amounts/{payoutSellerAmountId}':
+    get:
+      tags:
+        - PayoutSellerAmounts
+      summary: Retrieve a specific payoutSellerAmount
+      description: >-
+        Retrieve specific payoutSellerAmount by payoutSellerAmountId (technical
+        identifier)
+      operationId: retrievePayoutSellerAmount
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: payoutSellerAmountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of payoutSellerAmount
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutSellerAmountResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-seller-amounts'
+    delete:
+      tags:
+        - PayoutSellerAmounts
+      summary: >-
+        Delete the specified instance of payoutSellerAmount by
+        payoutSellerAmountId
+      description: >-
+        To delete a payoutSellerAmount, Only payoutSellerAmount with PENDING
+        status can be deleted
+      operationId: deletePayoutSellerAmount
+      parameters:
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: payoutSellerAmountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of payoutSellerAmount
+      responses:
+        '204':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: '/v1/sellers/{sellerId}/payout-seller-amounts'
+  '/sellers/{sellerId}/accounts':
+    get:
+      tags:
+        - Accounts
+      summary: Retrieve the seller accounts
+      description: Retrieve the accounts for a specific seller.
+      operationId: retrieveAccountsBySellerId
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+        - name: sellerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the seller
+        - name: balanceExtractionDate
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              Balances extraction date of the account values. Default value is
+              the current date
+            format: date
+        - name: embeddedLines
+          in: query
+          required: false
+          schema:
+            type: boolean
+            description: when Lines are needed in the answer. Default value FALSE.
+            default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/accounts
+  '/payout-merchants/{payoutMerchantId}':
+    get:
+      tags:
+        - PayoutMerchants
+      summary: Retrieve a specific payoutMerchant
+      description: >-
+        Retrieve specific payoutMerchant by payoutMerchantId (technical
+        identifier)
+      operationId: retrievePayoutMerchant
+      parameters:
+        - name: payoutMerchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the payoutMerchant
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMerchantResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/payout-merchants
+    delete:
+      tags:
+        - PayoutMerchants
+      summary: Delete a specific payoutMerchant
+      description: >-
+        To delete a payoutMerchant, Only payoutMerchant with PENDING status can
+        be deleted
+      operationId: deletePayoutMerchant
+      parameters:
+        - name: payoutMerchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            description: Unique technical identifier of the payoutMerchant
+      responses:
+        '204':
+          description: The payoutMerchant has been deleted
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/payout-merchants
+  /accounts:
+    get:
+      tags:
+        - Accounts
+      summary: Retrieve all accounts
+      description: Retrieve the list of accounts for a specific merchant.
+      operationId: retrieveAccounts
+      parameters:
+        - name: X-BAAS-THIRD-PARTY-ID
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: 'Page number, starting from 1.'
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              A limit on the number of objects to be returned. Limit can range
+              between 1 and 100.
+            example: 10
+            default: '10'
+        - name: balanceExtractionDate
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              Balances extraction date of the account values. Default value is
+              the current date
+            format: date
+        - name: accountType
+          in: query
+          required: false
+          schema:
+            type: string
+            description: type of the account to consider.
+            enum:
+              - ' SETTLEMENT, CANTONMENT, MAIN'
+        - name: embeddedLines
+          in: query
+          required: false
+          schema:
+            type: boolean
+            description: when Lines are needed in the answer. Default value FALSE.
+            default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: GET
+                    requestURI: /v1/accounts
+components:
+  schemas:
+    TransferRequest:
+      required:
+        - accountingEntry
+        - amount
+        - currencyCode
+        - merchantTransferId
+        - reasonCode
+        - reasonLabel
+        - sellerId
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        accountingEntry:
+          type: string
+          description: >-
+            Identify the transfer way. TRANSFER_TO_MARKETPLACE is a payment from
+            the seller to the marketplace. TRANSFER_TO_SELLER is the opposite
+          example: TRANSFER_TO_MARKETPLACE
+          enum:
+            - TRANSFER_TO_MARKETPLACE
+            - TRANSFER_TO_SELLER
+        reasonCode:
+          type: string
+          description: >-
+            Attach the transfer to a specific accounting category for reporting
+            use
+          example: SUBSCRIPTION
+          enum:
+            - SUBSCRIPTION
+            - COMMERCIAL_GESTURE
+            - OTHER
+        reasonLabel:
+          maxLength: 140
+          minLength: 0
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            Transfer execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default.
+        amount:
+          type: number
+          description: Transfer Amount.
+          format: float
+          example: 65.15
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: '9887975454'
+    TransferResponse:
+      type: object
+      properties:
+        transferId:
+          type: integer
+          description: Unique technical identifier of the transfer
+          format: int32
+          example: 123456789
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: '9887975454'
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        accountingEntry:
+          type: string
+          description: >-
+            Identify the transfer way. TRANSFER_TO_MARKETPLACE is a payment from
+            the seller to the marketplace. TRANSFER_TO_SELLER is the opposite
+          example: TRANSFER_TO_MARKETPLACE
+          enum:
+            - TRANSFER_TO_MARKETPLACE
+            - TRANSFER_TO_SELLER
+        reasonCode:
+          type: string
+          description: >-
+            Attach the transfer to a specific accounting category for reporting
+            use
+          example: SUBSCRIPTION
+          enum:
+            - SUBSCRIPTION
+            - COMMERCIAL_GESTURE
+            - OTHER
+        reasonLabel:
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            Transfer execution date. Using the ISO format
+            YYYY-MM-DDThh:mm:ss.SSSZ
+        amount:
+          type: number
+          description: Transfer amount
+          format: float
+          example: 65.15
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        status:
+          type: string
+          description: status
+          example: PENDING
+      description: List of transfers
+    BaasExceptionHttpResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the error
+          format: date-time
+          example: '2023-01-29T10:05:38.429Z'
+        httpStatusCode:
+          type: integer
+          description: 'HTTP status code (404, 400, 500...)'
+          format: int32
+          example: 400
+        httpStatusMessage:
+          type: string
+          description: >-
+            HTTP status message ("Not Found", "Bad Request", "Internal Server
+            Error"...)
+          example: Bad Request
+        errorCode:
+          type: string
+          description: >-
+            The applicative error code. It is a machine readable code. Used when
+            BAD_REQUEST error to provide details about the error.
+          example: INVALID_EMAIL
+        errorMessage:
+          type: string
+          description: >-
+            The applicative error message. It is a human readable English
+            message.
+          example: The email address is not valid !
+        errors:
+          type: array
+          description: 'List of { error code, error message }.'
+          items:
+            $ref: '#/components/schemas/ErrorCodeAndMessage'
+        requestMethod:
+          type: string
+          description: >-
+            HTTP method used to make the request ("GET", "POST", "PUT",
+            "DELETE"...)
+          example: POST
+        requestURI:
+          type: string
+          description: HTTP URI used to make the request
+          example: /v1/user-account/users
+      description: Generic HTTP Error Response
+    ErrorCodeAndMessage:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      description: 'List of { error code, error message }.'
+    TransactionRequest:
+      required:
+        - amount
+        - currencyCode
+        - executionDate
+        - merchantGlobalOrderId
+        - merchantTransactionId
+        - paymentMethodName
+        - solutionCode
+        - type
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        merchantTransactionId:
+          type: string
+          description: External reference Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+        executionDate:
+          type: string
+          description: >-
+            Transaction execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          example: '2023-04-22T06:00:00Z'
+        amount:
+          type: number
+          description: Transaction amount
+          format: float
+          example: 65
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        paymentMethodName:
+          type: string
+          description: payment method name
+          example: PAYXPERT
+    TransactionResponse:
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          description: Unique technical transaction identifier
+          format: int32
+          example: 321
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        merchantTransactionId:
+          type: string
+          description: External reference Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        orderId:
+          type: integer
+          description: Unique technical identifier of the order
+          format: int32
+          example: 123456789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+        executionDate:
+          type: string
+          description: >-
+            Transaction execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          example: '2023-04-22T06:00:00Z'
+        amount:
+          type: number
+          description: Transaction amount.
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        paymentMethodName:
+          type: string
+          description: payment method name
+          example: PAYXPERT
+        isPaid:
+          type: boolean
+          description: To know if the transaction's payment is received or not
+          example: true
+    PayoutSellerOrderRequest:
+      required:
+        - merchantGlobalOrderId
+      type: object
+      properties:
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        payoutRequestedAmount:
+          type: number
+          description: Payout request amount
+          format: float
+          example: 65
+      description: >-
+        Order related to the seller. if not specified the default value will be
+        the total of all pending orders amount
+    PayoutSellerRequest:
+      required:
+        - currencyCode
+        - merchantPayoutSellerId
+        - reasonLabel
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          maxLength: 140
+          minLength: 0
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            Execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+          example: '2023-04-22T06:00:00Z'
+        transfers:
+          type: array
+          description: >-
+            Tnsfer related to the seller. if not specified the default value
+            will be the total pending transfers amount
+          items:
+            $ref: '#/components/schemas/PayoutSellerTransferRequest'
+        payoutOrders:
+          type: array
+          description: >-
+            Order related to the seller. if not specified the default value will
+            be the total of all pending orders amount
+          items:
+            $ref: '#/components/schemas/PayoutSellerOrderRequest'
+        merchantPayoutSellerId:
+          type: string
+          description: External reference Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+    PayoutSellerTransferRequest:
+      required:
+        - merchantTransferId
+      type: object
+      properties:
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: 1234-azerty-56789
+      description: >-
+        Tnsfer related to the seller. if not specified the default value will be
+        the total pending transfers amount
+    PayoutPayment:
+      type: object
+      properties:
+        paymentStatus:
+          type: string
+          description: status
+          example: PENDING
+        paymentAmount:
+          type: number
+          description: Payment amount.
+          format: float
+          example: 85
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Payment related to the payoutSeller
+    PayoutSellerOrderResponse:
+      type: object
+      properties:
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        payoutRequestedAmount:
+          type: number
+          description: Payout Request amount.
+          format: float
+          example: 65
+        payoutEffectiveAmount:
+          type: number
+          description: Payout amount.
+          format: float
+          example: 20
+        payoutResidualAmount:
+          type: number
+          description: Payout available amount.
+          format: float
+          example: 0
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Order to pay during the payoutSeller
+    PayoutSellerResponse:
+      type: object
+      properties:
+        payoutSellerId:
+          type: integer
+          description: Unique technical ID of the payoutSeller
+          format: int32
+          example: 4
+        merchantPayoutSellerId:
+          type: string
+          description: External reference Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: 'Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ'
+          example: '2023-04-22T06:00:00Z'
+        transfers:
+          type: array
+          description: Transfer to pay during the payoutSeller
+          items:
+            $ref: '#/components/schemas/PayoutSellerTransferResponse'
+        payoutOrders:
+          type: array
+          description: Order to pay during the payoutSeller
+          items:
+            $ref: '#/components/schemas/PayoutSellerOrderResponse'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+    PayoutSellerTransferResponse:
+      type: object
+      properties:
+        merchantTransferId:
+          type: string
+          description: External reference Id of the transfer on the merchant side.
+          example: 1234-azerty-56789
+        payoutAmount:
+          type: number
+          description: Payout amount.
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Transfer to pay during the payoutSeller
+    PayoutRequest:
+      required:
+        - askedAmount
+        - currencyCode
+      type: object
+      properties:
+        askedAmount:
+          type: number
+          description: Amount
+          format: float
+          example: 65
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Payout amount. Dafault value will be the available amount
+    PayoutSellerAmountRequest:
+      required:
+        - merchantPayoutSellerAmountId
+        - reasonLabel
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          maxLength: 140
+          minLength: 0
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            Execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+          example: '2023-04-22T06:00:00Z'
+        payout:
+          $ref: '#/components/schemas/PayoutRequest'
+        merchantPayoutSellerAmountId:
+          type: string
+          description: >-
+            External reference Id of the payoutSellerAmount on the merchant
+            side.
+          example: 1234-azerty-56789
+    PayoutResponse:
+      type: object
+      properties:
+        askedAmount:
+          type: number
+          description: asked amount for the payout
+          format: float
+          example: 65
+        payoutAmount:
+          type: number
+          description: amount paid for the payout
+          format: float
+          example: 20
+        payoutAvailableAmount:
+          type: number
+          description: amount available for payout after the payout execution
+          format: float
+          example: 0
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Amounts belonging to the payoutSellerAmounts
+    PayoutSellerAmountResponse:
+      type: object
+      properties:
+        payoutSellerAmountId:
+          type: integer
+          description: Unique technical identifier of payoutSellerAmount
+          format: int32
+          example: 4
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: 'Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ'
+          example: '2023-04-22T06:00:00Z'
+        payout:
+          $ref: '#/components/schemas/PayoutResponse'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+        merchantPayoutSellerAmountId:
+          type: string
+          description: >-
+            External reference Id of the payoutSellerAmount on the merchant
+            side.
+          example: 1234-azerty-56789
+    PayoutMerchantRequest:
+      required:
+        - currencyCode
+        - merchantPayoutMerchantId
+        - solutionCode
+      type: object
+      properties:
+        merchantPayoutMerchantId:
+          type: string
+          description: External reference Id of the payoutMerchant on the merchant side.
+          example: 1234-azerty-56789
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          maxLength: 140
+          minLength: 0
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            Execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ. Current date by default
+          example: '2023-04-22T06:00:00Z'
+        amount:
+          type: number
+          description: Payout merchant amount
+          format: float
+          example: 65
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+    PayoutMerchantResponse:
+      type: object
+      properties:
+        payoutMerchantId:
+          type: integer
+          description: Unique technical identifier of the payoutMerchant
+          format: int32
+          example: 4
+        merchantPayoutMerchantId:
+          type: string
+          description: External reference Id of the payoutMerchant on the merchant side.
+          example: 1234-azerty-56789
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        reasonLabel:
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: 'Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ'
+          example: '2023-04-22T06:00:00Z'
+        amount:
+          type: number
+          description: Payout merchant amount
+          format: float
+          example: 65
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        status:
+          type: string
+          description: status
+          example: PENDING
+    Item:
+      required:
+        - amount
+        - currencyCode
+        - gtin
+        - label
+        - price
+        - quantity
+      type: object
+      properties:
+        gtin:
+          type: string
+          description: International reference
+          example: '7512345678915'
+        label:
+          type: string
+          description: description of the product
+          example: Tea cup
+        quantity:
+          type: integer
+          description: number of this products in the basket
+          format: int32
+          example: 4
+        price:
+          type: number
+          description: Unit price of the item without discount.
+          format: float
+          example: 15.55
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        amount:
+          type: number
+          description: Total amount
+          format: float
+          example: 64
+      description: Details of item purchased
+    OrderRequest:
+      required:
+        - amount
+        - currencyCode
+        - merchantGlobalOrderId
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the Order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        amount:
+          type: number
+          description: Total amount of the order
+          format: float
+          example: 64
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        orderType:
+          type: string
+          description: used to define the type of the order. Default value PURCHASE
+          example: PURCHASE
+        items:
+          type: array
+          description: Items list belonging to the order
+          items:
+            $ref: '#/components/schemas/Item'
+    OrderPostResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: Unique technical order identifier
+          format: int32
+          example: 123456789
+    OrderSplitRequest:
+      required:
+        - merchantGlobalOrderId
+        - solutionCode
+        - splits
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the Order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        splits:
+          type: array
+          description: splits related to the order
+          items:
+            $ref: '#/components/schemas/Seller'
+    Seller:
+      required:
+        - amount
+        - amountType
+        - currencyCode
+        - fee
+        - feeType
+        - model
+        - sellerId
+      type: object
+      properties:
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        amount:
+          type: number
+          description: Split amount.
+          example: 65
+        amountType:
+          type: string
+          description: >-
+            SELLER_PAYMENT is the money is to pay the seller, SELLER_REFUND if
+            the money goes back to the merchant
+          example: SELLER_PAYMENT
+          enum:
+            - SELLER_PAYMENT
+            - SELLER_REFUND
+        fee:
+          type: number
+          description: Fee amount.
+          example: 65.15
+        feeType:
+          type: string
+          description: >-
+            MERCHANT_FEE is the fees is to pay the merchant, MERCHANT_FEE_BACK
+            if the fees goes back to the seller (reimbursement)
+          example: MERCHANT_FEE
+          enum:
+            - MERCHANT_FEE
+            - MERCHANT_FEE_BACK
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          example: EUR
+        model:
+          type: string
+          description: >-
+            used to know who is responsible from the sale. * 3P is a model in
+            which the third-party seller is responsible for the product and
+            bears the billing. * 2P is a buy-sell-on-the-fly model where the
+            marketplace is responsible for invoicing
+          example: 3P
+          enum:
+            - 2P
+            - 3P
+      description: splits related to the order
+    TransfersResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int32
+          example: 1
+        transfers:
+          type: array
+          description: List of transfers
+          items:
+            $ref: '#/components/schemas/TransferResponse'
+    TransactionsResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of page
+          format: int32
+          example: 1
+        transactions:
+          type: array
+          description: List of transactions
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+    PayoutSellersResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int32
+          example: 1
+        payoutSellers:
+          type: array
+          description: List of payoutSellers
+          items:
+            $ref: '#/components/schemas/PayoutSellerResponse'
+    PayoutSellerAmountsResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int32
+          example: 1
+        payoutSellerAmounts:
+          type: array
+          description: List of payoutSellerAmounts
+          items:
+            $ref: '#/components/schemas/PayoutSellerAmountResponse'
+    Account:
+      type: object
+      properties:
+        accountType:
+          type: string
+          description: the type of account
+          example: SETTLEMENT
+        balanceExtractionDate:
+          type: string
+          description: >-
+            Extraction date of the currentBalance and forecastBalance fields.
+            Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+        currentBalance:
+          type: number
+          description: >-
+            account balance when the request is made (whatever the date in
+            query)
+          format: float
+          example: 9999.99
+        forecastBalance:
+          type: number
+          description: account forecasted balance when the request is made
+          format: float
+          example: 4850
+        currency:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        balancesHistory:
+          $ref: '#/components/schemas/BalancesHistory'
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Line'
+      description: >-
+        accounts belonging to the Marketplace. An empty accounts list is
+        returned , if no items is retrieved.
+    AccountsResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int32
+          example: 1
+        accounts:
+          type: array
+          description: >-
+            accounts belonging to the Marketplace. An empty accounts list is
+            returned , if no items is retrieved.
+          items:
+            $ref: '#/components/schemas/Account'
+    BalancesHistory:
+      type: object
+      properties:
+        openingBalance:
+          type: number
+          description: balance in the beginning of the day requested
+          format: float
+          example: 4500.1
+        closingBalance:
+          type: number
+          description: >-
+            balance at the end of the day requested (if the requested day is
+            closed)
+          format: float
+          example: 6321.11
+        date:
+          type: string
+          description: 'Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ'
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+    Line:
+      type: object
+      properties:
+        lineId:
+          type: integer
+          description: Unique technical identifier.
+          format: int32
+          example: 123456
+        accountingEntry:
+          type: string
+          description: type of the entry to classify into the different accounts
+          example: SETTLEMENT
+        accountingLabel:
+          type: string
+          description: label associated to accountingEntry for display purpose
+          example: transfer or payment reason or other
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External reference Id of the order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        operationDate:
+          type: string
+          description: 'Execution date. Using the ISO format in UTC YYYY-MM-DDThh:mm:ss.SSSZ'
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+        cashedDate:
+          type: string
+          description: >-
+            Date of cash execution. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+        isCashed:
+          type: boolean
+          description: to know if the line is cashed or still pending
+        lineType:
+          type: string
+          description: Line Type
+          example: DEBIT
+        amount:
+          type: number
+          description: credited or debited amount.
+          format: float
+          example: 65
+      description: All transactions lines on the account
+    PayoutMerchantsResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of page
+          format: int32
+          example: 1
+        payoutMerchants:
+          type: array
+          description: List of payoutMerchants
+          items:
+            $ref: '#/components/schemas/PayoutMerchantResponse'
+    OrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: Unique technical identifier of the order.
+          format: int32
+          example: 123456
+        solutionCode:
+          type: string
+          description: Solution Code used for marketplace
+          example: MPFRGE-TXTS
+        merchantGlobalOrderId:
+          type: string
+          description: >-
+            External refernce Id of the Order on the merchant side as a whole -
+            as long as the items are not dispatched separately.
+          example: 1234-azerty-56789
+        amount:
+          type: number
+          description: Total amount of the order.
+          format: float
+          example: 65.15
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        orderType:
+          type: string
+          description: used to define the type of the order. Default value PURCHASE
+          example: PURCHASE
+        registrationTimestamp:
+          type: string
+          description: >-
+            Creation order date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+        lastUpdateTimestamp:
+          type: string
+          description: >-
+            Date of the last update on the order. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          format: date-time
+          example: '2023-04-22T06:00:00Z'
+        items:
+          type: array
+          description: Items list belonging to the order
+          items:
+            $ref: '#/components/schemas/Item'
+        transactions:
+          type: array
+          description: Transactions list belonging to the order
+          items:
+            $ref: '#/components/schemas/Transaction'
+        orderSplits:
+          type: array
+          description: Splits list belonging to the order
+          items:
+            $ref: '#/components/schemas/OrderSplit'
+        payoutSellers:
+          type: array
+          description: PayoutSellers list belonging to the order
+          items:
+            $ref: '#/components/schemas/PayoutSeller'
+      description: List of orders
+    OrderSplit:
+      type: object
+      properties:
+        splits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Split'
+      description: Splits list belonging to the order
+    OrdersResponse:
+      type: object
+      properties:
+        pageCount:
+          type: integer
+          description: Total number of pages
+          format: int32
+          example: 1
+        orders:
+          type: array
+          description: List of orders
+          items:
+            $ref: '#/components/schemas/OrderResponse'
+    PayoutOrderResponse:
+      type: object
+      properties:
+        payoutRequestedAmount:
+          type: number
+          description: Payout Request amount.
+          format: float
+          example: 65
+        payoutEffectiveAmount:
+          type: number
+          description: Payout amount.
+          format: float
+          example: 20
+        payoutResidualAmount:
+          type: number
+          description: Payout available amount.
+          format: float
+          example: 0
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+      description: Order to pay during the payoutSeller
+    PayoutSeller:
+      type: object
+      properties:
+        payoutSellerId:
+          type: integer
+          description: Unique technical ID of the payoutSeller.
+          format: int32
+          example: 123456789
+        merchantPayoutSellerId:
+          type: string
+          description: External reference Id of the payoutSeller on the merchant side.
+          example: 1234-azerty-56789
+        reasonLabel:
+          type: string
+          description: >-
+            Label of the payout. Max 140 characters. Displayed to the receiver
+            of funds.
+          example: payout for April 2023
+        executionDate:
+          type: string
+          description: >-
+            PayoutSellers execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          example: '2023-04-22T06:00:00Z'
+        transfers:
+          type: array
+          description: Transfer to pay during the payoutSeller
+          items:
+            $ref: '#/components/schemas/PayoutSellerTransferResponse'
+        payoutOrders:
+          type: array
+          description: Order to pay during the payoutSeller
+          items:
+            $ref: '#/components/schemas/PayoutOrderResponse'
+        payoutPayment:
+          $ref: '#/components/schemas/PayoutPayment'
+      description: PayoutSellers list belonging to the order
+    Split:
+      type: object
+      properties:
+        sellerId:
+          type: integer
+          description: Unique internal identifier for a seller
+          format: int32
+          example: 123456789
+        amount:
+          type: number
+          description: Amount.
+          example: 65
+        amountType:
+          type: string
+          description: >-
+            SELLER_PAYMENT is the money is to pay the seller, SELLER_REFUND if
+            the money goes back to the merchant
+          example: SELLER_PAYMENT
+          enum:
+            - SELLER_PAYMENT
+            - SELLER_REFUND
+        fee:
+          type: number
+          description: Fee amount.
+          example: 65
+        feeType:
+          type: string
+          description: >-
+            MERCHANT_FEE is the fees is to pay the merchant, MERCHANT_FEE_BACK
+            if the fees goes back to the seller (reimbursement)
+          example: MERCHANT_FEE
+          enum:
+            - MERCHANT_FEE
+            - MERCHANT_FEE_BACK
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          example: EUR
+        model:
+          type: string
+          description: >-
+            used to know who is responsible from the sale. * 3P is a model in
+            which the third-party seller is responsible for the product and
+            bears the billing. * 2P is a buy-sell-on-the-fly model where the
+            marketplace is responsible for invoicing
+          example: 3P
+          enum:
+            - 2P
+            - 3P
+        splitProducerFeeAmount:
+          type: number
+          description: The fee amount dedicated for the producer.
+          example: 65
+        isCashed:
+          type: boolean
+          description: to know if the line is cashed or still pending
+          example: true
+    Transaction:
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          description: Unique technical Id
+          format: int32
+          example: 123456789
+        type:
+          type: string
+          description: type of the transaction
+          example: PAYMENT
+        executionDate:
+          type: string
+          description: >-
+            Transaction execution date. Using the ISO format in UTC
+            YYYY-MM-DDThh:mm:ss.SSSZ
+          example: '2023-04-22T06:00:00Z'
+        amount:
+          type: number
+          description: Transaction amount.
+          format: float
+          example: 64
+        currencyCode:
+          type: string
+          description: >-
+            Currency code applicable to prices based on ISO4217. 3 letter
+            currency code
+          format: iso-4217
+          example: EUR
+        merchantTransactionId:
+          type: string
+          description: External reference Id of the transaction on the merchant side.
+          example: 1234-azerty-56789
+        paymentMethodName:
+          type: string
+          description: payment method name
+          example: PAYXPERT
+        isPaid:
+          type: boolean
+          description: To know if the transaction's payment is received or not
+          example: true
+      description: Transactions list belonging to the order
+  securitySchemes:
+    oauth-flows:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: >-
+            https://api.scalexpert.hml.societegenerale.com/baas/uat/auth-server/api/v1/oauth2/token
+          scopes:
+            'marketplace:rw': ''
+externalDocs:
+  description: Dev Docs
+  url: >-
+    https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/developers-docs/get-started
+security:
+  - oauth-flows:
+      - 'marketplace:rw'
+x-sg-configuration:
+  gateways:
+    - name: baas-open-gateway
+      description: To expose Open APIs to BAAS partners
+      url: 'https://api.scalexpert.hml.societegenerale.com/baas/uat'
