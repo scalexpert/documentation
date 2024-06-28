@@ -4,9 +4,9 @@ description: Marketplace services reference API
 
 # 🚧 Marketplace services API
 
-Scope: `"maketplace:rw"`
+Scope: `"marketplace:rw"`
 
-Here you can find all the API to deal with Marketplace Services for ScaleXpert :tada:.
+Here you can find all the API to deal with Marketplace Services for scaleXpert :tada:.
 
 ### Latest version:
 
