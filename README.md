@@ -20,7 +20,7 @@ layout:
 
 ## Hey fellow developers ! :wave:
 
-These guides are for you xxxx !
+These guides are for you!
 
 ### What's New? :new:
 
