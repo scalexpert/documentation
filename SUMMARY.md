@@ -35,6 +35,7 @@
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
       * [WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
   * [🚧 PSP integration (e-financing only)](integration-guides/integrations-modes/psp-integration-e-financing-only.md)
+  * [🆕 FAQ](integration-guides/integrations-modes/faq.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## SOLUTIONS REFERENCE
