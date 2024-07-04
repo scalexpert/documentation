@@ -20,22 +20,22 @@ description: Version 1.0.6 Latest (only for partners )
 sequenceDiagram
 note over Merchant,API: Order registration
 Merchant->>API: POST #47;orders
-API-->> Merchant: order registrated
+API-->> Merchant: order registrated!
 note over Merchant,API: Payment transaction
 Merchant->>API: POST #47;transactions
-API-->> Merchant: transactions registrated 
+API-->> Merchant: transactions registrated! 
 note over Merchant,API: Split orders
 Merchant->>API: POST #47;order-splits
 API->>PSP: GET #47;transactions
 PSP-->>API: 
 API->>BANK: POST #47;transferWallet
 BANK-->>API: 
-API-->> Merchant: orders split 
+API-->> Merchant: orders split done! 
 note over Merchant,API: transfers
 Merchant->>API: POST #47;transferts
-API-->> Merchant: transfers registrated
+API-->> Merchant: transfers done!
 note over Merchant,API: Payout sellers
-Merchant->>API: POST #47;payout-sellers
+Merchant->>API: POST #47;sellers#47;{sellerId}#47;payout-sellers
 API->>BANK: POST #47;payoutSellers
 BANK-->>API: 
 API-->> Merchant: Payout sellers done! 
