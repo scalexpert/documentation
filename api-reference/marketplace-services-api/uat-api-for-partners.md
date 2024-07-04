@@ -14,6 +14,41 @@ description: Version 1.0.6 Latest (only for partners )
 * Finally, the marketplace can make payments to the seller's external account or to its own external account.
 * The endpoint /transfers provides the ability for the Marketplace to move funds between the seller account and the Marketplace account or vice versa.
 
+### API sequence diagram
+
+```mermaid
+sequenceDiagram
+note over Merchant,API: Order registration
+Merchant->>API: POST #47;orders
+API-->> Merchant: order registrated
+note over Merchant,API: Payment transaction
+Merchant->>API: POST #47;transactions
+API-->> Merchant: transactions registrated 
+note over Merchant,API: Split orders
+Merchant->>API: POST #47;order-splits
+API->>PSP: GET #47;transactions
+PSP-->>API: 
+API->>BANK: POST #47;transferWallet
+BANK-->>API: 
+API-->> Merchant: orders split 
+note over Merchant,API: transfers
+Merchant->>API: POST #47;transferts
+API-->> Merchant: transfers registrated
+note over Merchant,API: Payout sellers
+Merchant->>API: POST #47;payout-sellers
+API->>BANK: GET #47;payoutSellers
+BANK-->>API: 
+API-->> Merchant: Payout sellers done! 
+note over Merchant,API: Payout merchants
+Merchant->>API: POST #47;payout-merchants
+API->>BANK: GET #47;payoutMerchants
+BANK-->>API: 
+API-->> Merchant: Payout merchants done!    
+note over Merchant,API: Notifications
+BANK-->>API: Status change (webhook)
+API-->> Merchant: status change (weebhook)! 
+```
+
 ### Orders
 
 {% swagger src="../../.gitbook/assets/swagger_marketplace_1.0.6_UAT.yaml" path="/orders" method="post" %}
