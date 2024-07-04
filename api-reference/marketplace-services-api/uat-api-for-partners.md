@@ -36,12 +36,12 @@ Merchant->>API: POST #47;transferts
 API-->> Merchant: transfers registrated
 note over Merchant,API: Payout sellers
 Merchant->>API: POST #47;payout-sellers
-API->>BANK: GET #47;payoutSellers
+API->>BANK: POST #47;payoutSellers
 BANK-->>API: 
 API-->> Merchant: Payout sellers done! 
 note over Merchant,API: Payout merchants
 Merchant->>API: POST #47;payout-merchants
-API->>BANK: GET #47;payoutMerchants
+API->>BANK: POST #47;payoutMerchants
 BANK-->>API: 
 API-->> Merchant: Payout merchants done!    
 note over Merchant,API: Notifications
