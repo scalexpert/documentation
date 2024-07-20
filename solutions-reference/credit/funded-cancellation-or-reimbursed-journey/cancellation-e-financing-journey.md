@@ -1,15 +1,14 @@
 ---
-description: How to cancel a subscription for split payment
+description: How to cancel a e-financing subscription
 ---
 
-# Cancellation journey Split Payment
+# Cancellation e-financing journey
 
-## Cancel a Split Payment journey France
+## Cancel a e-financing subscription
 
 Split payment cancellation is a simple journey.
 
 1. Prerequisites\
-   Your subscription must one of [**split payment solutions codes**](../#e-financing-solution-codes)**.**\
    Your subscription must be at [**ACCEPTED** ](../e-financing-status-life-cycle.md)status and the date of cancellation must be not over 90 days.
 2. Cancel your subscription\
    2 cases are possible:\
@@ -20,7 +19,7 @@ Split payment cancellation is a simple journey.
 You can only cancel partially a subscription once !
 {% endhint %}
 
-Cancel a subscription by calling [API `POST /e-financing/api/v1/subscriptions{subscriptionId}/_cancel`](broken-reference) **.**\
+Cancel a subscription by calling API `POST /e-`[`financing/api/v1/subscriptions{subscriptionId}/_cancel`](../../../api-reference/e-financing-api/) **.**\
 
 
 <div data-full-width="false">

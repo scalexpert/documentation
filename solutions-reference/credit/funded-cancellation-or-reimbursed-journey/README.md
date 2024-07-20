@@ -44,7 +44,7 @@ For long credit finance, cancellation in only possible after return of delivery 
 </details>
 
 {% hint style="info" %}
-Cancellation feature is now available for split payment only. more details [here](cancellation-journey-split-payment.md).
+Cancellation feature is now available for split payment only. more details [here](cancellation-e-financing-journey.md).
 {% endhint %}
 
 {% hint style="warning" %}
