@@ -40,6 +40,7 @@
     * [No code](integration-guides/integrations-modes/fintecture-integration-modes/no-code.md)
     * [Merchant integration (plugin)](integration-guides/integrations-modes/fintecture-integration-modes/merchant-integration-plugin.md)
     * [API integration](integration-guides/integrations-modes/fintecture-integration-modes/api-integration.md)
+    * [Recipes](integration-guides/integrations-modes/fintecture-integration-modes/recipes.md)
   * [🆕 FAQ](integration-guides/integrations-modes/faq.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
