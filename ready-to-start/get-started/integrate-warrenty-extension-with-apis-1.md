@@ -10,12 +10,12 @@ Fintecture payments solutions (Immediate Payment, Smart Transfer, Request to Pay
 
 To integrate Fintecture payments solutions (Immediate Payment, Smart Transfer, Request to Pay) consult the solution reference guides:
 
-{% content-ref url="../../solutions-reference/payments-journeys/smart-transfer-fintecture.md" %}
-[smart-transfer-fintecture.md](../../solutions-reference/payments-journeys/smart-transfer-fintecture.md)
-{% endcontent-ref %}
-
 {% content-ref url="../../solutions-reference/payments-journeys/immediate-payment-fintecture.md" %}
 [immediate-payment-fintecture.md](../../solutions-reference/payments-journeys/immediate-payment-fintecture.md)
+{% endcontent-ref %}
+
+{% content-ref url="../../solutions-reference/payments-journeys/smart-transfer-fintecture.md" %}
+[smart-transfer-fintecture.md](../../solutions-reference/payments-journeys/smart-transfer-fintecture.md)
 {% endcontent-ref %}
 
 {% content-ref url="../../solutions-reference/payments-journeys/request-to-pay-fintecture.md" %}
