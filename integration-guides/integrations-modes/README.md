@@ -21,3 +21,7 @@ There are three modes to integrate our solutions
 {% content-ref url="psp-integration-e-financing-only.md" %}
 [psp-integration-e-financing-only.md](psp-integration-e-financing-only.md)
 {% endcontent-ref %}
+
+{% content-ref url="fintecture-integration-modes/" %}
+[fintecture-integration-modes](fintecture-integration-modes/)
+{% endcontent-ref %}

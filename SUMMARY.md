@@ -15,6 +15,7 @@
 * [Get Started](ready-to-start/get-started/README.md)
   * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
+  * [🚧 Integrate Fintecture payments](ready-to-start/get-started/integrate-warrenty-extension-with-apis-1.md)
 
 ## Integration Guides
 
@@ -35,6 +36,10 @@
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
       * [WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
   * [🚧 PSP integration (e-financing only)](integration-guides/integrations-modes/psp-integration-e-financing-only.md)
+  * [🚧 Fintecture integration modes](integration-guides/integrations-modes/fintecture-integration-modes/README.md)
+    * [No code](integration-guides/integrations-modes/fintecture-integration-modes/no-code.md)
+    * [Merchant integration (plugin)](integration-guides/integrations-modes/fintecture-integration-modes/merchant-integration-plugin.md)
+    * [API integration](integration-guides/integrations-modes/fintecture-integration-modes/api-integration.md)
   * [🆕 FAQ](integration-guides/integrations-modes/faq.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
@@ -55,6 +60,10 @@
   * [Insurance Status life cycle](solutions-reference/insurance/insurance-status-life-cycle.md)
 * [Showcasing solutions](solutions-reference/showcasing-solutions.md)
 * [Testing solutions](solutions-reference/testing-solutions.md)
+* [Payments journeys](solutions-reference/payments-journeys/README.md)
+  * [🚧 Immediate payment (Fintecture)](solutions-reference/payments-journeys/immediate-payment-fintecture.md)
+  * [🚧 Smart Transfer (Fintecture)](solutions-reference/payments-journeys/smart-transfer-fintecture.md)
+  * [🚧 Request To Pay (Fintecture)](solutions-reference/payments-journeys/request-to-pay-fintecture.md)
 
 ## API Reference
 
@@ -96,6 +105,7 @@
   * [UAT API for partners](api-reference/merchant-webhooks-api/uat-api-for-partners/README.md)
     * [V 1.0.5 - Merchant-Webhooks API](api-reference/merchant-webhooks-api/uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
+* [🚧 Fintecture Payments API reference](api-reference/fintecture-payments-api-reference.md)
 
 ## Webhooks
 
