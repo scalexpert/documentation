@@ -15,7 +15,7 @@
 * [Get Started](ready-to-start/get-started/README.md)
   * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
-  * [🚧 Integrate Fintecture payments](ready-to-start/get-started/integrate-warrenty-extension-with-apis-1.md)
+  * [🚧 Integrate Fintecture payments](ready-to-start/get-started/integrate-fintecture-payments-solutions.md)
 
 ## Integration Guides
 
