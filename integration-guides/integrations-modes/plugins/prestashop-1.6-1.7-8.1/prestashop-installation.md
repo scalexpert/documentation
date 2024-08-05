@@ -25,6 +25,12 @@ Please check compatibility of your PHP version [here](../#plugins-php-requiremen
 
 <figure><img src="../../../../.gitbook/assets/1-prestashop-install-module (2).gif" alt=""><figcaption><p>Install Prestashop module</p></figcaption></figure>
 
+{% hint style="warning" %}
+After each installation we recommend to clear Prestashop cache. See how to do it below.
+{% endhint %}
+
+<figure><img src="../../../../.gitbook/assets/Capture d’écran du 2024-08-05 12-30-08.png" alt=""><figcaption></figcaption></figure>
+
 ## 2-Setting your API keys
 
 {% hint style="warning" %}
