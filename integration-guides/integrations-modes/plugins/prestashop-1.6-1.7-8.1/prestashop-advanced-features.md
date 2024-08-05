@@ -5,7 +5,8 @@ description: Advanced features
 # Prestashop advanced features
 
 1. Activate [debug mode ](prestashop-advanced-features.md#1-activate-debug-mode)
-2. Set up the ["pulling of financing requests updates](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)" task on your server cron tab&#x20;
+2. Set up the ["pulling of financing requests updates](prestashop-advanced-features.md#2-set-up-pulling-financing-requests-updates)" task on your server cron tab
+3. Add a field "phone-mobile" to e-buyer address form&#x20;
 
 ### 1-Activate debug mode
 
@@ -53,3 +54,23 @@ $ crontab -l
 You can also manually launch the task. It will display "Cron OK" if every thing OK.
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-11-05 13-33-12.png" alt=""><figcaption><p>Launch manually pulling of financing request updates</p></figcaption></figure>
+
+### 3-Add field "phone-mobile" to e-buyer address form
+
+Mobile phone is a mandatory field to initiate [e-financing subscription](../../../../api-reference/e-financing-api/). But sometimes we observed that e-buyer address form doesn't get the field "phone-mobile". in that case we assume to use the field "phone" instead but this is not ideal. We strongly recommended adding the field "phone-mobile". This could be added in Prestashop natively with a few configuration steps depicted below.
+
+**Add field "phone-mobile" to your country setting in the menu "international/geographical areas/{your country}**
+
+<figure><img src="../../../../.gitbook/assets/image002 (1).png" alt=""><figcaption><p>Set address fields for each country </p></figcaption></figure>
+
+**Define mandatory fields in the Contacts address menu**
+
+<figure><img src="../../../../.gitbook/assets/image003.png" alt=""><figcaption><p>select which fields are mandatory</p></figcaption></figure>
+
+**Check and correct the translation into your country language**
+
+<figure><img src="../../../../.gitbook/assets/image004 (2).png" alt=""><figcaption><p>translate into required language</p></figcaption></figure>
+
+And that's it :tada:
+
+<figure><img src="../../../../.gitbook/assets/image005.png" alt=""><figcaption><p>address form</p></figcaption></figure>
