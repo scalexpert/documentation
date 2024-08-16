@@ -28,6 +28,15 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+#### August changes
+
+* New version [Prestashop plugin V 1.5.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github) with simulator widget in the cart page
+
+#### July changes
+
+* New version [Prestashop plugin V 1.4.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github)with new payment method, sub-status information in back-office, new configuration of simulator on product page, reoder buton on confirmation page + minor fxes
+* New version [Magento plugin V 1.4.0](integration-guides/integrations-modes/plugins/magento/magento-installation.md#id-1-installation-from-github) with new payment method, sub-status information in back-office, reoder button on confirmation page + minor fixes
+
 #### June changes
 
 * New version [E-financing API V 1.5.2](api-reference/e-financing-api/v-1.5.2-e-financing-api.md) with minors changes
