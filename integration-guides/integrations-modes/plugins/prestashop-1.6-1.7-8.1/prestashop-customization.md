@@ -27,7 +27,7 @@ Customization are available for each solutions activated.&#x20;
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-12-20 14-53-48.png" alt=""><figcaption><p>product page customization</p></figcaption></figure>
 
-## 2-Cart page customization
+## 2-Cart page customization :new:
 
 * Chose to display or not the solution insert on the cart  page. For more detail see [how to showcase solutions](../../../../solutions-reference/showcasing-solutions.md).&#x20;
 * Chose the position of the solution insert into the page (only 1 position available "under bloc: add to basket" on this version of the plugin)
