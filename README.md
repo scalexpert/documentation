@@ -34,7 +34,7 @@ These guides are for you!
 
 #### July changes
 
-* New version [Prestashop plugin V 1.4.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github)with new payment method, sub-status information in back-office, new configuration of simulator on product page, reoder buton on confirmation page + minor fxes
+* New version [Prestashop plugin V 1.4.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github)with new payment method, sub-status information in back-office, improvment of cancellation button on back-ofiice, reoder buton on confirmation page + minor fxes
 * New version [Magento plugin V 1.4.0](integration-guides/integrations-modes/plugins/magento/magento-installation.md#id-1-installation-from-github) with new payment method, sub-status information in back-office, reoder button on confirmation page + minor fixes
 
 #### June changes
