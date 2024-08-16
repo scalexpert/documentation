@@ -2,7 +2,7 @@
 description: How to customize your scalexpert Prestashop plugin
 ---
 
-# Prestashop customization
+# 🆕 Prestashop customization
 
 Customization is found at "scalexpert" > "Customization" menu.
 
@@ -10,9 +10,10 @@ Customization is found at "scalexpert" > "Customization" menu.
 
 Customization are available for each solutions activated.&#x20;
 
-3 levels of customization are possible:
+4 levels of customization are possible:
 
 * on product pages,
+* on cart pages :new:,
 * on payment checkout pages,
 * on product categories.
 
@@ -26,7 +27,17 @@ Customization are available for each solutions activated.&#x20;
 
 <figure><img src="../../../../.gitbook/assets/Capture d’écran du 2023-12-20 14-53-48.png" alt=""><figcaption><p>product page customization</p></figcaption></figure>
 
-## 2-Payment Checkout page customization
+## 2-Cart page customization
+
+* Chose to display or not the solution insert on the cart  page. For more detail see [how to showcase solutions](../../../../solutions-reference/showcasing-solutions.md).&#x20;
+* Chose the position of the solution insert into the page (only 1 position available "under bloc: add to basket" on this version of the plugin)
+* Customize title of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter.
+* Customize subtitle of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter (only available for Insurance solutions).
+* Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">
+
+<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption><p>cart page customization</p></figcaption></figure>
+
+## 3-Payment Checkout page customization
 
 * Customize title of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter.
 * Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">

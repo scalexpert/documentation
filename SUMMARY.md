@@ -25,7 +25,7 @@
   * [Plugins CMS solutions](integration-guides/integrations-modes/plugins/README.md)
     * [Prestashop 1.6, 1.7, 8.1](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/README.md)
       * [Prestashop installation](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md)
-      * [Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
+      * [🆕 Prestashop customization](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-customization.md)
       * [Prestashop financing requests follow-up](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-financing-requests-follow-up.md)
       * [Prestashop advanced features](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-advanced-features.md)
     * [Magento CE & EE 2.4.3, 2.4.4 , 2.4.6](integration-guides/integrations-modes/plugins/magento/README.md)

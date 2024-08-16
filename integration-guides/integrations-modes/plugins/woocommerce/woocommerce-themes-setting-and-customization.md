@@ -21,7 +21,7 @@ You have encountered issued when rendering these pages, don't panic :worried: le
 
 First, identify the theme you are using on your back-office "themes" menu:
 
-<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Wordpress Theme menu management</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Wordpress Theme menu management</p></figcaption></figure>
 
 &#x20;Second, verify your in "WooCommerce" menu "setting/advanced"  that all pages used are filled&#x20;
 
@@ -111,7 +111,7 @@ Repeat the same operation for the other templates:
 
 The WooCommerce template that have been overridden are present in the wordpress directory "[/wp-content/plugins/woo-scalexpert/woocommerce](https://github.com/scalexpert/scalexpert-woocommerce/tree/main/woo-scalexpert/woocommerce)"&#x20;
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption><p>Woocommerce templates overridden </p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Woocommerce templates overridden </p></figcaption></figure>
 
 Code overridden are marked with a commentaire "SG Paiement en plusieurs fois".
 
