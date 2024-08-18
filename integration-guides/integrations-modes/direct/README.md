@@ -113,7 +113,7 @@ $request->setConfig(array(
 ));
 $request->setHeader(array(
   'Content-Type' => 'application/x-www-form-urlencoded',
-  'Authorization' => 'Basic ZmU3ZmVmYjktNmEyZS00YjcyLWI4MzAtMGJlMTMxZTFkZTdhOnVsRmpNc29yejJoekZWM1EvQng4RldaSk41aG1BNk95WGFIQVdLSzdqQW89'
+  'Authorization' => 'Basic ZmU3ZmV...dqQW89'
 ));
 $request->addPostParameter(array(
   'grant_type' => 'client_credentials',
@@ -147,7 +147,7 @@ Request request = new Request.Builder()
   .url("https://api.e-commerce.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token")
   .method("POST", body)
   .addHeader("Content-Type", "application/x-www-form-urlencoded")
-  .addHeader("Authorization", "Basic ZmU3ZmVmYjktNmEyZS00YjcyLWI4MzAtMGJlMTMxZTFkZTdhOnVsRmpNc29yejJoekZWM1EvQng4RldaSk41aG1BNk95WGFIQVdLSzdqQW89")
+  .addHeader("Authorization", "Basic ZmU3ZmV...QW89")
   .build();
 Response response = client.newCall(request).execute();
 ```
