@@ -11,11 +11,11 @@ This feature is Beta with no commitment in the future. Sandboxes are powered by 
 ## How it works?
 
 {% hint style="warning" %}
-Prerequisite: to run a sandbox, please make your "API test key" ready to use. Follow setup instructions on readme to configure it.
+Prerequisite: to run a sandbox, please get your "API test key" ready to use and follow the setup instructions on readme file to configure it.&#x20;
 {% endhint %}
 
 1 -Pick one of the sandboxes in the list. \
-2-Sign-in to your sandbox account. \
+2-Sign-in to your codesandbox account. \
 3-Fork the sandbox\
 4-Follows the setting instructions\
 5- And just run it :tada:
