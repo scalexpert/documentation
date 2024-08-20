@@ -159,7 +159,7 @@ Response response = client.newCall(request).execute();
 ```python
 import requests
 
-url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/auth-server/api/v1/oauth2/token/oauth2/token"
+url = "https://api.scalexpert.uatc.societegenerale.com/baas/uatc/auth-server/api/v1/oauth2/token"
 
 payload = 'grant_type=client_credentials&scope=e-financing%3Arw'
 headers = {
