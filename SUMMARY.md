@@ -77,6 +77,7 @@
   * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
 * [🆕 e-Financing API](api-reference/e-financing-api/README.md)
   * [V 1.5.2 - e-Financing API](api-reference/e-financing-api/v-1.5.2-e-financing-api.md)
+  * [V 1.6.0 - e-Financing API](api-reference/e-financing-api/v-1.6.0-e-financing-api.md)
   * [Retired versions e-Financing API ](api-reference/e-financing-api/retired-versions-e-financing-api/README.md)
     * [V 1.4.0 - e-Financing API](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md)
     * [V 1.3.7 - e-Financing API](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.3.7-e-financing-api.md)
