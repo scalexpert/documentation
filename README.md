@@ -41,12 +41,12 @@ These guides are for you!
 
 #### June changes
 
-* New version [E-financing API V 1.5.2](api-reference/e-financing-api/v-1.5.2-e-financing-api.md) with minors changes
+* New version [E-financing API V 1.5.2](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.5.2-e-financing-api.md) with minors changes
 * New details on [statuses ans sub-statuses](solutions-reference/credit/e-financing-status-life-cycle.md)
 
 #### April-May changes
 
-* #### New version of [E-financing API V 1.4.0 ](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md)with new endpoint /[\_simulate-solutions](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md#simulations) to simulate e-financing solution on product and checkout pages.
+* #### New version of [E-financing API V 1.4.0 ](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.4.0-e-financing-api.md)with new endpoint /[\_simulate-solutions](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.4.0-e-financing-api.md#simulations) to simulate e-financing solution on product and checkout pages.
 * #### New API [merchants-webhooks](api-reference/merchant-webhooks-api/) to receive asynchronous notification. Please consult the new guide ["How to susbscribe, use webhooks".](webhooks/how-to-subscribe-use-webhooks.md)
 * #### New [Prestashop plugin V 1.3.0 ](https://github.com/scalexpert/scalexpert-prestashop/releases/tag/1.3.0)with simulator widget has just been released.
 * #### New [WooCommerce plugin V 1 .1.0](https://github.com/scalexpert/scalexpert-woocommerce/releases/tag/1.1.0) with minor evolutions has just been released&#x20;
