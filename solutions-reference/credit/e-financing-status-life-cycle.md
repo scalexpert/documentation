@@ -64,3 +64,43 @@ end note
 | ABORTED      | ABORTED DUE TO TECHNICAL ISSUE                                       | A technical issue has been encountered during e-financing journey.                                                                                           |
 | CANCELLED    | CANCELLED BY CUSTOMER                                                | E-financing subscription has been cancelled by customer (withdrawal period) or by merchant on behalf of e-buyer (cancellation full ou partial of delivery).  |
 
+
+
+```mermaid fullWidth="true"
+---
+title: E-financing subscription sub-status life cycle
+---
+stateDiagram-v2
+    [*] --> SUBSCRIPTION_IN_PROGRESS
+
+    SUBSCRIPTION_IN_PROGRESS --> ABORTED_DUE_TO_TECHNICAL_ISSUE: technical incident
+    SUBSCRIPTION_IN_PROGRESS --> ABORTED_BY_CUSTOMER: aborted by customer
+    SUBSCRIPTION_IN_PROGRESS --> PRE_ACCEPTED_WAITING_FOR_CONTRACT_SIGNATURE: credit only
+    SUBSCRIPTION_IN_PROGRESS  --> SUBSCRIPTION_APPROVED_BY_PRODUCER: Split payment only
+    SUBSCRIPTION_IN_PROGRESS  --> SUBSCRIPTION_REJECTED_BY_PRODUCER
+
+    SUBSCRIPTION_APPROVED_BY_PRODUCER --> CANCEL_BY_CUSTOMER
+    note right of CANCEL_BY_CUSTOMER
+    Cancel by customer (withdrawal period) 
+    or on behalf by merchant
+    end note
+
+    PRE_ACCEPTED_WAITING_FOR_CONTRACT_SIGNATURE --> CONTRACT_SIGNED_BY_CUSTOMER
+    PRE_ACCEPTED_WAITING_FOR_CONTRACT_SIGNATURE --> SUBSCRIPTION_REJECTED_BY_PRODUCER
+    PRE_ACCEPTED_WAITING_FOR_CONTRACT_SIGNATURE --> WAITING_CUSTOMER_FOR_ADDITIONAL_INFORMATION
+    PRE_ACCEPTED_WAITING_FOR_CONTRACT_SIGNATURE --> CANCEL_BY_CUSTOMER
+
+    WAITING_CUSTOMER_FOR_ADDITIONAL_INFORMATION --> CONTRACT_SIGNED_BY_CUSTOMER
+    WAITING_CUSTOMER_FOR_ADDITIONAL_INFORMATION --> SUBSCRIPTION_REJECTED_BY_PRODUCER
+    
+
+    CONTRACT_SIGNED_BY_CUSTOMER --> WAITING_FOR_THE_DELIVERY_CONFIRMATION: credit only
+    WAITING_FOR_THE_DELIVERY_CONFIRMATION --> AWAITING_PAYMENT_TO_MERCHANT
+    AWAITING_PAYMENT_TO_MERCHANT  --> PAYMENT_HAVE_BEEN_ISSUED_TO_MERCHANT
+
+    ABORTED_DUE_TO_TECHNICAL_ISSUE --> [*]
+    ABORTED_BY_CUSTOMER --> [*]
+    CANCEL_BY_CUSTOMER --> [*]
+    PAYMENT_HAVE_BEEN_ISSUED_TO_MERCHANT --> [*]
+
+```

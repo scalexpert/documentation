@@ -8,13 +8,14 @@ description: How to initiate an Insurance Journey, for products such as warranty
 
 As of now, you can initiate one insurance journey, for the product :
 
-* Warranty extension&#x20;
+* Warranty extension
+* Broken screen&#x20;
 
 Other insurance products are coming soon and will be integrated with the [insurance API](../../api-reference/insurance-api/). You will have to select the insurance solution codes as depicted below:
 
 ### Insurance solutions codes
 
-<table><thead><tr><th width="98">Country</th><th width="204">Insurance solution</th><th>Conditions</th><th>Solution code</th></tr></thead><tbody><tr><td>FR</td><td>Warranty extension</td><td>e-buyer pay a price per duration and merchant get a commission</td><td>CIFRWE-DXCO</td></tr></tbody></table>
+<table><thead><tr><th width="98">Country</th><th width="204">Insurance solution</th><th>Conditions</th><th>Solution code</th></tr></thead><tbody><tr><td>FR</td><td>Warranty extension</td><td>e-buyer pay a price per duration and merchant get a commission</td><td>CIFRWE-DXCO</td></tr><tr><td>FR</td><td>Broken screen</td><td>e-buyer pay a price per duration and merchant get a commission</td><td>CIFRBS-DXCO</td></tr></tbody></table>
 
 ## Step-by-Step
 
