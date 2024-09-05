@@ -1,0 +1,1382 @@
+openapi: 3.0.1
+info:
+  title: Insurance
+  description: >
+    The Insurance API is used **to manage insurance items, quotations and
+    subscriptions** from the your website pages on behalf of the buyers. 
+
+    According **the solution** code your demand will be issued at the insurance
+    instution side. 
+
+    At any time you can **retrieve the status and details** of your insurance
+    susbcriptions. Once subscribed, you can cancel your subscription.
+
+
+    **Changelogs:**
+
+
+    Minor changes:
+      - Evolve the endpoint GET /v1/subscriptions with a new filter solutionCode.
+      - Support a new solutionCode of insurance "CIFRBS-DXCO"
+  version: 1.7.1
+  contact:
+    name: SG ECommerce Support Team
+    email: sg-ecommerce-support.world@socgen.com
+    url: ''
+  x-sg-name: insurance
+  x-irt-code: A8821
+  x-trigram-code: BAX
+  x-api-audience: PUBLIC
+  termsOfService: |
+    24x7
+servers:
+  - url: 'https://api.scalexpert.societegenerale.com/baas/prod/insurance/api/v1'
+paths:
+  /subscriptions:
+    get:
+      tags:
+        - Subscriptions
+      summary: Retrieve a list of insurance subscriptions
+      description: >-
+        You can list all **your subscriptions** or filter only some ones by
+        specifying **a reference** such as a basket id. the response will
+        contain subscription Id, dates, times, status, your references, amount
+        financed ...
+
+        **Main use case:** Use this API to retrieve status a insurance
+        subscription by refering a basket Id.
+
+        **Important:** The list is paginated
+      operationId: retrieveInsuranceSubscriptionForSpecificMerchant
+      parameters:
+        - name: merchantGlobalOrderId
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              The merchantGlobalOrderId related to the subscription to an
+              insurance.
+            example: OD456742
+        - name: merchantBasketId
+          in: query
+          required: false
+          schema:
+            type: string
+            description: >-
+              ID of the basket of the current transaction, as given by the
+              merchant (thirdparty)
+            example: 185462145
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: string
+            description: The page number
+            example: 1
+            default: '1'
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: string
+            description: The number of elements per page
+            example: 20
+            default: '20'
+        - name: solutionCode
+          in: query
+          required: false
+          schema:
+            type: string
+            description: ID of the used BaaS product.
+            example: CIFRWE-DXCO
+      responses:
+        '200':
+          description: List of insurance subscriptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginationInsuranceSubscriptionsResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missed scope or insufficient permission
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Get Internal Server Error:
+                  summary: Get Internal Server Error
+                  description: Get Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51.000Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/subscriptions
+    post:
+      tags:
+        - Subscriptions
+      summary: Initiate a insurance subscription at the insurance producer side
+      description: >-
+        **To initiate a insurance subscription** you will have to complete the
+        requested parameters from the context of your checkout page of which
+        identity, address of the buyer, Insurance ID choosen, insurance items
+        details ... You can refer your insurance susbsription **with your order
+        or basket id**. As a result you will get a insurance subscription Id
+        with status "subscribed"
+
+
+        **Important:** the **"solutionCode"** is the parameter that determine
+        the **Producer's solution** such as warrenty extension choosen by the
+        buyer in the checkout page
+      operationId: createInsuranceSubscription
+      requestBody:
+        description: >-
+          json format of collected data in the contact form and converted by the
+          BFF
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInsuranceSubscriptionRequest'
+        required: true
+      responses:
+        '201':
+          description: initiate an insurance subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateInsuranceSubscriptionResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missed scope or insufficient permission
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Get Internal Server Error:
+                  summary: Get Internal Server Error
+                  description: Get Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51.000Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/subscriptions
+  '/subscriptions/{insuranceSubscriptionId}/_cancel':
+    post:
+      tags:
+        - Cancellation
+      summary: Request a cancellation according to a specific insuranceSubscriptionId
+      description: >-
+        Request a cancellation according to a specific insuranceSubscriptionId.
+        As a response, you will get the confirmation of the cancellation.
+      operationId: cancelInsuranceSubscriptions
+      parameters:
+        - name: insuranceSubscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+            description: The unique Insurance Subscription Id
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsuranceCancellationDTO'
+        required: true
+      responses:
+        '204':
+          description: Insurance cancellation confirmation response
+          content:
+            '*/*':
+              schema:
+                type: object
+        '400':
+          description: >-
+            Bad request, If the status of cancellation is different than
+            cancelled. Or error message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: '2022-07-28T22:25:51.000Z'
+                httpStatusCode: '400'
+                httpStatusMessage: BAD REQUEST
+                errorMessage: Une erreur est survenue
+                requestMethod: POST
+                requestURI: /insurance/v1
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            '*/*':
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Get Internal Server Error:
+                  summary: Get Internal Server Error
+                  description: Get Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51.000Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /insurance/v1
+  /quotations:
+    post:
+      tags:
+        - Quotations
+      summary: Evaluate a quotation for the item and related price
+      description: >-
+        Evaluate a quotation for the item and related price and a choosen
+        insurance option by the buyer. As a result, you will get the insurance
+        price confirmed. Important: a quotation will expire after a delay. Make
+        sure the quotation is not expired before using it.
+      operationId: createInsuranceQuotation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsuranceQuotationRequest'
+        required: true
+      responses:
+        '201':
+          description: initiate an insurance quotation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsuranceQuotationResponse'
+              example:
+                quoteId: b01b69ed-c1b0-496f-8fb6-150554e34d23
+                itemPrice: 100.25
+                expirationDate: '2022-07-28T22:25:51.000Z'
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Scope missing or insufficient permissions
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Internal Server Error:
+                  summary: Internal Server Error
+                  description: Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51.000Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/quotations
+  /items:
+    post:
+      tags:
+        - Items
+      summary: Create item
+      description: >-
+        Request and create an item by probing the Insurance institution. As the
+        result, you will get an item Id required for any insurance quotation.
+      externalDocs:
+        description: API documentation and error codes.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/insurance-api/insurance-error-codes
+      operationId: CreateItemRequest
+      requestBody:
+        description: Item creation request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItemRequest'
+            examples:
+              Create an item with solutionCode CIFRBS-DXCO:
+                description: Create an item with solutionCode CIFRBS-DXCO
+                value:
+                  solutionCode: CIFRBS-DXCO
+                  sku: ABC-123
+                  merchantItemId: 8c6450c2-b142-11ed-afa1-0242ac120003
+                  brand: Xiaomi
+                  model: Xiaomi redmi note 12
+                  title: Xiaomi redmi note 12 Pro Bleu 5 G
+                  description: >-
+                    Caméra grand-angle et macroCharge Turbo 67W Batterie longue
+                    autonomie compatible 5G
+                  characteristics: 12 Go + 256 GoRAM LPDDR5 + stockage UFS 3.1
+                  category: smartphone
+                  isRefurbished: false
+              Create an item with solutionCode CIFRWE-DXCO:
+                description: Create an item with solutionCode CIFRWE-DXCO
+                value:
+                  solutionCode: CIFRWE-DXCO
+                  sku: ZG011AQA
+                  merchantItemId: 8c6450c2-b142-11ed-afa1-0242ac120002
+                  brand: Beats
+                  model: Beats Solo3
+                  title: Beats Solo3 Wireless On-Ear Headphones
+                  description: >-
+                    Headphone Chip, Class 1 Bluetooth, 40 Hours of Listening
+                    Time, Built-in Microphone - Black (Latest Model)
+                  characteristics: >-
+                    With up to 40 hours of battery life, Beats Solo3 wireless is
+                    your perfect everyday headphone...
+                  category: Headphones & Earbuds
+                  isRefurbished: false
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateItemResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: '2023-01-29T10:05:38.429Z'
+                httpStatusCode: 400
+                httpStatusMessage: Bad Request
+                errorCode: INVALID_EMAIL
+                errorMessage: The email address is not valid !
+                requestMethod: POST
+                requestURI: /v1/user-account/users
+        '401':
+          description: Unauthorized. You must first authenticate to get a valid token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  /items/_search-insurances:
+    post:
+      tags:
+        - Items
+      summary: Searches for Insurance Eligibility of the given item
+      description: >-
+        Search for Insurance eligibility of the given item. As a result you will
+        get a list of insurances options with their prices estimation and
+        descriptions. So the buyer could pick one of the list for getting a
+        quotation.
+      externalDocs:
+        description: API documentation and error codes.
+        url: >-
+          https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/api-reference/insurance-api/insurance-error-codes
+      operationId: SearchItemInsuranceRequest
+      requestBody:
+        description: Item creation request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchItemInsuranceRequest'
+            examples:
+              Request for eligibility of an item to the CIFRWE-DXCO solution code:
+                description: >-
+                  Request for eligibility of an item to the CIFRWE-DXCO solution
+                  code
+                value:
+                  solutionCode: CIFRWE-DXCO
+                  itemId: abe12340-b1f5-11ed-afa1-0242ac120002
+                  price: 200.9
+              Request for eligibility of an  item to the CIFRBS-DXCO solution code:
+                description: >-
+                  Request for eligibility of an  item to the CIFRBS-DXCO
+                  solution code
+                value:
+                  solutionCode: CIFRBS-DXCO
+                  itemId: abe12340-b1f5-11ed-afa1-0242ac120002
+                  price: 45000
+        required: true
+      responses:
+        '200':
+          description: Product is eligible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchItemInsuranceResponse'
+              examples:
+                Response for eligibility of an item to the CIFRWE-DXCO solution code:
+                  description: >-
+                    Response for eligibility of an item to the CIFRWE-DXCO
+                    solution code
+                  value:
+                    itemId: abe12340-b1f5-11ed-afa1-0242ac120002
+                    solutionCode: CIFRWE_DXCO
+                    insurances:
+                      - id: ABC001
+                        price: 49.9
+                        description: Extension de garantie 2 ans
+                      - id: DEF002
+                        price: 69.9
+                        description: Extension de garantie 3 ans
+                Response for  eligibility of an  item to the CIFRBS-DXCO solution code:
+                  description: >-
+                    Response for  eligibility of an  item to the CIFRBS-DXCO
+                    solution code
+                  value:
+                    itemId: abe12340-b1f5-11ed-afa1-0242ac120002
+                    solutionCode: CIFRBS_DXCO
+                    insurances:
+                      - id: '3990054374'
+                        price: 5643
+                        description: Ecran cassé 1 an
+        '204':
+          description: Product is not eligible
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              example:
+                timestamp: '2023-01-29T10:05:38.429Z'
+                httpStatusCode: 400
+                httpStatusMessage: Bad Request
+                errorCode: INVALID_EMAIL
+                errorMessage: The email address is not valid !
+                requestMethod: POST
+                requestURI: /v1/user-account/users
+        '401':
+          description: Unauthorized. You must first authenticate to get a token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missing scope or insufficient permissions.
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+  '/subscriptions/{insuranceSubscriptionId}':
+    get:
+      tags:
+        - Subscriptions
+      summary: Retrieve a specific insurance subscription
+      description: >-
+        You get all details of an insurance subscription. You will have to
+        provide a insurance subscription Id previously obtained as listed or
+        initiated.
+      operationId: retrieveSpecificInsuranceSubscription
+      parameters:
+        - name: insuranceSubscriptionId
+          in: path
+          description: The unique Insurance Subscription Id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Specific Insurance subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsuranceSubscriptionResponse'
+        '401':
+          description: Unauthorized. You must first authenticate to get a token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missed scope or insufficient permission
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+              examples:
+                Get Internal Server Error:
+                  summary: Get Internal Server Error
+                  description: Get Internal Server Error
+                  value:
+                    timestamp: '2022-07-28T22:25:51.000Z'
+                    httpStatusCode: '500'
+                    httpStatusMessage: Internal Server Error
+                    errorMessage: Une erreur est survenue
+                    requestMethod: POST
+                    requestURI: /v1/subscriptions
+  /eligible-solutions:
+    get:
+      tags:
+        - Eligibility
+      summary: Retrieve eligible insurance solutions
+      description: >-
+        Retrieve eligible insurances solutions given a buyer country. As a
+        result, you will obtain a list of insurances solutions codes with their
+        related merchant kits. A merchant kit will allow you to display
+        insurance visual name, label, description , logo and product terms to
+        the customer. An empty json object is returned if no solution is
+        eligible.
+      operationId: getEligibleProductServices
+      parameters:
+        - name: buyerBillingCountry
+          in: query
+          required: true
+          schema:
+            type: string
+            description: FR for France
+            example: FR
+      responses:
+        '200':
+          description: The financed amount and country is eligible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolutionsDTO'
+        '401':
+          description: Unauthorized. You must first authenticate to get a token.
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Missed scope or insufficient permission
+          content:
+            application/json: {}
+        default:
+          description: Generic Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaasExceptionHttpResponse'
+components:
+  schemas:
+    Address:
+      required:
+        - cityName
+        - countryCode
+        - regionName
+        - streetName
+        - streetNumber
+        - zipCode
+      type: object
+      properties:
+        streetNumber:
+          type: integer
+          description: Numeric value of the street
+          format: int32
+          example: 147
+        streetNumberSuffix:
+          type: string
+          description: 'When necessary, suffix of the street number (10 B)'
+          example: B
+        streetName:
+          type: string
+          description: Name of the street
+          example: main street
+        streetNameComplement:
+          type: string
+          description: 'Complement, when necessary to the name of the street'
+          example: block 47
+        zipCode:
+          type: string
+          description: Zip code of address
+          example: '92060'
+        cityName:
+          type: string
+          description: Name of the city
+          example: Paris
+        regionName:
+          type: string
+          description: Region/area where the city is located.
+          example: Île-de-France
+        countryCode:
+          type: string
+          description: Code of the country ISO 3166-1 alpha-2
+          example: FR
+    Buyer:
+      type: object
+      properties:
+        contact:
+          $ref: '#/components/schemas/Contact'
+        address:
+          $ref: '#/components/schemas/Address'
+    Contact:
+      required:
+        - email
+        - firstName
+        - lastName
+        - mobilePhoneNumber
+      type: object
+      properties:
+        lastName:
+          type: string
+          description: Last name of the buyer (final customer)
+          example: Dupont
+        firstName:
+          type: string
+          description: First name of the buyer (final customer)
+          example: Paul
+        email:
+          pattern: '^[a-zA-Z0-9_.+-]{1,100}@[a-zA-Z0-9-]{1,50}\.[a-zA-Z0-9.-]{1,50}$'
+          type: string
+          description: >-
+            Email address of the buyer (final customer) with no international
+            extension
+          example: paul.dupont@mail.com
+        mobilePhoneNumber:
+          pattern: '^\+(?:[0-9] ?){6,14}[0-9]$'
+          type: string
+          description: >-
+            Mobile number of the buyer (final customer) with international
+            calling code.
+          example: 33123456789
+        phoneNumber:
+          pattern: '^\+(?:[0-9] ?){6,14}[0-9]$'
+          type: string
+          description: >-
+            Phone number of the buyer (final customer) with international
+            calling code.
+          example: 33123456789
+      description: >-
+        Displaying the customer's personal contact details including first name,
+        last name and mobile phone.
+    CreateInsuranceSubscriptionRequest:
+      required:
+        - buyer
+        - insuranceId
+        - insuredItem
+        - merchantBasketId
+        - merchantBuyerId
+        - merchantGlobalOrderId
+        - producerQuoteExpirationDate
+        - producerQuoteInsurancePrice
+        - quoteId
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          pattern: '^CI\w{4}-\w{4}$'
+          type: string
+          description: ID of the BaaS product used
+          example: CIFRWE-DXCO
+        quoteId:
+          type: string
+        insuranceId:
+          type: string
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (third party)
+          example: 647aeb24-a89c-11ed-afa1-0242ac120002
+        merchantBuyerId:
+          type: string
+          description: >-
+            ID of the buyer (final customer), as given by the merchant (third
+            party)
+          example: 44226c6c-aca7-11ed-afa1-0242ac120002
+        merchantGlobalOrderId:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: Id of the merchant order.
+          example: OD456742
+        producerQuoteExpirationDate:
+          type: string
+          description: >-
+            Expiration date of the quote given before entering the subscription
+            process
+          format: date
+        producerQuoteInsurancePrice:
+          type: number
+          description: 'Price of the policy subscribed, as per the quotation'
+          format: float
+          example: 56.34
+        buyer:
+          $ref: '#/components/schemas/Buyer'
+        insuredItem:
+          $ref: '#/components/schemas/InsuredItem'
+    InsuredItem:
+      required:
+        - brandName
+        - category
+        - currencyCode
+        - id
+        - insurancePrice
+        - label
+        - price
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the item
+          example: M12345785513211
+        label:
+          type: string
+          description: Label of the item within the basket
+          example: 'ROBOT PÂTISSIER À BOL RELEVABLE 4,8L - HEAVY DUTY 5KPM5'
+        brandName:
+          type: string
+          description: Brand name of the item
+          example: LG
+        price:
+          type: number
+          description: Price of the item within the basket
+          format: float
+          example: 1199.99
+        currencyCode:
+          type: string
+          description: Currency code applying to prices based on ISO4217
+          example: EUR
+        category:
+          type: string
+          description: The category of the item
+          example: Small appliance
+        sku:
+          type: string
+          description: Item Stock Keeping Unit
+          example: ZG011AQA
+        insurancePrice:
+          type: number
+          description: Price of the item
+          format: float
+          example: 100.25
+        isRefurbished:
+          type: boolean
+          description: >-
+            If true, the item is refurbished otherwise it is a new item. If not
+            specified, the default value is false.
+          example: true
+          default: false
+    CreateInsuranceSubscriptionResponse:
+      required:
+        - consolidatedStatus
+        - insuranceSubscriptionId
+      type: object
+      properties:
+        insuranceSubscriptionId:
+          type: string
+          description: The unique Insurance Subscription Id
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) insurance subscription
+          enum:
+            - INITIALIZED
+            - SUBSCRIBED
+            - ACTIVATED
+            - CANCELLED
+            - TERMINATED
+            - ABORTED
+            - REJECTED
+      description: Insurance Subscription response object
+    BaasExceptionHttpResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the error
+          format: date-time
+          example: '2023-01-29T10:05:38.429Z'
+        httpStatusCode:
+          type: integer
+          description: 'HTTP status code (404, 400, 500...)'
+          format: int32
+          example: 400
+        httpStatusMessage:
+          type: string
+          description: >-
+            HTTP status message ("Not Found", "Bad Request", "Internal Server
+            Error"...)
+          example: Bad Request
+        errorCode:
+          type: string
+          description: >-
+            The applicative error code. It is a machine readable code. Used when
+            BAD_REQUEST error to provide details about the error.
+          example: INVALID_EMAIL
+        errorMessage:
+          type: string
+          description: >-
+            The applicative error message. It is a human readable English
+            message.
+          example: The email address is not valid !
+        errors:
+          type: array
+          description: 'List of { error code, error message }.'
+          items:
+            $ref: '#/components/schemas/ErrorCodeAndMessage'
+        requestMethod:
+          type: string
+          description: >-
+            HTTP method used to make the request ("GET", "POST", "PUT",
+            "DELETE"...)
+          example: POST
+        requestURI:
+          type: string
+          description: HTTP URI used to make the request
+          example: /v1/user-account/users
+      description: Generic HTTP Error Response
+    ErrorCodeAndMessage:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      description: 'List of { error code, error message }.'
+    InsuranceCancellationDTO:
+      type: object
+      properties:
+        origin:
+          type: string
+    InsuranceQuotationResponse:
+      type: object
+      properties:
+        quoteId:
+          type: string
+          description: quote identifier
+          format: uuid
+        insurancePrice:
+          type: number
+          description: price of the item
+          format: float
+        expirationDate:
+          type: string
+          description: expiration date of the specific quote issued above
+      description: Insurance Quotation Response Object
+    InsuranceQuotationRequest:
+      required:
+        - insuranceId
+        - itemId
+        - itemPrice
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          pattern: '^CI\w{4}-\w{4}$'
+          type: string
+          description: ID of the BaaS product used
+          example: CIFRWE-DXCO
+        itemId:
+          type: string
+          description: item identifier
+          example: '2343234567'
+        itemPrice:
+          type: number
+          description: price of the item
+          format: float
+          example: 100.25
+        insuranceId:
+          type: string
+          description: insurance identifier
+          example: ABCD002
+      description: Insurance Quotation Request Object
+    CreateItemRequest:
+      required:
+        - brand
+        - category
+        - characteristics
+        - description
+        - merchantItemId
+        - model
+        - sku
+        - solutionCode
+        - title
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: CIFRWE-DXCO
+        sku:
+          type: string
+          description: Item Stock Keeping Unit
+          example: ZG011AQA
+        merchantItemId:
+          type: string
+          description: The identifier of the item from merchant
+          example: 8c6450c2-b142-11ed-afa1-0242ac120002
+        brand:
+          type: string
+          description: Item brand
+          example: Beats
+        model:
+          type: string
+          description: Item model
+          example: Beats Solo3
+        title:
+          type: string
+          description: Item title
+          example: Beats Solo3 Wireless On-Ear Headphones
+        description:
+          type: string
+          description: Item description
+          example: >-
+            Headphone Chip, Class 1 Bluetooth, 40 Hours of Listening Time,
+            Built-in Microphone - Black (Latest Model)
+        characteristics:
+          type: string
+          description: Item characteristics
+          example: >-
+            With up to 40 hours of battery life, Beats Solo3 wireless is your
+            perfect everyday headphone...
+        category:
+          type: string
+          description: Item category
+          example: Headphones & Earbuds
+        isRefurbished:
+          type: boolean
+          description: >-
+            If true, the item is refurbished otherwise it is a new item. If not
+            specified, the default value is false.
+          example: true
+          default: false
+    CreateItemResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the Item from producer moonshot
+          example: abe12340-b1f5-11ed-afa1-0242ac120002
+    SearchItemInsuranceRequest:
+      required:
+        - itemId
+        - price
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used.
+          example: CIFRWE-DXCO
+        itemId:
+          type: string
+          description: The identifier of the Item from producer moonshot.
+          example: abe12340-b1f5-11ed-afa1-0242ac120002
+        price:
+          type: number
+          description: The item price with the euro unit.
+          format: float
+          example: 29.9
+    ItemInsurance:
+      required:
+        - description
+        - id
+        - price
+      type: object
+      properties:
+        id:
+          type: string
+          description: Insurance identifier
+          example: ABC001
+        price:
+          type: number
+          description: Insurance price with the euro unit
+          format: float
+          example: 49.9
+        description:
+          type: string
+          description: Insurance description
+          example: Extension de garantie 2 ans
+    SearchItemInsuranceResponse:
+      required:
+        - insurances
+        - itemId
+        - solutionCode
+      type: object
+      properties:
+        itemId:
+          type: string
+          description: The identifier of the Item from moonshot
+          example: abe12340-b1f5-11ed-afa1-0242ac120002
+        solutionCode:
+          type: string
+          description: Solution code to which the communication kit belongs
+          example: CIFRWE-DXCO
+        insurances:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemInsurance'
+    InsuranceSubscription:
+      required:
+        - consolidatedStatus
+        - duration
+        - insuranceSubscriptionId
+        - insuredItemCategory
+        - insuredItemPrice
+        - lastUpdateTimestamp
+        - marketTypeCode
+        - merchantBasketId
+        - merchantGlobalOrderId
+        - producerQuoteInsurancePrice
+        - registrationTimestamp
+        - solutionCode
+      type: object
+      properties:
+        insuranceSubscriptionId:
+          type: string
+          description: The unique Insurance Subscription Id
+          format: uuid
+        registrationTimestamp:
+          type: string
+          format: date-time
+          example: '2024-04-22T10:00:19.077Z'
+        lastUpdateTimestamp:
+          type: string
+          format: date-time
+          example: '2024-04-22T10:00:19.077Z'
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: CIFRWE-DXCO
+        marketTypeCode:
+          type: string
+          description: ID of the market in which the product is valid
+          example: FR
+        duration:
+          type: integer
+          description: Duration in years of insurance
+          format: int32
+          example: 2
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (thirdparty)
+          example: '185462145'
+        merchantGlobalOrderId:
+          type: string
+          description: Id of the merchant order.
+          example: OD456742
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) insurance subscription
+          enum:
+            - INITIALIZED
+            - SUBSCRIBED
+            - ACTIVATED
+            - CANCELLED
+            - TERMINATED
+            - ABORTED
+            - REJECTED
+        insuredItemPrice:
+          type: number
+          description: Price of a specific item within the basket
+          format: float
+          example: 1199.99
+        insuredItemCategory:
+          type: string
+          description: The categorie of the item
+          example: Small appliance
+        producerQuoteInsurancePrice:
+          type: number
+          description: 'Price of the policy subscribed, given by the quotation'
+          format: float
+          example: 56.34
+        merchantCommission:
+          type: number
+          description: >-
+            This amount is related to the commission earned by the merchant on
+            the ebuyer subscription. This is calculated and given by Moonshot
+          format: float
+          example: 45.2
+      description: |-
+        - List of Subscriptions
+        - If no criteria is met, the returned list "subscriptions" will be empty
+    PaginationInsuranceSubscriptionsResponse:
+      required:
+        - subscriptions
+        - totalItemCount
+      type: object
+      properties:
+        totalItemCount:
+          type: integer
+          format: int32
+          example: 1
+        subscriptions:
+          type: array
+          description: >-
+            - List of Subscriptions
+
+            - If no criteria is met, the returned list "subscriptions" will be
+            empty
+          items:
+            $ref: '#/components/schemas/InsuranceSubscription'
+    InsuranceSubscriptionResponse:
+      required:
+        - buyer
+        - clientId
+        - consolidatedStatus
+        - duration
+        - familyCode
+        - insuranceSubscriptionId
+        - insuredItem
+        - lastUpdateTimestamp
+        - marketTypeCode
+        - merchantBasketId
+        - merchantBuyerId
+        - merchantGlobalOrderId
+        - producerQuoteInsurancePrice
+        - registrationTimestamp
+        - solutionCode
+        - thirdPartyReferenceId
+      type: object
+      properties:
+        insuranceSubscriptionId:
+          type: string
+          description: The unique Insurance Subscription Id
+          format: uuid
+        registrationTimestamp:
+          type: string
+          format: date-time
+          example: '2024-04-22T10:00:19.077Z'
+        lastUpdateTimestamp:
+          type: string
+          format: date-time
+          example: '2024-04-22T10:00:19.077Z'
+        marketTypeCode:
+          type: string
+          description: ID of the market in which the product is valid
+          example: FR
+        duration:
+          type: integer
+          description: Duration in years of insurance
+          format: int32
+          example: 2
+        merchantBasketId:
+          type: string
+          description: >-
+            ID of the basket of the current transaction, as given by the
+            merchant (thirdparty)
+          example: '185462145'
+        merchantGlobalOrderId:
+          type: string
+          description: Id of the merchant order.
+          example: OD456742
+        consolidatedStatus:
+          type: string
+          description: Current status of the buyer (final customer) insurance subscription
+          enum:
+            - INITIALIZED
+            - SUBSCRIBED
+            - ACTIVATED
+            - CANCELLED
+            - TERMINATED
+            - ABORTED
+            - REJECTED
+        solutionCode:
+          type: string
+          description: ID of the BaaS product used
+          example: CIFRWE-DXCO
+        clientId:
+          type: string
+          description: >-
+            Client ID is the technical account ID set into API platform and used
+            by the merchant's marketplace to access to BAAS system.
+          format: uuid
+          example: 44f5060e-a89c-11ed-afa1-0242ac120002
+        thirdPartyReferenceId:
+          type: string
+          description: >-
+            Merchant ID refers to the BAAS unique ID as thirdPartyRefID manage
+            by the thirdPartyRef domain.
+          format: uuid
+          example: 647aeb24-a89c-11ed-afa1-0242ac120002
+        familyCode:
+          type: string
+          description: Contextual Insurance
+          example: CI
+        merchantBuyerId:
+          type: string
+          description: >-
+            ID of the buyer (final customer), as given by the merchant
+            (thirdparty)
+          example: 44226c6c-aca7-11ed-afa1-0242ac120002
+        buyer:
+          $ref: '#/components/schemas/Buyer'
+        insuredItem:
+          $ref: '#/components/schemas/InsuredItem'
+        producerQuoteInsurancePrice:
+          type: number
+          description: 'Price of the policy subscribed, given by the quotation'
+          format: float
+          example: 56.34
+        merchantCommission:
+          type: number
+          description: >-
+            This amount is related to the commission earned by the merchant on
+            the ebuyer subscription. This is calculated and given by Moonshot
+          format: float
+          example: 45.2
+    CommunicationKit:
+      required:
+        - solutionCode
+        - visualAdditionalInformation
+        - visualInformationIcon
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: solution code to which the communication kit belongs
+          example: SCFRSP-3XTS
+        visualTitle:
+          type: string
+          description: >-
+            relates to Merchant's kit. Item label to display on the merchant
+            webSite
+          example: Payez en 3 ou 4 fois
+        visualDescription:
+          type: string
+          description: Description of the insert on the merchant website - optional
+          example: Baas is great
+        visualInformationIcon:
+          type: string
+          description: 'Icon integrated in the insert, which allows access to the pop-in'
+          example: XXX/XXX.ico (url icon)
+        visualAdditionalInformation:
+          type: string
+          description: >-
+            Additional information to which the final consumer can access via
+            the information icon
+          example: xxx
+        visualLegalText:
+          type: string
+          description: Legal text to be displayed below the product description
+          example: xxx
+        visualTableImage:
+          type: string
+          description: >-
+            Static table image representing the different installments for an
+            example of split payment
+          example: 'https://merchant.kit/uri/table.png'
+        visualLogo:
+          type: string
+          description: BaaS service logo
+          example: 'https://merchant.kit/uri/productTerms.ico'
+        visualInformationNoticeURL:
+          type: string
+          description: Link to Moonshot information notice (pdf)
+          example: 'https://merchant.kit/uri/productTerms.pdf'
+        visualProductTermsURL:
+          type: string
+          description: Link to the moonshot product file pdf
+          example: 'https://merchant.kit/uri/productTerms.pdf'
+      description: Communication Kit
+    ProductsAndServicesResponse:
+      required:
+        - communicationKit
+        - conditions
+        - familyCode
+        - marketCode
+        - solutionCode
+      type: object
+      properties:
+        solutionCode:
+          type: string
+          description: Code used for identify the product
+          example: SCFRSP-3XTS
+        familyCode:
+          type: string
+          description: Credit or Insurance (in our case is most used for Credit)
+          example: SC
+        marketCode:
+          type: string
+          description: Code used for identify the country market
+          example: FR for France or DE for Germany
+        conditions:
+          type: string
+          description: 'with or without fees, or rate for long term credit'
+          example: PS
+        communicationKit:
+          $ref: '#/components/schemas/CommunicationKit'
+      description: Eligible product services process object
+    SolutionsDTO:
+      type: object
+      properties:
+        solutions:
+          minItems: 0
+          type: array
+          description: List of products and services
+          items:
+            $ref: '#/components/schemas/ProductsAndServicesResponse'
+  securitySchemes:
+    oauth-flows:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: >-
+            https://api.scalexpert.societegenerale.com/baas/prod/auth-server/api/v1/oauth2/token
+          scopes:
+            'insurance:rw': ''
+externalDocs:
+  description: Dev Docs
+  url: >-
+    https://docs.scalexpert.societegenerale.com/apidocs/3mLlrPx3sPtekcQvEEUg/developers-docs/get-started
+security:
+  - oauth-flows:
+      - 'insurance:rw'
+x-sg-configuration:
+  gateways:
+    - name: baas-open-gateway
+      description: To expose Open APIs to BAAS partners
+      url: 'https://api.scalexpert.societegenerale.com/baas/prod'

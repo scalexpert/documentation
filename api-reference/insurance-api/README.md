@@ -2,14 +2,14 @@
 description: Insurance API reference versions
 ---
 
-# Insurance API
+# 🆕 Insurance API
 
 Scope "`insurance:rw"`
 
 ### Latest version:
 
-{% content-ref url="v-1.6.0-insurance-api.md" %}
-[v-1.6.0-insurance-api.md](v-1.6.0-insurance-api.md)
+{% content-ref url="v-1.7.1-insurance-api.md" %}
+[v-1.7.1-insurance-api.md](v-1.7.1-insurance-api.md)
 {% endcontent-ref %}
 
 ### Old versions:
