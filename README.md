@@ -30,6 +30,8 @@ These guides are for you!
 
 #### August changes
 
+* New version of [Insurance V 1.7.1](api-reference/insurance-api/) with new insurance "Broken Screen" solution
+* New version of [E-financing API V 1.6.0](api-reference/e-financing-api/) with new endpoint confirmation return of delivery
 * New version [Magento plugin V1.5.0](integration-guides/integrations-modes/plugins/magento/magento-installation.md#id-1-installation-from-github) with simulator widget in the cart page
 * New version [Prestashop plugin V 1.6.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github) with addtional check of phone mobile number
 * New version [Prestashop plugin V 1.5.0 ](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md#id-1-installation-from-github) with simulator widget in the cart page
