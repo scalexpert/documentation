@@ -54,7 +54,7 @@
   * [Long Term Credit Journey Germany](solutions-reference/credit/long-term-credit-journey-germany.md)
   * [Funded, Cancellation journeys](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/README.md)
     * [Cancellation e-financing journey](solutions-reference/credit/funded-cancellation-or-reimbursed-journey/cancellation-e-financing-journey.md)
-  * [🆕 E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
+  * [E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
 * [Contextual Insurance journeys](solutions-reference/insurance/README.md)
   * [Initiate an insurance journey](solutions-reference/insurance/initiate-an-insurance-journey.md)
   * [Create an insurance quotation](solutions-reference/insurance/create-an-insurance-quotation.md)
@@ -76,7 +76,7 @@
   * [Versioning](api-reference/apis-common/versionning.md)
   * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
 * [🆕 e-Financing API](api-reference/e-financing-api/README.md)
-  * [🆕 V 1.5.2 - e-Financing API](api-reference/e-financing-api/v-1.5.2-e-financing-api.md)
+  * [V 1.5.2 - e-Financing API](api-reference/e-financing-api/v-1.5.2-e-financing-api.md)
   * [Retired versions e-Financing API ](api-reference/e-financing-api/retired-versions-e-financing-api/README.md)
     * [V 1.4.0 - e-Financing API](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.4.0-e-financing-api.md)
     * [V 1.3.7 - e-Financing API](api-reference/e-financing-api/retired-versions-e-financing-api/v-1.3.7-e-financing-api.md)
@@ -100,7 +100,7 @@
   * [Insurance error codes](api-reference/insurance-api/insurance-error-codes.md)
 * [🚧 Marketplace services API](api-reference/marketplace-services-api/README.md)
   * [UAT API for partners](api-reference/marketplace-services-api/uat-api-for-partners.md)
-* [🆕 Merchant-Webhooks API](api-reference/merchant-webhooks-api/README.md)
+* [Merchant-Webhooks API](api-reference/merchant-webhooks-api/README.md)
   * [V 1.0.6 - Merchant Webhooks API](api-reference/merchant-webhooks-api/v-1.0.6-merchant-webhooks-api.md)
   * [Webhook event types](api-reference/merchant-webhooks-api/webhook-event-types.md)
   * [Webhook error codes](api-reference/merchant-webhooks-api/webhook-error-codes.md)
@@ -111,7 +111,7 @@
 
 ## Webhooks
 
-* [🆕 How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
+* [How to subscribe, use Webhooks](webhooks/how-to-subscribe-use-webhooks.md)
 
 ## Security
 

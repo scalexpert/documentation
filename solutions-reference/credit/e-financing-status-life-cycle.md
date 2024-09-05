@@ -2,7 +2,7 @@
 description: Status life cycle of a e-Financing subscription
 ---
 
-# 🆕 E-financing Status life cycle
+# E-financing Status life cycle
 
 ### Statuses  definition:
 

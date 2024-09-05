@@ -2,7 +2,7 @@
 description: Merchant webhooks tutorial (Work in progress)
 ---
 
-# 🆕 How to subscribe, use Webhooks
+# How to subscribe, use Webhooks
 
 {% hint style="info" %}
 Merchant Webhooks has just been released! :tada:  Pulling event via API method stay another good alternative (plugin integration is using pulling for now) but using webhooks especially for merchants with custom API integration that want instantness of information could be the solution.&#x20;
