@@ -374,8 +374,12 @@ Rendering of communication KIT (ex long term credit):
 <figure><img src="../../../.gitbook/assets/Capture d’écran du 2023-11-05 16-28-52.png" alt="" width="375"><figcaption><p>Communication Kit rendering</p></figcaption></figure>
 
 {% embed url="https://codepen.io/rocchisanijl/pen/xxomQvz" fullWidth="false" %}
+Try it on Codepen
+{% endembed %}
 
-<pre class="language-html" data-title="HTML rendering" data-overflow="wrap" data-line-numbers><code class="lang-html"><strong>&#x3C;!-- create css classes scalexpert_title and scalexpert_subtitle and standard html tags according your graphical layout standards--> 
+{% tabs %}
+{% tab title="HTML" %}
+<pre class="language-html" data-overflow="wrap" data-line-numbers><code class="lang-html"><strong>&#x3C;!-- create css classes scalexpert_title and scalexpert_subtitle and standard html tags according your graphical layout standards--> 
 </strong><strong>
 </strong><strong>&#x3C;div class=scalexpert_title>Etalez votre paiment avec un crédit&#x3C;/div>
 </strong><strong>
@@ -389,6 +393,29 @@ Rendering of communication KIT (ex long term credit):
 &#x3C;div class=scalexpert_subtitle>Mentions légales&#x3C;/div>
 &#x3C;p>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Offre valable toute l’année, à partir de 1000 euros de crédit et sous réserve d’acceptation du crédit affecté par FRANFINANCE (SA au capital de 31.357.776,00 euros - 719 807 406 RCS Nanterre - 53 rue du Port, CS 90201, 92724 Nanterre Cedex - France -, Intermédiaire en assurance inscrit l’ORIAS N° 07 008 346 - www.orias.fr). Vous disposez d’un délai de rétractation de 14 jours à compter de la date de signature du contrat de crédit. Le vendeur est intermédiaire de crédit non exclusif de FRANFINANCE, immatriculé à l’ORIAS sous le numéro XXXXX (www.orias.fr).&#x3C;/p>
 </code></pre>
+
+
+{% endtab %}
+
+{% tab title="CSS" %}
+{% code overflow="wrap" lineNumbers="true" %}
+```css
+.scalexpert_title {
+  color: #232323;
+  font-weight: 700;
+  font-size: x-large;
+}
+.scalexpert_subtitle {
+  color: #232323;
+  font-weight: 700;
+}
+.scalexpert_important {
+  text-transform: uppercase;
+}
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 {% hint style="warning" %}
 Make sure at minimum "visualLegalText" is always rendered on your site for legal compliance.
