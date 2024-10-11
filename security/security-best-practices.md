@@ -24,4 +24,4 @@ Don't store secrets (and client id) in clear in the code. Best solution is to us
 
 It is a best practice to renew periodically your secrets and most of all when your security could have been compromise.
 
-You can reset you secret on the developer portal (see page [API key)](../ready-to-start/before-you-start/api-key.md#4-reset-secret)
+You can reset you secret on the developer portal (see page [API key)](../api-reference/apis-common/advanced-features/api-key.md#4-reset-secret)

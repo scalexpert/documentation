@@ -28,6 +28,11 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+#### October changes
+
+* We simplify your onboarding! Now API keys would be automatically generated after contract signature. see more details on "[before you start](ready-to-start/before-you-start.md)" page.
+* New version of [WooCommerce plugin V 1.5.3](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md) with simulator widget added, phone number validation and minor fixes
+
 #### August changes
 
 * New version of [Insurance V 1.7.1](api-reference/insurance-api/) with new insurance "Broken Screen" solution

@@ -38,11 +38,11 @@ This part of the guide will make an overview of all common concepts of the APis:
 [authorization-server-api.md](../authorization-server-api.md)
 {% endcontent-ref %}
 
-### API console
+### API console (developer portal)
 
-{% embed url="https://dev.scalexpert.societegenerale.com/en/prod" %}
-Access the API console
-{% endembed %}
+{% content-ref url="advanced-features/" %}
+[advanced-features](advanced-features/)
+{% endcontent-ref %}
 
 ### API collections
 

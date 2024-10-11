@@ -2,7 +2,7 @@
 description: All frequent questions on integration
 ---
 
-# 🆕 FAQ
+# FAQ
 
 ### Integration questions
 

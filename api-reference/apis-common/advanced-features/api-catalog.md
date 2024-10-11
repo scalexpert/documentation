@@ -14,7 +14,7 @@ API catalogs are like menus in restaurant. You will need to choose one according
 
 Thus, as a customer you would have two keys :key: one for tests (UATC) and another for production (PROD).&#x20;
 
-<figure><img src="../../.gitbook/assets/Capture d’écran du 2023-10-29 18-14-09.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Capture d’écran du 2023-10-29 18-14-09.png" alt=""><figcaption></figcaption></figure>
 
 {% embed url="https://dev.scalexpert.societegenerale.com/en/prod" %}
 Access API catalogs

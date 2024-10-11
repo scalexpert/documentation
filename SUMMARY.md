@@ -6,12 +6,7 @@
 
 ## Ready to start
 
-* [Before you start](ready-to-start/before-you-start/README.md)
-  * [Account creation](ready-to-start/before-you-start/account-creation.md)
-  * [On boarding API](ready-to-start/before-you-start/on-boarding-api.md)
-  * [API catalog](ready-to-start/before-you-start/api-catalog.md)
-  * [API key](ready-to-start/before-you-start/api-key.md)
-  * [Advanced features](ready-to-start/before-you-start/advanced-features.md)
+* [🆕 Before you start](ready-to-start/before-you-start.md)
 * [Get Started](ready-to-start/get-started/README.md)
   * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
@@ -32,7 +27,7 @@
     * [Magento CE & EE 2.4.3, 2.4.4 , 2.4.6](integration-guides/integrations-modes/plugins/magento/README.md)
       * [Magento installation](integration-guides/integrations-modes/plugins/magento/magento-installation.md)
       * [Magento customization](integration-guides/integrations-modes/plugins/magento/magento-customization.md)
-    * [WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
+    * [🆕 WooCommerce](integration-guides/integrations-modes/plugins/woocommerce/README.md)
       * [WooCommerce  installation](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md)
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
       * [WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
@@ -42,7 +37,7 @@
     * [Merchant integration (plugin)](integration-guides/integrations-modes/fintecture-integration-modes/merchant-integration-plugin.md)
     * [API integration](integration-guides/integrations-modes/fintecture-integration-modes/api-integration.md)
     * [Recipes](integration-guides/integrations-modes/fintecture-integration-modes/recipes.md)
-  * [🆕 FAQ](integration-guides/integrations-modes/faq.md)
+  * [FAQ](integration-guides/integrations-modes/faq.md)
 * [Go-Live check-list](integration-guides/go-live-check-list.md)
 
 ## SOLUTIONS REFERENCE
@@ -75,6 +70,11 @@
   * [Scopes](api-reference/apis-common/scopes.md)
   * [Versioning](api-reference/apis-common/versionning.md)
   * [Error object & codes](api-reference/apis-common/error-object-and-codes.md)
+  * [API console (developer portal)](api-reference/apis-common/advanced-features/README.md)
+    * [Account creation](api-reference/apis-common/advanced-features/account-creation.md)
+    * [API catalog](api-reference/apis-common/advanced-features/api-catalog.md)
+    * [On boarding API](api-reference/apis-common/advanced-features/on-boarding-api.md)
+    * [API key](api-reference/apis-common/advanced-features/api-key.md)
 * [🆕 e-Financing API](api-reference/e-financing-api/README.md)
   * [V 1.6.0 - e-Financing API](api-reference/e-financing-api/v-1.6.0-e-financing-api.md)
   * [Depreciated versions e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/README.md)

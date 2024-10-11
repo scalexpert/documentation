@@ -191,8 +191,8 @@ Refer to the **API reference** section for detailed information on each endpoint
 
 Before starting the integration process, make sure you have complete the prerequisites. Refer to "Before you start" pages for more details
 
-{% content-ref url="../../../ready-to-start/before-you-start/" %}
-[before-you-start](../../../ready-to-start/before-you-start/)
+{% content-ref url="../../../ready-to-start/before-you-start.md" %}
+[before-you-start.md](../../../ready-to-start/before-you-start.md)
 {% endcontent-ref %}
 
 Also have a look at "Security best practices" pages. For instance, make attention that API must be implemented at server side and not at front side.
@@ -205,8 +205,8 @@ Also have a look at "Security best practices" pages. For instance, make attentio
 
 Refer to "Before you start/API key" section for instructions:
 
-{% content-ref url="../../../ready-to-start/before-you-start/api-key.md" %}
-[api-key.md](../../../ready-to-start/before-you-start/api-key.md)
+{% content-ref url="../../../api-reference/apis-common/advanced-features/api-key.md" %}
+[api-key.md](../../../api-reference/apis-common/advanced-features/api-key.md)
 {% endcontent-ref %}
 
 #### Testing Environment Setup
