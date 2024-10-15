@@ -85,9 +85,6 @@
     * [V 1.3.1 - e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.3.1-e-financing-api.md)
     * [V 1.1 - e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.1-e-financing-api.md)
     * [V 1.0 - e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.0.md)
-  * [UAT API for partners](api-reference/e-financing-api/uat-api-for-partners/README.md)
-    * [V 1.3.9 - e-Financing API (UAT for partners only)](api-reference/e-financing-api/uat-api-for-partners/v-1.3.9-e-financing-api-uat-for-partners-only.md)
-    * [V 1.3.7 - e-Financing API](api-reference/e-financing-api/uat-api-for-partners/v-1.3.7-e-financing-api.md)
   * [e-financing error codes](api-reference/e-financing-api/e-financing-error-codes.md)
 * [🆕 Insurance API](api-reference/insurance-api/README.md)
   * [V 1.7.1 - Insurance API](api-reference/insurance-api/v-1.7.1-insurance-api.md)
@@ -97,8 +94,6 @@
     * [V 1.3.5 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.3.5-insurance-api.md)
     * [V 1.1 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.1-insurance-api.md)
     * [V 1.0 - Insurance API](api-reference/insurance-api/retired-versions-insurance-api/v-1.0.md)
-  * [UAT API for partners](api-reference/insurance-api/uat-api-for-partners/README.md)
-    * [V 1.3.8 - insurance API](api-reference/insurance-api/uat-api-for-partners/v-1.3.8-insurance-api.md)
   * [Insurance error codes](api-reference/insurance-api/insurance-error-codes.md)
 * [🚧 Marketplace services API](api-reference/marketplace-services-api/README.md)
   * [UAT API for partners](api-reference/marketplace-services-api/uat-api-for-partners.md)
@@ -110,6 +105,7 @@
     * [V 1.0.5 - Merchant-Webhooks API](api-reference/merchant-webhooks-api/uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
 * [🚧 Fintecture Payments API reference](api-reference/fintecture-payments-api-reference.md)
+* [UAT API for partners](api-reference/uat-api-for-partners.md)
 
 ## Webhooks
 

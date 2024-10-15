@@ -49,3 +49,9 @@ This part of the guide will make an overview of all common concepts of the APis:
 {% content-ref url="../../integration-guides/integrations-modes/direct/apis-postman-collection.md" %}
 [apis-postman-collection.md](../../integration-guides/integrations-modes/direct/apis-postman-collection.md)
 {% endcontent-ref %}
+
+### UAT for Partners only
+
+{% content-ref url="../uat-api-for-partners.md" %}
+[uat-api-for-partners.md](../uat-api-for-partners.md)
+{% endcontent-ref %}

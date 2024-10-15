@@ -20,6 +20,6 @@ Scope "`e-financing:rw"`
 
 ### UAT versions (only for partners)
 
-{% content-ref url="uat-api-for-partners/" %}
-[uat-api-for-partners](uat-api-for-partners/)
+{% content-ref url="../uat-api-for-partners.md" %}
+[uat-api-for-partners.md](../uat-api-for-partners.md)
 {% endcontent-ref %}
