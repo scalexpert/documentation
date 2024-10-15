@@ -27,10 +27,6 @@ API url Production
 
 {% embed url="https://api.scalexpert.uatc.societegenerale.com/baas/uatc" %}
 
-{% hint style="info" %}
-Coming soon ! A Sandbox environment for none customer will be available in the coming months.&#x20;
-{% endhint %}
-
 ### Test for partners only (UAT)
 
 This environment is available only for partners.&#x20;
