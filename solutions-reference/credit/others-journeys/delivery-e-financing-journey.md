@@ -1,10 +1,10 @@
 ---
-description: How to confirm delivery from your merchant portal to trigger your funding
+description: How to confirm delivery from  to trigger your funding
 ---
 
-# 🆕 Merchant portal delivery guide
+# 🆕 Delivery e-financing journey
 
-### **Payment to the merchant & proof of delivery**
+## A - From merchant portal: **Payment to the merchant & proof of delivery**
 
 {% hint style="info" %}
 This article concerns payment to the merchant when a customer (ebuyer) has taken out a 3X/4X payment or credit offer. The time taken to pay the merchant depends on the financing method chosen by the customer (ebuyer).
@@ -42,10 +42,10 @@ On the delivery screen, please enter the “Shipping number” and the “Operat
 
 ![](../../../.gitbook/assets/4.png)
 
-### Confirm your delivery though API
+## B - Confirm your delivery though API
 
 You can confirm you delivery though API [`e-financing/api/v1/subscriptions/{creditSubscriptionId}/_confirmDelivery`](../../../api-reference/e-financing-api/)
 
-### Confirm your delivery though your CMS
+## C -Confirm your delivery though your CMS
 
 You can also confirm your delivery through your CMS (PRESTASHOP, MAGENT, WOOCOMMERCE ...) . please consult CMS guides [here](../../../integration-guides/integrations-modes/plugins/).

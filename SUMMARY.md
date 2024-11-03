@@ -48,7 +48,7 @@
   * [Long Term Credit Journey France](solutions-reference/credit/long-term-credit-journey-france.md)
   * [Long Term Credit Journey Germany](solutions-reference/credit/long-term-credit-journey-germany.md)
   * [Delivery, Cancellation journeys](solutions-reference/credit/others-journeys/README.md)
-    * [🆕 Merchant portal delivery guide](solutions-reference/credit/others-journeys/merchant-portal-delivery-guide.md)
+    * [🆕 Delivery e-financing journey](solutions-reference/credit/others-journeys/delivery-e-financing-journey.md)
     * [Cancellation e-financing journey](solutions-reference/credit/others-journeys/cancellation-e-financing-journey.md)
   * [E-financing Status life cycle](solutions-reference/credit/e-financing-status-life-cycle.md)
 * [Contextual Insurance journeys](solutions-reference/insurance/README.md)
