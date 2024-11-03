@@ -41,3 +41,11 @@ If the order is in “Accepted” status, then you'll have access to the button 
 On the delivery screen, please enter the “Shipping number” and the “Operator”, then click on “Validate”
 
 ![](../../../.gitbook/assets/4.png)
+
+### Confirm your delivery though API
+
+You can confirm you delivery though API [`e-financing/api/v1/subscriptions/{creditSubscriptionId}/_confirmDelivery`](../../../api-reference/e-financing-api/)
+
+### Confirm your delivery though your CMS
+
+You can also confirm your delivery through your CMS (PRESTASHOP, MAGENT, WOOCOMMERCE ...) . please consult CMS guides [here](../../../integration-guides/integrations-modes/plugins/).
