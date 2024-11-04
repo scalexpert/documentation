@@ -20,8 +20,14 @@ Long Term e-financing credit solution is proposed by FRANFINANCE subsidiary For 
 
 <figure><img src="../../.gitbook/assets/Long Term Credit journey (France).png" alt=""><figcaption><p>LT credit France</p></figcaption></figure>
 
-### Appendix: Long term credit communication to e-buyer
+### Long term credit journey communications/exchanges to e-buyer
 
-Please below all communication/exchanges done from producer (FRANFINANCE) to e-buyer regarding long credit product. This cover all statuses from INITIALIZED to CONTRACT SIGNED (see more details on status [here](e-financing-status-life-cycle.md)).
+Please below all communication/exchanges done from producer (FRANFINANCE) to e-buyer regarding its long credit journey subscription. This cover all statuses from INITIALIZED to CONTRACT SIGNED (see more details on status [here](e-financing-status-life-cycle.md)).
+
+{% hint style="warning" %}
+Be aware that all exchanges with e-buyer is always under responsibility of FRANFINANCE producer. In case, your customer ask for information concerning its subscription, you would advise him to access its "Customer FRANFINANCE" website[https://espaceclient.franfinance.fr/grenadine/](https://espaceclient.franfinance.fr/grenadine/).  He would need to provide its FRANFINANCE producer contract number communicated at first email exchange when he received the pre-acceptance.
+
+In general, when e-buyer had signed its contract and was still waiting for an answer, the reason is that a missing document or information is pending. He would found all details in its FRANFINANCE customer website.&#x20;
+{% endhint %}
 
 <figure><img src="../../.gitbook/assets/image001.png" alt=""><figcaption><p>FRANFINANCE long credit communication to e-buyer</p></figcaption></figure>
