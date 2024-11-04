@@ -28,6 +28,8 @@ Please below all communication/exchanges done from producer (FRANFINANCE) to e-b
 Be aware that all exchanges with e-buyer is always under responsibility of FRANFINANCE producer. In case, your customer ask for information concerning its subscription, you would advise him to access its "Customer FRANFINANCE" website[https://espaceclient.franfinance.fr/grenadine/](https://espaceclient.franfinance.fr/grenadine/).  He would need to provide its FRANFINANCE producer contract number communicated at first email exchange when he received the pre-acceptance.
 
 In general, when e-buyer had signed its contract and was still waiting for an answer, the reason is that a missing document or information is pending. He would found all details in its FRANFINANCE customer website.&#x20;
+
+Beside, we strongly recommend to suggest to your e-buyer choosing electronic signature instead of paper signature because of quickness of the process.
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/image001.png" alt=""><figcaption><p>FRANFINANCE long credit communication to e-buyer</p></figcaption></figure>
