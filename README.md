@@ -28,6 +28,13 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+#### November changes
+
+* New plugins versions have been delivered :\
+  \- [Woocommerce V 1.5.4](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md): new feature to display simultator widget on cart page\
+  \- [Magento V 1.6.2](integration-guides/integrations-modes/plugins/magento/magento-installation.md): fix on simulator widget + minor fixes V1.6.1\
+  \- [Prestashop V 1.7.0](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md): new feature for refreshing widget simulator in case of configured products + V 1.6.1 minor fixes
+
 #### October changes
 
 * We simplify your onboarding! Now API keys would be automatically generated after contract signature. see more details on "[before you start](ready-to-start/before-you-start.md)" page.
