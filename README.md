@@ -34,6 +34,7 @@ These guides are for you!
   \- [Woocommerce V 1.5.4](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md): new feature to display simultator widget on cart page\
   \- [Magento V 1.6.2](integration-guides/integrations-modes/plugins/magento/magento-installation.md): fix on simulator widget + minor fixes V1.6.1\
   \- [Prestashop V 1.7.0](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md): new feature for refreshing widget simulator in case of configured products + V 1.6.1 minor fixes
+* New documentation on "[how confirming e-financing delivery subscription](solutions-reference/credit/others-journeys/delivery-e-financing-journey.md)" to trigger your merchant funding
 
 #### October changes
 
