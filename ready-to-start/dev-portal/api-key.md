@@ -50,7 +50,7 @@ A new secret will be created and displayed. **Copy it and store it securely** (s
 <figure><img src="../../.gitbook/assets/cléapi4a (1).png" alt=""><figcaption><p>Display or copy your secret</p></figcaption></figure>
 {% endtab %}
 
-{% tab title="Verify your secret" %}
+{% tab title="Verify your secret (optional)" %}
 At any time you can verify your secret!
 
 <figure><img src="../../.gitbook/assets/cléapi1d.png" alt=""><figcaption><p>verify your secret</p></figcaption></figure>
