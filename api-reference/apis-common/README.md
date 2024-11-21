@@ -38,10 +38,14 @@ This part of the guide will make an overview of all common concepts of the APis:
 [authorization-server-api.md](../authorization-server-api.md)
 {% endcontent-ref %}
 
-### API console (developer portal)
+### API developer space (merchant portal) & API console (advanced features)
 
-{% content-ref url="advanced-features/" %}
-[advanced-features](advanced-features/)
+{% content-ref url="../../ready-to-start/dev-portal/" %}
+[dev-portal](../../ready-to-start/dev-portal/)
+{% endcontent-ref %}
+
+{% content-ref url="api-console-advance-features/" %}
+[api-console-advance-features](api-console-advance-features/)
 {% endcontent-ref %}
 
 ### API collections

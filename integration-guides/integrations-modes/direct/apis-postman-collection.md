@@ -9,7 +9,7 @@ Please find here a link to postman collections public that you can use to test o
 Use it or download it !
 
 {% hint style="info" %}
-You would need API keys to test.  Please refers to our guide [here](../../../api-reference/apis-common/advanced-features/api-key.md).
+You would need API keys to test.  Please refers to our guide [here](../../../ready-to-start/dev-portal/api-key.md).
 {% endhint %}
 
 {% embed url="https://www.postman.com/scalexpert/workspace/scalexpert-e-commerce-postman-collection-api" %}

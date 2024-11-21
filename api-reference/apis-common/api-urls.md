@@ -6,7 +6,7 @@ description: The list of all environments and their urls
 
 2 environments are available for customers only.&#x20;
 
-You will need to have [API keys](advanced-features/api-key.md) for each environment:&#x20;
+You will need to have [API keys](../../ready-to-start/dev-portal/api-key.md) for each environment:&#x20;
 
 * one API key for Production (PROD)
 * one API key for Test (UATC)

@@ -1,5 +1,5 @@
 ---
-description: Merchant webhooks tutorial (Work in progress)
+description: Merchant webhooks tutorial
 ---
 
 # How to subscribe, use Webhooks

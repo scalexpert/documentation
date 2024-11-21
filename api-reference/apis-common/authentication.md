@@ -8,9 +8,9 @@ description: Authentication overview
 
 All our endpoints are authenticated with oAuth2 client credentials flow. It means APIs are application authenticated (server side). You would need to get a client id and secret to obtain a access token using our [API /oauth2/token ](../authorization-server-api.md).&#x20;
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>Client credentials flow</p></figcaption></figure>
 
-1. Application sends [application's credentials](advanced-features/api-key.md#3-api-key) to the oAuth2 Authorization Server with the [authorization scopes](scopes.md) you want to access.&#x20;
+1. Application sends [application's credentials](../../ready-to-start/dev-portal/api-key.md#3-api-key) to the oAuth2 Authorization Server with the [authorization scopes](scopes.md) you want to access.&#x20;
 2. oAuth2 Authorization Server validates application's credentials.
 3. oAuth2 Authorization Server responds with an access token.
 4. Application can use the access token to call an API on behalf of itself.&#x20;

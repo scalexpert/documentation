@@ -205,8 +205,8 @@ Also have a look at "Security best practices" pages. For instance, make attentio
 
 Refer to "Before you start/API key" section for instructions:
 
-{% content-ref url="../../../api-reference/apis-common/advanced-features/api-key.md" %}
-[api-key.md](../../../api-reference/apis-common/advanced-features/api-key.md)
+{% content-ref url="../../../ready-to-start/dev-portal/api-key.md" %}
+[api-key.md](../../../ready-to-start/dev-portal/api-key.md)
 {% endcontent-ref %}
 
 #### Testing Environment Setup

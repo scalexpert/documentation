@@ -21,7 +21,7 @@ You have encountered issued when rendering these pages, don't panic :worried: le
 
 First, identify the theme you are using on your back-office "themes" menu:
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Wordpress Theme menu management</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Wordpress Theme menu management</p></figcaption></figure>
 
 &#x20;Second, verify your in "WooCommerce" menu "setting/advanced"  that all pages used are filled&#x20;
 
@@ -29,11 +29,11 @@ First, identify the theme you are using on your back-office "themes" menu:
 Especially check that the "CGV" page is well filled otherwise you will not be able to activate the scalexpert payment button in the checkout page.&#x20;
 {% endhint %}
 
-<figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption><p>WooCommerce advanced pages setting</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>WooCommerce advanced pages setting</p></figcaption></figure>
 
 And also in the "WooCommerce" status menu:
 
-<figure><img src="../../../../.gitbook/assets/image (3).png" alt=""><figcaption><p>WooCommerce status menu</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>WooCommerce status menu</p></figcaption></figure>
 
 Once, your theme identified you must found your "[theme type](https://developer.wordpress.org/themes/getting-started/what-is-a-theme/#theme-types)":  "classic" or "block". According that "type" the method to customize your theme will be different.
 
@@ -111,7 +111,7 @@ Repeat the same operation for the other templates:
 
 The WooCommerce template that have been overridden are present in the wordpress directory "[/wp-content/plugins/woo-scalexpert/woocommerce](https://github.com/scalexpert/scalexpert-woocommerce/tree/main/woo-scalexpert/woocommerce)"&#x20;
 
-<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Woocommerce templates overridden </p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Woocommerce templates overridden </p></figcaption></figure>
 
 Code overridden are marked with a commentaire "SG Paiement en plusieurs fois".
 

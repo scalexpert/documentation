@@ -1,20 +1,22 @@
 ---
-description: Get your API keys and secrets
+description: Advanced feature to manage my developer organization , application, API ...
 ---
 
-# API key
+# Manage your developer organization (advanced features)
 
-In order to simplify your on boarding, our technical support would have prepared for you your developers merchant's organization and your API keys credentials in conformity of your contracted solutions. Thus, you **can retrieve your API keys credentials by resetting your secret** by following the 3 steps below:
+Advanced features:
+
+* Select your APIs catalog.&#x20;
+* Manage your developers merchant's organization
+* Declare your [Client Apps](#user-content-fn-1)[^1] and get your credentials (Client ID and Secret)&#x20;
+* Subscribe to one or many APIs according solutions in your contract.
+* Consult your APIs Analytics
 
 {% tabs %}
 {% tab title="1-Connect organization" %}
 Once connected, Select your organization to make it active for your profile.
 
 <figure><img src="../../../.gitbook/assets/Annotation 2023-04-24 152921.jpg" alt=""><figcaption><p>Merchant developers' organization</p></figcaption></figure>
-
-Once selected, the merchant organization will appear on the banner.
-
-<figure><img src="../../../.gitbook/assets/Annotation 2023-04-24 153308.jpg" alt=""><figcaption><p>A merchant organization have been selected</p></figcaption></figure>
 {% endtab %}
 
 {% tab title="2-Display Application " %}
@@ -37,3 +39,5 @@ To obtain your secret, you must reset it. A new secret will be created and displ
 <figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption><p>Show new secret</p></figcaption></figure>
 {% endtab %}
 {% endtabs %}
+
+[^1]: A client App is referring to the merchant server app that would consume the APIs
