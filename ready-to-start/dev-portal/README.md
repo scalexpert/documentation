@@ -8,9 +8,9 @@ description: Hey developers this new space is for you!
 It is now easier to get your API keys from a dedicated **new space** (developers menu) **on the merchant portal!**
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/developer_page.png" alt=""><figcaption></figcaption></figure>
 
-2 steps only needed to collect your API keys:
+2 steps are only needed to collect your API keys:
 
 ### Connect your developer space
 
