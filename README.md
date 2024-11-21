@@ -30,7 +30,8 @@ These guides are for you!
 
 #### November changes
 
-* New plugins versions have been delivered :\
+* New API key feature: collect your API keys test and production directly on your [Developer menu space](ready-to-start/dev-portal/) (Merchant portal) and [API key page](ready-to-start/dev-portal/api-key.md)
+* New plugins versions have been delivered:\
   \- [Woocommerce V 1.5.4](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md): new feature to display simultator widget on cart page\
   \- [Magento V 1.6.2](integration-guides/integrations-modes/plugins/magento/magento-installation.md): fix on simulator widget + minor fixes V1.6.1\
   \- [Prestashop V 1.7.0](integration-guides/integrations-modes/plugins/prestashop-1.6-1.7-8.1/prestashop-installation.md): new feature for refreshing widget simulator in case of configured products + V 1.6.1 minor fixes
