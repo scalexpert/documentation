@@ -10,6 +10,6 @@ Here you can find all the API to deal with Marketplace Services for scaleXpert :
 
 ### Latest version:
 
-{% content-ref url="uat-api-for-partners.md" %}
-[uat-api-for-partners.md](uat-api-for-partners.md)
+{% content-ref url="uat-api-for-partners/" %}
+[uat-api-for-partners](uat-api-for-partners/)
 {% endcontent-ref %}
