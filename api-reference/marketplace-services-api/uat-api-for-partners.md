@@ -46,7 +46,7 @@ API-->> Merchant: documents contact registrated!
 Merchant->>API: DELETE #47;sellers#47;{merchantSellersId}#47;documents
 API-->> Merchant: documents contact deleted!
 
-note over Merchant,API: At any get seller information
+note over Merchant,API: At any time get seller information
 Merchant->>API: GET #47;sellers#47;{merchantSellersId}
 API-->> Merchant: sellers information!
 
