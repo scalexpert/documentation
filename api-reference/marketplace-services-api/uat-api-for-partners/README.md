@@ -10,7 +10,7 @@ description: Version 1.0.18 Latest (only for partners )
 
 Sellers on boarding is 7 steps completion:
 
-1. Merchant registers sellers&#x20;
+1. Merchant registers sellers
 2. Merchant registers all sellers contacts
 3. Merchant registers all merchant documents
 4. Merchant registers all contacts documents
@@ -69,7 +69,11 @@ note over Merchant,API: merchant would have repeating steps 2,3,4,5 if necessary
 
 ```
 
+### Endpoints
 
+{% content-ref url="endpoints-sellers-on-boarding.md" %}
+[endpoints-sellers-on-boarding.md](endpoints-sellers-on-boarding.md)
+{% endcontent-ref %}
 
 ## 2- Cash management
 
@@ -116,8 +120,11 @@ BANK-->>API: Status change (webhook)
 API-->> Merchant: status change (weebhook)! 
 ```
 
+### Endpoints
 
-
+{% content-ref url="endpoints-cash-management.md" %}
+[endpoints-cash-management.md](endpoints-cash-management.md)
+{% endcontent-ref %}
 
 Download OpenAPI specs:
 
