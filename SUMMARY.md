@@ -34,6 +34,7 @@
       * [WooCommerce installation](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md)
       * [Woocommerce customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-customization.md)
       * [WooCommerce themes setting and customization](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-themes-setting-and-customization.md)
+      * [🆕 WooCommerce statuses mapping](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-statuses-mapping.md)
   * [🚧 PSP integration (e-financing only)](integration-guides/integrations-modes/psp-integration-e-financing-only.md)
   * [🚧 Fintecture integration modes](integration-guides/integrations-modes/fintecture-integration-modes/README.md)
     * [No code](integration-guides/integrations-modes/fintecture-integration-modes/no-code.md)
