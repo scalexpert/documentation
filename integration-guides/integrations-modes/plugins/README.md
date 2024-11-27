@@ -16,18 +16,11 @@ Announced : new version of prestashop 1.3.0 with simulator widget has just been 
 
 ### Plugins PHP requirements
 
-| Plugin      | Plugin version           | PHP version compatible          |
-| ----------- | ------------------------ | ------------------------------- |
-| Prestashop  | 1.6                      | 7.0 and upper                   |
-| Prestashop  | 1.7                      | 7.1 and upper                   |
-| Prestashop  | 8.1                      | 7.2 and upper (8.1 recommended) |
-| Magento CE  | 2.4.3                    | 7.4                             |
-| Magento CE  | 2.4.4, 2.4.5             | 8.1                             |
-| Magento CE  | 2.4.6                    | 8.2                             |
-| Magento EE  | 2.4.3                    | 7.4                             |
-| Magento EE  | 2.4.4, 2.4.5             | 8.1                             |
-| Magento EE  | 2.4.6                    | 8.2                             |
-| WooCommerce | 8.3 (wordpress 6.3, 6.4) | 7.4, 8.2                        |
+<table><thead><tr><th width="258">Plugin</th><th>Plugin version</th><th>PHP version compatible</th></tr></thead><tbody><tr><td>Prestashop</td><td>1.6</td><td>7.0 and upper</td></tr><tr><td>Prestashop</td><td>1.7</td><td>7.1 and upper</td></tr><tr><td>Prestashop</td><td>8.1</td><td>7.2 and upper (8.1 recommended)</td></tr><tr><td><del>Magento CE</del> (Depreciated*)</td><td><del>2.4.3</del></td><td><del>7.4</del></td></tr><tr><td>Magento CE</td><td>2.4.4, 2.4.5</td><td>8.1</td></tr><tr><td>Magento CE</td><td>2.4.6</td><td>8.2</td></tr><tr><td>Magento CE</td><td>2.4.7</td><td>8.3</td></tr><tr><td><del>Magento EE</del> (Depreciated*)</td><td><del>2.4.3</del></td><td><del>7.4</del></td></tr><tr><td>Magento EE</td><td>2.4.4, 2.4.5</td><td>8.1</td></tr><tr><td>Magento EE</td><td>2.4.6</td><td>8.2</td></tr><tr><td>Magento EE</td><td>2.4.7</td><td>8.3</td></tr><tr><td>WooCommerce</td><td>8.3 (wordpress 6.3, 6.4)</td><td>7.4, 8.2</td></tr></tbody></table>
+
+{% hint style="warning" %}
+(\*) Depreciated: this version is no longer available. we strongly recommend to upgrade your version.
+{% endhint %}
 
 You can download our plugins here:
 
