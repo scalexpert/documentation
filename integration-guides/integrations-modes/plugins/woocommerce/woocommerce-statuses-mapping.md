@@ -6,10 +6,10 @@ description: How e-financing statuses are mapped with standard WooCommerce statu
 
 ### How e-financing map WooCommerce statuses
 
-In WooCommerce, orders follow a standard lifecycle with predefined statuses. The Scalexpert plugin is designed [to synchronize these statuses with its own lifecycle.](woocommerce-statuses-mapping.md#e-financing-statuses-diagram-with-woocommerce-mapping) As a result, when the e-financing subscription status changes, it automatically updates to the corresponding WooCommerce status. Ensure the "pulling job" is enabled to allow
+In WooCommerce, orders follow a standard lifecycle with predefined statuses. The Scalexpert plugin is designed [to synchronize these statuses with its own lifecycle.](woocommerce-statuses-mapping.md#e-financing-statuses-diagram-with-woocommerce-mapping) As a result, when the e-financing subscription status changes, it automatically updates to the corresponding WooCommerce status. Ensure the "pulling job" is enabled to allow (see admin setting)
 
 {% hint style="warning" %}
-Note that not all WooCommerce statuses directly correspond to e-financing statuses. For example, the WooCommerce status "TERMINATED" is not mapped in e-financing. This status is used by merchants when an order is completed (fully paid and delivered), whereas e-financing only pertains to the payment or financing of
+Note that not all WooCommerce statuses directly correspond to e-financing statuses. For example, the WooCommerce status "TERMINATED" is not mapped in e-financing. This status is used by merchants when an order is completed (fully paid and delivered), whereas e-financing only pertains to the payment (or financing)
 {% endhint %}
 
 For more information read Guideline on WooCommerce documentation:
