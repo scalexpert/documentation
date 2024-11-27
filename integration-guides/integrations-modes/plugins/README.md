@@ -11,7 +11,7 @@ Announced : new version of prestashop 1.3.0 with simulator widget has just been 
 ### Available plugins:
 
 * Prestashop 1.6, 1.7, 8.1
-* Magento CE & EE 2.4.3, 2.4.4 , 2.4.6
+* Magento CE & EE  2.4.4 , 2.4.6, 2.4.7
 * WooCommerce 8.3
 
 ### Plugins PHP requirements
