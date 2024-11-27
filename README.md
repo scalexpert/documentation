@@ -30,6 +30,7 @@ These guides are for you!
 
 #### November changes
 
+* [Magento plugin is compatible with 2.4.7 Magento 2 version](integration-guides/integrations-modes/plugins/). Magento 2.4.3 version is no longer supported.&#x20;
 * New API key feature: collect your API keys test and production directly on your [Developer menu space](ready-to-start/dev-portal/) (Merchant portal) and [API key page](ready-to-start/dev-portal/api-key.md)
 * New plugins versions have been delivered:\
   \- [Woocommerce V 1.5.4](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-installation.md): new feature to display simultator widget on cart page\
