@@ -8,66 +8,13 @@ description: Version 1.0.18 Latest (only for partners )
 
 ### Description
 
-Sellers on boarding is 7 steps completion:
-
-1. Merchant registers sellers
-2. Merchant registers all sellers contacts
-3. Merchant registers all merchant documents
-4. Merchant registers all contacts documents
-5. Merchant submit a seller for KYC validation when all information required is complete.
-6. Merchant ask seller for IBAN verification
-7. Bank will provide KYC result (OK, KO, INCOMPLETE)
-
-### API sequence diagram
-
-```mermaid
-sequenceDiagram
-note over Merchant,API: 1-Registers Seller
-Merchant->>API: PUT #47;sellers#47;{merchantSellersId}
-API-->> Merchant: sellers registrated!
-
-note over Merchant,API: 2-Registers Seller Contacts
-Merchant->>API: POST #47;sellers#47;{merchantSellersId}#47;contacts
-API-->> Merchant: contacts registrated!
-Merchant->>API: PATCH #47;sellers#47;{merchantSellersId}#47;contacts
-API-->> Merchant: contacts modified!
-Merchant->>API: DELETE #47;sellers#47;{merchantSellersId}#47;contacts
-API-->> Merchant: contacts deleted!
-
-note over Merchant,API: 3-Registers Merchant Documents
-Merchant->>API: POST #47;sellers#47;{merchantSellersId}#47;contacts#47;{contactId}#47;documents
-API-->> Merchant: documents merchant registrated!
-Merchant->>API: DELETED #47;sellers#47;{merchantSellersId}#47;contacts#47;{contactId}#47;documents
-API-->> Merchant: documents merchant deleted!
-
-note over Merchant,API: 4-Registers Contact Documents
-Merchant->>API: POST #47;sellers#47;{merchantSellersId}#47;documents
-API-->> Merchant: documents contact registrated!
-Merchant->>API: DELETE #47;sellers#47;{merchantSellersId}#47;documents
-API-->> Merchant: documents contact deleted!
-
-note over Merchant,API: At any time get seller information
-Merchant->>API: GET #47;sellers#47;{merchantSellersId}
-API-->> Merchant: sellers information!
-
-note over Merchant,BANK: 5-Submit Seller On boarding for KYC validation
-Merchant->>API: POST #47;sellers#47;{merchantSellersId}#47;_assess-kyc
-API->>BANK: ask the Bank to assess KYC
-API-->> Merchant: KYC seller on going and waiting for IBAN verification notification
-BANK->> API: provide IBAN seller
-API-->> Merchant: IBAN notification (webhook)
-Merchant->>API: GET #47;sellers#47;{merchantSellersId} retrieve IBAN
-note over Merchant,Seller: 6-ask Seller for IBAN verification
-Merchant->>Seller: provide IBAN
-Seller->>BANK: execute 1€ tranfer 
-
-note over Merchant,BANK: 7-BANK provide KYC result
-BANK-->>API: 
-API-->>Merchant: confirme KYC acceptation or rejection () 
-
-note over Merchant,API: merchant would have repeating steps 2,3,4,5 if necessary
-
-```
+* Merchant registers sellers
+* Merchant registers all sellers contacts
+* Merchant registers all merchant documents
+* Merchant registers all contacts documents
+* Merchant submit a seller for KYC validation when all information required is complete.
+* Merchant ask seller for IBAN verification
+* Bank will provide KYC result (OK, KO, INCOMPLETE)
 
 ### Endpoints
 
@@ -84,41 +31,6 @@ note over Merchant,API: merchant would have repeating steps 2,3,4,5 if necessary
 * Once the order is registered, the marketplace associates the transactions with the order. Then, the marketplace allocates funds to each seller and charges fees through the order-splits endpoint.
 * Finally, the marketplace can make payments to the seller's external account or to its own external account.
 * The endpoint /transfers provides the ability for the Marketplace to move funds between the seller account and the Marketplace account or vice versa.
-
-### API sequence diagram
-
-```mermaid
-sequenceDiagram
-note over Merchant,API: Order registration
-Merchant->>API: POST #47;orders
-API-->> Merchant: order registrated!
-note over Merchant,API: Payment transaction
-Merchant->>API: POST #47;transactions
-API-->> Merchant: transactions registrated! 
-note over Merchant,API: Split orders
-Merchant->>API: POST #47;order-splits
-API->>PSP: GET #47;transactions
-PSP-->>API: 
-API->>BANK: POST #47;transferWallet
-BANK-->>API: 
-API-->> Merchant: orders split done! 
-note over Merchant,API: transfers
-Merchant->>API: POST #47;transferts
-API-->> Merchant: transfers done!
-note over Merchant,API: Payout sellers
-Merchant->>API: POST #47;sellers#47;{sellerId}#47;payout-sellers
-API->>BANK: POST #47;payoutSellers
-BANK-->>API: 
-API-->> Merchant: Payout sellers done! 
-note over Merchant,API: Payout merchants
-Merchant->>API: POST #47;payout-merchants
-API->>BANK: POST #47;payoutMerchants
-BANK-->>API: 
-API-->> Merchant: Payout merchants done!    
-note over Merchant,API: Notifications
-BANK-->>API: Status change (webhook)
-API-->> Merchant: status change (weebhook)! 
-```
 
 ### Endpoints
 
