@@ -1,5 +1,5 @@
 ---
-description: Version 1.0.18 Latest (only for partners )
+description: Version 1.0.19 Latest (only for partners )
 ---
 
 # UAT API for partners
@@ -40,6 +40,6 @@ description: Version 1.0.18 Latest (only for partners )
 
 Download OpenAPI specs:
 
-{% file src="../../../.gitbook/assets/swagger_marketplace_1.0.18.yaml" %}
+{% file src="../../../.gitbook/assets/swagger_marketplace_1.0.19.yaml" %}
 YAML marketplace services for UAT
 {% endfile %}
