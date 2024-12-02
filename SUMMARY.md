@@ -14,6 +14,7 @@
   * [Integrate e-financing with APIs](ready-to-start/get-started/integrate-e-financing-with-apis.md)
   * [Integrate Warrenty extension with APIs](ready-to-start/get-started/integrate-warrenty-extension-with-apis.md)
   * [🚧 Integrate Fintecture payments](ready-to-start/get-started/integrate-fintecture-payments-solutions.md)
+  * [🚧 Integrate Marketplace services with APIs](ready-to-start/get-started/integrate-marketplace-services-with-apis.md)
 
 ## Integration Guides
 
@@ -66,6 +67,7 @@
   * [🚧 Immediate payment (Fintecture)](solutions-reference/payments-journeys/immediate-payment-fintecture.md)
   * [🚧 Smart Transfer (Fintecture)](solutions-reference/payments-journeys/smart-transfer-fintecture.md)
   * [🚧 Request To Pay (Fintecture)](solutions-reference/payments-journeys/request-to-pay-fintecture.md)
+* [🚧 Marketplaces journeys](solutions-reference/marketplaces-journeys.md)
 
 ## API Reference
 

@@ -1,5 +1,5 @@
 ---
-description: E-financing - Custom APi integration
+description: E-financing - Custom API integration
 ---
 
 # Integrate e-financing with APIs

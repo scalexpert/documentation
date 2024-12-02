@@ -22,25 +22,25 @@ Depending on the lending institution, the payment period varies from 2 to 8 days
 
 From the scalexpert website, log in to your merchant area (top right, ‘Log in’ button) and enter your login details.
 
-![](../../../.gitbook/assets/0.png) ![](../../../.gitbook/assets/1.png)
+![](<../../../.gitbook/assets/0 (1).png>) ![](<../../../.gitbook/assets/1 (1).png>)
 
 ### **Step 2: In the merchant portal, select the transaction for which you want to confirm the delivery**
 
 Go to the list of transaction in the e-financing section.
 
-![](../../../.gitbook/assets/2.png)
+![](<../../../.gitbook/assets/2 (1).png>)
 
 In the list of transactions, you can use several filters (date, order ID, type of financing, etc.) to find the order for which you want to confirm delivery.
 
 If the order is in “Accepted” status, then you'll have access to the button “Report” on the right.
 
-![](../../../.gitbook/assets/3.png)
+![](<../../../.gitbook/assets/3 (1).png>)
 
 ### **Step 3: Confirm delivery of the order**
 
 On the delivery screen, please enter the “Shipping number” and the “Operator”, then click on “Validate”
 
-![](../../../.gitbook/assets/4.png)
+![](<../../../.gitbook/assets/4 (1).png>)
 
 ## B - Confirm your delivery though API
 
