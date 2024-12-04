@@ -81,7 +81,7 @@
     * [API catalog (advanced feature)](api-reference/apis-common/api-console-advance-features/api-catalog.md)
     * [Manage your developer organization (advanced features)](api-reference/apis-common/api-console-advance-features/api-key.md)
 * [🆕 e-Financing API](api-reference/e-financing-api/README.md)
-  * [V 1.6.6 - e-Financing API](api-reference/e-financing-api/v-1.6.0-e-financing-api.md)
+  * [V 1.6.6 - e-Financing API](api-reference/e-financing-api/v-1.6.6-e-financing-api.md)
   * [Depreciated versions e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/README.md)
     * [V 1.5.2 - e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.5.2-e-financing-api.md)
     * [V 1.4.0 - e-Financing API](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.4.0-e-financing-api.md)
