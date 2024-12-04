@@ -28,6 +28,10 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+#### December changes
+
+* New version of [E-financing API V 1.6.6](api-reference/e-financing-api/) with minor changes
+
 #### November changes
 
 * [New WooCommerce guideline](integration-guides/integrations-modes/plugins/woocommerce/woocommerce-statuses-mapping.md) to understand how e-financing and WooCommerce statuses maps
