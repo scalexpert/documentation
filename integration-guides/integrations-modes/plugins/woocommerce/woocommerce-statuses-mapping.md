@@ -14,7 +14,7 @@ Note that not all WooCommerce statuses directly correspond to e-financing status
 
 For more information read Guideline on WooCommerce documentation:
 
-{% embed url="https://woocommerce.com/document/gestion-des-commandes/" %}
+{% embed url="https://woocommerce.com/document/managing-orders/order-statuses/" %}
 WooCommerce order status management
 {% endembed %}
 
