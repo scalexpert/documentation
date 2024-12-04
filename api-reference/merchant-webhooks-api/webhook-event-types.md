@@ -25,12 +25,7 @@ The list of webhook event types depends of the solutions[^1] you've subscribed.&
 1 event type:\
 \- CI\_SUBSCRIPTION: all events related to status change
 
-| eventTypes       | eventTypeCodes               | Description                                  |
-| ---------------- | ---------------------------- | -------------------------------------------- |
-| CI\_SUBSCRIPTION | CI\_SUBSCRIPTION\_SUBSCRIBED | occurs whenever a subscription is subscribed |
-|                  | CI\_SUBSCRIPTION\_REJECTED   | occurs whenever a subscription is rejected   |
-|                  | CI\_SUBSCRIPTION\_CANCELLED  | occurs whenever a subscription is cancelled  |
-|                  | CI\_SUBSCRIPTION\_ABORTED    | occurs whenever a subscription is aborted    |
+<table><thead><tr><th width="220">eventTypes</th><th width="243">eventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>CI_SUBSCRIPTION</td><td>CI_SUBSCRIPTION_SUBSCRIBED</td><td>occurs whenever a subscription is subscribed</td></tr><tr><td></td><td>CI_SUBSCRIPTION_REJECTED</td><td>occurs whenever a subscription is rejected</td></tr><tr><td></td><td>CI_SUBSCRIPTION_CANCELLED</td><td>occurs whenever a subscription is cancelled</td></tr><tr><td></td><td>CI_SUBSCRIPTION_ABORTED</td><td>occurs whenever a subscription is aborted</td></tr></tbody></table>
 
 <details>
 
