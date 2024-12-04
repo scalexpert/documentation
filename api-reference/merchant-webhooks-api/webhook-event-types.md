@@ -12,6 +12,26 @@ The list of webhook event types must be retrieve with API `merchant-webhooks/api
 The list of webhook event types depends of the solutions[^1] you've subscribed.&#x20;
 {% endhint %}
 
+#### Solution e-financing events types
+
+2 event types:\
+\- SC\_SUBSCRIPTION : all events related to a status change\
+\- SC\_CANCEL\_REQUEST: all events related to a cancel request
+
+<table><thead><tr><th width="229">eventTypes</th><th width="240">EventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>SC_SUBSCRIPTION</td><td>SC_SUBSCRIPTION_INITIALIZED</td><td>occurs whenever a subscription is initialized </td></tr><tr><td></td><td>SC_SUBSCRIPTION_PRE_ACCEPTED</td><td>occurs whenever a subscription is pre-accepted</td></tr><tr><td></td><td>SC_SUBSCRIPTION_ACCEPTED</td><td>occurs whenever a subscription is accepted</td></tr><tr><td></td><td>SC_SUBSCRIPTION_REJECTED</td><td>occurs whenever a subscription is rejected</td></tr><tr><td></td><td>SC_SUBSCRIPTION_CANCELLED</td><td>occurs whenever a subscription is cancelled</td></tr><tr><td></td><td>SC_SUBSCRIPTION_ABORTED</td><td>occurs whenever a subscription is aborted</td></tr><tr><td>SC_CANCEL_REQUEST</td><td>SC_CANCEL_REQUEST_CANCELLATION_ACCEPTED</td><td>occurs whenever a full cancellation is  accepted</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_CANCELLATION_REJECTED</td><td>occurs whenever a full cancellation is  rejected</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_PARTIAL_CANCELLATION_ACCEPTED</td><td>occurs whenever a partial cancellation is  accepted</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_PARTIAL_CANCELLATION_REJECTED</td><td>occurs whenever a partial cancellation is  rejected</td></tr></tbody></table>
+
+#### Solution insurance event types
+
+1 event type:\
+\- CI\_SUBSCRIPTION: all events related to status change
+
+| eventTypes       | eventTypeCodes               | Description                                  |
+| ---------------- | ---------------------------- | -------------------------------------------- |
+| CI\_SUBSCRIPTION | CI\_SUBSCRIPTION\_SUBSCRIBED | occurs whenever a subscription is subscribed |
+|                  | CI\_SUBSCRIPTION\_REJECTED   | occurs whenever a subscription is rejected   |
+|                  | CI\_SUBSCRIPTION\_CANCELLED  | occurs whenever a subscription is cancelled  |
+|                  | CI\_SUBSCRIPTION\_ABORTED    | occurs whenever a subscription is aborted    |
+
 <details>
 
 <summary>Example of response of API merchant-webhooks/api/v1/event-types</summary>
@@ -326,7 +346,7 @@ This event type is only for testing purpose to enable testing you merchant confi
           example: Hello World !
       description: >-
         Payload of the HelloWorld event used to test the webhooks feature on the
-        merchant side (to test end-to-end connectivity)
+        merchant side (to test end-to-end connec
 ```
 {% endcode %}
 
