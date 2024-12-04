@@ -12,7 +12,7 @@ The list of webhook event types must be retrieve with API `merchant-webhooks/api
 The list of webhook event types depends of the solutions[^1] you've subscribed.&#x20;
 {% endhint %}
 
-#### Solution e-financing events types
+#### Solution e-financing event types
 
 2 event types:\
 \- SC\_SUBSCRIPTION : all events related to a status change\
