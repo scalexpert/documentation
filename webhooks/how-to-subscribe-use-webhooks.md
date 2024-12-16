@@ -152,49 +152,44 @@ Also for security reasons, you may need to register IP address of our systems in
 Pay attention to activate your configuration ONLY if  you completed parameters "url" and "security fields" otherwise it will generate an error on production. We recommend strongly to [test your configuration](how-to-subscribe-use-webhooks.md#test-your-webhooks-configuration) with event "HELLO\_WORLD" before activating.
 {% endhint %}
 
-{% code title="Example PUT  /webhooks" %}
+{% code title="Example PUT  /webhooks using webhook.site as receiver" %}
 ```json
 {
-  "eventTypeCode": "SC_SUBSCRIPTION",
-  "active": true,
-  "url": "https://www.acme.com/webhooks/events/credit",
-  "authMethod": "BASIC_AUTH",
-  "authLogin": "mySuperLogin",
-  "authPassword": "mySuperPassword",
-  "authScope": "mySuperScope",
-  "keyForSignature": "e5399af3ebcde0f3ead45086e13e932f36b1e5a1db002c8bb6a2870a1d22a7b6",
-  "secret": "mySuperSecretOrMyAPIKey",
-  "emailForAlerts": "mySupport@merchant.com",
-  "activeEventCodes": [
-    "SC_SUBSCRIPTION_ACCEPTED",
-    "SC_SUBSCRIPTION_REJECTED"
-  ]
+    "eventTypeCode": "HELLO_WORLD",
+    "active": true,
+    "url": "https://webhook.site/<put here your generated token>",
+    "authMethod": "NONE",
+    "secret": "mySuperSecretOrMyAPIKey",
+    "emailForAlerts": "<put here your generated token>@emailhook.site"
 }
 ```
 {% endcode %}
 
 ### Test your configuration
 
-You can Verify your configuration with `API GET /webhooks`Test your webhook endpoint with `API /events/tests/_trigger` to trigger an `"HELLO_WORLD"` event
+You can Verify your configuration with `API GET /webhooks`Test your webhook endpoint with `API POST /events/tests/_trigger` to trigger an `"HELLO_WORLD"` event  (see below example).
 
 This will trigger an event "HELLO\_WORLD" to the dedicated configuration. No parameter are required. Event received is factice and will be structured as normal event but with "HELLO\_WORD" payload data.
 
 {% code title="Example "HELLO_WORLD" event" %}
 ```json
 {
-  "timestamp": "2023-11-02T01:30:00.00Z",
-  "id": "bf6f6023-93a2-4266-9a2c-3579d803c09c",
-  "correlationId": "7d9670fe-a0cf-4073-afde-bdc61ca49f75",
-  "eventTypeCode": "HELLO_WORLD",
-  "eventCode": "HELLO_WORLD",
-  "data": {
-    "eventTypeCode": "HELLO_WORLD",
-    "eventCode": "HELLO_WORLD",
-    "helloWorldMessage": "HELLO_WORLD"
-    }
-}
+            "timestamp": "2024-12-13T15:20:26.391Z",
+            "id": "03e14f55-845c-470e-bfec-eef18c76b111",
+            "correlationId": "675c50b9110d5a53694b00eec5d27f3f",
+            "eventTypeCode": "HELLO_WORLD",
+            "data": {
+                "eventTypeCode": "HELLO_WORLD",
+                "helloWorldMessage": "Hello World ! This event was generated at 2024-12-13T15:20:26.391Z"
+            },
+            "status": "OK",
+            "timestampOfLastDeliveryAttempt": "2024-12-13T15:20:26.620Z",
+            "httpStatusCodeOfLastDeliveryAttempt": 200
+        }
 ```
 {% endcode %}
+
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption><p>Result of getting event on Webhook.site</p></figcaption></figure>
 
 ### Consume webhooks events
 
