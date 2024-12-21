@@ -4,7 +4,7 @@ description: Weebhook event types reference
 
 # Webhook event types
 
-### List of event types
+## List of event types
 
 The list of webhook event types must be retrieve with API `merchant-webhooks/api/v1/event-types`
 
@@ -12,7 +12,7 @@ The list of webhook event types must be retrieve with API `merchant-webhooks/api
 The list of webhook event types depends of the solutions[^1] you've subscribed.&#x20;
 {% endhint %}
 
-#### Solution e-financing event types
+### Solution e-financing event types
 
 2 event types:\
 \- SC\_SUBSCRIPTION : all events related to a status change\
@@ -20,12 +20,12 @@ The list of webhook event types depends of the solutions[^1] you've subscribed.&
 
 <table><thead><tr><th width="229">eventTypes</th><th width="240">EventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>SC_SUBSCRIPTION</td><td>SC_SUBSCRIPTION_INITIALIZED</td><td>occurs whenever a subscription is initialized </td></tr><tr><td></td><td>SC_SUBSCRIPTION_PRE_ACCEPTED</td><td>occurs whenever a subscription is pre-accepted</td></tr><tr><td></td><td>SC_SUBSCRIPTION_ACCEPTED</td><td>occurs whenever a subscription is accepted</td></tr><tr><td></td><td>SC_SUBSCRIPTION_REJECTED</td><td>occurs whenever a subscription is rejected</td></tr><tr><td></td><td>SC_SUBSCRIPTION_CANCELLED</td><td>occurs whenever a subscription is cancelled</td></tr><tr><td></td><td>SC_SUBSCRIPTION_ABORTED</td><td>occurs whenever a subscription is aborted</td></tr><tr><td>SC_CANCEL_REQUEST</td><td>SC_CANCEL_REQUEST_CANCELLATION_ACCEPTED</td><td>occurs whenever a full cancellation is  accepted</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_CANCELLATION_REJECTED</td><td>occurs whenever a full cancellation is  rejected</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_PARTIAL_CANCELLATION_ACCEPTED</td><td>occurs whenever a partial cancellation is  accepted</td></tr><tr><td></td><td>SC_CANCEL_REQUEST_PARTIAL_CANCELLATION_REJECTED</td><td>occurs whenever a partial cancellation is  rejected</td></tr></tbody></table>
 
-#### Solution insurance event types
+### Solution insurance event types
 
 1 event type:\
 \- CI\_SUBSCRIPTION: all events related to status change
 
-<table><thead><tr><th width="220">eventTypes</th><th width="243">eventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>CI_SUBSCRIPTION</td><td>CI_SUBSCRIPTION_SUBSCRIBED</td><td>occurs whenever a subscription is subscribed</td></tr><tr><td></td><td>CI_SUBSCRIPTION_REJECTED</td><td>occurs whenever a subscription is rejected</td></tr><tr><td></td><td>CI_SUBSCRIPTION_CANCELLED</td><td>occurs whenever a subscription is cancelled</td></tr><tr><td></td><td>CI_SUBSCRIPTION_ABORTED</td><td>occurs whenever a subscription is aborted</td></tr></tbody></table>
+<table><thead><tr><th width="220">eventTypes</th><th width="197">eventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>CI_SUBSCRIPTION</td><td>CI_SUBSCRIPTION_SUBSCRIBED</td><td>occurs whenever a subscription is subscribed</td></tr><tr><td></td><td>CI_SUBSCRIPTION_REJECTED</td><td>occurs whenever a subscription is rejected</td></tr><tr><td></td><td>CI_SUBSCRIPTION_CANCELLED</td><td>occurs whenever a subscription is cancelled</td></tr><tr><td></td><td>CI_SUBSCRIPTION_ABORTED</td><td>occurs whenever a subscription is aborted</td></tr></tbody></table>
 
 <details>
 
@@ -194,6 +194,12 @@ The list of webhook event types depends of the solutions[^1] you've subscribed.&
 
 
 </details>
+
+### Solution Marketplace Services event types
+
+MP types are related to Marketplace Services . all events related to status change
+
+<table data-full-width="true"><thead><tr><th>eventTypes</th><th>eventTypeCodes</th><th>Description</th></tr></thead><tbody><tr><td>MP_SELLER_ONBOARDING</td><td>MP_IBAN_AVAILABLE_FOR_PAYMENT</td><td>occurs whenever the IBAN for the 1€ payment is available for seller</td></tr><tr><td>MP_SELLER_ONBOARDING</td><td>MP_KYC_IN_PROGRESS</td><td>occurs whenever the kyc assessment is ongoing for a seller</td></tr><tr><td>MP_SELLER_ONBOARDING</td><td>MP_KYC_VALIDATED</td><td>occurs whenever the kyc is approved for a seller</td></tr><tr><td>MP_SELLER_ONBOARDING</td><td>MP_KYC_REFUSED</td><td>occurs whenever the kyc is refused and needs corrections</td></tr></tbody></table>
 
 ### Payload of an event types
 

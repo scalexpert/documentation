@@ -47,6 +47,8 @@
 
 ## SOLUTIONS REFERENCE
 
+* [Marketplace Services journeys](solutions-reference/marketplace-services-journeys/README.md)
+  * [Seller onboarding](solutions-reference/marketplace-services-journeys/seller-onboarding.md)
 * [e-Financing journeys](solutions-reference/credit/README.md)
   * [Initiate an e-financing journey](solutions-reference/credit/initiate-an-e-financing-journey.md)
   * [Split Payment Journey France](solutions-reference/credit/split-payment-journey-france.md)
@@ -110,7 +112,7 @@
 * [🚧 Marketplace services API](api-reference/marketplace-services-api/README.md)
   * [UAT API for partners](api-reference/marketplace-services-api/uat-api-for-partners/README.md)
     * [Endpoints sellers on boarding](api-reference/marketplace-services-api/uat-api-for-partners/endpoints-sellers-on-boarding.md)
-    * [Endpoints cash management](api-reference/marketplace-services-api/uat-api-for-partners/endpoints-cash-management.md)
+    * [Endpoints orders management](api-reference/marketplace-services-api/uat-api-for-partners/endpoints-cash-management.md)
 * [🚧 Fintecture Payments API reference](api-reference/fintecture-payments-api-reference.md)
 * [UAT API for partners](api-reference/uat-api-for-partners.md)
 
