@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Marketplace Services journeys
 
 First of all you have to onboard your sellers
