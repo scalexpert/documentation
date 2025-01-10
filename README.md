@@ -28,6 +28,12 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
+####
+
+#### Janurary changes
+
+* New version of [E-financing API V 1.7.0](api-reference/e-financing-api/v-1.7.0-e-financing-api.md) with minor changes
+
 #### December changes
 
 * New version of [E-financing API V 1.6.6](api-reference/e-financing-api/) with minor changes

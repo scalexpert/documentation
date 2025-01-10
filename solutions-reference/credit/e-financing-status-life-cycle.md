@@ -61,6 +61,7 @@ end note
 | REJECTED     | SUBSCRIPTION REJECTED BY PRODUCER                                    | Subscription has been rejected by producer (payment or credit rejected).                                                                                     |
 | ABORTED      | ABORTED BY CUSTOMER                                                  | E-buyer aborted its e-financing journey or its session expired.                                                                                              |
 | ABORTED      | ABORTED DUE TO TECHNICAL ISSUE                                       | A technical issue has been encountered during e-financing journey.                                                                                           |
+| ABORTED      | EXPIRED                                                              | Subscription has been automatically aborted by producer because it has not changed since 3 months (this delay could depend on producer rules)                |
 | CANCELLED    | CANCELLED BY CUSTOMER                                                | E-financing subscription has been cancelled by customer (withdrawal period) or by merchant on behalf of e-buyer (cancellation full ou partial of delivery).  |
 
 
@@ -74,6 +75,7 @@ stateDiagram-v2
 
     SUBSCRIPTION_IN_PROGRESS --> ABORTED_DUE_TO_TECHNICAL_ISSUE
     SUBSCRIPTION_IN_PROGRESS --> ABORTED_BY_CUSTOMER
+    SUBSCRIPTION_IN_PROGRESS --> EXPIRED
     SUBSCRIPTION_IN_PROGRESS --> PRE_APPROVED_BY_PRODUCER_WAITING_FOR_CONTRACT_SIGNATURE: credit only
     SUBSCRIPTION_IN_PROGRESS  --> SUBSCRIPTION_APPROVED_BY_PRODUCER: Split payment only
     SUBSCRIPTION_IN_PROGRESS  --> SUBSCRIPTION_REJECTED_BY_PRODUCER
@@ -81,16 +83,18 @@ stateDiagram-v2
     SUBSCRIPTION_APPROVED_BY_PRODUCER --> CANCEL_BY_CUSTOMER
     note right of CANCEL_BY_CUSTOMER
     Cancel by customer before financing
-    withdrawal period or has not signed   
+    withdrawal period or has not signed
     or on behalf by merchant (split payment only)
     end note
 
     PRE_APPROVED_BY_PRODUCER_WAITING_FOR_CONTRACT_SIGNATURE --> CONTRACT_SIGNED_BY_CUSTOMER
     PRE_APPROVED_BY_PRODUCER_WAITING_FOR_CONTRACT_SIGNATURE --> CANCEL_BY_CUSTOMER
+    PRE_APPROVED_BY_PRODUCER_WAITING_FOR_CONTRACT_SIGNATURE --> EXPIRED
 
+    CONTRACT_SIGNED_BY_CUSTOMER --> SUBSCRIPTION_REJECTED_BY_PRODUCER
     CONTRACT_SIGNED_BY_CUSTOMER --> WAITING_FOR_THE_DELIVERY_CONFIRMATION
     CONTRACT_SIGNED_BY_CUSTOMER --> CANCEL_BY_CUSTOMER
-    CONTRACT_SIGNED_BY_CUSTOMER --> SUBSCRIPTION_REJECTED_BY_PRODUCER
+    
 
     WAITING_FOR_THE_DELIVERY_CONFIRMATION --> AWAITING_PAYMENT_TO_MERCHANT
     WAITING_FOR_THE_DELIVERY_CONFIRMATION --> CANCEL_BY_CUSTOMER
@@ -98,10 +102,14 @@ stateDiagram-v2
     AWAITING_PAYMENT_TO_MERCHANT  --> PAYMENT_HAVE_BEEN_ISSUED_TO_MERCHANT
     AWAITING_PAYMENT_TO_MERCHANT  --> CANCEL_BY_CUSTOMER
 
-    PAYMENT_HAVE_BEEN_ISSUED_TO_MERCHANT --> [*]
+  
     ABORTED_DUE_TO_TECHNICAL_ISSUE --> [*]
     ABORTED_BY_CUSTOMER --> [*]
+    EXPIRED --> [*]
     CANCEL_BY_CUSTOMER --> [*]
+    SUBSCRIPTION_APPROVED_BY_PRODUCER --> [*]
     SUBSCRIPTION_REJECTED_BY_PRODUCER --> [*]
+    PAYMENT_HAVE_BEEN_ISSUED_TO_MERCHANT --> [*]
+
 
 ```
