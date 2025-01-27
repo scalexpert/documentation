@@ -362,7 +362,7 @@ Here are the different status (requesting a GET /sellers/{merchantSellerId} you 
 
 
 
-<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 #### 2.7.3 Sellers
 
@@ -372,7 +372,7 @@ Here are the different status (requesting a GET /sellers/{merchantSellerId} you 
 
 
 
-<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 
 
@@ -410,6 +410,14 @@ In this diagram, you can follow the webhooks workflow:
 
 
 <img src="../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+
+
+
+### 2.10 - Workflow statuts
+
+
+
+<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 
 
