@@ -1,8 +1,10 @@
 ---
-description: Version 1.0.19 Latest (only for partners )
+description: Version 1.4.0 Latest
 ---
 
-# UAT API for partners
+# 🆕 Marketplace Services API
+
+[Download OpenAPI specs (YAML)](./#download-openapi-specs)
 
 ## 1 - Sellers on boarding
 
@@ -38,8 +40,12 @@ description: Version 1.0.19 Latest (only for partners )
 [endpoints-cash-management.md](endpoints-cash-management.md)
 {% endcontent-ref %}
 
-Download OpenAPI specs:
+### Download OpenAPI specs:
 
-{% file src="../../../.gitbook/assets/swagger_marketplace_1.0.19.yaml" %}
-YAML marketplace services for UAT
+{% file src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" %}
+YAML Marketplace Services for UATC
+{% endfile %}
+
+{% file src="../../../.gitbook/assets/swagger_marketplace_1.4.0-PROD.yaml" %}
+YAML Marketplace Services for PROD
 {% endfile %}

@@ -111,7 +111,7 @@
     * [V 1.0.5 - Merchant-Webhooks API](api-reference/merchant-webhooks-api/uat-api-for-partners/v-1.0.5-merchant-webhooks-api.md)
 * [oAuth2 API](api-reference/authorization-server-api.md)
 * [🚧 Marketplace services API](api-reference/marketplace-services-api/README.md)
-  * [UAT API for partners](api-reference/marketplace-services-api/uat-api-for-partners/README.md)
+  * [🆕 Marketplace Services API](api-reference/marketplace-services-api/uat-api-for-partners/README.md)
     * [Endpoints sellers on boarding](api-reference/marketplace-services-api/uat-api-for-partners/endpoints-sellers-on-boarding.md)
     * [Endpoints orders management](api-reference/marketplace-services-api/uat-api-for-partners/endpoints-cash-management.md)
 * [🚧 Fintecture Payments API reference](api-reference/fintecture-payments-api-reference.md)
