@@ -43,3 +43,7 @@
 {% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}" method="get" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
+
+{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}" method="put" %}
+[swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
+{% endswagger %}
