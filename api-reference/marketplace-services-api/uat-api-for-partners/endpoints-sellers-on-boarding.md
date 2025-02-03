@@ -2,25 +2,21 @@
 
 ### Sellers On boarding
 
-{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/v1/sellers/{merchantSellerId}" method="put" %}
-[swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
-{% endswagger %}
-
 {% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}/_assess-kyc" method="post" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
 
 ### Contacts
 
-{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/v1/sellers/{merchantSellerId}/contacts" method="post" %}
+{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}/contacts" method="post" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/v1/sellers/{merchantSellerId}/contacts/{contactId}" method="delete" %}
+{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}/contacts/{contactId}" method="delete" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
 
-{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/v1/sellers/{merchantSellerId}/contacts/{contactId}" method="patch" %}
+{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}/contacts/{contactId}" method="patch" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
 
@@ -44,6 +40,6 @@
 
 ### Sellers
 
-{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/v1/sellers/{merchantSellerId}" method="get" %}
+{% swagger src="../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml" path="/sellers/{merchantSellerId}" method="get" %}
 [swagger_marketplace_1.4.0-UATC.yaml](../../../.gitbook/assets/swagger_marketplace_1.4.0-UATC.yaml)
 {% endswagger %}
