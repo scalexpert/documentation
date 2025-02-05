@@ -32,7 +32,7 @@ These guides are for you!
 
 #### Janurary changes
 
-* New version of [E-financing API V 1.7.0](api-reference/e-financing-api/v-1.7.0-e-financing-api.md) with minor changes
+* New version of [E-financing API V 1.7.0](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.7.0-e-financing-api.md) with minor changes
 
 #### December changes
 
