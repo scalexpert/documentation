@@ -11,9 +11,9 @@ The guides include walkthroughs on testing and integrating Marketplace Services 
    2. Scope for marketplace is: _marketplace:rw_
    3. You should have a _solutionCode_
 2. Integrate the endpoints regarding the onboarding of your sellers
-   1. [endpoints-sellers-on-boarding.md](../api-reference/marketplace-services-api/uat-api-for-partners/endpoints-sellers-on-boarding.md "mention")
+   1. [endpoints-sellers-on-boarding.md](../api-reference/marketplace-services-api/1_4_0/endpoints-sellers-on-boarding.md "mention")
 3. Integrate the remaining endpoints to manage orders and subscriptions
-   1. [endpoints-cash-management.md](../api-reference/marketplace-services-api/uat-api-for-partners/endpoints-cash-management.md "mention")
+   1. [endpoints-cash-management.md](../api-reference/marketplace-services-api/1_4_0/endpoints-cash-management.md "mention")
 
 ## Glossary
 
@@ -49,8 +49,8 @@ First of all, to start working with Marketplace Services, you have to integrate 
 
 <table data-header-hidden data-full-width="true"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>HTTP request</strong></td><td><strong>Endpoint</strong></td><td><strong>Usage</strong></td></tr><tr><td>PUT</td><td>/sellers/{merchantSellerId}</td><td>Start the onboarding of a seller based on your own id.</td></tr><tr><td>GET</td><td>/sellers/{merchantSellerId}</td><td>Get all values already filled of a seller</td></tr><tr><td>POST</td><td>/sellers/{merchantSellerId}/contacts</td><td>Add a physical person on a existing seller. All effective beneficiaries must be added.</td></tr><tr><td>PATCH</td><td>/sellers/{merchantSellerId}/contacts/{contactId}</td><td>Change some informations about a contact</td></tr><tr><td>DELETE</td><td>/sellers/{merchantSellerId}/contacts/{contactId}</td><td>Delete a contact</td></tr><tr><td>POST</td><td>/sellers/{merchantSellerId}/documents</td><td>Add a document attached to a seller (KBIS, fiscal statement, etc.)</td></tr><tr><td>DELETE</td><td>/sellers/{merchantSellerId}/documents/{documentId}</td><td>Delete a seller document</td></tr><tr><td>POST</td><td>/sellers/{merchantSellerId}/contact/{contactId}/documents</td><td>Add a document attached to an effective beneficiary (Id card, passport, etc.)</td></tr><tr><td>DELETE</td><td><p>/sellers/{merchantSellerId}/contact/{contactId}/documents/{documentId</p><p>}</p></td><td>Delete a contact document</td></tr><tr><td>POST</td><td>/sellers/{merchantSellerId}/_assess-kyc</td><td>Start the KYC of a specific seller and all the KYC of the contacts attached to this seller.</td></tr></tbody></table>
 
-{% content-ref url="../api-reference/marketplace-services-api/uat-api-for-partners/endpoints-sellers-on-boarding.md" %}
-[endpoints-sellers-on-boarding.md](../api-reference/marketplace-services-api/uat-api-for-partners/endpoints-sellers-on-boarding.md)
+{% content-ref url="../api-reference/marketplace-services-api/1_4_0/endpoints-sellers-on-boarding.md" %}
+[endpoints-sellers-on-boarding.md](../api-reference/marketplace-services-api/1_4_0/endpoints-sellers-on-boarding.md)
 {% endcontent-ref %}
 
 ### 2.2 - Onboarding & KYC journey
