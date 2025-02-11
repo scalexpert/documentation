@@ -33,7 +33,7 @@ Especially check that the "CGV" page is well filled otherwise you will not be ab
 
 And also in the "WooCommerce" status menu:
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>WooCommerce status menu</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>WooCommerce status menu</p></figcaption></figure>
 
 Once, your theme identified you must found your "[theme type](https://developer.wordpress.org/themes/getting-started/what-is-a-theme/#theme-types)":  "classic" or "block". According that "type" the method to customize your theme will be different.
 
@@ -45,7 +45,7 @@ We will demonstrate the setting with the standard "Twenty-twenty-four" theme. Th
 
 Open the editor from "appearance/editor" menu&#x20;
 
-<figure><img src="../../../../.gitbook/assets/image (4).png" alt=""><figcaption><p>editor menu</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>editor menu</p></figcaption></figure>
 
 Once opened, navigate into "template" menu to open the templates that need to be customized:
 

@@ -28,11 +28,12 @@ These guides are for you!
 
 <summary>Discover our latest features, updates, and improvements. Explore now to experience the best we have to offer! ... <span data-gb-custom-inline data-tag="emoji" data-code="1f389">🎉</span></summary>
 
-#### February Changes
+#### February changes
 
+* New snippet code for [simulator widget of e-financing solutions](integration-guides/integrations-modes/direct/snippet-code-for-simulation-widget/) (API integration)
 * New version of [E-financing API V1.7.1 ](api-reference/e-financing-api/v-1.7.1-e-financing-api.md)with minor changes
 
-#### January changes
+#### Janurary changes
 
 * New version of [E-financing API V 1.7.0](api-reference/e-financing-api/depreciated-versions-e-financing-api/v-1.7.0-e-financing-api.md) with minor changes
 

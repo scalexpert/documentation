@@ -10,7 +10,7 @@ API keys are now automatically created at contract signature!  You will receive 
 
 **A account is required to** [**access your developer space**](https://merchant.scalexpert.societegenerale.com/)**.** When you will "connect" the first time you would need to create yours by clicking on "Se connecter".
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Access and create your account by clicking on "se connecter"</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption><p>Access and create your account by clicking on "se connecter"</p></figcaption></figure>
 
 The account creation is 4 steps process (see more details below).
 

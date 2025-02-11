@@ -35,7 +35,7 @@ Customization are available for each solutions activated.&#x20;
 * Customize subtitle of the solution. By default, title is pre-filled from API GET /eligible solutions. For more details see [API REFERENCE ](broken-reference)chapter (only available for Insurance solutions).
 * Chose to display or not Société générale logo <img src="../../../../.gitbook/assets/images.jpeg" alt="" data-size="line">
 
-<figure><img src="../../../../.gitbook/assets/image (3).png" alt=""><figcaption><p>cart page customization</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>cart page customization</p></figcaption></figure>
 
 ## 3-Payment Checkout page customization
 
