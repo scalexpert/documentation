@@ -4,9 +4,7 @@ description: Merchant Webhooks API reference
 
 # Merchant-Webhooks API
 
-{% hint style="info" %}
-Merchant Webhooks API has been released! :tada:
-{% endhint %}
+Scope: `"common-services:rw"`
 
 ### Merchant Webhooks API
 
