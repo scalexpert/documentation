@@ -4,9 +4,9 @@ description: Error code structure & errors codes reference
 
 # Error object & codes
 
-### Generic structure of messages
+### Generic structure of error response
 
-All messages returned will be structured as below:
+* All error responses returned by the service will be structured as below:
 
 {% code title="Get internal server error" %}
 ```json
@@ -14,6 +14,7 @@ All messages returned will be structured as below:
   "timestamp": "2022-07-28T22:25:51.000Z",
   "httpStatusCode": "500",
   "httpStatusMessage": "Internal Server Error",
+  "errorCode": "APPLICATION_ERROR_CODE",
   "errorMessage": "Une erreur est survenue",
   "requestMethod": "POST",
   "requestURI": "/v1/subscriptions"
@@ -70,6 +71,23 @@ All messages returned will be structured as below:
 
 
 </details>
+
+* All error responses returned by the API gateway will be structured as below:
+
+```json
+{
+  "timestamp": "2022-07-28T22:25:51.000Z",
+  "path": "/baas/prod/e-financing/api/v1/subscriptions",
+  "status": "422",
+  "error": "Unprocessable Entity",
+  "message": "[Code: 1028 | Message: $.solutionCode: is missing but it is required | path: $]",
+  "requestId": "/v1/subscriptions",
+  "traceId":"67af665252525252552525225b070"
+```
+
+422 Unprocessable Entity is returned by the API Gateway in the following cases:
+
+A required field or query parameter  is missing in the request.
 
 ### Standard http status codes
 
@@ -143,7 +161,15 @@ There is data conflict on a modification request (eg: old data version, lock, al
 
 A quota/throttling logic detected too many requests from client in current period => Client app developer MUST prevent itself to call the API beyond its allowed quota Since the status code may match several use cases you should Use standardized error body to give sufficient information in the response body so the client app developer team can alone understand the issue and correct its code or data.
 
+**422, Unprocessable Entity**
+
+status code indicates that the server understood the content type of the request content, and the syntax of the request content was correct, but it was unable to process the contained instructions.
+
+Clients that receive a `422` response should expect that repeating the request without modification will fail with the same error.
+
 </details>
+
+
 
 ### API standard error codes
 

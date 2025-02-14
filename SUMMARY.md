@@ -118,6 +118,7 @@
   * [🆕 Marketplace Services API](api-reference/marketplace-services-api/1_4_0/README.md)
     * [Endpoints sellers on boarding](api-reference/marketplace-services-api/1_4_0/endpoints-sellers-on-boarding.md)
     * [Endpoints orders management](api-reference/marketplace-services-api/1_4_0/endpoints-cash-management.md)
+  * [Marketplace services error codes](api-reference/marketplace-services-api/marketplace-services-error-codes.md)
 * [🚧 Fintecture Payments API reference](api-reference/fintecture-payments-api-reference.md)
 * [UAT API for partners](api-reference/uat-api-for-partners.md)
 
