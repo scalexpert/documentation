@@ -6,7 +6,7 @@ description: e-financing error codes reference
 
 ### Error codes
 
-#### Error codes are application  codes that are returned in the response body when the HTTP status code is 4XX.  This code is machine readble and represents the cause of the error.
+#### Error codes are application  codes that are returned in the response body by the service when the HTTP status code is (400, 409 and 404 )  This code is machine readble and represents the cause of the error.
 
 #### **The error codes when the Http status  is 400 Bad request**
 
@@ -36,7 +36,13 @@ to be completed
 
 to be completed
 
+#### **The error codes when the Http status  is 409 Conflict:**
 
+#### **The error codes when the Http status  is 404 Not Found:**
+
+| Error  code        | Error Description                                                                | Recomended handling                                                                                                                                                          |
+| ------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ENTITY\_NOT\_FOUND | This error occurs when the consumer sends a request with unknown subscriptionId. | The path parameter subscrptionId must be replaced with a known subscriptionId that is returned in the response of POST /subscriptions or in the GET /subscriptions response. |
 
 ### Generic errors codes
 

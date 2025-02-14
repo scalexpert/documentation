@@ -8,12 +8,12 @@ description: Error code structure & errors codes reference
 
 * All error responses returned by the service will be structured as below:
 
-{% code title="Get internal server error" %}
+{% code title="Bad request error" %}
 ```json
 {
   "timestamp": "2022-07-28T22:25:51.000Z",
-  "httpStatusCode": "500",
-  "httpStatusMessage": "Internal Server Error",
+  "httpStatusCode": "400",
+  "httpStatusMessage": "REQUEST_VALIDATION_ERROR",
   "errorCode": "APPLICATION_ERROR_CODE",
   "errorMessage": "Une erreur est survenue",
   "requestMethod": "POST",
@@ -72,7 +72,7 @@ description: Error code structure & errors codes reference
 
 </details>
 
-* All error responses returned by the API gateway will be structured as below:
+* When the payload validation of a request fails according to the swagger,  the API gateway returns an error response "422 Unprocessable Entity"  that will be structured as below:
 
 ```json
 {
@@ -85,9 +85,12 @@ description: Error code structure & errors codes reference
   "traceId":"67af665252525252552525225b070"
 ```
 
-422 Unprocessable Entity is returned by the API Gateway in the following cases:
+Payload validation fails according to the API swagger in the following cases:&#x20;
 
-A required field or query parameter  is missing in the request.
+* A required field is missing.
+* A string field's value length exceeds the maximum length.
+* The field has an incorrect type according to the Swagger definition.
+* The number of items in the array exceeds the maximum size.
 
 ### Standard http status codes
 
@@ -163,7 +166,7 @@ A quota/throttling logic detected too many requests from client in current perio
 
 **422, Unprocessable Entity**
 
-status code indicates that the server understood the content type of the request content, and the syntax of the request content was correct, but it was unable to process the contained instructions.
+status code indicates that the JSON payload is invalid per the swagger contract.
 
 Clients that receive a `422` response should expect that repeating the request without modification will fail with the same error.
 
@@ -171,7 +174,7 @@ Clients that receive a `422` response should expect that repeating the request w
 
 
 
-### API standard error codes
+### API standard  error codes
 
 {% content-ref url="../e-financing-api/e-financing-error-codes.md" %}
 [e-financing-error-codes.md](../e-financing-api/e-financing-error-codes.md)
